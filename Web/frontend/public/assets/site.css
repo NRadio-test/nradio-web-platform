@@ -81,6 +81,7 @@ button, input, textarea { font: inherit; }
   background: linear-gradient(145deg, rgba(44, 212, 255, 0.25), rgba(39, 90, 244, 0.35));
   box-shadow: inset 0 0 22px rgba(54, 215, 255, 0.14), 0 8px 24px rgba(0, 42, 99, 0.38);
 }
+.brand-logo { width: 100px; height: 32px; object-fit: contain; object-position: left center; }
 .brand strong, .brand small { display: block; }
 .brand strong { font-size: 0.98rem; letter-spacing: 0.04em; }
 .brand small { margin-top: 2px; color: var(--muted); font-size: 0.67rem; letter-spacing: 0.08em; text-transform: uppercase; }

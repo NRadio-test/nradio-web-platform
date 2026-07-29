@@ -12,6 +12,7 @@ const requiredFiles = [
   'frontend/public/assets/site.js',
   'frontend/public/assets/knowledge.js',
   'frontend/public/assets/knowledge-manage.js',
+  'frontend/public/assets/nradio-logo.png',
   'frontend/public/assets/pengzai-v8.png',
   'frontend/public/data/knowledge.json',
   'backend/functions/api/knowledge.js',

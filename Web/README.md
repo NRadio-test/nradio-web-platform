@@ -38,6 +38,8 @@ Cloudflare Secret：
 - `KNOWLEDGE_SESSION_SECRET`：至少 32 字符的随机会话签名密钥。
 - `KNOWLEDGE_SESSION_TOKEN_HASHES`：用户名到六位口令 SHA-256 摘要的 JSON 映射，或该 JSON 的 Base64URL 编码；服务器不保存原始口令。
 
+Cloudflare 仪表板批量粘贴若移除变量名下划线，也兼容别名 `KNOWLEDGESESSIONSECRET` 和 `KNOWLEDGESESSIONTOKENHASHES`。
+
 Cloudflare Variables：
 
 - `GITHUB_OWNER`、`GITHUB_REPOSITORY`、`GITHUB_IMPORT_WORKFLOW`、`GITHUB_IMPORT_REF`。

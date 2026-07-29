@@ -27,7 +27,7 @@ const timingSafeEqual = async (left, right) => {
 }
 
 const getSigningKey = async (env) => {
-  const secret = String(env.KNOWLEDGE_SESSION_SECRET || '')
+  const secret = String(env.KNOWLEDGE_SESSION_SECRET || env.KNOWLEDGESESSIONSECRET || '')
   if (secret.length < 32) throw new Error('知识库会话签名密钥尚未配置。')
   return crypto.subtle.importKey('raw', encoder.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
 }
@@ -39,7 +39,7 @@ const sign = async (payload, env) => {
 
 const readTokenOwners = (env) => {
   let owners
-  const raw = String(env.KNOWLEDGE_SESSION_TOKEN_HASHES || '')
+  const raw = String(env.KNOWLEDGE_SESSION_TOKEN_HASHES || env.KNOWLEDGESESSIONTOKENHASHES || '')
   try {
     owners = JSON.parse(raw)
   } catch {
