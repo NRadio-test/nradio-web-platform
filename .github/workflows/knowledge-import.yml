@@ -1,0 +1,160 @@
+name: Review knowledge import
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: Cloudflare import job ID
+        required: true
+        type: string
+      file_name:
+        description: Original file name
+        required: true
+        type: string
+      base_url:
+        description: NRadio knowledge service URL
+        required: true
+        default: https://nradio.fallaxaura.dpdns.org
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: knowledge-import-${{ inputs.job_id }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    env:
+      JOB_ID: ${{ inputs.job_id }}
+      FILE_NAME: ${{ inputs.file_name }}
+      BASE_URL: ${{ inputs.base_url }}
+      KNOWLEDGE_REVIEW_API_KEY: ${{ secrets.KNOWLEDGE_REVIEW_API_KEY }}
+      KNOWLEDGE_REVIEW_API_BASE: ${{ vars.KNOWLEDGE_REVIEW_API_BASE }}
+      KNOWLEDGE_REVIEW_MODEL: ${{ vars.KNOWLEDGE_REVIEW_MODEL }}
+      IMPORT_SERVICE_TOKEN: ${{ secrets.KNOWLEDGE_IMPORT_SERVICE_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/requirements-knowledge-import.txt
+
+      - name: Install document parsers
+        run: python -m pip install -r scripts/requirements-knowledge-import.txt
+
+      - name: Mark task as parsing
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"status":"parsing","progress":25,"message":"正在提取文件文字。"}'
+
+      - name: Download protected source
+        run: |
+          mkdir -p /tmp/nradio-import
+          curl --fail-with-body --silent --show-error \
+            "$BASE_URL/api/knowledge/import/$JOB_ID/metadata" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            --output /tmp/nradio-import/metadata.json
+          curl --fail-with-body --silent --show-error \
+            "$BASE_URL/api/knowledge/import/$JOB_ID/source" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            --output /tmp/nradio-import/source
+
+      - name: Mark task as reviewing
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"status":"reviewing","progress":50,"message":"独立审核模型正在生成结构化草稿。"}'
+
+      - name: Parse and review document
+        id: import
+        run: |
+          python scripts/knowledge_import.py \
+            --input /tmp/nradio-import/source \
+            --file-name "$FILE_NAME" \
+            --job-id "$JOB_ID" \
+            --metadata /tmp/nradio-import/metadata.json \
+            --output-root "$GITHUB_WORKSPACE" \
+            --github-repository "$GITHUB_REPOSITORY" \
+            > /tmp/nradio-import/result.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path('/tmp/nradio-import/result.json').read_text())
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as output:
+              for key in ('entry_count', 'document_path', 'decision'):
+                  output.write(f"{key}={result[key]}\n")
+          PY
+
+      - name: Synchronize generated knowledge
+        run: npm --prefix Web run sync
+
+      - name: Validate generated knowledge
+        run: npm --prefix Web run check
+
+      - name: Create import branch
+        run: |
+          git config user.name "NRadio Knowledge Bot"
+          git config user.email "knowledge-bot@users.noreply.github.com"
+          git switch -c "knowledge/import-$JOB_ID"
+          git add knowledge-base Web/frontend/public/data/knowledge.json Web/backend/functions/_data/knowledge.js
+          git commit -m "knowledge: review import $JOB_ID"
+          git push origin "knowledge/import-$JOB_ID"
+
+      - name: Open draft pull request
+        id: pr
+        run: |
+          PR_URL=$(gh pr create \
+            --draft \
+            --base main \
+            --head "knowledge/import-$JOB_ID" \
+            --title "knowledge: review $FILE_NAME" \
+            --body "Automated knowledge import review.\n\n- Job: \`$JOB_ID\`\n- Decision: \`${{ steps.import.outputs.decision }}\`\n- Generated entries: ${{ steps.import.outputs.entry_count }}\n- Document: \`${{ steps.import.outputs.document_path }}\`\n\nPlease verify facts, sources, privacy, product model suffixes, and answer boundaries before merging.")
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Report draft PR
+        run: |
+          python - <<'PY' > /tmp/nradio-import/callback.json
+          import json, os
+          print(json.dumps({
+              'status': 'pr_created',
+              'progress': 90,
+              'message': '结构化草稿已生成，正在等待 Pull Request 审核。',
+              'pr_url': os.environ['PR_URL'],
+              'document_path': os.environ['DOCUMENT_PATH'],
+              'entry_count': int(os.environ['ENTRY_COUNT']),
+          }, ensure_ascii=False))
+          PY
+          curl --fail-with-body --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data-binary @/tmp/nradio-import/callback.json
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+          DOCUMENT_PATH: ${{ steps.import.outputs.document_path }}
+          ENTRY_COUNT: ${{ steps.import.outputs.entry_count }}
+
+      - name: Report failure
+        if: failure()
+        run: |
+          curl --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"status":"failed","progress":100,"message":"导入任务失败，请检查 GitHub Actions 日志。","error":"knowledge-import workflow failed"}' || true

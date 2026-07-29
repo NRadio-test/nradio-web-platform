@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="NRadio-Bot 知识库内容导入与结构化审核。" />
+    <meta name="theme-color" content="#06162e" />
+    <title>导入知识 · NRadio-Bot</title>
+    <link rel="icon" href="/assets/pengzai-v8.png" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script type="module" src="/assets/knowledge-manage.js"></script>
+  </head>
+  <body class="knowledge-page manage-page">
+    <header class="site-header shell compact-header">
+      <a class="brand" href="/" aria-label="返回 NRadio-Bot 首页">
+        <span class="brand-mark">N</span>
+        <span><strong>NRadio-Bot</strong><small>Knowledge Import</small></span>
+      </a>
+      <nav aria-label="主要导航">
+        <a href="/knowledge/">内容检索</a>
+        <a aria-current="page" href="/knowledge/manage/">导入内容</a>
+        <a href="/">返回首页</a>
+      </nav>
+    </header>
+
+    <main class="manage-main shell">
+      <section class="session-login" id="session-login">
+        <div class="login-mark">N</div>
+        <p class="eyebrow"><span></span> MEMBER SESSION</p>
+        <h1>验证知识库上传身份</h1>
+        <p>请输入分配给你的六位数字身份口令。口令只用于创建本次浏览器会话，上传内容会自动标记你的用户名。</p>
+        <form id="session-login-form">
+          <label for="session-token">六位身份口令</label>
+          <input id="session-token" name="token" type="password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" placeholder="••••••" required />
+          <button class="button button-primary" id="session-submit" type="submit">验证并进入 <span>→</span></button>
+          <p class="form-message" id="session-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <div id="manage-workspace" hidden>
+      <section class="manage-heading">
+        <div>
+          <p class="eyebrow"><span></span> CONTROLLED IMPORT</p>
+          <h1>把原始资料，变成<br /><em>可审核的知识草稿。</em></h1>
+          <p>上传文件后，服务器会保存原件、提取文字，并使用独立审核模型转换为当前知识库结构。结果只会创建 Draft PR，不会直接进入正式知识库。</p>
+          <div class="session-user"><span>当前上传者</span><strong id="session-user-name">—</strong><button id="session-logout" type="button">退出</button></div>
+        </div>
+        <div class="workflow-card" aria-label="导入流程">
+          <span>01</span><p>验证文件与上传者</p>
+          <span>02</span><p>解析并由模型结构化</p>
+          <span>03</span><p>创建 GitHub Draft PR</p>
+          <span>04</span><p>成员审核后合并发布</p>
+        </div>
+      </section>
+
+      <section class="import-layout">
+        <form class="import-form" id="knowledge-import-form">
+          <div class="form-heading">
+            <div><span class="status-dot"></span></div>
+            <div><h2>新建导入任务</h2><p>可以一次选择多个文件，系统会为每个文件建立独立任务。</p></div>
+          </div>
+
+          <label class="drop-zone" id="drop-zone">
+            <input id="knowledge-files" name="files" type="file" multiple required
+              accept=".pdf,.txt,.md,.markdown,.rst,.adoc,.docx,.xlsx,.xls,.epub" />
+            <span class="drop-icon">＋</span>
+            <strong>选择文件或拖放到这里</strong>
+            <small>PDF、TXT、Markdown、DOCX、XLS/XLSX、EPUB · 单个不超过 25 MB</small>
+          </label>
+          <div class="selected-files" id="selected-files" hidden></div>
+
+          <div class="field-grid">
+            <label class="form-field">
+              <span>资料标题 <small>可选</small></span>
+              <input id="import-title" name="title" maxlength="200" placeholder="例如：C2000 MAX 产品说明书" />
+            </label>
+            <label class="form-field">
+              <span>原始来源网址 <small>可选</small></span>
+              <input id="import-source-url" name="source_url" type="url" maxlength="1200" placeholder="https://…" />
+            </label>
+          </div>
+          <label class="form-field">
+            <span>给审核模型的说明 <small>可选</small></span>
+            <textarea id="import-notes" name="notes" maxlength="4000" rows="4" placeholder="例如：重点核对产品接口、适用地区和回答边界，不要把测试数据写成性能承诺。"></textarea>
+          </label>
+
+          <label class="confirm-row">
+            <input id="import-confirm" type="checkbox" required />
+            <span>我确认有权使用这份资料，并理解模型生成的内容仍需在 Pull Request 中人工审核。</span>
+          </label>
+          <button class="button button-primary submit-import" id="submit-import" type="submit">
+            创建审核任务 <span>→</span>
+          </button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="task-panel">
+          <div class="task-panel-heading">
+            <div><h2>本次导入</h2><p>任务状态会在这里自动刷新。</p></div>
+            <button id="clear-tasks" type="button">清空本地记录</button>
+          </div>
+          <div class="task-list" id="task-list">
+            <div class="task-empty" id="task-empty">
+              <span>◎</span>
+              <p>还没有导入任务</p>
+              <small>选择文件并提交后即可查看进度。</small>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="review-note manage-note">
+        <div><span>!</span></div>
+        <div>
+          <h2>敏感信息与动态内容</h2>
+          <p>请勿上传密码、API Key、客户隐私或未经授权的内部材料。价格、库存、活动、覆盖范围和账号统计等动态信息，即使模型审核通过，也应在合并前再次核对。</p>
+        </div>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>六位口令仅换取当前浏览器会话</p>
+      <p>所有正式变更均通过 GitHub Pull Request</p>
+      <p>© <span data-current-year></span> NRadio-Bot</p>
+    </footer>
+  </body>
+</html>

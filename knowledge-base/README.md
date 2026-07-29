@@ -5,7 +5,7 @@
 ## 建议导入方式
 
 - 如果系统支持文件夹导入，直接导入 `company/`、`products/`、`channels/` 和 `faq/` 下的 Markdown 文件。
-- 如果系统支持 JSONL，优先导入 `import/knowledge.jsonl`。每行是一段可独立检索的知识，带标题、来源、标签和置信度。
+- 如果系统支持 JSONL，优先导入 `import/knowledge.jsonl`。每行是一段可独立检索的知识，带标题、来源、上传者、标签和置信度。
 - `sources/source-index.md` 是溯源清单，一般不必作为问答正文导入。
 - 涉及价格、库存、活动、固件版本、套餐资费、覆盖国家数量和账号粉丝数据时，回答前应再次核对官方当前页面。
 

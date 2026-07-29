@@ -14,3 +14,7 @@ Web/dist/
 Web/functions/
 Web/.wrangler/
 Web/.dev.vars
+
+# Python parser caches.
+__pycache__/
+*.pyc

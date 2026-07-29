@@ -24,7 +24,8 @@ const sourceLabels = {
   official_web: '官方网站',
   official_help: '官方帮助中心',
   douyin_profile: '抖音主页',
-  douyin_video: '抖音公开视频'
+  douyin_video: '抖音公开视频',
+  user_upload: '成员上传资料'
 }
 
 const createElement = (tag, className, text) => {
@@ -75,7 +76,7 @@ const renderFilters = () => {
 
 const matchesEntry = (entry) => {
   const query = state.query.trim().toLocaleLowerCase('zh-CN')
-  const haystack = [entry.title, entry.text, ...entry.tags].join(' ').toLocaleLowerCase('zh-CN')
+  const haystack = [entry.title, entry.text, entry.uploaded_by, ...entry.tags].join(' ').toLocaleLowerCase('zh-CN')
   const queryMatch = !query || query.split(/\s+/).every((part) => haystack.includes(part))
   const tagMatch = state.tag === '全部' || entry.tags.includes(state.tag)
   return queryMatch && tagMatch
@@ -97,12 +98,15 @@ const createCard = (entry, index) => {
   entry.tags.forEach((tag) => tags.append(createElement('span', '', tag)))
 
   const footer = createElement('div', 'card-footer')
+  const identity = createElement('div', 'entry-identity')
   const id = createElement('span', 'entry-id', entry.id)
+  const uploader = createElement('span', 'entry-uploader', `上传者 · ${entry.uploaded_by || '未知'}`)
+  identity.append(id, uploader)
   const source = createElement('a', '', '查看来源 ↗')
   source.href = entry.source_url
   source.target = '_blank'
   source.rel = 'noreferrer'
-  footer.append(id, source)
+  footer.append(identity, source)
 
   article.append(top, title, text, tags, footer)
   return article

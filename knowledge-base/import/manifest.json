@@ -10,7 +10,8 @@
     "title": "知识块标题",
     "text": "用于检索与回答的正文",
     "source_url": "原始公开来源",
-    "source_type": "official_web、official_help、douyin_profile 或 douyin_video",
+    "uploaded_by": "提交原始资料的知识库成员用户名",
+    "source_type": "official_web、official_help、douyin_profile、douyin_video 或 user_upload",
     "verified_at": "本次核对日期",
     "confidence": "high、medium_high、medium 或 low_medium",
     "tags": "用于过滤或召回的标签数组"
