@@ -1,0 +1,16 @@
+.DS_Store
+.env
+
+# AstrBot and NapCat contain credentials, login state, chat data, and logs.
+runtime/
+
+# Local exports and backups may contain private conversations.
+backups/
+exports/
+
+# Web build and Cloudflare local state.
+Web/node_modules/
+Web/dist/
+Web/functions/
+Web/.wrangler/
+Web/.dev.vars
