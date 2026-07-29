@@ -39,10 +39,15 @@ const sign = async (payload, env) => {
 
 const readTokenOwners = (env) => {
   let owners
+  const raw = String(env.KNOWLEDGE_SESSION_TOKEN_HASHES || '')
   try {
-    owners = JSON.parse(String(env.KNOWLEDGE_SESSION_TOKEN_HASHES || '{}'))
+    owners = JSON.parse(raw)
   } catch {
-    throw new Error('知识库用户口令配置格式无效。')
+    try {
+      owners = JSON.parse(decoder.decode(base64UrlDecode(raw)))
+    } catch {
+      throw new Error('知识库用户口令配置格式无效。')
+    }
   }
   if (!owners || Array.isArray(owners) || typeof owners !== 'object' || !Object.keys(owners).length) {
     throw new Error('知识库用户口令尚未配置。')

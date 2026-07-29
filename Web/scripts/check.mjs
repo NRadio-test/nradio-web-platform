@@ -52,7 +52,7 @@ const tokenBytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encod
 const tokenHash = [...new Uint8Array(tokenBytes)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
 const sessionEnv = {
   KNOWLEDGE_SESSION_SECRET: 'local-test-signing-secret-with-32-characters',
-  KNOWLEDGE_SESSION_TOKEN_HASHES: JSON.stringify({ FallaxAura: tokenHash })
+  KNOWLEDGE_SESSION_TOKEN_HASHES: Buffer.from(JSON.stringify({ FallaxAura: tokenHash })).toString('base64url')
 }
 const { onRequestPost: createSession, onRequestGet: getSession } = await import('../backend/functions/api/knowledge/session.js')
 const loginResponse = await createSession({

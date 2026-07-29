@@ -36,7 +36,7 @@ Cloudflare Secret：
 - `GITHUB_ACTIONS_TOKEN`：只授予目标私有仓库 Actions 写入权限，用来启动 `knowledge-import.yml`。
 - `IMPORT_SERVICE_TOKEN`：Cloudflare 与 GitHub Actions 之间共享的随机服务令牌。
 - `KNOWLEDGE_SESSION_SECRET`：至少 32 字符的随机会话签名密钥。
-- `KNOWLEDGE_SESSION_TOKEN_HASHES`：用户名到六位口令 SHA-256 摘要的 JSON 映射；服务器不保存原始口令。
+- `KNOWLEDGE_SESSION_TOKEN_HASHES`：用户名到六位口令 SHA-256 摘要的 JSON 映射，或该 JSON 的 Base64URL 编码；服务器不保存原始口令。
 
 Cloudflare Variables：
 
