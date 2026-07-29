@@ -1,4 +1,4 @@
-import './site.js'
+import './site.js?v=20260730-2'
 
 const terminalStatuses = new Set(['pr_created', 'completed', 'failed', 'dispatch_failed'])
 const statusLabels = {

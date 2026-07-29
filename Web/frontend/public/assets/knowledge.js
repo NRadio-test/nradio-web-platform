@@ -1,4 +1,4 @@
-import './site.js'
+import './site.js?v=20260730-2'
 
 const state = {
   entries: [],
