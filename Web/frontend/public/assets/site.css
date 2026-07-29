@@ -81,7 +81,7 @@ button, input, textarea { font: inherit; }
   background: linear-gradient(145deg, rgba(44, 212, 255, 0.25), rgba(39, 90, 244, 0.35));
   box-shadow: inset 0 0 22px rgba(54, 215, 255, 0.14), 0 8px 24px rgba(0, 42, 99, 0.38);
 }
-.brand-logo { width: 100px; height: 32px; object-fit: contain; object-position: left center; }
+.brand-logo { width: 68px; height: 22px; flex: 0 0 auto; object-fit: contain; object-position: left center; }
 .brand strong, .brand small { display: block; }
 .brand strong { font-size: 0.98rem; letter-spacing: 0.04em; }
 .brand small { margin-top: 2px; color: var(--muted); font-size: 0.67rem; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -231,11 +231,11 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
 .session-login .eyebrow { justify-content: center; }
 .session-login h1 { margin: 0; font-size: 2rem; letter-spacing: -.04em; }
 .session-login > p:not(.eyebrow) { margin: 16px 0 28px; color: var(--muted); font-size: .86rem; line-height: 1.75; }
-.session-login form { display: grid; gap: 12px; text-align: left; }
+.session-login form { min-width: 0; display: grid; gap: 12px; text-align: left; }
 .session-login label { color: #a8bad0; font-size: .76rem; font-weight: 700; }
-.session-login input { height: 58px; padding: 0 16px; border: 1px solid var(--line); border-radius: 14px; outline: 0; color: white; background: rgba(1, 12, 29, .62); font-size: 1.5rem; letter-spacing: .45em; text-align: center; }
+.session-login input { width: 100%; min-width: 0; max-width: 100%; height: 58px; padding: 0 16px; border: 1px solid var(--line); border-radius: 14px; outline: 0; color: white; background: rgba(1, 12, 29, .62); font-size: 1.5rem; letter-spacing: .45em; text-align: center; }
 .session-login input:focus { border-color: rgba(73, 210, 255, .55); }
-.session-login .button { width: 100%; cursor: pointer; }
+.session-login .button { width: 100%; min-width: 0; max-width: 100%; cursor: pointer; }
 .session-user { width: fit-content; margin-top: 20px; display: flex; align-items: center; gap: 10px; padding: 8px 10px 8px 14px; border: 1px solid var(--line); border-radius: 999px; color: #7892ae; background: rgba(255,255,255,.025); font-size: .7rem; }
 .session-user strong { color: #bfeeff; }
 .session-user button { padding: 5px 9px; border: 0; border-radius: 999px; color: #ffb0a4; background: rgba(255, 103, 83, .09); cursor: pointer; }
@@ -319,6 +319,8 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
 @media (max-width: 700px) {
   .shell { width: min(100% - 28px, 1180px); }
   .site-header { min-height: 76px; }
+  .brand { gap: 9px; }
+  .brand-logo { width: 59px; height: 19px; }
   nav { gap: 14px; }
   nav a:not(.nav-pill):not([aria-current="page"]) { display: none; }
   .nav-pill { padding: 8px 12px; }
