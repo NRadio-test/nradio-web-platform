@@ -21,11 +21,17 @@ const entries = raw
     }
   })
 
+const verifiedAt = entries
+  .map((entry) => entry.verified_at)
+  .filter(Boolean)
+  .sort()
+  .at(-1) || '2026-07-30'
+
 const payload = {
   meta: {
     name: 'NRadio 鲲鹏无限公开信息知识库',
-    generated_at: new Date().toISOString(),
-    verified_at: '2026-07-30',
+    generated_at: `${verifiedAt}T00:00:00.000Z`,
+    verified_at: verifiedAt,
     entry_count: entries.length,
     notice: '价格、库存、活动、固件、套餐、覆盖范围和社交账号统计需实时复核。'
   },
