@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="NRadio 鲲鹏无限公开资料知识库，支持搜索、标签筛选和来源追溯。" />
+    <meta name="theme-color" content="#06162e" />
+    <title>知识库 · NRadio-Bot</title>
+    <link rel="icon" href="/assets/pengzai-v5.png" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script type="module" src="/assets/knowledge.js"></script>
+  </head>
+  <body class="knowledge-page">
+    <header class="site-header shell compact-header">
+      <a class="brand" href="/" aria-label="返回 NRadio-Bot 首页">
+        <span class="brand-mark">N</span>
+        <span><strong>NRadio-Bot</strong><small>Knowledge Review</small></span>
+      </a>
+      <nav aria-label="主要导航">
+        <a aria-current="page" href="/knowledge/">知识库</a>
+        <a href="/">返回首页</a>
+      </nav>
+    </header>
+
+    <main class="knowledge-main shell">
+      <section class="knowledge-hero">
+        <div>
+          <p class="eyebrow"><span></span> VERIFIED KNOWLEDGE</p>
+          <h1>鲲鹏无限<br /><em>知识审核库</em></h1>
+          <p>面向公司审核与智能问答的公开资料集合。搜索型号、场景或问题，查看对应答案、来源和可信度边界。</p>
+        </div>
+        <div class="knowledge-hero-card">
+          <img src="/assets/pengzai-v5.png" alt="最新版鹏仔与带 NRadio 标识的 5G 设备" />
+          <div><strong id="entry-count">—</strong><span>知识条目</span></div>
+          <div><strong id="source-count">—</strong><span>来源类型</span></div>
+        </div>
+      </section>
+
+      <section class="knowledge-toolbar" aria-label="知识库筛选工具">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="knowledge-search" type="search" placeholder="搜索 C8-688、刷机、全球漫游……" autocomplete="off" />
+          <kbd>⌘ K</kbd>
+        </label>
+        <div class="filter-row" id="tag-filters" aria-label="按标签筛选"></div>
+      </section>
+
+      <div class="result-summary" aria-live="polite">
+        <p id="result-summary">正在加载知识库……</p>
+        <button id="clear-filters" type="button" hidden>清除筛选</button>
+      </div>
+
+      <section class="knowledge-grid" id="knowledge-grid" aria-label="知识条目"></section>
+
+      <section class="empty-state" id="empty-state" hidden>
+        <span>⌕</span>
+        <h2>没有找到对应资料</h2>
+        <p>可以换一个型号、场景或更短的关键词。</p>
+        <button type="button" id="empty-reset">显示全部知识</button>
+      </section>
+
+      <section class="review-note">
+        <div><span>!</span></div>
+        <div>
+          <h2>审核与回答边界</h2>
+          <p id="knowledge-notice">价格、库存、活动、固件、套餐、覆盖范围和社交账号统计需要实时复核。测速、信号对比与场景案例不能被转述为无条件性能承诺。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>资料核对日期：<span id="verified-date">—</span></p>
+      <p>公开资料审核站 · 非销售与售后承诺页面</p>
+      <p>© <span data-current-year></span> NRadio-Bot</p>
+    </footer>
+  </body>
+</html>
