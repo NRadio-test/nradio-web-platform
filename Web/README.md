@@ -1,4 +1,4 @@
-# NRadio 审核网站
+# NRadio 知识库网站
 
 这个目录包含 `nradio.fallaxaura.dpdns.org` 的前端与 Cloudflare Pages Functions 后端。`frontend/` 保存可见页面和静态资源，`backend/` 保存 API；首页使用最新版鹏仔 OC，知识库页面位于 `/knowledge`。
 
@@ -16,12 +16,13 @@ npm run dev
 
 ## Cloudflare 部署
 
-GitHub Actions 工作流位于仓库根目录 `.github/workflows/deploy-cloudflare.yml`。仓库需要配置两个 Actions Secret：
+Cloudflare Pages 项目 `nradio-web` 通过 GitHub App 连接私有仓库，只授权 `NRadio-Bot/nradio-platform`。构建设置如下：
 
-- `CLOUDFLARE_API_TOKEN`：仅授予目标账户 Pages 编辑以及目标 DNS 区域所需权限。
-- `CLOUDFLARE_ACCOUNT_ID`：Cloudflare Account ID。
+- 根目录：`Web`
+- 构建命令：`npm run sync && npm run check && npm run prepare:deploy`
+- 输出目录：`frontend/public`
 
-工作流会在 `main` 分支更新时同步知识，再把 `Web/backend/functions` 复制到 Wrangler 识别的临时 `Web/functions`，最终部署 `Web/frontend/public` 与 Pages Functions。Cloudflare Pages 项目名为 `nradio-web`。首次部署完成后，在 Pages 项目中绑定自定义域名 `nradio.fallaxaura.dpdns.org`。
+构建会把 `backend/functions` 复制到 Wrangler 识别的临时 `functions` 目录，再把前端与 Pages Functions 一起发布。公司审核期间生产分支为 `agent/nradio-review-site`；PR 合并后应将生产分支切回 `main`。自定义域名为 `nradio.fallaxaura.dpdns.org`。
 
 ## 内容来源
 
