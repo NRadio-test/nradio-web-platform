@@ -13,7 +13,7 @@ const requiredFiles = [
   'frontend/public/assets/knowledge.js',
   'frontend/public/assets/knowledge-manage.js',
   'frontend/public/assets/nradio-logo.png',
-  'frontend/public/assets/pengzai-v8.png',
+  'frontend/public/assets/pengzai-v9.png',
   'frontend/public/data/knowledge.json',
   'backend/functions/api/knowledge.js',
   'backend/functions/api/health.js',
