@@ -15,6 +15,21 @@ class KnowledgeImportTests(unittest.TestCase):
     def test_safe_name_removes_path_and_unsafe_characters(self):
         self.assertEqual(knowledge_import.safe_name("../产品?说明.txt"), "产品_说明.txt")
 
+    def test_source_reference_accepts_url_or_description(self):
+        source_path = Path("knowledge-base/sources/uploads/资料.txt")
+        self.assertEqual(
+            knowledge_import.resolve_source_url(
+                "https://v.douyin.com/example/", "NRadio-Bot/nradio-platform", source_path
+            ),
+            "https://v.douyin.com/example/",
+        )
+        self.assertEqual(
+            knowledge_import.resolve_source_url(
+                "张导直播间", "NRadio-Bot/nradio-platform", source_path
+            ),
+            "https://github.com/NRadio-Bot/nradio-platform/blob/main/knowledge-base/sources/uploads/资料.txt",
+        )
+
     def test_text_extraction_accepts_chinese_source(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "source"
