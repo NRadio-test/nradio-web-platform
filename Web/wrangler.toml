@@ -2,5 +2,14 @@ name = "nradio-web"
 compatibility_date = "2026-07-29"
 pages_build_output_dir = "./frontend/public"
 
+[[d1_databases]]
+binding = "KNOWLEDGE_DB"
+database_name = "nradio-knowledge"
+database_id = "d5f8751a-543e-468d-a636-4eee48d1834d"
+
+[[r2_buckets]]
+binding = "KNOWLEDGE_UPLOADS"
+bucket_name = "nradio-knowledge-uploads"
+
 [vars]
 SITE_NAME = "NRadio 鲲鹏无限知识库内容字段检索"
