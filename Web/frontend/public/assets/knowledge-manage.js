@@ -5,7 +5,7 @@ const statusLabels = {
   stored: '已保存',
   queued: '等待处理',
   parsing: '正在解析',
-  reviewing: '模型审核中',
+  reviewing: '结构化处理中',
   review_ready: '等待审核',
   pr_created: '等待 PR 审核',
   completed: '已完成',

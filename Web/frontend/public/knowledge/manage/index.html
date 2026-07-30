@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="NRadio-Bot 知识库内容导入与结构化审核。" />
+    <meta name="description" content="NRadio-Bot 知识库内容导入与结构化整理。" />
     <meta name="theme-color" content="#06162e" />
     <title>导入知识 · NRadio-Bot</title>
     <link rel="icon" href="/assets/pengzai-v9.png" />
     <link rel="stylesheet" href="/assets/site.css?v=20260730-3" />
-    <script type="module" src="/assets/knowledge-manage.js?v=20260730-2"></script>
+    <script type="module" src="/assets/knowledge-manage.js?v=20260730-3"></script>
   </head>
   <body class="knowledge-page manage-page">
     <header class="site-header shell compact-header">
@@ -41,14 +41,14 @@
       <section class="manage-heading">
         <div>
           <p class="eyebrow"><span></span> CONTROLLED IMPORT</p>
-          <h1>把原始资料，变成<br /><em>可审核的知识草稿。</em></h1>
-          <p>上传文件后，服务器会保存原件、提取文字，并使用独立审核模型转换为当前知识库结构。结果只会创建 Draft PR，不会直接进入正式知识库。</p>
+          <h1>把原始资料，变成<br /><em>易检索的知识内容。</em></h1>
+          <p>上传文件后，服务器会保存原件、提取文字，并由结构化模型忠实整理成当前知识库格式。结果先进入固定审核分支，由成员确认后再合并发布。</p>
           <div class="session-user"><span>当前上传者</span><strong id="session-user-name">—</strong><button id="session-logout" type="button">退出</button></div>
         </div>
         <div class="workflow-card" aria-label="导入流程">
           <span>01</span><p>验证文件与上传者</p>
           <span>02</span><p>解析并由模型结构化</p>
-          <span>03</span><p>创建 GitHub Draft PR</p>
+          <span>03</span><p>更新 GitHub 审核分支</p>
           <span>04</span><p>成员审核后合并发布</p>
         </div>
       </section>
@@ -81,8 +81,8 @@
             </label>
           </div>
           <label class="form-field">
-            <span>给审核模型的说明 <small>可选</small></span>
-            <textarea id="import-notes" name="notes" maxlength="4000" rows="4" placeholder="例如：重点核对产品接口、适用地区和回答边界，不要把测试数据写成性能承诺。"></textarea>
+            <span>给结构化模型的说明 <small>可选</small></span>
+            <textarea id="import-notes" name="notes" maxlength="4000" rows="4" placeholder="例如：按联系人分别整理，并保留通知日期、适用情况和完整联系方式。"></textarea>
           </label>
 
           <label class="confirm-row">
@@ -90,7 +90,7 @@
             <span>我确认有权使用这份资料，并理解模型生成的内容仍需在 Pull Request 中人工审核。</span>
           </label>
           <button class="button button-primary submit-import" id="submit-import" type="submit">
-            创建审核任务 <span>→</span>
+            创建导入任务 <span>→</span>
           </button>
           <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
         </form>
@@ -113,8 +113,8 @@
       <section class="review-note manage-note">
         <div><span>!</span></div>
         <div>
-          <h2>敏感信息与动态内容</h2>
-          <p>请勿上传密码、API Key、客户隐私或未经授权的内部材料。价格、库存、活动、覆盖范围和账号统计等动态信息，即使模型审核通过，也应在合并前再次核对。</p>
+          <h2>结构化原则</h2>
+          <p>系统默认上传资料已经过成员选择并允许写入知识库。模型只负责忠实总结、拆分主题、保留条件与日期并补充检索标签，不会因为内容属于联系方式、内部通知或非产品资料而过滤。</p>
         </div>
       </section>
       </div>

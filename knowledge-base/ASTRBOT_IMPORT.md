@@ -8,11 +8,13 @@
 
 `astrbot-upload/NRadio-鲲鹏无限知识库.md`
 
+这个专用文件由 `import/knowledge.jsonl` 自动生成。每次知识条目更新并执行项目同步命令后，网站数据、Pages Functions 数据和 AstrBot 导入文件会一起刷新，避免三处内容不一致。
+
 不要把整个 `knowledge-base/` 文件夹拖入，也不要在 WebUI 中选择 `import/knowledge.jsonl` 或 `import/manifest.json`。AstrBot 当前 WebUI 是逐文件上传，不是文件夹导入；上传框支持 `.txt`、`.md`、`.markdown`、`.rst`、`.adoc`、`.pdf`、`.docx`、`.epub`、`.xls` 和 `.xlsx`，不包含 `.json` 或 `.jsonl`。
 
 ## 为什么使用一个 Markdown 文件
 
-AstrBot 会为 Markdown 启用标题感知分块器，按照标题层级保持章节语义；过长章节才会继续递归切分。因此专用文件已经把公司、产品、账号、FAQ、回答规则和来源组织成明确标题。单文件也能避免重复上传 README、来源索引和通用 JSONL 后产生重复召回或让机器人把导入说明当成业务知识。
+AstrBot 会为 Markdown 启用标题感知分块器，按照标题层级保持章节语义；过长章节才会继续递归切分。因此专用文件把每条知识组织成独立标题，并保留正文、来源、上传者、日期和标签。单文件也能避免重复上传 README、来源索引和通用 JSONL 后产生重复召回或让机器人把导入说明当成业务知识。
 
 ## WebUI 操作
 
