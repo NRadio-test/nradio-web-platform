@@ -22,7 +22,7 @@ npm --prefix Web run sync
 npm --prefix Web run check
 ```
 
-在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 创建独立知识分支和 Draft PR，人工审核合并后才会更新正式知识库。
+在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 串行更新固定的 `knowledge/review` 审核分支；同一批次的上传共用一个 Draft PR，人工审核合并后才会更新正式知识库。
 
 部署方式、自定义域名和 Secrets 配置见 [Web/README.md](Web/README.md)。
 

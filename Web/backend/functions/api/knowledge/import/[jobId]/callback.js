@@ -5,7 +5,7 @@ import {
   updateJob
 } from '../../../../_lib/import-jobs.js'
 
-const allowedStatuses = new Set(['queued', 'parsing', 'reviewing', 'pr_created', 'completed', 'failed'])
+const allowedStatuses = new Set(['queued', 'parsing', 'reviewing', 'review_ready', 'pr_created', 'completed', 'failed'])
 
 export async function onRequestPost(context) {
   try {

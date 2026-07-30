@@ -19,10 +19,10 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  pull-requests: read
 
 concurrency:
-  group: knowledge-import-${{ inputs.job_id }}
+  group: knowledge-review-branch
   cancel-in-progress: false
 
 jobs:
@@ -32,6 +32,7 @@ jobs:
       JOB_ID: ${{ inputs.job_id }}
       FILE_NAME: ${{ inputs.file_name }}
       BASE_URL: ${{ inputs.base_url }}
+      REVIEW_BRANCH: knowledge/review
       KNOWLEDGE_REVIEW_API_KEY: ${{ secrets.KNOWLEDGE_REVIEW_API_KEY }}
       KNOWLEDGE_REVIEW_API_BASE: ${{ vars.KNOWLEDGE_REVIEW_API_BASE }}
       KNOWLEDGE_REVIEW_MODEL: ${{ vars.KNOWLEDGE_REVIEW_MODEL }}
@@ -42,6 +43,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Prepare persistent review branch
+        run: |
+          git fetch origin main
+          if git ls-remote --exit-code --heads origin "$REVIEW_BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$REVIEW_BRANCH"
+            git switch -C "$REVIEW_BRANCH" "origin/$REVIEW_BRANCH"
+            git merge --no-edit origin/main
+          else
+            git switch -c "$REVIEW_BRANCH" origin/main
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -107,35 +119,36 @@ jobs:
       - name: Validate generated knowledge
         run: npm --prefix Web run check
 
-      - name: Create import branch
+      - name: Update persistent review branch
         run: |
           git config user.name "NRadio Knowledge Bot"
           git config user.email "knowledge-bot@users.noreply.github.com"
-          git switch -c "knowledge/import-$JOB_ID"
           git add knowledge-base Web/frontend/public/data/knowledge.json Web/backend/functions/_data/knowledge.js
-          git commit -m "knowledge: review import $JOB_ID"
-          git push origin "knowledge/import-$JOB_ID"
+          git commit -m "knowledge: review $FILE_NAME ($JOB_ID)"
+          git push origin "HEAD:$REVIEW_BRANCH"
 
-      - name: Open draft pull request
-        id: pr
+      - name: Find review link
+        id: review_link
         run: |
-          PR_URL=$(gh pr create \
-            --draft \
-            --base main \
-            --head "knowledge/import-$JOB_ID" \
-            --title "knowledge: review $FILE_NAME" \
-            --body "Automated knowledge import review.\n\n- Job: \`$JOB_ID\`\n- Decision: \`${{ steps.import.outputs.decision }}\`\n- Generated entries: ${{ steps.import.outputs.entry_count }}\n- Document: \`${{ steps.import.outputs.document_path }}\`\n\nPlease verify facts, sources, privacy, product model suffixes, and answer boundaries before merging.")
-          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+          PR_URL=$(gh pr list --state open --base main --head "$REVIEW_BRANCH" --json url --jq '.[0].url // ""')
+          if [ -n "$PR_URL" ]; then
+            echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+            echo "has_pr=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=https://github.com/$GITHUB_REPOSITORY/compare/main...$REVIEW_BRANCH?expand=1" >> "$GITHUB_OUTPUT"
+            echo "has_pr=false" >> "$GITHUB_OUTPUT"
+          fi
 
-      - name: Report draft PR
+      - name: Report review branch
         run: |
           python - <<'PY' > /tmp/nradio-import/callback.json
           import json, os
+          has_pr = os.environ['HAS_PR'] == 'true'
           print(json.dumps({
-              'status': 'pr_created',
+              'status': 'review_ready',
               'progress': 90,
-              'message': '结构化草稿已生成，正在等待 Pull Request 审核。',
-              'pr_url': os.environ['PR_URL'],
+              'message': '审核分支已更新，正在等待 Pull Request 审核。' if has_pr else '审核分支已更新，请从比较页面建立本批次的 Draft PR。',
+              'pr_url': os.environ['REVIEW_URL'],
               'document_path': os.environ['DOCUMENT_PATH'],
               'entry_count': int(os.environ['ENTRY_COUNT']),
           }, ensure_ascii=False))
@@ -146,7 +159,8 @@ jobs:
             -H "Content-Type: application/json" \
             --data-binary @/tmp/nradio-import/callback.json
         env:
-          PR_URL: ${{ steps.pr.outputs.url }}
+          REVIEW_URL: ${{ steps.review_link.outputs.url }}
+          HAS_PR: ${{ steps.review_link.outputs.has_pr }}
           DOCUMENT_PATH: ${{ steps.import.outputs.document_path }}
           ENTRY_COUNT: ${{ steps.import.outputs.entry_count }}
 
