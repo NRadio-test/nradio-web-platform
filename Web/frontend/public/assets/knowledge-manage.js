@@ -1,11 +1,12 @@
 import './site.js?v=20260730-2'
 
-const terminalStatuses = new Set(['pr_created', 'completed', 'failed', 'dispatch_failed'])
+const terminalStatuses = new Set(['review_ready', 'pr_created', 'completed', 'failed', 'dispatch_failed'])
 const statusLabels = {
   stored: '已保存',
   queued: '等待处理',
   parsing: '正在解析',
   reviewing: '模型审核中',
+  review_ready: '等待审核',
   pr_created: '等待 PR 审核',
   completed: '已完成',
   failed: '处理失败',
@@ -102,7 +103,7 @@ const createTaskCard = (job) => {
     link.href = job.pr_url
     link.target = '_blank'
     link.rel = 'noreferrer'
-    link.textContent = '查看 Draft PR ↗'
+    link.textContent = job.status === 'review_ready' ? '查看审核分支 / PR ↗' : '查看 Draft PR ↗'
     footer.append(link)
   }
 
