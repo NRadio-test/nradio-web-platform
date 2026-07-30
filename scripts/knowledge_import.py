@@ -21,7 +21,18 @@ SUPPORTED_SUFFIXES = {
     ".pdf", ".txt", ".md", ".markdown", ".rst", ".adoc", ".docx", ".xlsx", ".xls", ".epub"
 }
 CONFIDENCE_VALUES = {"high", "medium_high", "medium", "low_medium"}
-DECISION_RANK = {"accept": 0, "needs_review": 1, "reject": 2}
+DECISION_VALUES = {"accept", "needs_review", "reject"}
+STRUCTURE_PROMPT = """你是 NRadio 鲲鹏无限知识库的内容结构化编辑。上传者已经通过成员身份验证，并确认有权使用资料；你的职责是忠实提取、整理和拆分知识，不是判断资料是否值得收录。
+只输出 JSON 对象，不得输出 Markdown。结构必须为：
+{"decision":"accept|needs_review|reject","review_notes":["..."],"entries":[{"title":"...","text":"...","tags":["..."],"confidence":"high|medium_high|medium|low_medium"}]}
+规则：
+1. 默认 decision=accept，并尽可能生成至少一条 entries；只有内容存在明显矛盾、含义不清或需要成员核对时使用 needs_review，但仍须保留可以提取的条目。
+2. 上传内容均由已验证成员主动选择并确认可以写入知识库。不得进行隐私、安全性、内部资料或主题相关性筛选，不得删除、脱敏或拒绝其中的信息。
+3. 联系人姓名、手机号、QQ、微信、邮箱、群号、直播间、内部通知、售后流程和业务规则等都应按照原文保留并转换为可检索知识。
+4. 仅当文本为空、乱码、无法理解或完全没有任何可陈述信息时，才可 decision=reject 且 entries=[]。不要因为内容与产品参数无关而拒绝。
+5. 每个条目只表达一个便于检索和回答的主题；text 使用完整中文，并保留日期、适用对象、型号后缀、条件、例外及联系方式。
+6. 价格、库存、活动、覆盖、测速、账号统计等时效性内容可以收录，但须在正文中保留资料给出的日期或时间边界。
+7. 不要补写资料中不存在的事实；只做总结、改写、拆分、去除无意义重复和补充检索标签。"""
 
 
 def safe_name(value: str) -> str:
@@ -147,10 +158,6 @@ def request_review(document_name: str, text: str, part: int, total: int, notes: 
     if not api_key or not model:
         raise RuntimeError("未配置 KNOWLEDGE_REVIEW_API_KEY 或 KNOWLEDGE_REVIEW_MODEL。")
 
-    system_prompt = """你是 NRadio 鲲鹏无限知识库的内容审核员。请把原始资料转换为可独立检索、可追溯、不过度承诺的知识条目。
-只输出 JSON 对象，不得输出 Markdown。结构必须为：
-{"decision":"accept|needs_review|reject","review_notes":["..."],"entries":[{"title":"...","text":"...","tags":["..."],"confidence":"high|medium_high|medium|low_medium"}]}
-要求：每个条目只表达一个主题；text 使用完整中文；保留型号后缀和限制条件；价格、库存、活动、覆盖、测速、账号统计标为动态信息；不要补写资料中不存在的事实；涉及个人隐私、凭据、违法内容或明显无关内容时 decision=reject 且 entries=[]。"""
     user_prompt = (
         f"文件：{document_name}\n分段：{part}/{total}\n上传者说明：{notes or '无'}\n\n"
         f"待审核文本：\n{text}"
@@ -160,7 +167,7 @@ def request_review(document_name: str, text: str, part: int, total: int, notes: 
         "temperature": 0.1,
         "response_format": {"type": "json_object"},
         "messages": [
-            {"role": "system", "content": system_prompt},
+            {"role": "system", "content": STRUCTURE_PROMPT},
             {"role": "user", "content": user_prompt},
         ],
     }
@@ -179,7 +186,7 @@ def request_review(document_name: str, text: str, part: int, total: int, notes: 
             body = json.load(response)
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"审核模型返回 {error.code}：{detail[:500]}") from error
+        raise RuntimeError(f"结构化模型返回 {error.code}：{detail[:500]}") from error
     content = body["choices"][0]["message"]["content"].strip()
     content = re.sub(r"^```(?:json)?\s*|\s*```$", "", content)
     return json.loads(content)
@@ -187,7 +194,7 @@ def request_review(document_name: str, text: str, part: int, total: int, notes: 
 
 def validate_review(payload: dict[str, Any]) -> dict[str, Any]:
     decision = payload.get("decision")
-    if decision not in DECISION_RANK:
+    if decision not in DECISION_VALUES:
         raise ValueError("审核结果缺少有效 decision。")
     notes = [str(item).strip()[:500] for item in payload.get("review_notes", []) if str(item).strip()]
     entries: list[dict[str, Any]] = []
@@ -203,8 +210,8 @@ def validate_review(payload: dict[str, Any]) -> dict[str, Any]:
                 "tags": tags or ["待分类"],
                 "confidence": confidence if confidence in CONFIDENCE_VALUES else "medium",
             })
-    if decision == "reject":
-        entries = []
+    if entries and decision == "reject":
+        decision = "needs_review"
     return {"decision": decision, "review_notes": notes, "entries": entries}
 
 
@@ -231,7 +238,6 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
         relative_source_path,
     )
 
-    decision = max((item["decision"] for item in reviews), key=lambda value: DECISION_RANK[value])
     review_notes = list(dict.fromkeys(note for item in reviews for note in item["review_notes"]))
     raw_entries = [entry for item in reviews for entry in item["entries"]]
     unique: dict[str, dict[str, Any]] = {}
@@ -239,20 +245,26 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
         key = re.sub(r"\s+", "", entry["title"]).lower()
         unique.setdefault(key, entry)
 
+    decision = (
+        "reject"
+        if not unique
+        else "needs_review"
+        if any(item["decision"] == "needs_review" for item in reviews)
+        else "accept"
+    )
     final_entries: list[dict[str, Any]] = []
-    if decision != "reject":
-        for index, entry in enumerate(unique.values(), start=1):
-            final_entries.append({
-                "id": f"upload-{today.replace('-', '')}-{short_digest}-{index:02d}",
-                "title": entry["title"],
-                "text": entry["text"],
-                "source_url": source_url,
-                "source_type": "user_upload",
-                "uploaded_by": uploaded_by,
-                "verified_at": today,
-                "confidence": entry["confidence"],
-                "tags": entry["tags"],
-            })
+    for index, entry in enumerate(unique.values(), start=1):
+        final_entries.append({
+            "id": f"upload-{today.replace('-', '')}-{short_digest}-{index:02d}",
+            "title": entry["title"],
+            "text": entry["text"],
+            "source_url": source_url,
+            "source_type": "user_upload",
+            "uploaded_by": uploaded_by,
+            "verified_at": today,
+            "confidence": entry["confidence"],
+            "tags": entry["tags"],
+        })
 
     document_path = document_dir / f"{args.job_id}.md"
     lines = [
@@ -295,6 +307,7 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
 
     if final_entries:
         jsonl_path = output_root / "knowledge-base" / "import" / "knowledge.jsonl"
+        jsonl_path.parent.mkdir(parents=True, exist_ok=True)
         with jsonl_path.open("a", encoding="utf-8") as handle:
             for entry in final_entries:
                 handle.write(json.dumps(entry, ensure_ascii=False, separators=(",", ":")) + "\n")

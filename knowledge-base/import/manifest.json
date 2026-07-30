@@ -1,5 +1,5 @@
 {
-  "name": "NRadio 鲲鹏无限公开信息知识库",
+  "name": "NRadio 鲲鹏无限知识库",
   "version": "2026-07-30",
   "language": "zh-CN",
   "entry_file": "knowledge.jsonl",
@@ -16,5 +16,5 @@
     "confidence": "high、medium_high、medium 或 low_medium",
     "tags": "用于过滤或召回的标签数组"
   },
-  "notes": "动态价格、库存、活动、固件、套餐、覆盖范围和社交账号统计需实时复核。"
+  "notes": "成员上传的资料默认允许收录；模型只负责结构化。动态信息保留原始日期和适用条件。"
 }

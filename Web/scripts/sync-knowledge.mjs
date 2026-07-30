@@ -7,6 +7,7 @@ const webDir = resolve(scriptDir, '..')
 const sourcePath = resolve(webDir, '..', 'knowledge-base', 'import', 'knowledge.jsonl')
 const publicOutput = resolve(webDir, 'frontend', 'public', 'data', 'knowledge.json')
 const functionOutput = resolve(webDir, 'backend', 'functions', '_data', 'knowledge.js')
+const astrbotOutput = resolve(webDir, '..', 'knowledge-base', 'astrbot-upload', 'NRadio-鲲鹏无限知识库.md')
 
 const raw = await readFile(sourcePath, 'utf8')
 const entries = raw
@@ -29,11 +30,11 @@ const verifiedAt = entries
 
 const payload = {
   meta: {
-    name: 'NRadio 鲲鹏无限公开信息知识库',
+    name: 'NRadio 鲲鹏无限知识库',
     generated_at: `${verifiedAt}T00:00:00.000Z`,
     verified_at: verifiedAt,
     entry_count: entries.length,
-    notice: '价格、库存、活动、固件、套餐、覆盖范围和社交账号统计需实时复核。'
+    notice: '成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。'
   },
   entries
 }
@@ -47,4 +48,30 @@ await writeFile(
   'utf8'
 )
 
-console.log(`已同步 ${entries.length} 条知识到前端与 Pages Functions。`)
+const astrbotLines = [
+  '# 鲲鹏无限 NRadio 知识库',
+  '',
+  `本文件由 \`knowledge-base/import/knowledge.jsonl\` 自动生成，共 ${entries.length} 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。`,
+  '',
+  '使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。',
+  '',
+]
+
+for (const entry of entries) {
+  astrbotLines.push(
+    `## ${entry.title}`,
+    '',
+    entry.text,
+    '',
+    `- 来源：${entry.source_url}`,
+    `- 上传者：${entry.uploaded_by}`,
+    `- 核对日期：${entry.verified_at}`,
+    `- 标签：${entry.tags.join('、')}`,
+    ''
+  )
+}
+
+await mkdir(dirname(astrbotOutput), { recursive: true })
+await writeFile(astrbotOutput, `${astrbotLines.join('\n').trim()}\n`, 'utf8')
+
+console.log(`已同步 ${entries.length} 条知识到前端、Pages Functions 与 AstrBot 导入文件。`)

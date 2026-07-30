@@ -12,6 +12,12 @@ SPEC.loader.exec_module(knowledge_import)
 
 
 class KnowledgeImportTests(unittest.TestCase):
+    def test_structure_prompt_treats_member_uploads_as_collectable(self):
+        self.assertIn("确认可以写入知识库", knowledge_import.STRUCTURE_PROMPT)
+        self.assertIn("不得进行隐私", knowledge_import.STRUCTURE_PROMPT)
+        self.assertIn("QQ", knowledge_import.STRUCTURE_PROMPT)
+        self.assertIn("仅当文本为空", knowledge_import.STRUCTURE_PROMPT)
+
     def test_safe_name_removes_path_and_unsafe_characters(self):
         self.assertEqual(knowledge_import.safe_name("../产品?说明.txt"), "产品_说明.txt")
 
@@ -50,6 +56,47 @@ class KnowledgeImportTests(unittest.TestCase):
         })
         self.assertEqual(result["entries"][0]["tags"], ["测试"])
         self.assertEqual(result["entries"][0]["confidence"], "medium")
+
+    def test_rejected_review_keeps_usable_entries_for_human_review(self):
+        result = knowledge_import.validate_review({
+            "decision": "reject",
+            "review_notes": ["模型认为这是联系方式"],
+            "entries": [{
+                "title": "小助理临时联系方式",
+                "text": "企业微信暂时不可用时，可以通过资料中提供的 QQ 号联系小助理。",
+                "tags": ["联系方式", "小助理"],
+                "confidence": "high",
+            }],
+        })
+        self.assertEqual(result["decision"], "needs_review")
+        self.assertEqual(len(result["entries"]), 1)
+
+    def test_one_rejected_chunk_does_not_discard_other_chunks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.txt"
+            source.write_text("NRadio 知识资料" * 10, encoding="utf-8")
+            args = type("Args", (), {
+                "input": str(source),
+                "output_root": str(root),
+                "file_name": "联系方式.txt",
+                "job_id": "test-job",
+                "title": "联系方式",
+                "source_url": "内部通知",
+                "github_repository": "NRadio-Bot/nradio-platform",
+                "uploaded_by": "FallaxAura",
+            })()
+            result = knowledge_import.write_outputs(args, "已提取文本", [
+                {"decision": "reject", "review_notes": ["第一段无可用信息"], "entries": []},
+                {"decision": "accept", "review_notes": [], "entries": [{
+                    "title": "小助理联系方式",
+                    "text": "企业微信暂时不可用时，可以使用资料提供的 QQ 号联系小助理。",
+                    "tags": ["联系方式"],
+                    "confidence": "high",
+                }]},
+            ])
+        self.assertEqual(result["decision"], "accept")
+        self.assertEqual(result["entry_count"], 1)
 
 
 if __name__ == "__main__":

@@ -91,7 +91,7 @@ jobs:
             -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
             -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"status":"reviewing","progress":50,"message":"独立审核模型正在生成结构化草稿。"}'
+            --data '{"status":"reviewing","progress":50,"message":"结构化模型正在整理可检索的知识草稿。"}'
 
       - name: Parse and review document
         id: import
