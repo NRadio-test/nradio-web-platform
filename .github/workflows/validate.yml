@@ -1,0 +1,31 @@
+name: Validate website and knowledge
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Synchronize knowledge
+        run: npm --prefix Web run sync
+
+      - name: Check generated data and website
+        run: npm --prefix Web run check
+
+      - name: Ensure generated files are current
+        run: git diff --exit-code -- Web/frontend/public/data/knowledge.json Web/backend/functions/_data/knowledge.js

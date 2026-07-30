@@ -1,0 +1,20 @@
+{
+  "name": "NRadio 鲲鹏无限公开信息知识库",
+  "version": "2026-07-30",
+  "language": "zh-CN",
+  "entry_file": "knowledge.jsonl",
+  "format": "jsonl",
+  "encoding": "utf-8",
+  "fields": {
+    "id": "稳定的知识块标识",
+    "title": "知识块标题",
+    "text": "用于检索与回答的正文",
+    "source_url": "原始公开来源",
+    "uploaded_by": "提交原始资料的知识库成员用户名",
+    "source_type": "official_web、official_help、douyin_profile、douyin_video 或 user_upload",
+    "verified_at": "本次核对日期",
+    "confidence": "high、medium_high、medium 或 low_medium",
+    "tags": "用于过滤或召回的标签数组"
+  },
+  "notes": "动态价格、库存、活动、固件、套餐、覆盖范围和社交账号统计需实时复核。"
+}
