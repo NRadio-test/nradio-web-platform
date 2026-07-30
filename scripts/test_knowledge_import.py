@@ -12,6 +12,13 @@ SPEC.loader.exec_module(knowledge_import)
 
 
 class KnowledgeImportTests(unittest.TestCase):
+    def test_workflow_configures_git_identity_before_merging_review_branch(self):
+        workflow_path = MODULE_PATH.parents[1] / ".github" / "workflows" / "knowledge-import.yml"
+        workflow = workflow_path.read_text(encoding="utf-8")
+        identity_position = workflow.index('git config user.name "NRadio Knowledge Bot"')
+        merge_position = workflow.index("git merge --no-edit origin/main")
+        self.assertLess(identity_position, merge_position)
+
     def test_structure_prompt_treats_member_uploads_as_collectable(self):
         self.assertIn("确认可以写入知识库", knowledge_import.STRUCTURE_PROMPT)
         self.assertIn("不得进行隐私", knowledge_import.STRUCTURE_PROMPT)
