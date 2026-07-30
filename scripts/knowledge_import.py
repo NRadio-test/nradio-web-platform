@@ -30,6 +30,13 @@ def safe_name(value: str) -> str:
     return cleaned[:160] or "document"
 
 
+def resolve_source_url(reference: str, repository: str, source_path: Path) -> str:
+    value = reference.strip()
+    if re.match(r"^https?://[^\s]+$", value, flags=re.IGNORECASE):
+        return value
+    return f"https://github.com/{repository}/blob/main/{source_path.as_posix()}"
+
+
 def read_text_file(path: Path) -> str:
     raw = path.read_bytes()
     for encoding in ("utf-8-sig", "utf-8", "gb18030", "big5"):
@@ -217,8 +224,11 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
     uploaded_by = args.uploaded_by or "unknown"
     source_path = source_dir / f"{args.job_id}-{filename}"
     shutil.copyfile(args.input, source_path)
-    source_url = args.source_url or (
-        f"https://github.com/{args.github_repository}/blob/main/{source_path.relative_to(output_root).as_posix()}"
+    relative_source_path = source_path.relative_to(output_root)
+    source_url = resolve_source_url(
+        args.source_url,
+        args.github_repository,
+        relative_source_path,
     )
 
     decision = max((item["decision"] for item in reviews), key=lambda value: DECISION_RANK[value])
@@ -251,7 +261,7 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
         f"- 原始文件：`{source_path.relative_to(output_root).as_posix()}`",
         f"- SHA-256：`{digest}`",
         f"- 审核结论：`{decision}`",
-        f"- 原始来源：{args.source_url or '未提供'}",
+        f"- 原始来源：{args.source_url.strip() or '未提供'}",
         f"- 上传者：{uploaded_by}",
         "",
         "## 审核备注", "",
