@@ -19,7 +19,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: read
+  pull-requests: write
 
 concurrency:
   group: knowledge-review-branch
@@ -127,27 +127,38 @@ jobs:
           git commit -m "knowledge: review $FILE_NAME ($JOB_ID)"
           git push origin "HEAD:$REVIEW_BRANCH"
 
-      - name: Find review link
+      - name: Find or create review pull request
         id: review_link
         run: |
           PR_URL=$(gh pr list --state open --base main --head "$REVIEW_BRANCH" --json url --jq '.[0].url // ""')
-          if [ -n "$PR_URL" ]; then
-            echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
-            echo "has_pr=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "url=https://github.com/$GITHUB_REPOSITORY/compare/main...$REVIEW_BRANCH?expand=1" >> "$GITHUB_OUTPUT"
-            echo "has_pr=false" >> "$GITHUB_OUTPUT"
+          if [ -z "$PR_URL" ]; then
+            cat > /tmp/nradio-import/pr-body.md <<EOF
+          自动整理的知识库内容已经提交到固定审核分支 \`$REVIEW_BRANCH\`。
+
+          - 导入文件：\`$FILE_NAME\`
+          - 导入任务：\`$JOB_ID\`
+          - 处理结果：${{ steps.import.outputs.entry_count }} 条结构化知识
+
+          请审核本 PR 的来源文件、结构化文档与生成后的知识库数据，确认后再合并到 \`main\`。
+          EOF
+            PR_URL=$(gh pr create \
+              --draft \
+              --base main \
+              --head "$REVIEW_BRANCH" \
+              --title "knowledge: review $FILE_NAME" \
+              --body-file /tmp/nradio-import/pr-body.md)
           fi
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+          echo "has_pr=true" >> "$GITHUB_OUTPUT"
 
       - name: Report review branch
         run: |
           python - <<'PY' > /tmp/nradio-import/callback.json
           import json, os
-          has_pr = os.environ['HAS_PR'] == 'true'
           print(json.dumps({
               'status': 'review_ready',
               'progress': 90,
-              'message': '审核分支已更新，正在等待 Pull Request 审核。' if has_pr else '审核分支已更新，请从比较页面建立本批次的 Draft PR。',
+              'message': '审核分支和 Draft PR 已更新，正在等待人工审核。',
               'pr_url': os.environ['REVIEW_URL'],
               'document_path': os.environ['DOCUMENT_PATH'],
               'entry_count': int(os.environ['ENTRY_COUNT']),
@@ -160,7 +171,6 @@ jobs:
             --data-binary @/tmp/nradio-import/callback.json
         env:
           REVIEW_URL: ${{ steps.review_link.outputs.url }}
-          HAS_PR: ${{ steps.review_link.outputs.has_pr }}
           DOCUMENT_PATH: ${{ steps.import.outputs.document_path }}
           ENTRY_COUNT: ${{ steps.import.outputs.entry_count }}
 
