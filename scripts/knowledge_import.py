@@ -320,7 +320,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--file-name", required=True)
     parser.add_argument("--job-id", required=True)
     parser.add_argument("--output-root", required=True)
-    parser.add_argument("--github-repository", default="NRadio-Bot/nradio-platform")
+    parser.add_argument("--github-repository", default="NRadio-test/nradio-web-platform")
     parser.add_argument("--title", default="")
     parser.add_argument("--source-url", default="")
     parser.add_argument("--notes", default="")

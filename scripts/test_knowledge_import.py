@@ -32,15 +32,15 @@ class KnowledgeImportTests(unittest.TestCase):
         source_path = Path("knowledge-base/sources/uploads/资料.txt")
         self.assertEqual(
             knowledge_import.resolve_source_url(
-                "https://v.douyin.com/example/", "NRadio-Bot/nradio-platform", source_path
+                "https://v.douyin.com/example/", "NRadio-test/nradio-web-platform", source_path
             ),
             "https://v.douyin.com/example/",
         )
         self.assertEqual(
             knowledge_import.resolve_source_url(
-                "张导直播间", "NRadio-Bot/nradio-platform", source_path
+                "张导直播间", "NRadio-test/nradio-web-platform", source_path
             ),
-            "https://github.com/NRadio-Bot/nradio-platform/blob/main/knowledge-base/sources/uploads/资料.txt",
+            "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/资料.txt",
         )
 
     def test_text_extraction_accepts_chinese_source(self):
@@ -90,7 +90,7 @@ class KnowledgeImportTests(unittest.TestCase):
                 "job_id": "test-job",
                 "title": "联系方式",
                 "source_url": "内部通知",
-                "github_repository": "NRadio-Bot/nradio-platform",
+                "github_repository": "NRadio-test/nradio-web-platform",
                 "uploaded_by": "FallaxAura",
             })()
             result = knowledge_import.write_outputs(args, "已提取文本", [

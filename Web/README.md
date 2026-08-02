@@ -16,7 +16,7 @@ npm run dev
 
 ## Cloudflare 部署
 
-Cloudflare Pages 项目 `nradio-web` 通过 GitHub App 连接私有仓库，只授权 `NRadio-Bot/nradio-platform`。构建设置如下：
+Cloudflare Pages 项目 `nradio-web` 通过 GitHub App 连接私有仓库，只授权 `NRadio-test/nradio-web-platform`。构建设置如下：
 
 - 根目录：`Web`
 - 构建命令：`npm run sync && npm run check && npm run prepare:deploy`

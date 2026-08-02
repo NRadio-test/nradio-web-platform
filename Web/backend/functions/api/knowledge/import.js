@@ -10,8 +10,8 @@ const MAX_DEFAULT_BYTES = 25 * 1024 * 1024
 
 const triggerWorkflow = async (env, job) => {
   const token = String(env.GITHUB_ACTIONS_TOKEN || '')
-  const owner = String(env.GITHUB_OWNER || 'NRadio-Bot')
-  const repository = String(env.GITHUB_REPOSITORY || 'nradio-platform')
+  const owner = String(env.GITHUB_OWNER || 'NRadio-test')
+  const repository = String(env.GITHUB_REPOSITORY || 'nradio-web-platform')
   const workflow = String(env.GITHUB_IMPORT_WORKFLOW || 'knowledge-import.yml')
   const ref = String(env.GITHUB_IMPORT_REF || 'main')
   const baseUrl = String(env.PUBLIC_BASE_URL || 'https://nradio.fallaxaura.dpdns.org').replace(/\/$/, '')
