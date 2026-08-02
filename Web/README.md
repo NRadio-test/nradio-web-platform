@@ -16,13 +16,13 @@ npm run dev
 
 ## Cloudflare 部署
 
-Cloudflare Pages 项目 `nradio-web` 通过 GitHub App 连接私有仓库，只授权 `NRadio-test/nradio-web-platform`。构建设置如下：
+Cloudflare Pages 项目 `nradio-web-platform` 通过 GitHub App 连接私有仓库，只授权 `NRadio-test/nradio-web-platform`。构建设置如下：
 
 - 根目录：`Web`
 - 构建命令：`npm run sync && npm run check && npm run prepare:deploy`
 - 输出目录：`frontend/public`
 
-构建会把 `backend/functions` 复制到 Wrangler 识别的临时 `functions` 目录，再把前端与 Pages Functions 一起发布。当前联调阶段的生产分支为 `agent/nradio-review-site`；PR 合并后应将生产分支切回 `main`。自定义域名为 `nradio.fallaxaura.dpdns.org`。
+构建会把 `backend/functions` 复制到 Wrangler 识别的临时 `functions` 目录，再把前端与 Pages Functions 一起发布。生产分支固定为 `main`。新项目验证通过后再切换自定义域名 `nradio.fallaxaura.dpdns.org`；旧项目 `nradio-web` 保留为可回退部署，不删除其配置和资源绑定。
 
 ## 在线知识导入
 
