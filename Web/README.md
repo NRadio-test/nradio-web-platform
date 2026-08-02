@@ -43,7 +43,7 @@ Cloudflare 仪表板批量粘贴若移除变量名下划线，也兼容别名 `K
 Cloudflare Variables：
 
 - `GITHUB_OWNER`、`GITHUB_REPOSITORY`、`GITHUB_IMPORT_WORKFLOW`、`GITHUB_IMPORT_REF`。
-- `PUBLIC_BASE_URL=https://nradio.fallaxaura.dpdns.org`。
+- 迁移验证期间使用 `PUBLIC_BASE_URL=https://nradio-web-platform.pages.dev`；自定义域名切换到新项目后再改为 `https://nradio.fallaxaura.dpdns.org`。
 
 GitHub Actions Secret：
 
