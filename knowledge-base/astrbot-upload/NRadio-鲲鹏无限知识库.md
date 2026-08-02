@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 23 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 22 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -201,12 +201,3 @@
 - 上传者：FallaxAura
 - 核对日期：2026-07-30
 - 标签：企业微信、QQ、联系方式、临时、2026-07-29
-
-## NRadio 知识库导入链路测试记录
-
-NRadio 知识库导入链路测试，测试日期：2026-08-03。本条内容仅用于验证上传、模型整理、固定审核分支和 Draft PR 流程，不代表正式产品信息。
-
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/29f38c07-581c-4494-b13d-6b7dc95f2153-ceshi.txt
-- 上传者：FallaxAura
-- 核对日期：2026-08-02
-- 标签：NRadio、知识库、导入链路、测试、2026-08-03、Draft PR
