@@ -1,9 +1,9 @@
 {
   "meta": {
     "name": "NRadio 鲲鹏无限知识库",
-    "generated_at": "2026-07-30T00:00:00.000Z",
-    "verified_at": "2026-07-30",
-    "entry_count": 22,
+    "generated_at": "2026-08-02T00:00:00.000Z",
+    "verified_at": "2026-08-02",
+    "entry_count": 23,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -368,6 +368,24 @@
         "联系方式",
         "临时",
         "2026-07-29"
+      ]
+    },
+    {
+      "id": "upload-20260802-ff3101ca0f-01",
+      "title": "NRadio 知识库导入链路测试记录",
+      "text": "NRadio 知识库导入链路测试，测试日期：2026-08-03。本条内容仅用于验证上传、模型整理、固定审核分支和 Draft PR 流程，不代表正式产品信息。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/29f38c07-581c-4494-b13d-6b7dc95f2153-ceshi.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-02",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "知识库",
+        "导入链路",
+        "测试",
+        "2026-08-03",
+        "Draft PR"
       ]
     }
   ]
