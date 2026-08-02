@@ -42,14 +42,14 @@
         <div>
           <p class="eyebrow"><span></span> CONTROLLED IMPORT</p>
           <h1>把原始资料，变成<br /><em>易检索的知识内容。</em></h1>
-          <p>上传文件后，服务器会保存原件、提取文字，并由结构化模型忠实整理成当前知识库格式。结果先进入固定审核分支，由成员确认后再合并发布。</p>
+          <p>上传文件后，服务器会保存原件、提取文字，并由结构化模型忠实整理成当前知识库格式。多个任务可以并行整理，校验通过后会依次写入正式知识库。</p>
           <div class="session-user"><span>当前上传者</span><strong id="session-user-name">—</strong><button id="session-logout" type="button">退出</button></div>
         </div>
         <div class="workflow-card" aria-label="导入流程">
           <span>01</span><p>验证文件与上传者</p>
           <span>02</span><p>解析并由模型结构化</p>
-          <span>03</span><p>更新 GitHub 审核分支</p>
-          <span>04</span><p>成员审核后合并发布</p>
+          <span>03</span><p>校验结构化知识内容</p>
+          <span>04</span><p>依次提交到 main 并发布</p>
         </div>
       </section>
 
@@ -87,7 +87,7 @@
 
           <label class="confirm-row">
             <input id="import-confirm" type="checkbox" required />
-            <span>我确认有权使用这份资料，并理解模型生成的内容仍需在 Pull Request 中人工审核。</span>
+            <span>我确认有权使用这份资料，并同意系统将模型整理且校验通过的内容自动发布到正式知识库。</span>
           </label>
           <button class="button button-primary submit-import" id="submit-import" type="submit">
             创建导入任务 <span>→</span>
@@ -122,7 +122,7 @@
 
     <footer class="site-footer shell">
       <p>六位口令仅换取当前浏览器会话</p>
-      <p>所有正式变更均通过 GitHub Pull Request</p>
+      <p>知识内容自动发布 · 程序代码通过 GitHub Pull Request 审核</p>
       <p>© <span data-current-year></span> NRadio-Bot</p>
     </footer>
   </body>

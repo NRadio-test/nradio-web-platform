@@ -311,7 +311,7 @@ def write_outputs(args: argparse.Namespace, extracted: str, reviews: list[dict[s
         with jsonl_path.open("a", encoding="utf-8") as handle:
             for entry in final_entries:
                 handle.write(json.dumps(entry, ensure_ascii=False, separators=(",", ":")) + "\n")
-    return review_payload
+    return {**review_payload, "entries": final_entries}
 
 
 def parse_args() -> argparse.Namespace:

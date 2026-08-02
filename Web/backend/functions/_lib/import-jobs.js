@@ -62,6 +62,84 @@ export const publicJob = (job) => ({
   updated_at: job.updated_at
 })
 
+const pendingReviewStatuses = new Set(['review_ready', 'pr_created'])
+
+const parseGitHubPullRequestUrl = (value) => {
+  try {
+    const url = new URL(String(value || ''))
+    const parts = url.pathname.split('/').filter(Boolean)
+    if (url.hostname !== 'github.com' || parts.length < 4 || parts[2] !== 'pull') return null
+    const number = Number(parts[3])
+    if (!Number.isInteger(number) || number <= 0) return null
+    return { owner: parts[0], repository: parts[1], number }
+  } catch {
+    return null
+  }
+}
+
+export const reconcileJobReviewStatus = async (env, job) => {
+  if (!job || !pendingReviewStatuses.has(job.status) || !job.pr_url) return job
+  const pullRequest = parseGitHubPullRequestUrl(job.pr_url)
+  if (!pullRequest) return job
+
+  const currentOwner = String(env.GITHUB_OWNER || 'NRadio-test')
+  const currentRepository = String(env.GITHUB_REPOSITORY || 'nradio-web-platform')
+  if (
+    pullRequest.owner.toLowerCase() !== currentOwner.toLowerCase()
+    || pullRequest.repository.toLowerCase() !== currentRepository.toLowerCase()
+  ) {
+    const fields = {
+      status: 'review_closed',
+      progress: 100,
+      message: '该任务属于迁移前的旧仓库，原审核请求已失效。',
+      error: null
+    }
+    await updateJob(env, job.id, fields)
+    return { ...job, ...fields, updated_at: new Date().toISOString() }
+  }
+
+  const token = String(env.GITHUB_ACTIONS_TOKEN || '')
+  if (!token) return job
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${encodeURIComponent(currentOwner)}/${encodeURIComponent(currentRepository)}/pulls/${pullRequest.number}`,
+      {
+        headers: {
+          Accept: 'application/vnd.github+json',
+          Authorization: `Bearer ${token}`,
+          'User-Agent': 'NRadio-Knowledge-Importer',
+          'X-GitHub-Api-Version': '2022-11-28'
+        }
+      }
+    )
+    if (!response.ok) return job
+    const payload = await response.json()
+    if (payload.merged_at) {
+      const fields = {
+        status: 'completed',
+        progress: 100,
+        message: '审核 PR 已合并，知识库内容已经发布。',
+        error: null
+      }
+      await updateJob(env, job.id, fields)
+      return { ...job, ...fields, updated_at: new Date().toISOString() }
+    }
+    if (payload.state === 'closed') {
+      const fields = {
+        status: 'review_closed',
+        progress: 100,
+        message: '审核 PR 已关闭，内容没有写入正式知识库。',
+        error: null
+      }
+      await updateJob(env, job.id, fields)
+      return { ...job, ...fields, updated_at: new Date().toISOString() }
+    }
+  } catch {
+    // A temporary GitHub API failure must not turn a valid review into a failed job.
+  }
+  return job
+}
+
 export const requireServiceToken = async (request, env) => {
   const expected = String(env.IMPORT_SERVICE_TOKEN || '')
   const authorization = request.headers.get('Authorization') || ''

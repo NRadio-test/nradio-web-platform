@@ -33,7 +33,7 @@ Cloudflare Pages 项目 `nradio-web-platform` 通过 GitHub App 连接私有仓�
 
 Cloudflare Secret：
 
-- `GITHUB_ACTIONS_TOKEN`：只授予目标私有仓库 Actions 写入权限，用来启动 `knowledge-import.yml`。
+- `GITHUB_ACTIONS_TOKEN`：授予目标私有仓库 Actions 写入权限，用来启动 `knowledge-import.yml`；若要自动核对迁移前遗留 PR 的关闭/合并状态，再增加 Pull requests 只读权限。
 - `IMPORT_SERVICE_TOKEN`：Cloudflare 与 GitHub Actions 之间共享的随机服务令牌。
 - `KNOWLEDGE_SESSION_SECRET`：至少 32 字符的随机会话签名密钥。
 - `KNOWLEDGE_SESSION_TOKEN_HASHES`：用户名到六位口令 SHA-256 摘要的 JSON 映射，或该 JSON 的 Base64URL 编码；服务器不保存原始口令。
@@ -55,7 +55,7 @@ GitHub Actions Variables：
 - `KNOWLEDGE_REVIEW_API_BASE`：OpenAI-compatible API 根地址，例如以 `/v1` 结尾。
 - `KNOWLEDGE_REVIEW_MODEL`：用于审核的模型名称。
 
-上传支持 PDF、TXT、Markdown、DOCX、XLS/XLSX 与 EPUB。扫描版 PDF 需要先 OCR。每个任务会保留原文件、上传者、审核报告和结构化 Markdown，并串行提交到固定的 `knowledge/review` 审核分支；同一批次共用一个 Draft Pull Request，不会自动合并到 `main`。
+上传支持 PDF、TXT、Markdown、DOCX、XLS/XLSX 与 EPUB。扫描版 PDF 需要先 OCR。浏览器同时上传多个文件时最多并发三个任务；GitHub Actions 会并行完成文字提取和模型结构化，只在最后写入仓库时依次处理，避免并发覆盖。每个任务都会保留原文件、上传者、结构化报告和 Markdown，并在校验通过后直接提交到 `main`，随后由 Cloudflare 和 AstrBot 插件自动同步，不再创建知识审核 PR。固定的 `knowledge/review` 分支暂时保留用于迁移回退，但新任务不再写入该分支。
 
 ## 内容来源
 

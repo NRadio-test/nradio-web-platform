@@ -1,6 +1,7 @@
 import './site.js?v=20260730-2'
 
-const terminalStatuses = new Set(['review_ready', 'pr_created', 'completed', 'failed', 'dispatch_failed'])
+const terminalStatuses = new Set(['review_closed', 'completed', 'failed', 'dispatch_failed'])
+const reviewStatuses = new Set(['review_ready', 'pr_created'])
 const statusLabels = {
   stored: '已保存',
   queued: '等待处理',
@@ -8,6 +9,7 @@ const statusLabels = {
   reviewing: '结构化处理中',
   review_ready: '等待审核',
   pr_created: '等待 PR 审核',
+  review_closed: '审核已关闭',
   completed: '已完成',
   failed: '处理失败',
   dispatch_failed: '启动失败'
@@ -29,6 +31,7 @@ const taskList = document.querySelector('#task-list')
 const taskEmpty = document.querySelector('#task-empty')
 const taskIds = new Set(JSON.parse(localStorage.getItem('nradio-import-jobs') || '[]'))
 const tasks = new Map()
+let refreshTimer = 0
 
 const showLogin = (message = '') => {
   loginPanel.hidden = false
@@ -103,7 +106,11 @@ const createTaskCard = (job) => {
     link.href = job.pr_url
     link.target = '_blank'
     link.rel = 'noreferrer'
-    link.textContent = job.status === 'review_ready' ? '查看审核分支 / PR ↗' : '查看 Draft PR ↗'
+    link.textContent = job.status === 'review_closed'
+      ? '查看已关闭的 PR ↗'
+      : job.status === 'completed'
+        ? '查看已合并的 PR ↗'
+        : '查看审核分支 / PR ↗'
     footer.append(link)
   }
 
@@ -140,10 +147,31 @@ const fetchTask = async (jobId) => {
 }
 
 const refreshTasks = async () => {
+  window.clearTimeout(refreshTimer)
   const jobs = await Promise.all([...taskIds].map(fetchTask))
-  if (jobs.some((job) => !terminalStatuses.has(job.status))) {
-    window.setTimeout(refreshTasks, 5000)
+  const hasProcessing = jobs.some((job) => !terminalStatuses.has(job.status) && !reviewStatuses.has(job.status))
+  const hasPendingReview = jobs.some((job) => reviewStatuses.has(job.status))
+  if (hasProcessing || hasPendingReview) {
+    refreshTimer = window.setTimeout(refreshTasks, hasProcessing ? 5000 : 30000)
   }
+}
+
+const uploadFilesInParallel = async (files, limit = 3) => {
+  const results = new Array(files.length)
+  let nextIndex = 0
+  const worker = async () => {
+    while (nextIndex < files.length) {
+      const index = nextIndex
+      nextIndex += 1
+      try {
+        results[index] = { status: 'fulfilled', value: await uploadFile(files[index]) }
+      } catch (error) {
+        results[index] = { status: 'rejected', reason: error }
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, files.length) }, worker))
+  return results
 }
 
 const uploadFile = async (file) => {
@@ -187,21 +215,16 @@ form.addEventListener('submit', async (event) => {
   submitButton.disabled = true
   formMessage.className = 'form-message'
   formMessage.textContent = `正在上传 ${files.length} 个文件……`
-  let successCount = 0
-  const errors = []
-  for (const file of files) {
-    try {
-      await uploadFile(file)
-      successCount += 1
-    } catch (error) {
-      errors.push(`${file.name}：${error.message}`)
-    }
-  }
+  const results = await uploadFilesInParallel(files)
+  const successCount = results.filter((result) => result.status === 'fulfilled').length
+  const errors = results.flatMap((result, index) => result.status === 'rejected'
+    ? [`${files[index].name}：${result.reason.message}`]
+    : [])
   submitButton.disabled = false
   formMessage.className = errors.length ? 'form-message form-error' : 'form-message form-success'
   formMessage.textContent = errors.length
     ? `成功 ${successCount} 个；${errors.join('；')}`
-    : `${successCount} 个审核任务已建立。`
+    : `${successCount} 个导入任务已建立。`
   if (successCount) {
     fileInput.value = ''
     renderSelectedFiles()

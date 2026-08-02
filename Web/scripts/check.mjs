@@ -99,4 +99,36 @@ if (importResponse.status !== 202 || importRows.length < 2) {
   throw new Error('知识库导入 API 检查失败。')
 }
 
+const reviewUpdates = []
+const reviewEnv = {
+  GITHUB_OWNER: 'NRadio-test',
+  GITHUB_REPOSITORY: 'nradio-web-platform',
+  KNOWLEDGE_DB: {
+    prepare() {
+      return {
+        bind(...values) {
+          reviewUpdates.push(values)
+          return this
+        },
+        async run() { return { success: true } }
+      }
+    }
+  }
+}
+const { reconcileJobReviewStatus } = await import('../backend/functions/_lib/import-jobs.js')
+const migratedReview = await reconcileJobReviewStatus(reviewEnv, {
+  id: 'legacy-job',
+  status: 'review_ready',
+  progress: 90,
+  pr_url: 'https://github.com/NRadio-Bot/nradio-platform/pull/8'
+})
+if (migratedReview.status !== 'review_closed' || reviewUpdates.length !== 1) {
+  throw new Error('迁移前审核 PR 状态纠正检查失败。')
+}
+
+const manageScript = await readFile(resolve(webDir, 'frontend/public/assets/knowledge-manage.js'), 'utf8')
+if (!manageScript.includes('uploadFilesInParallel') || !manageScript.includes("review_closed: '审核已关闭'")) {
+  throw new Error('知识导入并行上传或关闭状态展示检查失败。')
+}
+
 console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，5 个 API。`)
