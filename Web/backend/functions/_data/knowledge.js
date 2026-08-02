@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-07-30T00:00:00.000Z",
     "verified_at": "2026-07-30",
-    "entry_count": 21,
+    "entry_count": 22,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -352,6 +352,23 @@ export const knowledgePayload = {
         "实验室数据",
         "型号",
         "适用条件"
+      ]
+    },
+    {
+      "id": "upload-20260730-27d9403f68-01",
+      "title": "小助理企业微信被封临时联系方式",
+      "text": "2026年7月29日，小助理企业微信被封，临时可通过QQ联系。恢复后恢复微信交流。QQ号：猫猫：1403713828，林林：242150291，好好：3293869279。",
+      "source_url": "https://github.com/NRadio-Bot/nradio-platform/blob/main/knowledge-base/sources/uploads/2026-07/6d5727f8-5810-4397-9898-98c9f6991beb-未命名.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-07-30",
+      "confidence": "high",
+      "tags": [
+        "企业微信",
+        "QQ",
+        "联系方式",
+        "临时",
+        "2026-07-29"
       ]
     }
   ]
