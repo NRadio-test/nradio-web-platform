@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 99,
+    "entry_count": 106,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -1733,6 +1733,123 @@ export const knowledgePayload = {
         "QMI",
         "MBIM",
         "5G"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-01",
+      "title": "报错：No device found / No such file /dev/cdc-wdm0",
+      "text": "先从 `lsusb -t` 和 dmesg 判断模组是否枚举、工作在何种 USB composition，再看驱动是否绑定。QMI/MBIM 才通常产生 cdc-wdm，ECM/NCM/RNDIS 可能只有网卡，PCIe MHI 则路径不同。安装与内核精确匹配的 USB serial/net、qmi_wwan 或 cdc_mbim 驱动；不能凭教程固定设备号。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "cdc-wdm",
+        "NoDevice",
+        "5G模组",
+        "驱动"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-02",
+      "title": "报错：SIM not inserted / SIM PIN required / registration denied",
+      "text": "先用只读 AT 或管理器查询 CPIN、SIM 状态、注册状态和运营商。确认 SIM 方向、卡槽切换 GPIO、PIN、天线和当地频段；registration denied 还可能是套餐、IMEI 或运营商限制。不要反复错误输入 PIN，可能触发 PUK；双卡设备要确认软件选中的槽与物理卡一致。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "SIM",
+        "PIN",
+        "RegistrationDenied",
+        "5G"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-03",
+      "title": "报错：uqmi connected 但无法上网",
+      "text": "connected 只表示数据会话建立。继续检查 wwan device 是否 raw-ip 模式、接口是否获得地址/网关/DNS、PDP 类型是否与运营商匹配、MTU 和防火墙 zone。采集 `uqmi --get-current-settings`、`ubus call network.interface.<name> status`、`ip route` 和 wwan 抓包；若地址由 DHCP 获取，确认 netifd 子接口确实运行 DHCP。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/ltedongle",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "uqmi",
+        "ConnectedNoInternet",
+        "QMI",
+        "APN"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-04",
+      "title": "报错：PPPoE PADO timeout / Timeout waiting for PADO packets",
+      "text": "路由器发出 PADI 但收不到 PADO，常见是 WAN 物理口/VLAN ID 错、光猫未桥接、线路绑定旧 MAC、运营商只允许单会话或链路未通。先抓实际 WAN L2 device 的 `pppoed` 报文，核对 VLAN tag 和 link；不要先反复改账号密码，因为认证还没有开始。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/installation/generic.sysupgrade",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "PPPoE",
+        "PADOTimeout",
+        "VLAN",
+        "光猫"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-05",
+      "title": "报错：PPPoE authentication failed / PAP authentication failed",
+      "text": "已经收到接入服务器响应但认证失败，重点核对账号格式、密码、运营商绑定和是否存在另一拨号会话。打开 pppd 日志但避免公开完整凭据；有些运营商需要特定 service name、VLAN 或从原设备克隆 MAC。连续失败可能触发临时限制，修改后间隔重试。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/installation/generic.sysupgrade",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "PPPoE",
+        "AuthenticationFailed",
+        "PAP"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-06",
+      "title": "报错：Network is unreachable / no route to host",
+      "text": "区分本机没有路由与远端拒绝。运行 `ip route get <目的>`/`ip -6 route get`，检查接口运行态、默认路由、源地址和策略规则；多 WAN/VPN 还要看相应 table 与 fwmark。能 ping 网关但无默认路由是 netifd/协议问题，域名命令报错但 IP 可通则是 DNS，不要混为一谈。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/network/routing/pbr",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "NetworkUnreachable",
+        "NoRoute",
+        "路由"
+      ]
+    },
+    {
+      "id": "upload-20260803-0e7ae3911a-07",
+      "title": "报错：DNS bad address / Temporary failure in name resolution",
+      "text": "先执行 `nslookup openwrt.org 127.0.0.1` 和直接查询已知上游，检查 dnsmasq 是否监听 53、`/tmp/resolv.conf.d/resolv.conf.auto` 是否有上游、时间和防火墙是否正常。安装 AdGuardHome、MosDNS、SmartDNS、HomeProxy 后最容易出现端口 53 抢占或循环转发；画清客户端→本地入口→上游的唯一链路。核验日期 2026-08-03。来源：https://openwrt.org/docs/guide-user/base-system/dhcp_configuration",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/70b1e2b4-e20c-45c1-bdfc-e0555e408487-openwrt-errors-part-04-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "DNS",
+        "BadAddress",
+        "NameResolution",
+        "53端口"
       ]
     }
   ]
