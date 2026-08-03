@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 219,
+    "entry_count": 223,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3858,6 +3858,70 @@ export const knowledgePayload = {
         "千兆网口",
         "历史产品",
         "NRadio"
+      ]
+    },
+    {
+      "id": "upload-20260803-61cb4f85d8-01",
+      "title": "C8-788型号对应C2000 Max",
+      "text": "C8-788就是C2000 Max，为同一产品的不同型号标识。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C8-788",
+        "C2000 Max",
+        "型号对应"
+      ]
+    },
+    {
+      "id": "upload-20260803-61cb4f85d8-02",
+      "title": "C8-798型号对应C2000 Ultra及发布计划",
+      "text": "C8-798就是C2000 Ultra，目前尚未正式发布，预计在8～9月进行内测。预售链接现已上架微信“鲲鹏小店”小程序。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C8-798",
+        "C2000 Ultra",
+        "内测",
+        "预售",
+        "鲲鹏小店"
+      ]
+    },
+    {
+      "id": "upload-20260803-61cb4f85d8-03",
+      "title": "C2000 Max金属散热壳发布时间及通知",
+      "text": "C2000 Max的金属壳（金属散热壳）预计在8月份推出。已在微信小程序“张导的店”购买的鹏友请耐心等待小助理的通知。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000 Max",
+        "金属散热壳",
+        "配件",
+        "8月",
+        "张导的店"
+      ]
+    },
+    {
+      "id": "upload-20260803-61cb4f85d8-04",
+      "title": "天火卡活动结束通知",
+      "text": "目前天火卡的相关活动已经结束，其他优质流量卡敬请期待后续通知。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "活动结束",
+        "流量卡"
       ]
     }
   ]

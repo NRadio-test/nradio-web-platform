@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 219 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 223 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2173,3 +2173,39 @@ N8 是 NRadio 历史官方产品，AX1800 Wi-Fi 6 家用路由器。目录状态
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：N8、AX1800、Wi-Fi 6、家用路由器、573Mbps、1201Mbps、1774Mbps、2×2 MIMO、千兆网口、历史产品、NRadio
+
+## C8-788型号对应C2000 Max
+
+C8-788就是C2000 Max，为同一产品的不同型号标识。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：C8-788、C2000 Max、型号对应
+
+## C8-798型号对应C2000 Ultra及发布计划
+
+C8-798就是C2000 Ultra，目前尚未正式发布，预计在8～9月进行内测。预售链接现已上架微信“鲲鹏小店”小程序。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：C8-798、C2000 Ultra、内测、预售、鲲鹏小店
+
+## C2000 Max金属散热壳发布时间及通知
+
+C2000 Max的金属壳（金属散热壳）预计在8月份推出。已在微信小程序“张导的店”购买的鹏友请耐心等待小助理的通知。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：C2000 Max、金属散热壳、配件、8月、张导的店
+
+## 天火卡活动结束通知
+
+目前天火卡的相关活动已经结束，其他优质流量卡敬请期待后续通知。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3d057f92-50a5-4e89-96b9-36e75674fbd7-未命名.txt
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：天火卡、活动结束、流量卡
