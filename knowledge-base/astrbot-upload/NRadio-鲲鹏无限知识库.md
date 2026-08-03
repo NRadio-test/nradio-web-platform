@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 106 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 113 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -978,3 +978,66 @@ LuCI 和 sysupgrade 通常先把镜像放到 RAM-backed `/tmp`。处理步骤：
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：报错、UnknownPackage、opkg、apk、软件包
+
+## 报错：Signature check failed / Packages.gz signature invalid
+
+先检查系统日期、时区和 NTP，再确认 distfeeds 指向正确发行版且网络没有被透明代理替换内容。清理 `/tmp/opkg-lists` 后重新更新，并对比官方仓库 URL。不要长期关闭签名校验或安装 `--force-checksum` 得到的包；第三方 feed 必须导入其公开签名密钥并确认来源。来源：https://openwrt.org/docs/guide-user/additional-software/opkg
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、SignatureCheckFailed、软件源、签名
+
+## 报错：wget returned 4 / Connection failed 下载软件源失败
+
+wget/uclient-fetch 返回网络失败时，分别检查 `ip route`、`ping` 公网 IP、`nslookup` 仓库域名、系统时间和 HTTPS。能 ping IP 不能解析是 DNS；解析正常但 TLS 失败多为时间、证书或代理；IPv6 黑洞可用 `wget -4` 验证但应修复 WAN6/PMTU。不要把镜像站域名随意替换成目录结构不兼容的源。来源：https://openwrt.org/docs/guide-user/additional-software/opkg
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、wgetReturned4、opkg、网络、DNS、TLS
+
+## 报错：SSL certificate verify failed / certificate is not yet valid
+
+首先运行 `date` 检查时间；路由器无 RTC 时首次启动可能停留在固件构建日期。确保 NTP 能绕过尚未启动的加密 DNS/代理完成同步，并安装正确 CA bundle。证书域名不匹配则检查 DNS 劫持、透明代理和下载 URL。`--no-check-certificate` 只能用于定位问题，不应成为长期安装方案。来源：https://openwrt.org/docs/guide-user/additional-software/managing_packages
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、TLS、Certificate、时间、NTP
+
+## 报错：Read-only file system
+
+典型 SquashFS 的 `/rom` 本来只读，但 `/` 应由 overlay 提供可写层。若写 `/etc` 也报只读，检查 `mount`、`df -h`、`dmesg` 和 `logread`，可能是 overlay 尚未初始化、文件系统损坏、extroot 掉线或进入 failsafe 未执行 `mount_root`。不要用 remount 强行写 `/rom`；先恢复 overlay 或从 failsafe 修复。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、ReadOnlyFilesystem、overlay、mount_root
+
+## 报错：jffs2 not ready / overlay not mounted
+
+首次启动需要格式化 rootfs_data，低速闪存可能等待数分钟；持续失败则检查 mtd/UBI 分区、内核日志和镜像布局。运行 `mount`、`df -h`、`cat /proc/mtd` 或 `ubinfo -a`，确认没有刷错 NAND/NOR 镜像。不要在 overlay 初始化期间频繁断电；必要时进 failsafe 备份后 factoryreset。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、JFFS2、overlay、UBI、首次启动
+
+## 报错：block: extroot: UUID mismatch
+
+升级后 extroot 日志出现 UUID mismatch 时，先用 `block info` 和 `uci show fstab` 确认目标分区。官方 extroot 文档建议在确认外置卷确实是原 extroot 后移除卷上的 `.extroot-uuid` 再重试。不要删除未知磁盘文件或重新格式化；先挂到临时目录备份配置并记录 UUID。来源：https://openwrt.org/docs/guide-user/additional-software/extroot_configuration
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、extroot、UUIDMismatch、block-mount
+
+## 报错：mount: wrong fs type / bad superblock
+
+表示内核无法按指定类型挂载，原因可能是缺少 `kmod-fs-*`、文件系统损坏、类型写错、分区仍被占用或实际是 LUKS/LVM。用 `block info`、`blkid`、`file -s` 和 dmesg 确认类型；在电脑或离线环境运行对应 fsck。不要在已挂载或正在写入的卷上直接修复文件系统。来源：https://openwrt.org/docs/techref/block_mount
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、WrongFsType、BadSuperblock、mount、存储

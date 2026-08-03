@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 106,
+    "entry_count": 113,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -1823,6 +1823,123 @@
         "opkg",
         "apk",
         "软件包"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-01",
+      "title": "报错：Signature check failed / Packages.gz signature invalid",
+      "text": "先检查系统日期、时区和 NTP，再确认 distfeeds 指向正确发行版且网络没有被透明代理替换内容。清理 `/tmp/opkg-lists` 后重新更新，并对比官方仓库 URL。不要长期关闭签名校验或安装 `--force-checksum` 得到的包；第三方 feed 必须导入其公开签名密钥并确认来源。来源：https://openwrt.org/docs/guide-user/additional-software/opkg",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "SignatureCheckFailed",
+        "软件源",
+        "签名"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-02",
+      "title": "报错：wget returned 4 / Connection failed 下载软件源失败",
+      "text": "wget/uclient-fetch 返回网络失败时，分别检查 `ip route`、`ping` 公网 IP、`nslookup` 仓库域名、系统时间和 HTTPS。能 ping IP 不能解析是 DNS；解析正常但 TLS 失败多为时间、证书或代理；IPv6 黑洞可用 `wget -4` 验证但应修复 WAN6/PMTU。不要把镜像站域名随意替换成目录结构不兼容的源。来源：https://openwrt.org/docs/guide-user/additional-software/opkg",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "wgetReturned4",
+        "opkg",
+        "网络",
+        "DNS",
+        "TLS"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-03",
+      "title": "报错：SSL certificate verify failed / certificate is not yet valid",
+      "text": "首先运行 `date` 检查时间；路由器无 RTC 时首次启动可能停留在固件构建日期。确保 NTP 能绕过尚未启动的加密 DNS/代理完成同步，并安装正确 CA bundle。证书域名不匹配则检查 DNS 劫持、透明代理和下载 URL。`--no-check-certificate` 只能用于定位问题，不应成为长期安装方案。来源：https://openwrt.org/docs/guide-user/additional-software/managing_packages",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "TLS",
+        "Certificate",
+        "时间",
+        "NTP"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-04",
+      "title": "报错：Read-only file system",
+      "text": "典型 SquashFS 的 `/rom` 本来只读，但 `/` 应由 overlay 提供可写层。若写 `/etc` 也报只读，检查 `mount`、`df -h`、`dmesg` 和 `logread`，可能是 overlay 尚未初始化、文件系统损坏、extroot 掉线或进入 failsafe 未执行 `mount_root`。不要用 remount 强行写 `/rom`；先恢复 overlay 或从 failsafe 修复。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "ReadOnlyFilesystem",
+        "overlay",
+        "mount_root"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-05",
+      "title": "报错：jffs2 not ready / overlay not mounted",
+      "text": "首次启动需要格式化 rootfs_data，低速闪存可能等待数分钟；持续失败则检查 mtd/UBI 分区、内核日志和镜像布局。运行 `mount`、`df -h`、`cat /proc/mtd` 或 `ubinfo -a`，确认没有刷错 NAND/NOR 镜像。不要在 overlay 初始化期间频繁断电；必要时进 failsafe 备份后 factoryreset。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "JFFS2",
+        "overlay",
+        "UBI",
+        "首次启动"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-06",
+      "title": "报错：block: extroot: UUID mismatch",
+      "text": "升级后 extroot 日志出现 UUID mismatch 时，先用 `block info` 和 `uci show fstab` 确认目标分区。官方 extroot 文档建议在确认外置卷确实是原 extroot 后移除卷上的 `.extroot-uuid` 再重试。不要删除未知磁盘文件或重新格式化；先挂到临时目录备份配置并记录 UUID。来源：https://openwrt.org/docs/guide-user/additional-software/extroot_configuration",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "extroot",
+        "UUIDMismatch",
+        "block-mount"
+      ]
+    },
+    {
+      "id": "upload-20260803-516b935e06-07",
+      "title": "报错：mount: wrong fs type / bad superblock",
+      "text": "表示内核无法按指定类型挂载，原因可能是缺少 `kmod-fs-*`、文件系统损坏、类型写错、分区仍被占用或实际是 LUKS/LVM。用 `block info`、`blkid`、`file -s` 和 dmesg 确认类型；在电脑或离线环境运行对应 fsck。不要在已挂载或正在写入的卷上直接修复文件系统。来源：https://openwrt.org/docs/techref/block_mount",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/8ddace36-9b9f-4176-b562-8b9b8a9d1824-openwrt-errors-part-02-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "WrongFsType",
+        "BadSuperblock",
+        "mount",
+        "存储"
       ]
     }
   ]
