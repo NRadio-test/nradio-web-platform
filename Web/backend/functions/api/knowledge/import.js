@@ -61,7 +61,7 @@ export async function onRequestPost(context) {
       sourceUrl,
       notes,
       uploader,
-      '文件已安全保存，等待审核任务。',
+      '文件已安全保存，等待自动处理。',
       now,
       now
     ).run()

@@ -56,7 +56,7 @@ GitHub Actions Variables：
 - `KNOWLEDGE_REVIEW_API_BASE`：OpenAI-compatible API 根地址，例如以 `/v1` 结尾。
 - `KNOWLEDGE_REVIEW_MODEL`：用于审核的模型名称。
 
-上传支持 PDF、TXT、Markdown、DOCX、XLS/XLSX 与 EPUB。扫描版 PDF 需要先 OCR。每个任务会保留原文件、上传者、审核报告和结构化 Markdown，并串行提交到固定的 `knowledge/review` 审核分支；同一批次共用一个 Draft Pull Request，不会自动合并到 `main`。
+上传支持 PDF、TXT、Markdown、DOCX、XLS/XLSX 与 EPUB。扫描版 PDF 需要先 OCR。每个任务会保留原文件、上传者、结构化结果和 Markdown，并由 GitHub Actions 串行同步、校验；通过后直接发布至 `main`，不创建审核分支或 Draft Pull Request。
 
 ## 内容来源
 

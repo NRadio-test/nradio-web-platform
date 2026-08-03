@@ -22,7 +22,7 @@ npm --prefix Web run sync
 npm --prefix Web run check
 ```
 
-在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 串行更新固定的 `knowledge/review` 审核分支；同一批次的上传共用一个 Draft PR，人工审核合并后才会更新正式知识库。
+在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 串行提取、结构化、同步并校验；通过后自动提交至 `main`，由 NRadio 知识库同步插件读取并发布到 AstrBot。
 
 部署方式、自定义域名和 Secrets 配置见 [Web/README.md](Web/README.md)。
 
