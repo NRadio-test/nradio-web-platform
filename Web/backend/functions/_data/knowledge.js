@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 134,
+    "entry_count": 140,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -2296,6 +2296,107 @@ export const knowledgePayload = {
         "Offline",
         "Tracking",
         "多WAN"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-01",
+      "title": "报错：pbr service failed / resolver set not supported",
+      "text": "PBR 启动失败常见于 firewall4/ipset 模式不匹配、dnsmasq 不是 full 变体、目标 interface 不存在、策略解析域名失败或与代理插件抢 fwmark。查看 `service pbr status`、日志、nft set 和 `ip rule`，先用 IP/CIDR 规则验证，再启用域名策略。不要并行启用多个 PBR 实现。标签：报错、PBR、ServiceFailed、dnsmasq-full、fwmark。来源：https://openwrt.org/docs/guide-user/network/routing/pbr",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "PBR",
+        "ServiceFailed",
+        "dnsmasq-full",
+        "fwmark"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-02",
+      "title": "报错：WireGuard latest handshake: never",
+      "text": "确认接口有私钥、peer 公钥没有贴反、Endpoint DNS/端口可达、服务端 UDP 端口已放行并逐级转发。两端时间不会影响 WireGuard 密钥认证，但错误 AllowedIPs、NAT 和路由会影响握手后的数据。用 WAN 抓包看 UDP 是否发出/返回；完全无返回通常是地址、端口、防火墙或上级 NAT。标签：报错、WireGuard、HandshakeNever、UDP、NAT。来源：https://openwrt.org/docs/guide-user/services/vpn/wireguard/server",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "WireGuard",
+        "HandshakeNever",
+        "UDP",
+        "NAT"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-03",
+      "title": "报错：WireGuard 有握手但 ping 不通",
+      "text": "握手成功证明密钥与 UDP 路径成立，不证明路由正确。检查两端 AllowedIPs、隧道地址是否重叠、OpenWrt firewall zone forwarding、LAN 回程路由、rp_filter/PBR 和是否需要 NAT。分别 ping 对端隧道地址、对端路由器 LAN 地址、LAN 主机，逐层定位。标签：报错、WireGuard、HandshakeNoTraffic、AllowedIPs。来源：https://openwrt.org/docs/guide-user/services/vpn/wireguard/server",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "WireGuard",
+        "HandshakeNoTraffic",
+        "AllowedIPs"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-04",
+      "title": "报错：OpenClash/HomeProxy 启动失败或透明代理后全网断网",
+      "text": "先停用插件恢复原始路由和 DNS，再查插件自身日志、核心版本、配置校验、53 端口、TUN/TProxy 内核模块、fw4 nft 规则和策略路由。OpenClash、HomeProxy、PassWall、PBR、mwan3 不应同时接管默认路由/DNS；固件升级后还要核对插件与核心版本。不要用跳过证书、force depends 或 chmod 777 作为通用修复。标签：报错、OpenClash、HomeProxy、全网断网、TProxy。来源：https://github.com/vernesong/OpenClash",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "OpenClash",
+        "HomeProxy",
+        "全网断网",
+        "TProxy"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-05",
+      "title": "报错：Docker overlay2 invalid argument / no space left",
+      "text": "容器数据目录若位于不支持 overlay2 特性的文件系统、TF 普通小 overlay 或只读挂载，会启动失败。把 Docker root 移到可靠的 ext4/btrfs 外置盘，确认 inode、空间、内核模块和 mount propagation；OpenWrt 自身 overlay 与 Docker overlay2 是不同层。容器网络还会增加 bridge、nft 和 MTU复杂度。标签：报错、Docker、Overlay2、NoSpace、容器。来源：https://openwrt.org/docs/guide-user/virtualization/docker_host",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "Docker",
+        "Overlay2",
+        "NoSpace",
+        "容器"
+      ]
+    },
+    {
+      "id": "upload-20260803-fa308082fe-06",
+      "title": "报错：保存并应用后 LuCI 倒计时回滚",
+      "text": "LuCI 发现浏览器无法重新连接新地址时会回滚网络配置，这是保护机制。改 LAN IP、VLAN、桥和管理口后，电脑可能需要重新获取地址或切到新 VLAN。远程操作应使用“应用未检查”仅在你明确有带外恢复时，并提前保存 `/etc/config/network`、准备第二管理口或串口。标签：报错、LuCI、ApplyRollback、网络、失联。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/aba1616d-200d-4cd5-8772-bcaefeacc913-openwrt-errors-part-06-of-06.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "报错",
+        "LuCI",
+        "ApplyRollback",
+        "网络",
+        "失联"
       ]
     }
   ]
