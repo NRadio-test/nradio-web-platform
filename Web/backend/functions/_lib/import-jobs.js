@@ -87,6 +87,15 @@ export const dispatchNextImportJob = async (env) => {
   if (!workflowConfig(env).token) return null
 
   const now = new Date()
+  const resetBefore = String(env.IMPORT_QUEUE_RESET_BEFORE || '')
+  if (resetBefore) {
+    await env.KNOWLEDGE_DB.prepare(`
+      UPDATE knowledge_import_jobs
+      SET status = 'cancelled', progress = 100,
+          message = '知识库已重置，此前的导入任务已作废。', error = NULL, updated_at = ?
+      WHERE created_at < ? AND status != 'cancelled'
+    `).bind(now.toISOString(), resetBefore).run()
+  }
   const queuedCutoff = new Date(now.getTime() - 10 * 60 * 1000).toISOString()
   const runningCutoff = new Date(now.getTime() - 45 * 60 * 1000).toISOString()
   await env.KNOWLEDGE_DB.prepare(`

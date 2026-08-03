@@ -26,8 +26,8 @@ const requiredFiles = [
 await Promise.all(requiredFiles.map((file) => access(resolve(webDir, file))))
 
 const payload = JSON.parse(await readFile(resolve(webDir, 'frontend/public/data/knowledge.json'), 'utf8'))
-if (!Array.isArray(payload.entries) || payload.entries.length === 0) {
-  throw new Error('知识库数据为空。')
+if (!Array.isArray(payload.entries)) {
+  throw new Error('知识库数据格式无效。')
 }
 
 for (const entry of payload.entries) {
@@ -41,7 +41,7 @@ const apiResponse = await getKnowledge({
   request: new Request('https://nradio.example/api/knowledge?q=5g')
 })
 const apiPayload = await apiResponse.json()
-if (!apiResponse.ok || !Array.isArray(apiPayload.entries) || apiPayload.entries.length === 0) {
+if (!apiResponse.ok || !Array.isArray(apiPayload.entries)) {
   throw new Error('知识库 API 查询检查失败。')
 }
 
