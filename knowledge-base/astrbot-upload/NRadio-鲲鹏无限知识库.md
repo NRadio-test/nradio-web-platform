@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 21 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 27 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -234,3 +234,105 @@ kernel FIT 内含 `nradio,c2000-max` 设备树，型号字符串为 `NRadio C200
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：C2000MAX、SHA256、Rufus、DiskGenius、完整性
+
+## 鲲鹏无限公司与品牌
+
+鲲鹏无限的公司主体为深圳鲲鹏无限科技有限公司，品牌英文名为 NRadio。官方帮助中心称公司创立于 2016 年，是国家高新技术企业和深圳专精特新企业，定位为 5G 无线宽带产品专业厂商。
+
+原条目 ID：company-001
+来源：https://help.nradiowifi.com/
+来源类型：official_help
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：公司、品牌、NRadio、鲲鹏无限
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：公司、品牌、NRadio、鲲鹏无限
+
+## 鲲鹏无限团队与创始人介绍
+
+官方帮助中心称，鲲鹏无限核心团队成员来自 TP-LINK、华为、中兴、极路由等通信品牌厂商；创始人张利鹏毕业于清华大学计算机系，并在通信行业深耕十年以上。
+
+原条目 ID：company-002
+来源：https://help.nradiowifi.com/
+来源类型：official_help
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：创始人、张利鹏、团队、公司介绍
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：创始人、张利鹏、团队、公司介绍
+
+## 鲲鹏无限主要业务
+
+鲲鹏无限主要提供 4G 和 5G 无线宽带产品，覆盖便携旅行和固定上网两类形态，强调无需铺设传统有线宽带、部署灵活和随用随开。
+
+原条目 ID：company-003
+来源：https://help.nradiowifi.com/
+来源类型：official_help
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：业务、无线宽带、5G CPE、免拉线
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：业务、无线宽带、5G CPE、免拉线
+
+## 鲲鹏无限官网产品分类
+
+官网产品中心在 2026 年 7 月 30 日可见的产品类别包括 5G CPE、5G RedCap、全球漫游和高密度 WiFi。选型时应结合完整型号、使用地区、运营商、移动或固定场景、终端数量、网口及供电需求。
+
+原条目 ID：product-001
+来源：https://www.nradiowifi.com/chanpin/
+来源类型：official_web
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：产品中心、产品分类、选型
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：产品中心、产品分类、选型
+
+## C8 系列代表型号
+
+官网在 2026 年 7 月 30 日可见的 C8 系列代表型号包括 C8-788、C8-618、C8-668GL 和 C8-688。相近名称可能对应不同芯片、地区版本、卡槽、频段或接口，回答参数时必须使用完整型号后缀。
+
+原条目 ID：product-002
+来源：https://www.nradiowifi.com/chanpin/fengwozuwang/
+来源类型：official_web
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：5G CPE、C8-788、C8-618、C8-668GL、C8-688
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：5G CPE、C8-788、C8-618、C8-668GL、C8-688
+
+## C2000 与 C5800 系列代表型号
+
+官网在 2026 年 7 月 30 日可见 C2000 MAX、C2000-518、C2000-500、C5800-668GL、C5800-688 和 C5800-650。C2000 系列包含 Mini 5G CPE，C5800 系列包含企业级四卡槽 5G CPE；不同后缀的芯片和配置不可混用。
+
+原条目 ID：product-003
+来源：https://www.nradiowifi.com/chanpin/fengwozuwang/
+来源类型：official_web
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+标签：5G CPE、C2000 MAX、C2000、C5800、企业网络
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：5G CPE、C2000 MAX、C2000、C5800、企业网络
