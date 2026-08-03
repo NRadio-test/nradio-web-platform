@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 39 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 43 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -444,3 +444,63 @@ kernel FIT 内含 `nradio,c2000-max` 设备树，型号字符串为 `NRadio C200
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：FAQ、免拉线、有线宽带、稳定性
+
+## 全球旅行多达 165 个国家的含义
+
+官方帮助中心使用过“海外旅行商务多达 165 个国家可以做到开机就上网”的宣传表述。具体可用国家、蜂窝频段、合作运营商、漫游套餐、资费和公平使用规则会随产品及服务变化，出行前应按目的地和完整型号查看最新说明。
+原条目 ID：faq-006
+来源：https://help.nradiowifi.com/
+来源类型：official_help
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/311a1b7b-2de7-4281-b24d-e1bfa350b5ee-nradio-legacy-part-04-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：FAQ、全球漫游、165个国家、旅行网络
+
+## 价格、库存和活动信息怎么确认
+
+产品价格、库存、优惠、发货时间和活动规则应以查询当时的官网商城、官方店铺、直播间或订单页面为准。历史视频中的粉丝价、首发价和限时活动只代表当时信息。
+原条目 ID：faq-007
+来源：https://v.douyin.com/IPb2vXHhDqs/
+来源类型：douyin_profile
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：medium_high
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/311a1b7b-2de7-4281-b24d-e1bfa350b5ee-nradio-legacy-part-04-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：FAQ、价格、库存、活动、发货
+
+## 产品参数、图片和测试数据的适用条件
+
+官网说明产品图片、软件界面和实验室数据可能因产品版本、批次、生产供应、软件版本、使用条件和环境不同而变化，最终以实物和实际使用情况为准。回答具体参数时应使用完整型号和对应资料，不能用相近型号的数据代替。
+原条目 ID：risk-001
+来源：https://www.nradiowifi.com/article/207.html
+来源类型：official_web
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/311a1b7b-2de7-4281-b24d-e1bfa350b5ee-nradio-legacy-part-04-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：参数、产品图片、实验室数据、型号、适用条件
+
+## 小助理企业微信被封临时联系方式
+
+2026年7月29日，小助理企业微信被封，临时可通过QQ联系。恢复后恢复微信交流。QQ号：猫猫：1403713828，林林：242150291，好好：3293869279。
+原条目 ID：upload-20260730-27d9403f68-01
+来源：https://github.com/NRadio-Bot/nradio-platform/blob/main/knowledge-base/sources/uploads/2026-07/6d5727f8-5810-4397-9898-98c9f6991beb-未命名.txt
+来源类型：user_upload
+原上传者：FallaxAura
+核验日期：2026-07-30
+可信度：high
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/311a1b7b-2de7-4281-b24d-e1bfa350b5ee-nradio-legacy-part-04-of-04.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：企业微信、QQ、联系方式、临时、2026-07-29
