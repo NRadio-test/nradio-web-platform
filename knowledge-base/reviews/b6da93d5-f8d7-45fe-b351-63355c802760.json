@@ -1,0 +1,14 @@
+{
+  "job_id": "b6da93d5-f8d7-45fe-b351-63355c802760",
+  "file_name": "00-产品型号索引与参数使用边界.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "4ef3288135e5b07d9498c19021624ec2e62fb500aeb1a7e3760c4e56fa8a511a",
+  "decision": "accept",
+  "review_notes": [
+    "C2000-500 官网存在 AX900 与 AX1500 信息不一致，已按资料保留并写入参数使用边界。"
+  ],
+  "entry_count": 3,
+  "document_path": "knowledge-base/documents/uploads/b6da93d5-f8d7-45fe-b351-63355c802760.md",
+  "source_path": "knowledge-base/sources/uploads/2026-08/b6da93d5-f8d7-45fe-b351-63355c802760-00-产品型号索引与参数使用边界.md",
+  "extracted_characters": 1222
+}

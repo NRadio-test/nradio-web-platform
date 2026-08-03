@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 190,
+    "entry_count": 193,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3234,6 +3234,68 @@ export const knowledgePayload = {
         "救砖",
         "3.3V",
         "factory"
+      ]
+    },
+    {
+      "id": "upload-20260803-4ef3288135-01",
+      "title": "NRadio 鲲鹏无限产品型号索引（截至2026-08-03）",
+      "text": "根据NRadio官网产品中心（https://www.nradiowifi.com/chanpin/）和文档中心（https://www.nradiowifi.com/fuwu/wendang/），截至2026-08-03，官网四个产品分类页共列出25个唯一型号。5G CPE（15款）：C8-788、C2000 MAX、AM5、C8-688、C8-668GL、C8-618、C5800-688、C5800-650、C5800-668GL、C2000-500、C2000-518、NBCPE-688、NBCPE-650、NBCPE-668GL、AK68-788。RedCap 5G（6款）：A8-510、DD-510、CC-500 Pro、CC-500、TK-500、TT-500。全球漫游（3款）：CC-100GL、TT-100GL、TK-100GL。其他（1款）：N6700 AX6000 Wi-Fi 6 四频缓存路由器。另有一款历史官方产品：N8 AX1800 Wi-Fi 6 路由器，仍保留官方说明页，但不在当前四个分类页中。",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "鲲鹏无限",
+        "产品索引",
+        "型号目录",
+        "5G CPE",
+        "RedCap 5G",
+        "全球漫游",
+        "N6700",
+        "N8",
+        "C8-788",
+        "C2000 MAX",
+        "AM5"
+      ]
+    },
+    {
+      "id": "upload-20260803-4ef3288135-02",
+      "title": "NRadio 鲲鹏无限硬件参数使用边界",
+      "text": "NRadio产品硬件参数记录遵循以下边界：1. 本批文件优先记录官网产品页和官方说明书明确公开的硬件参数，未公开字段标记为“官网未公开”，不根据同系产品猜测；2. 同一型号可能因销售地区、批次、供应链、软件版本或套餐而变化，实际回答应以机身铭牌、购买页面、当批包装和官方售后确认为准；3. “最高速率”和Wi-Fi速率为官方参数表中的理论值，不代表实际业务必然达到的速率，信号、频段、运营商、网络负载、终端和环境都会影响实测；4. C2000-500当前产品目录标称为AX900，但产品页现有参数图显示AX1500，存在官方页面信息不一致，对外回答时必须说明差异并请用户确认批次；5. 官网产品页的功能图、测试数据和应用场景不等同于硬件承诺，知识库会尽量将“硬件规格”与“功能或实验室测试”分开。",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "鲲鹏无限",
+        "参数使用边界",
+        "官网未公开",
+        "理论速率",
+        "批次差异",
+        "C2000-500",
+        "AX900",
+        "AX1500"
+      ]
+    },
+    {
+      "id": "upload-20260803-4ef3288135-03",
+      "title": "NRadio 鲲鹏无限硬件参数文件导航",
+      "text": "NRadio硬件参数知识库按系列分为四份文件：01-5G-CPE-详细硬件参数.md 覆盖C8、C5800、C2000、NBCPE、AK68、AM5；02-RedCap-5G-详细硬件参数.md 覆盖A8、DD、CC-500、TK-500、TT-500；03-全球漫游-详细硬件参数.md 覆盖CC-100GL、TT-100GL、TK-100GL；04-其他与历史产品-详细硬件参数.md 覆盖N6700和N8。",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "鲲鹏无限",
+        "参数文件",
+        "文档导航",
+        "详细硬件参数"
       ]
     }
   ]
