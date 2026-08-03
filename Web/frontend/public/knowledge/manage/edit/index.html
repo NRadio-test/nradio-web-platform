@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="编辑已经发布的 NRadio-Bot 知识条目。" />
+    <meta name="theme-color" content="#06162e" />
+    <title>编辑知识 · NRadio-Bot</title>
+    <link rel="icon" href="/assets/pengzai-v9.png" />
+    <link rel="stylesheet" href="/assets/site.css?v=20260803-3" />
+    <script type="module" src="/assets/knowledge-edit.js?v=20260803-1"></script>
+  </head>
+  <body class="knowledge-page manage-page">
+    <header class="site-header shell compact-header">
+      <a class="brand" href="/" aria-label="返回 NRadio-Bot 首页">
+        <img class="brand-logo" src="/assets/nradio-logo.png" alt="NRadio 鲲鹏无限" />
+        <span><strong>NRadio-Bot</strong><small>Knowledge Editor</small></span>
+      </a>
+      <nav aria-label="主要导航">
+        <a href="/knowledge/">内容检索</a>
+        <a href="/knowledge/manage/">导入内容</a>
+        <a aria-current="page" href="/knowledge/manage/edit/">编辑知识</a>
+      </nav>
+    </header>
+
+    <main class="manage-main shell edit-main">
+      <section class="session-login" id="session-login">
+        <div class="login-mark">N</div>
+        <p class="eyebrow"><span></span> MEMBER SESSION</p>
+        <h1>验证知识库编辑身份</h1>
+        <p>请输入分配给你的六位数字身份口令。编辑记录会自动标记当前用户名，并永久保存在 GitHub 历史中。</p>
+        <form id="session-login-form">
+          <label for="session-token">六位身份口令</label>
+          <input id="session-token" name="token" type="password" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" placeholder="••••••" required />
+          <button class="button button-primary" id="session-submit" type="submit">验证并进入 <span>→</span></button>
+          <p class="form-message" id="session-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="edit-workspace" id="edit-workspace" hidden>
+        <div class="edit-heading">
+          <div>
+            <p class="eyebrow"><span></span> VERSIONED EDIT</p>
+            <h1>修改已发布的<br /><em>知识条目。</em></h1>
+            <p>InfoID、原始上传者和核验日期保持不变；正文、标题、来源、分类和标签可以修订。提交后由 GitHub Actions 验证并直接更新正式知识库。</p>
+          </div>
+          <div class="edit-identity">
+            <span>当前编辑者</span><strong id="session-user-name">—</strong>
+            <button id="session-logout" type="button">退出</button>
+          </div>
+        </div>
+
+        <form class="import-form edit-form" id="knowledge-edit-form">
+          <div class="edit-form-meta">
+            <div><span>InfoID</span><code id="edit-info-id">—</code></div>
+            <div><span>原始上传者</span><strong id="edit-uploader">—</strong></div>
+            <div><span>当前版本</span><strong id="edit-revision">1</strong></div>
+          </div>
+
+          <label class="form-field">
+            <span>知识标题</span>
+            <input id="edit-title" maxlength="160" required />
+          </label>
+          <label class="form-field">
+            <span>知识正文</span>
+            <textarea id="edit-text" maxlength="12000" rows="12" required></textarea>
+          </label>
+          <div class="field-grid">
+            <label class="form-field">
+              <span>来源 URL 或来源说明</span>
+              <input id="edit-source-url" maxlength="1200" required />
+            </label>
+            <label class="form-field">
+              <span>来源类型</span>
+              <input id="edit-source-type" maxlength="80" list="source-type-options" required />
+              <datalist id="source-type-options">
+                <option value="official_web"></option>
+                <option value="official_help"></option>
+                <option value="official_documentation_summary"></option>
+                <option value="douyin_profile"></option>
+                <option value="douyin_video"></option>
+                <option value="user_upload"></option>
+                <option value="error_resolution_guide"></option>
+                <option value="community_and_plugin_guide"></option>
+                <option value="local_package_analysis"></option>
+              </datalist>
+            </label>
+          </div>
+          <div class="field-grid">
+            <label class="form-field">
+              <span>可信度</span>
+              <select id="edit-confidence" required>
+                <option value="high">高可信</option>
+                <option value="medium_high">中高可信</option>
+                <option value="medium">中等可信</option>
+                <option value="low_medium">需谨慎引用</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>检索标签 <small>使用中文逗号或英文逗号分隔，最多 12 个</small></span>
+              <input id="edit-tags" maxlength="500" required />
+            </label>
+          </div>
+
+          <label class="confirm-row">
+            <input id="edit-confirm" type="checkbox" required />
+            <span>我确认修改后的内容准确，并理解提交会生成可追溯的 GitHub 编辑记录。</span>
+          </label>
+          <button class="button button-primary submit-import" id="submit-edit" type="submit">提交知识修改 <span>→</span></button>
+          <p class="form-message" id="edit-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>原始上传身份与 InfoID 不会被覆盖</p>
+      <p>每次编辑均保留版本和审计记录</p>
+      <p>© <span data-current-year></span> NRadio-Bot</p>
+    </footer>
+  </body>
+</html>

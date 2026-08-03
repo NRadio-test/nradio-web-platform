@@ -8,10 +8,12 @@ const requiredFiles = [
   'frontend/public/index.html',
   'frontend/public/knowledge/index.html',
   'frontend/public/knowledge/manage/index.html',
+  'frontend/public/knowledge/manage/edit/index.html',
   'frontend/public/assets/site.css',
   'frontend/public/assets/site.js',
   'frontend/public/assets/knowledge.js',
   'frontend/public/assets/knowledge-manage.js',
+  'frontend/public/assets/knowledge-edit.js',
   'frontend/public/assets/nradio-logo.png',
   'frontend/public/assets/pengzai-v9.png',
   'frontend/public/data/knowledge.json',
@@ -20,6 +22,7 @@ const requiredFiles = [
   'backend/functions/api/knowledge/import.js',
   'backend/functions/api/knowledge/import/[jobId]/metadata.js',
   'backend/functions/api/knowledge/session.js',
+  'backend/functions/api/knowledge/edit/[infoId].js',
   'migrations/0001_knowledge_import_jobs.sql'
 ]
 
@@ -74,6 +77,36 @@ if (!loginResponse.ok || !sessionResponse.ok || sessionPayload.user?.name !== 'F
   throw new Error('六位口令会话 API 检查失败。')
 }
 
+const firstEntry = payload.entries[0]
+const { onRequestGet: getEditableKnowledge, onRequestPost: editKnowledge } = await import('../backend/functions/api/knowledge/edit/[infoId].js')
+const editGetResponse = await getEditableKnowledge({
+  request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, { headers: { Cookie: sessionCookie } }),
+  env: sessionEnv,
+  params: { infoId: firstEntry.id }
+})
+const originalFetch = globalThis.fetch
+globalThis.fetch = async () => new Response(null, { status: 204 })
+const editPostResponse = await editKnowledge({
+  request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Cookie: sessionCookie },
+    body: JSON.stringify({
+      title: firstEntry.title,
+      text: firstEntry.text,
+      source_url: firstEntry.source_url,
+      source_type: firstEntry.source_type,
+      confidence: firstEntry.confidence,
+      tags: firstEntry.tags
+    })
+  }),
+  env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
+  params: { infoId: firstEntry.id }
+})
+globalThis.fetch = originalFetch
+if (!editGetResponse.ok || editPostResponse.status !== 202) {
+  throw new Error('知识条目编辑 API 检查失败。')
+}
+
 const importRows = []
 const mockStatement = {
   bind(...values) {
@@ -103,9 +136,13 @@ const workflowSource = await readFile(resolve(webDir, '../.github/workflows/know
 if (workflowSource.includes('gh pr create') || !workflowSource.includes('git push origin HEAD:main')) {
   throw new Error('知识库导入工作流没有配置为直接发布 main。')
 }
+const editWorkflowSource = await readFile(resolve(webDir, '../.github/workflows/knowledge-edit.yml'), 'utf8')
+if (!editWorkflowSource.includes('scripts/knowledge_edit.py') || !editWorkflowSource.includes('git push origin HEAD:main')) {
+  throw new Error('知识条目编辑工作流没有配置为验证后发布 main。')
+}
 const importJobsSource = await readFile(resolve(webDir, 'backend/functions/_lib/import-jobs.js'), 'utf8')
 if (!importJobsSource.includes('dispatchNextImportJob') || !importJobsSource.includes("status IN ('queued', 'parsing', 'reviewing', 'publishing')")) {
   throw new Error('知识库导入队列检查失败。')
 }
 
-console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，5 个 API。`)
+console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，7 个 API。`)

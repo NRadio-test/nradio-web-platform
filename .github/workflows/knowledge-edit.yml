@@ -1,0 +1,82 @@
+name: Edit published knowledge
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Base64URL encoded validated edit request
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: knowledge-published-write
+  cancel-in-progress: false
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configure knowledge editor identity
+        run: |
+          git config user.name "NRadio Knowledge Editor"
+          git config user.email "knowledge-editor@users.noreply.github.com"
+
+      - name: Apply validated edit
+        id: edit
+        env:
+          EDIT_PAYLOAD: ${{ inputs.payload }}
+        run: |
+          python scripts/knowledge_edit.py \
+            --payload "$EDIT_PAYLOAD" \
+            --output-root "$GITHUB_WORKSPACE" \
+            > /tmp/nradio-knowledge-edit.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path('/tmp/nradio-knowledge-edit.json').read_text())
+          with Path(os.environ['GITHUB_OUTPUT']).open('a') as output:
+              for key in ('info_id', 'editor', 'revision', 'audit_path'):
+                  output.write(f"{key}={result[key]}\n")
+          PY
+
+      - name: Regenerate website and AstrBot data
+        run: npm --prefix Web run sync
+
+      - name: Validate generated knowledge
+        run: npm --prefix Web run check
+
+      - name: Commit edit
+        env:
+          INFO_ID: ${{ steps.edit.outputs.info_id }}
+          EDITOR: ${{ steps.edit.outputs.editor }}
+        run: |
+          git add \
+            knowledge-base/import/knowledge.jsonl \
+            "${{ steps.edit.outputs.audit_path }}" \
+            knowledge-base/astrbot-upload/NRadio-鲲鹏无限知识库.md \
+            Web/frontend/public/data/knowledge.json \
+            Web/backend/functions/_data/knowledge.js
+          if git diff --cached --quiet; then
+            echo "No knowledge changes to publish."
+            exit 0
+          fi
+          git commit -m "knowledge: edit $INFO_ID by $EDITOR"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying after latest main rebase."
+            sleep $((attempt * 2))
+          done
+          exit 1

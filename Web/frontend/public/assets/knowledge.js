@@ -106,11 +106,15 @@ const createCard = (entry, index) => {
   const id = createElement('span', 'entry-id', `InfoID · ${entry.id}`)
   const uploader = createElement('span', 'entry-uploader', `上传者 · ${entry.uploaded_by || '未知'}`)
   identity.append(id, uploader)
+  const actions = createElement('div', 'card-actions')
+  const edit = createElement('a', '', '编辑')
+  edit.href = `/knowledge/manage/edit/?id=${encodeURIComponent(entry.id)}`
   const source = createElement('a', '', '查看来源 ↗')
   source.href = entry.source_url
   source.target = '_blank'
   source.rel = 'noreferrer'
-  footer.append(identity, source)
+  actions.append(edit, source)
+  footer.append(identity, actions)
 
   article.append(top, title, text, tags, footer)
   return article
