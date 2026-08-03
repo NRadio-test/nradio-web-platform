@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 151,
+    "entry_count": 159,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -2590,6 +2590,140 @@ export const knowledgePayload = {
         "1232",
         "MTU",
         "抓包"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-01",
+      "title": "IPv6 Prefix Delegation 的基本模型",
+      "text": "WAN6 从 ISP 获得 GUA prefix delegation，OpenWrt 再按 `ip6assign`/assignment hint 向各 LAN 分配通常为 /64 的子网；LAN 通过 RA 和可选 DHCPv6 获得地址与默认路由。/56 可划分 256 个 /64，/60 可划分 16 个 /64，而 ISP 只给 /64 时不能正常再切多个标准 /64。\n\n来源：https://openwrt.org/docs/guide-user/network/ipv6/troubleshooting\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "IPv6",
+        "PD",
+        "RA",
+        "DHCPv6",
+        "前缀委派"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-02",
+      "title": "ISP 只给一个 /64 时的选择",
+      "text": "如果上游只委派 /64，又要让多个下游二层网络共享该前缀，可考虑 odhcpd relay/NDP proxy，但这些网络并不获得真正独立的可路由 /64，隔离和可靠性更复杂。优先向 ISP 获取更短前缀（如 /56 或 /60）。NAT66 能绕开前缀不足，但不是首选的原生 IPv6 设计。\n\n来源：https://openwrt.org/docs/guide-user/network/ipv6/troubleshooting\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "IPv6",
+        "/64",
+        "relay",
+        "NDP",
+        "proxy",
+        "NAT66"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-03",
+      "title": "IPv6 排障必须检查默认路由和源地址",
+      "text": "先看 WAN6 是否获得地址和 delegated prefix，再看 LAN 是否有 /64、客户端是否收到 RA、`ip -6 route` 是否存在默认路由。分别 ping 链路本地网关、路由器 GUA、外部 IPv6，并用 `ip -6 route get` 检查选源；抓包观察 RS/RA、DHCPv6 和 ICMPv6 Packet Too Big。不要粗暴封禁所有 ICMPv6，它是邻居发现和 PMTU 的基础。\n\n来源：https://openwrt.org/docs/guide-user/network/ipv6/troubleshooting\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "IPv6",
+        "排障",
+        "RA",
+        "ICMPv6",
+        "路由"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-04",
+      "title": "firewall4 使用 nftables",
+      "text": "OpenWrt 22.03 及以后默认 firewall4/fw4，以 nftables 为后端。`iptables -L` 可能只看到兼容层的一部分，权威运行规则应看 `fw4 print` 与 `nft list ruleset`。旧的 `/etc/firewall.user`、iptables 扩展和依赖 ipset 的教程可能不兼容，迁移时应选原生 nft set/规则或明确安装兼容包。\n\n来源：https://openwrt.org/docs/guide-user/firewall/firewall_configuration\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "firewall4",
+        "nftables",
+        "fw4",
+        "iptables"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-05",
+      "title": "防火墙 input、forward、output 的区别",
+      "text": "input 控制发往路由器自身的流量，例如 LuCI、SSH、DNS；forward 控制穿过路由器去其他主机/区域的流量；output 控制路由器本机发出的流量。端口转发既涉及 DNAT，也需要相应 forward 许可。只开放 WAN→router 的 input 不会自动允许访问 LAN 主机，反之亦然。\n\n来源：https://openwrt.org/docs/guide-user/firewall/firewall_configuration\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "防火墙",
+        "input",
+        "forward",
+        "output",
+        "zone"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-06",
+      "title": "自定义 nftables 规则的推荐入口",
+      "text": "fw4 支持 `/usr/share/nftables.d/` 下按位置加载、扩展 chain 或 ruleset 的 `.nft` 片段。自定义规则应使用 fw4 提供的 include 机制并运行 `fw4 check`/`nft -c` 验证，避免在服务启动后临时插规则，因为 firewall reload 会清掉未纳入配置的内容。\n\n来源：https://openwrt.org/docs/guide-user/firewall/firewall_configuration\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "nftables",
+        "自定义规则",
+        "fw4",
+        "include"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-07",
+      "title": "端口转发不通的系统化检查",
+      "text": "确认 WAN 是否真有可入站公网地址、上级是否还有 NAT、服务是否监听正确 LAN 地址/端口、DNAT 命中计数是否增长、LAN 主机默认网关是否指向 OpenWrt，以及回程是否被 PBR/mwan/VPN 导走。用 WAN 侧抓包判断包有没有到，用 LAN 侧抓包判断 DNAT 后是否发出；从内网用公网域名测试还额外依赖 NAT loopback/hairpin。\n\n来源：https://openwrt.org/docs/guide-user/firewall/firewall_configuration\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "端口转发",
+        "DNAT",
+        "hairpin",
+        "抓包"
+      ]
+    },
+    {
+      "id": "upload-20260803-79a0efdf50-08",
+      "title": "流量卸载与 SQM 的冲突",
+      "text": "software/hardware flow offloading 让已建立流绕过部分 Netfilter 处理以提高吞吐；hardware offload 还可能绕过 QoS。SQM/CAKE 需要看到并调度全部相关流量，因此启用 SQM 时通常应关闭 flow offloading，尤其是 hardware offload。若策略路由、流量统计、限速或过滤异常，也应先关闭卸载复测。\n\n来源：https://openwrt.org/docs/guide-user/perf_and_log/flow_offloading\n核验日期：2026-08-03",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/75d1e0e6-8d62-408f-907f-26ce62612d51-openwrt-geek-part-05-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "flow",
+        "offload",
+        "SQM",
+        "CAKE",
+        "硬件加速"
       ]
     }
   ]
