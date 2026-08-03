@@ -19,7 +19,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: knowledge-review-branch
@@ -32,30 +31,22 @@ jobs:
       JOB_ID: ${{ inputs.job_id }}
       FILE_NAME: ${{ inputs.file_name }}
       BASE_URL: ${{ inputs.base_url }}
-      REVIEW_BRANCH: knowledge/review
       KNOWLEDGE_REVIEW_API_KEY: ${{ secrets.KNOWLEDGE_REVIEW_API_KEY }}
       KNOWLEDGE_REVIEW_API_BASE: ${{ vars.KNOWLEDGE_REVIEW_API_BASE }}
       KNOWLEDGE_REVIEW_MODEL: ${{ vars.KNOWLEDGE_REVIEW_MODEL }}
       IMPORT_SERVICE_TOKEN: ${{ secrets.KNOWLEDGE_IMPORT_SERVICE_TOKEN }}
-      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Prepare persistent review branch
+      - name: Prepare main branch
         run: |
           git config user.name "NRadio Knowledge Bot"
           git config user.email "knowledge-bot@users.noreply.github.com"
           git fetch origin main
-          if git ls-remote --exit-code --heads origin "$REVIEW_BRANCH" >/dev/null 2>&1; then
-            git fetch origin "$REVIEW_BRANCH"
-            git switch -C "$REVIEW_BRANCH" "origin/$REVIEW_BRANCH"
-            git merge --no-edit origin/main
-          else
-            git switch -c "$REVIEW_BRANCH" origin/main
-          fi
+          git switch -C main origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -121,45 +112,30 @@ jobs:
       - name: Validate generated knowledge
         run: npm --prefix Web run check
 
-      - name: Update persistent review branch
+      - name: Mark task as publishing
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"status":"publishing","progress":85,"message":"验证通过，正在发布到正式知识库。"}'
+
+      - name: Publish validated knowledge
         run: |
           git add knowledge-base Web/frontend/public/data/knowledge.json Web/backend/functions/_data/knowledge.js
           git commit -m "knowledge: review $FILE_NAME ($JOB_ID)"
-          git push origin "HEAD:$REVIEW_BRANCH"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
 
-      - name: Find or create review pull request
-        id: review_link
-        run: |
-          PR_URL=$(gh pr list --state open --base main --head "$REVIEW_BRANCH" --json url --jq '.[0].url // ""')
-          if [ -z "$PR_URL" ]; then
-            cat > /tmp/nradio-import/pr-body.md <<EOF
-          自动整理的知识库内容已经提交到固定审核分支 \`$REVIEW_BRANCH\`。
-
-          - 导入文件：\`$FILE_NAME\`
-          - 导入任务：\`$JOB_ID\`
-          - 处理结果：${{ steps.import.outputs.entry_count }} 条结构化知识
-
-          请审核本 PR 的来源文件、结构化文档与生成后的知识库数据，确认后再合并到 \`main\`。
-          EOF
-            PR_URL=$(gh pr create \
-              --draft \
-              --base main \
-              --head "$REVIEW_BRANCH" \
-              --title "knowledge: review $FILE_NAME" \
-              --body-file /tmp/nradio-import/pr-body.md)
-          fi
-          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
-          echo "has_pr=true" >> "$GITHUB_OUTPUT"
-
-      - name: Report review branch
+      - name: Report completion
         run: |
           python - <<'PY' > /tmp/nradio-import/callback.json
           import json, os
           print(json.dumps({
-              'status': 'review_ready',
-              'progress': 90,
-              'message': '审核分支和 Draft PR 已更新，正在等待人工审核。',
-              'pr_url': os.environ['REVIEW_URL'],
+              'status': 'completed',
+              'progress': 100,
+              'message': '内容已经验证并自动发布到正式知识库。',
               'document_path': os.environ['DOCUMENT_PATH'],
               'entry_count': int(os.environ['ENTRY_COUNT']),
           }, ensure_ascii=False))
@@ -170,7 +146,6 @@ jobs:
             -H "Content-Type: application/json" \
             --data-binary @/tmp/nradio-import/callback.json
         env:
-          REVIEW_URL: ${{ steps.review_link.outputs.url }}
           DOCUMENT_PATH: ${{ steps.import.outputs.document_path }}
           ENTRY_COUNT: ${{ steps.import.outputs.entry_count }}
 

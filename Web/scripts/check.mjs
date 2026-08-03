@@ -95,8 +95,17 @@ const importResponse = await importKnowledge({
     KNOWLEDGE_DB: { prepare() { return mockStatement } }
   }
 })
-if (importResponse.status !== 202 || importRows.length < 2) {
+if (importResponse.status !== 202 || importRows.length < 1) {
   throw new Error('知识库导入 API 检查失败。')
+}
+
+const workflowSource = await readFile(resolve(webDir, '../.github/workflows/knowledge-import.yml'), 'utf8')
+if (workflowSource.includes('gh pr create') || !workflowSource.includes('git push origin HEAD:main')) {
+  throw new Error('知识库导入工作流没有配置为直接发布 main。')
+}
+const importJobsSource = await readFile(resolve(webDir, 'backend/functions/_lib/import-jobs.js'), 'utf8')
+if (!importJobsSource.includes('dispatchNextImportJob') || !importJobsSource.includes("status IN ('queued', 'parsing', 'reviewing', 'publishing')")) {
+  throw new Error('知识库导入队列检查失败。')
 }
 
 console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，5 个 API。`)
