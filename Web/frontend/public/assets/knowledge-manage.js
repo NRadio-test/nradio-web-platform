@@ -7,9 +7,9 @@ const statusLabels = {
   parsing: '正在解析',
   reviewing: '结构化处理中',
   publishing: '正在发布',
-  review_ready: '等待审核',
-  pr_created: '等待 PR 审核',
-  completed: '已完成',
+  review_ready: '历史待审核',
+  pr_created: '历史 PR 审核',
+  completed: '已发布',
   failed: '处理失败',
   dispatch_failed: '启动失败',
   cancelled: '已作废'
@@ -105,7 +105,7 @@ const createTaskCard = (job) => {
     link.href = job.pr_url
     link.target = '_blank'
     link.rel = 'noreferrer'
-    link.textContent = job.status === 'review_ready' ? '查看审核分支 / PR ↗' : '查看 Draft PR ↗'
+    link.textContent = '查看关联记录 ↗'
     footer.append(link)
   }
 

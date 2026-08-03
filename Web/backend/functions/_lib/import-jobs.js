@@ -109,7 +109,7 @@ export const dispatchNextImportJob = async (env) => {
   const job = await env.KNOWLEDGE_DB.prepare(`
     UPDATE knowledge_import_jobs
     SET status = 'queued', progress = 10,
-        message = '审核与结构化任务已进入队列。', error = NULL, updated_at = ?
+        message = '自动结构化任务已进入队列。', error = NULL, updated_at = ?
     WHERE id = (
       SELECT id FROM knowledge_import_jobs
       WHERE status = 'stored'
@@ -131,7 +131,7 @@ export const dispatchNextImportJob = async (env) => {
     await updateJob(env, job.id, {
       status: 'dispatch_failed',
       progress: 5,
-      message: '文件已保存，但审核任务未能启动。',
+      message: '文件已保存，但自动处理任务未能启动。',
       error: error.message
     })
     return { ...job, status: 'dispatch_failed', error: error.message }

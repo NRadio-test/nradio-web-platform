@@ -8,7 +8,7 @@
     <title>导入知识 · NRadio-Bot</title>
     <link rel="icon" href="/assets/pengzai-v9.png" />
     <link rel="stylesheet" href="/assets/site.css?v=20260803-3" />
-    <script type="module" src="/assets/knowledge-manage.js?v=20260730-3"></script>
+    <script type="module" src="/assets/knowledge-manage.js?v=20260804-1"></script>
   </head>
   <body class="knowledge-page manage-page">
     <header class="site-header shell compact-header">
@@ -42,14 +42,14 @@
         <div>
           <p class="eyebrow"><span></span> CONTROLLED IMPORT</p>
           <h1>把原始资料，变成<br /><em>易检索的知识内容。</em></h1>
-          <p>上传文件后，服务器会保存原件、提取文字，并由结构化模型忠实整理成当前知识库格式。结果先进入固定审核分支，由成员确认后再合并发布。</p>
+          <p>上传文件后，服务器会保存原件、提取文字，并由结构化模型整理成当前知识库格式。系统会同步并校验知识数据，通过后自动发布。</p>
           <div class="session-user"><span>当前上传者</span><strong id="session-user-name">—</strong><button id="session-logout" type="button">退出</button></div>
         </div>
         <div class="workflow-card" aria-label="导入流程">
-          <span>01</span><p>验证文件与上传者</p>
-          <span>02</span><p>解析并由模型结构化</p>
-          <span>03</span><p>更新 GitHub 审核分支</p>
-          <span>04</span><p>成员审核后合并发布</p>
+          <span>01</span><p>验证身份并保存原件</p>
+          <span>02</span><p>提取文字并结构化整理</p>
+          <span>03</span><p>同步并校验知识数据</p>
+          <span>04</span><p>自动发布正式知识库</p>
         </div>
       </section>
 
@@ -87,7 +87,7 @@
 
           <label class="confirm-row">
             <input id="import-confirm" type="checkbox" required />
-            <span>我确认有权使用这份资料，并理解模型生成的内容仍需在 Pull Request 中人工审核。</span>
+            <span>我确认有权使用这份资料，并理解内容会在自动结构化和校验通过后发布到正式知识库。</span>
           </label>
           <button class="button button-primary submit-import" id="submit-import" type="submit">
             创建导入任务 <span>→</span>
@@ -114,7 +114,7 @@
         <div><span>!</span></div>
         <div>
           <h2>结构化原则</h2>
-          <p>系统默认上传资料已经过成员选择并允许写入知识库。模型只负责忠实总结、拆分主题、保留条件与日期并补充检索标签，不会因为内容属于联系方式、内部通知或非产品资料而过滤。</p>
+          <p>系统默认上传资料已经过成员选择并允许写入知识库。模型只负责忠实总结、拆分主题、保留条件与日期并补充检索标签；生成内容会与网页数据一起自动校验，通过后发布。</p>
         </div>
       </section>
       </div>
@@ -122,7 +122,7 @@
 
     <footer class="site-footer shell">
       <p>六位口令仅换取当前浏览器会话</p>
-      <p>所有正式变更均通过 GitHub Pull Request</p>
+      <p>通过校验的导入会自动发布到正式知识库</p>
       <p>© <span data-current-year></span> NRadio-Bot</p>
     </footer>
   </body>
