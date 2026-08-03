@@ -1,6 +1,6 @@
 # NRadio 知识库网站
 
-这个目录包含 `nradio.fallaxaura.dpdns.org` 的前端与 Cloudflare Pages Functions 后端。`frontend/` 保存可见页面和静态资源，`backend/` 保存 API；首页使用最新版鹏仔 OC，知识库页面位于 `/knowledge`，受控导入页面位于 `/knowledge/manage`。
+这个目录包含 `nradio.fallaxaura.dpdns.org` 的前端与 Cloudflare Pages Functions 后端。`frontend/` 保存可见页面和静态资源，`backend/` 保存 API；首页使用最新版鹏仔 OC，知识库页面位于 `/knowledge`，受控导入页面位于 `/knowledge/manage`，已发布条目的编辑页面位于 `/knowledge/manage/edit/?id=<InfoID>`。
 
 ## 本地预览
 
@@ -43,7 +43,8 @@ Cloudflare 仪表板批量粘贴若移除变量名下划线，也兼容别名 `K
 Cloudflare Variables：
 
 - `GITHUB_OWNER`、`GITHUB_REPOSITORY`、`GITHUB_IMPORT_WORKFLOW`、`GITHUB_IMPORT_REF`。
-- 迁移验证期间使用 `PUBLIC_BASE_URL=https://nradio-web-platform.pages.dev`；自定义域名切换到新项目后再改为 `https://nradio.fallaxaura.dpdns.org`。
+- `GITHUB_EDIT_WORKFLOW=knowledge-edit.yml`、`GITHUB_EDIT_REF=main`。
+- `PUBLIC_BASE_URL=https://nradio.fallaxaura.dpdns.org`。
 
 GitHub Actions Secret：
 
@@ -60,3 +61,5 @@ GitHub Actions Variables：
 ## 内容来源
 
 网页数据由 `../knowledge-base/import/knowledge.jsonl` 生成。不要直接编辑 `frontend/public/data/knowledge.json` 或 `backend/functions/_data/knowledge.js`，否则下次同步会覆盖更改。
+
+网页与 AstrBot 管理页面的“编辑”入口都指向受六位口令保护的网页编辑器。可修改标题、正文、标签、来源和可信度，InfoID、原始上传者与原核验日期不会被覆盖。`knowledge-edit.yml` 验证内容后直接更新 `main`，并把每次变更追加到 `knowledge-base/edits/<InfoID>.jsonl`；AstrBot 端只需要 GitHub Contents Read 权限。
