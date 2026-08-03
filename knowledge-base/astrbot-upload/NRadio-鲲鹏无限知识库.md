@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 113 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 119 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -1134,3 +1134,57 @@ mwan3 的 online 取决于 tracking 探测，不等同于 netifd 接口 up。检
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：报错、mwan3、Offline、Tracking、多WAN
+
+## 报错：pbr service failed / resolver set not supported
+
+PBR 启动失败常见于 firewall4/ipset 模式不匹配、dnsmasq 不是 full 变体、目标 interface 不存在、策略解析域名失败或与代理插件抢 fwmark。查看 `service pbr status`、日志、nft set 和 `ip rule`，先用 IP/CIDR 规则验证，再启用域名策略。不要并行启用多个 PBR 实现。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、PBR、ServiceFailed、dnsmasq-full、fwmark
+
+## 报错：WireGuard latest handshake: never
+
+确认接口有私钥、peer 公钥没有贴反、Endpoint DNS/端口可达、服务端 UDP 端口已放行并逐级转发。两端时间不会影响 WireGuard 密钥认证，但错误 AllowedIPs、NAT 和路由会影响握手后的数据。用 WAN 抓包看 UDP 是否发出/返回；完全无返回通常是地址、端口、防火墙或上级 NAT。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、WireGuard、HandshakeNever、UDP、NAT
+
+## 报错：WireGuard 有握手但 ping 不通
+
+握手成功证明密钥与 UDP 路径成立，不证明路由正确。检查两端 AllowedIPs、隧道地址是否重叠、OpenWrt firewall zone forwarding、LAN 回程路由、rp_filter/PBR 和是否需要 NAT。分别 ping 对端隧道地址、对端路由器 LAN 地址、LAN 主机，逐层定位。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、WireGuard、HandshakeNoTraffic、AllowedIPs
+
+## 报错：OpenClash/HomeProxy 启动失败或透明代理后全网断网
+
+先停用插件恢复原始路由和 DNS，再查插件自身日志、核心版本、配置校验、53 端口、TUN/TProxy 内核模块、fw4 nft 规则和策略路由。OpenClash、HomeProxy、PassWall、PBR、mwan3 不应同时接管默认路由/DNS；固件升级后还要核对插件与核心版本。不要用跳过证书、force depends 或 chmod 777 作为通用修复。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、OpenClash、HomeProxy、全网断网、TProxy
+
+## 报错：Docker overlay2 invalid argument / no space left
+
+容器数据目录若位于不支持 overlay2 特性的文件系统、TF 普通小 overlay 或只读挂载，会启动失败。把 Docker root 移到可靠的 ext4/btrfs 外置盘，确认 inode、空间、内核模块和 mount propagation；OpenWrt 自身 overlay 与 Docker overlay2 是不同层。容器网络还会增加 bridge、nft 和 MTU 复杂度。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、Docker、Overlay2、NoSpace、容器
+
+## 报错：保存并应用后 LuCI 倒计时回滚
+
+LuCI 发现浏览器无法重新连接新地址时会回滚网络配置，这是保护机制。改 LAN IP、VLAN、桥和管理口后，电脑可能需要重新获取地址或切到新 VLAN。远程操作应使用“应用未检查”仅在你明确有带外恢复时，并提前保存 `/etc/config/network`、准备第二管理口或串口。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/442c57db-db55-41d7-acbe-6b0aa3ea8e13-openwrt-errors-part-06-of-06.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：报错、LuCI、ApplyRollback、网络、失联
