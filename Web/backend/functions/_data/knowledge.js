@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 43,
+    "entry_count": 50,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -735,6 +735,123 @@ export const knowledgePayload = {
         "Linux6.6.94",
         "mediatek",
         "filogic"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-01",
+      "title": "以太网链路问题先看物理协商",
+      "text": "排查以太网链路问题时，应首先检查物理协商状态。使用 `ip -s link` 查看 errors 和 dropped 统计，使用 `ethtool <device>` 查看速率、双工、link detected 和协商能力，使用 dmesg 查看 PHY reset 相关信息。2.5G/5G/10G 等高速链路对线材、模块、温度和对端兼容性更敏感；当吞吐只有约 94Mbps 时，通常是协商到了 100M。建议先更换合格的短线和端口，再考虑调整驱动或 flow offload。来源：https://openwrt.org/docs/guide-user/base-system/basic；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "Ethernet",
+        "ethtool",
+        "2.5G",
+        "协商"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-02",
+      "title": "4G/5G 模组先识别工作模式",
+      "text": "蜂窝模组可能呈现 QMI、MBIM、ECM、NCM、RNDIS、串口 PPP 或厂商 PCIe/MHI 接口。使用 `lsusb -t`、`dmesg`、`ls /dev/cdc-wdm* /dev/ttyUSB*` 和驱动绑定情况来判断实际工作模式，不能看到 ttyUSB 就假定数据走串口。需要选择与固件模式匹配的 proto 和驱动，避免同时启动多个拨号管理器抢占模组。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "5G模组",
+        "QMI",
+        "MBIM",
+        "ECM",
+        "NCM",
+        "RNDIS"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-03",
+      "title": "QMI 与 MBIM 的基本排障",
+      "text": "QMI 通常由 qmi_wwan 驱动配合 uqmi 或厂商工具管理，MBIM 通常由 cdc_mbim 驱动配合 umbim 或 ModemManager 管理；两者通常通过 `/dev/cdc-wdmX` 控制，并由 wwanX 等网卡承载数据。排障时需检查 SIM PIN、APN、PDP 类型、注册状态、raw-ip 设置、MTU、默认路由和 DNS。拨号显示 connected 但无流量时，需要同时抓取控制日志与数据接口日志。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/ltedongle；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "QMI",
+        "MBIM",
+        "cdc-wdm",
+        "wwan",
+        "APN"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-04",
+      "title": "AT 口与数据口的角色不同",
+      "text": "一个模组可能暴露多个 ttyUSB/ttyACM 端口：AT、诊断、GPS/NMEA、modem 等端口用途不同，编号会随固件/USB 组合变化。应通过 `ATI`、`AT+CPIN?`、`AT+CEREG?` 等只读命令验证 AT 口，避免向诊断口乱发命令。QMI/MBIM 数据会话通常不通过 AT 串口承载。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "AT命令",
+        "ttyUSB",
+        "5G模组",
+        "诊断"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-05",
+      "title": "ModemManager 与专用拨号脚本不要并行",
+      "text": "ModemManager 会探测并管理支持的 QMI/MBIM/串口模组，而厂商 qmodem、quectel-CM、uqmi 或自定义 hotplug 也可能执行同样的管理工作。多个管理器同时启用会导致反复断线、端口 busy、配置互相覆盖。排障前应确认系统到底由哪个服务拥有模组，并停用其余服务。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/modemmanager；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "ModemManager",
+        "qmodem",
+        "quectel-CM",
+        "冲突"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-06",
+      "title": "蜂窝链路多 WAN 要保持会话出口一致",
+      "text": "5G 与有线 WAN 做 mwan3 时，健康检查应选择模组实际 data interface，策略要保证同一连接及相关协议流走同一出口。公网地址、CGNAT、DNS 和 MTU 可能在重拨后改变；入站服务不应假定蜂窝公网可达。故障切换会中断依赖源地址的现有会话，这是正常现象。来源：https://openwrt.org/docs/guide-user/network/wan/multiwan/mwan3；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "5G",
+        "mwan3",
+        "多WAN",
+        "会话",
+        "CGNAT"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-07",
+      "title": "串口救砖必须确认电平",
+      "text": "路由器板载 UART 常为 3.3V TTL，不能直接接 RS-232，也不应未经确认连接 USB-TTL 的 VCC。通常只接 GND、TX、RX 并交叉连接，先确认电平和波特率。写入 bootloader、factory/calibration 分区前必须备份，因为这些分区可能包含 MAC、Wi-Fi 校准和设备唯一数据。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "UART",
+        "串口",
+        "救砖",
+        "3.3V",
+        "factory"
       ]
     }
   ]
