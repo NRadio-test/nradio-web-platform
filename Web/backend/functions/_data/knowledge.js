@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 57,
+    "entry_count": 64,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -973,6 +973,133 @@ export const knowledgePayload = {
         "F2FS",
         "NTFS",
         "btrfs"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-01",
+      "title": "C2000MAX 默认网络把 eth1 和 hnat 放在 LAN",
+      "text": "设备专用 `/etc/board.d/02_network` 对 `nradio,c2000-max` 执行 `ucidef_set_interface_lan \"eth1 hnat\"`，没有在该分支创建标准 WAN。这说明该镜像的默认端口/硬件 NAT 拓扑与普通多口路由器不同，可能由蜂窝模组或后续脚本创建上联。排障时应先运行 `ubus call network.interface dump` 并查看实际拨号接口，不要假设 eth0/wan 就是互联网出口。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "eth1",
+        "hnat",
+        "LAN",
+        "网络",
+        "拨号"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-02",
+      "title": "C2000MAX 防火墙和加速默认值",
+      "text": "固件基于 firewall4：lan zone 的 input/output/forward 均 ACCEPT，wan zone input/forward REJECT、output ACCEPT，并启用 IPv4 masquerade 与 mtu_fix。配置中 `fullcone=1`，软件和硬件 flow offloading 默认均为 0；同时预装 MediaTek HNAT、WED、TurboACC、MTK HQoS/eQoS。加速、代理、统计和 SQM/限速可能互相影响，性能排障时应一次只启用一种路径并记录 nft/route 状态。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "firewall4",
+        "fullcone",
+        "HNAT",
+        "WED",
+        "TurboACC"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-03",
+      "title": "C2000MAX 无线驱动与默认生成逻辑",
+      "text": "镜像同时包含 `kmod-mt7993`、`kmod-mt_wifi7` 和厂商 mtwifi 配置层。mtwifi 默认生成脚本会为 2.4G/5G/6G 设置 ImmortalWrt SSID、US 国家码、100% txpower，5G/6G 使用 EHT160，初始生成逻辑的 encryption 为 none；但马野教程称实机 Wi-Fi 密码为 admin，说明首次启动或设备环境还有覆盖。应以实机 `/etc/config/wireless` 为准，并把 country 改为实际使用国家/地区。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "mt7993",
+        "WiFi7",
+        "EHT160",
+        "无线",
+        "配置"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-04",
+      "title": "C2000MAX 预装的蜂窝与代理组件",
+      "text": "镜像预装 qmodem-next、ubus-at-daemon、at-webserver、quectel-CM-5G-M、QMI/MBIM/NCM/RNDIS/串口驱动、MHI/PCIe 驱动、短信转发；也预装 sing-box 与 HomeProxy。该镜像适合蜂窝模组管理和代理分流，但 qmodem、quectel-CM、ModemManager 类工具不应同时抢占同一模组；HomeProxy/sing-box、PBR、mwan 与硬件加速并用时要检查 mark 和路由表。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "5G",
+        "qmodem",
+        "QMI",
+        "MBIM",
+        "MHI",
+        "HomeProxy",
+        "sing-box"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-05",
+      "title": "C2000MAX 默认启用的管理服务风险",
+      "text": "镜像默认启用 Dropbear、uhttpd、ttyd、SFTP、at-webserver、ubus-at-daemon 等服务。Dropbear 绑定 lan，允许密码和 root 密码登录；uhttpd 同时监听 80/443，但 `redirect_https=0`；root 默认密码是 admin。虽然标准防火墙不允许 WAN input，若用户把蜂窝/上联误并入 lan 或修改 zone，管理服务可能暴露。建议改强密码、关闭不用的 ttyd/AT Web/SFTP，并启用 HTTPS 管理。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "Dropbear",
+        "ttyd",
+        "uhttpd",
+        "默认服务",
+        "安全"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-06",
+      "title": "C2000MAX 软件源与内核模块版本风险",
+      "text": "固件的 distfeeds 原始地址指向 ImmortalWrt 24.10-SNAPSHOT，首次启动的中文默认脚本会把域名替换为 `https://mirrors.vsean.net/openwrt`。snapshot 仓库会滚动，而本镜像内核固定为 6.6.94；较新的仓库已经出现不同内核 ABI，因此后续安装 kmod 很可能报 kernel dependency mismatch。不要强装，应使用与镜像同批的软件源/包缓存，或重刷作者提供的完整新镜像。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "opkg",
+        "软件源",
+        "snapshot",
+        "kmod",
+        "ABI"
+      ]
+    },
+    {
+      "id": "upload-20260803-7682e618b4-07",
+      "title": "C2000MAX 镜像内可验证的文件哈希",
+      "text": "本地包关键 SHA-256：镜像 `f20a5011856d163233dd3b3fc4f1c30a59b544841ff09a09ffc7fff5fc208efd`；刷机说明 `dd2f987bca38faaed87d55bf6b5edc822f3c653f25978f5dd3362970774d5251`；Rufus.exe `abbf04d50a44a9612c027fc8072f6da67f5bcda2b826f1f852c9c24d7a1fcdff`；DiskGenius EXE `736cda5b2775ef1e9b3c1aca74c6bb2adfe737d001dcd935bcbe8ee62958ebbb`。哈希只能确认文件一致，不能替代对第三方可执行文件的信任与安全扫描。作者：马野。来源：local-source://C2000MAX-MaYe-package",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/940835bf-7014-4365-9d3e-5fb6f1ddef46-c2000max-maye-part-03-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "SHA256",
+        "Rufus",
+        "DiskGenius",
+        "完整性"
       ]
     }
   ]
