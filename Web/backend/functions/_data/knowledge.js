@@ -2,9 +2,9 @@
 export const knowledgePayload = {
   "meta": {
     "name": "NRadio 鲲鹏无限知识库",
-    "generated_at": "2026-08-02T00:00:00.000Z",
-    "verified_at": "2026-08-02",
-    "entry_count": 36,
+    "generated_at": "2026-08-03T00:00:00.000Z",
+    "verified_at": "2026-08-03",
+    "entry_count": 50,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -614,6 +614,244 @@ export const knowledgePayload = {
         "3.3V",
         "factory",
         "OpenWrt"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-01",
+      "title": "马野 C2000MAX 刷机包的内容与作者",
+      "text": "这套资料由马野整理，原目录名为“C2000MAX - 刷最新OP教程加挂载TF卡空间”。包内包含刷机说明 TXT、Rufus、DiskGenius Pro、1 张 Rufus 操作图、3 段操作视频，以及 `nradio_c2000-max-SD_0305.img`。知识条目基于对这些本地文件和镜像根文件系统的只读分析，不代表 OpenWrt 或 ImmortalWrt 官方发布。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "马野",
+        "刷机包",
+        "来源"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-02",
+      "title": "C2000MAX 刷 TF 卡的完整顺序",
+      "text": "马野说明的顺序是：先在 C2000MAX 官方系统中把 SD 卡启动优先级保存；用 Rufus 等镜像写入工具把 `nradio_c2000-max-SD_0305.img` 整盘写入 TF 卡；在 Windows DiskGenius 中把镜像之后的未分配空间新建并格式化为 ext4；把卡插回 C2000MAX 后上电；等待 5700 模组自动重启一次且 MAX 主机也重启一次；登录 192.168.7.1 后进入“系统→备份/升级”执行重置，并等待重置和再次重启完成。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "刷机",
+        "TF卡",
+        "Rufus",
+        "DiskGenius",
+        "步骤"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-03",
+      "title": "C2000MAX 必须先保存 SD 启动优先级",
+      "text": "教程第一步发生在设备的官方系统：进入启动相关设置，把 SD/TF 卡设为优先启动并保存。视频显示的是 C2000 MAX 原系统的启动项界面。若未保存，设备可能仍从内部存储启动，看起来像刷卡失败；这时应先确认实际启动介质，而不是反复重写 TF 卡。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "SD启动",
+        "官方系统",
+        "启动项"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-04",
+      "title": "Rufus 写入的是整盘镜像而不是复制文件",
+      "text": "Rufus 中要选中正确的 TF 卡设备，再选择以 `mwrt`/本包镜像结尾的 `.img` 文件并开始写入。写盘会覆盖目标卡的 GPT 和分区，不能把 img 当普通文件复制进现有分区。操作前按容量和设备名再次确认目标卡，防止误覆盖电脑磁盘。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "Rufus",
+        "img",
+        "整盘写入",
+        "数据清除"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-05",
+      "title": "C2000MAX 镜像的 GPT 分区布局",
+      "text": "对镜像 GPT 只读解析得到 6 个分区：bl2（LBA 1024–8191，3.5MiB）、u-boot-env（8192–9215，512KiB）、factory（9216–17407，4MiB）、fip（17408–21503，2MiB）、kernel（21504–87039，32MiB）和 rootfs（87040–496639，200MiB）。镜像文件仅写入了 rootfs 的已用前段，因此写入大容量 TF 后会留下可再分区的尾部空间。不要修改 bl2、u-boot-env、factory 或 fip。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "GPT",
+        "bl2",
+        "u-boot",
+        "factory",
+        "fip",
+        "kernel",
+        "rootfs"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-06",
+      "title": "C2000MAX rootfs 的格式和构建时间",
+      "text": "rootfs 分区开头是 SquashFS 4.0，小端、XZ 压缩、262144 字节块，文件系统创建时间为 2026-03-03 09:17:40（时间来自镜像元数据）。根文件系统约 36.65MB、3512 个 inode；镜像 SHA-256 为 `f20a5011856d163233dd3b3fc4f1c30a59b544841ff09a09ffc7fff5fc208efd`。这些信息可用于确认用户是否拿到同一版镜像。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "SquashFS",
+        "SHA256",
+        "固件版本"
+      ]
+    },
+    {
+      "id": "upload-20260803-9949756e88-07",
+      "title": "C2000MAX 固件的真实发行版身份",
+      "text": "镜像不是 OpenWrt 官方固件，而是 `xshark by ImmortalWrt 24.10-SNAPSHOT r33422+3-bf62ca2211`，target 为 `mediatek/filogic`，架构 `aarch64_cortex-a53`，内核 Linux 6.6.94。它带 `no-all override` taint，并含第三方/定制组件。回答软件安装与升级问题时必须按 ImmortalWrt 24.10 snapshot 和本镜像 ABI 处理，不能套用 OpenWrt 25.12 的 apk 命令。\n来源：local-source://C2000MAX-MaYe-package（原始来源：马野提供的 C2000MAX 刷机包）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/5bdac4f0-5482-4ed0-847e-713ea3b62606-c2000max-maye-part-01-of-03.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "C2000MAX",
+        "ImmortalWrt",
+        "24.10",
+        "Linux6.6.94",
+        "mediatek",
+        "filogic"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-01",
+      "title": "以太网链路问题先看物理协商",
+      "text": "排查以太网链路问题时，应首先检查物理协商状态。使用 `ip -s link` 查看 errors 和 dropped 统计，使用 `ethtool <device>` 查看速率、双工、link detected 和协商能力，使用 dmesg 查看 PHY reset 相关信息。2.5G/5G/10G 等高速链路对线材、模块、温度和对端兼容性更敏感；当吞吐只有约 94Mbps 时，通常是协商到了 100M。建议先更换合格的短线和端口，再考虑调整驱动或 flow offload。来源：https://openwrt.org/docs/guide-user/base-system/basic；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "Ethernet",
+        "ethtool",
+        "2.5G",
+        "协商"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-02",
+      "title": "4G/5G 模组先识别工作模式",
+      "text": "蜂窝模组可能呈现 QMI、MBIM、ECM、NCM、RNDIS、串口 PPP 或厂商 PCIe/MHI 接口。使用 `lsusb -t`、`dmesg`、`ls /dev/cdc-wdm* /dev/ttyUSB*` 和驱动绑定情况来判断实际工作模式，不能看到 ttyUSB 就假定数据走串口。需要选择与固件模式匹配的 proto 和驱动，避免同时启动多个拨号管理器抢占模组。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "5G模组",
+        "QMI",
+        "MBIM",
+        "ECM",
+        "NCM",
+        "RNDIS"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-03",
+      "title": "QMI 与 MBIM 的基本排障",
+      "text": "QMI 通常由 qmi_wwan 驱动配合 uqmi 或厂商工具管理，MBIM 通常由 cdc_mbim 驱动配合 umbim 或 ModemManager 管理；两者通常通过 `/dev/cdc-wdmX` 控制，并由 wwanX 等网卡承载数据。排障时需检查 SIM PIN、APN、PDP 类型、注册状态、raw-ip 设置、MTU、默认路由和 DNS。拨号显示 connected 但无流量时，需要同时抓取控制日志与数据接口日志。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/ltedongle；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "QMI",
+        "MBIM",
+        "cdc-wdm",
+        "wwan",
+        "APN"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-04",
+      "title": "AT 口与数据口的角色不同",
+      "text": "一个模组可能暴露多个 ttyUSB/ttyACM 端口：AT、诊断、GPS/NMEA、modem 等端口用途不同，编号会随固件/USB 组合变化。应通过 `ATI`、`AT+CPIN?`、`AT+CEREG?` 等只读命令验证 AT 口，避免向诊断口乱发命令。QMI/MBIM 数据会话通常不通过 AT 串口承载。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/start；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "AT命令",
+        "ttyUSB",
+        "5G模组",
+        "诊断"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-05",
+      "title": "ModemManager 与专用拨号脚本不要并行",
+      "text": "ModemManager 会探测并管理支持的 QMI/MBIM/串口模组，而厂商 qmodem、quectel-CM、uqmi 或自定义 hotplug 也可能执行同样的管理工作。多个管理器同时启用会导致反复断线、端口 busy、配置互相覆盖。排障前应确认系统到底由哪个服务拥有模组，并停用其余服务。来源：https://openwrt.org/docs/guide-user/network/wan/wwan/modemmanager；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "ModemManager",
+        "qmodem",
+        "quectel-CM",
+        "冲突"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-06",
+      "title": "蜂窝链路多 WAN 要保持会话出口一致",
+      "text": "5G 与有线 WAN 做 mwan3 时，健康检查应选择模组实际 data interface，策略要保证同一连接及相关协议流走同一出口。公网地址、CGNAT、DNS 和 MTU 可能在重拨后改变；入站服务不应假定蜂窝公网可达。故障切换会中断依赖源地址的现有会话，这是正常现象。来源：https://openwrt.org/docs/guide-user/network/wan/multiwan/mwan3；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "5G",
+        "mwan3",
+        "多WAN",
+        "会话",
+        "CGNAT"
+      ]
+    },
+    {
+      "id": "upload-20260803-368365a3ac-07",
+      "title": "串口救砖必须确认电平",
+      "text": "路由器板载 UART 常为 3.3V TTL，不能直接接 RS-232，也不应未经确认连接 USB-TTL 的 VCC。通常只接 GND、TX、RX 并交叉连接，先确认电平和波特率。写入 bootloader、factory/calibration 分区前必须备份，因为这些分区可能包含 MAC、Wi-Fi 校准和设备唯一数据。来源：https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset；核验日期：2026-08-03。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/91ef70d2-1e28-4dae-956c-eb7e194de0c8-openwrt-geek-part-09-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "UART",
+        "串口",
+        "救砖",
+        "3.3V",
+        "factory"
       ]
     }
   ]
