@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 33,
+    "entry_count": 39,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -591,6 +591,105 @@
         "展会直播",
         "人群密集",
         "租房"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-01",
+      "title": "C8-660 开放刷机信息",
+      "text": "鲲鹏张导的公开视频曾介绍 C8-660 的开放刷机和社区共创策略，并邀请开源社区参与适配。这项信息针对 C8-660 及视频发布时的策略；其他型号是否支持刷机，应根据对应硬件版本和当前固件资料确认。原条目 ID：policy-001；来源：https://jingxuan.douyin.com/m/video/7298330506465119551；来源类型：douyin_video；原上传者：FallaxAura；核验日期：2026-07-30；可信度：medium。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "medium",
+      "tags": [
+        "C8-660",
+        "开放刷机",
+        "开源",
+        "社区共创"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-02",
+      "title": "什么是 5G CPE",
+      "text": "5G CPE 接收运营商的 5G 或 4G 蜂窝网络，再通过 WiFi 或网口为手机、电脑、摄像头等终端提供网络。它适合不方便安装有线宽带、需要临时网络、经常移动或希望快速部署网络的场景。原条目 ID：faq-001；来源：https://help.nradiowifi.com/；来源类型：official_help；原上传者：FallaxAura；核验日期：2026-07-30；可信度：high。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "FAQ",
+        "5G CPE",
+        "原理",
+        "无线宽带"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-03",
+      "title": "5G CPE 选型前需要确认的信息",
+      "text": "推荐 5G CPE 前，应确认使用国家、城市和具体区域，运营商与 SIM 卡套餐，固定或移动使用，室内或户外，同时接入设备数，以及是否需要 2.5G 网口、双卡或多卡、全球漫游、电池、快充、外置天线、户外安装或开放刷机，并了解预算范围。原条目 ID：faq-002；来源：https://www.nradiowifi.com/chanpin/；来源类型：official_web；原上传者：FallaxAura；核验日期：2026-07-30；可信度：high。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "FAQ",
+        "选型",
+        "需求收集",
+        "导购"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-04",
+      "title": "鲲鹏产品可能适用的场景",
+      "text": "官网与鲲鹏张导的公开视频涉及家庭或出租屋免拉线宽带、车辆和房车网络、展会或户外直播、偏远作业区、旅行随身网络和企业多终端接入。实际选型需要结合所在地信号、运营商、终端数、移动性、接口、天线和供电条件。原条目 ID：faq-003；来源：https://www.nradiowifi.com/chanpin/；来源类型：official_web；原上传者：FallaxAura；核验日期：2026-07-30；可信度：medium_high。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "medium_high",
+      "tags": [
+        "FAQ",
+        "使用场景",
+        "家庭网络",
+        "房车",
+        "直播",
+        "企业网络"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-05",
+      "title": "同一地点不同设备速度不同的原因",
+      "text": "同一地点的不同设备可能因蜂窝频段和载波聚合能力、芯片与天线设计、SIM 卡套餐或限速策略、连接基站、设备摆放遮挡以及测试时网络拥塞程度不同而出现速度差异。公平比较应尽量使用同一 SIM 卡、同一位置、相近时间和同一测速服务器。原条目 ID：faq-004；来源：https://help.nradiowifi.com/；来源类型：official_help；原上传者：FallaxAura；核验日期：2026-07-30；可信度：medium_high。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "medium_high",
+      "tags": [
+        "FAQ",
+        "测速",
+        "信号",
+        "速度差异",
+        "排障"
+      ]
+    },
+    {
+      "id": "upload-20260803-51091c0fcc-06",
+      "title": "免拉线宽带与有线宽带的区别",
+      "text": "免拉线宽带的主要优势是部署灵活，实际速度和稳定性会随信号、基站容量、蜂窝频段、套餐和环境变化。有线宽带通常更稳定；选择哪种方案应结合安装条件、移动需求、成本和当地网络质量。原条目 ID：faq-005；来源：https://help.nradiowifi.com/；来源类型：official_help；原上传者：FallaxAura；核验日期：2026-07-30；可信度：high。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/89617f5d-a85b-4a2f-a3b2-af8a5a8b5189-nradio-legacy-part-03-of-04.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "FAQ",
+        "免拉线",
+        "有线宽带",
+        "稳定性"
       ]
     }
   ]
