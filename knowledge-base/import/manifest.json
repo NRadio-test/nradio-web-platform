@@ -6,7 +6,7 @@
   "format": "jsonl",
   "encoding": "utf-8",
   "fields": {
-    "id": "稳定的知识块标识",
+    "id": "稳定且唯一的 InfoID，用于网页检索、AstrBot 管理和单条删除",
     "title": "知识块标题",
     "text": "用于检索与回答的正文",
     "source_url": "原始公开来源",
