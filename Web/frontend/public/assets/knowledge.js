@@ -25,7 +25,11 @@ const sourceLabels = {
   official_help: '官方帮助中心',
   douyin_profile: '抖音主页',
   douyin_video: '抖音公开视频',
-  user_upload: '成员上传资料'
+  user_upload: '成员上传资料',
+  official_documentation_summary: '官方文档整理',
+  error_resolution_guide: '报错解决指南',
+  community_and_plugin_guide: '社区与插件指南',
+  local_package_analysis: '本地安装包分析'
 }
 
 const createElement = (tag, className, text) => {
@@ -76,7 +80,7 @@ const renderFilters = () => {
 
 const matchesEntry = (entry) => {
   const query = state.query.trim().toLocaleLowerCase('zh-CN')
-  const haystack = [entry.title, entry.text, entry.uploaded_by, ...entry.tags].join(' ').toLocaleLowerCase('zh-CN')
+  const haystack = [entry.id, entry.title, entry.text, entry.source_url, entry.source_type, entry.uploaded_by, ...entry.tags].join(' ').toLocaleLowerCase('zh-CN')
   const queryMatch = !query || query.split(/\s+/).every((part) => haystack.includes(part))
   const tagMatch = state.tag === '全部' || entry.tags.includes(state.tag)
   return queryMatch && tagMatch
@@ -99,7 +103,7 @@ const createCard = (entry, index) => {
 
   const footer = createElement('div', 'card-footer')
   const identity = createElement('div', 'entry-identity')
-  const id = createElement('span', 'entry-id', entry.id)
+  const id = createElement('span', 'entry-id', `InfoID · ${entry.id}`)
   const uploader = createElement('span', 'entry-uploader', `上传者 · ${entry.uploaded_by || '未知'}`)
   identity.append(id, uploader)
   const source = createElement('a', '', '查看来源 ↗')

@@ -1,4 +1,4 @@
-name: Import knowledge
+name: Review knowledge import
 
 on:
   workflow_dispatch:
@@ -20,12 +20,13 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: knowledge-review-branch
+  cancel-in-progress: false
+
 jobs:
-  prepare:
+  review:
     runs-on: ubuntu-latest
-    outputs:
-      entry_count: ${{ steps.import.outputs.entry_count }}
-      document_path: ${{ steps.import.outputs.document_path }}
     env:
       JOB_ID: ${{ inputs.job_id }}
       FILE_NAME: ${{ inputs.file_name }}
@@ -37,6 +38,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare main branch
+        run: |
+          git config user.name "NRadio Knowledge Bot"
+          git config user.email "knowledge-bot@users.noreply.github.com"
+          git fetch origin main
+          git switch -C main origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -58,7 +68,7 @@ jobs:
 
       - name: Download protected source
         run: |
-          mkdir -p /tmp/nradio-import/artifact
+          mkdir -p /tmp/nradio-import
           curl --fail-with-body --silent --show-error \
             "$BASE_URL/api/knowledge/import/$JOB_ID/metadata" \
             -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
@@ -74,9 +84,9 @@ jobs:
             -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
             -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"status":"reviewing","progress":50,"message":"结构化模型正在并行整理可检索知识。"}'
+            --data '{"status":"reviewing","progress":50,"message":"结构化模型正在整理可检索的知识草稿。"}'
 
-      - name: Parse and structure document
+      - name: Parse and review document
         id: import
         run: |
           python scripts/knowledge_import.py \
@@ -84,7 +94,7 @@ jobs:
             --file-name "$FILE_NAME" \
             --job-id "$JOB_ID" \
             --metadata /tmp/nradio-import/metadata.json \
-            --output-root /tmp/nradio-import/artifact \
+            --output-root "$GITHUB_WORKSPACE" \
             --github-repository "$GITHUB_REPOSITORY" \
             > /tmp/nradio-import/result.json
           python - <<'PY'
@@ -92,66 +102,9 @@ jobs:
           from pathlib import Path
           result = json.loads(Path('/tmp/nradio-import/result.json').read_text())
           with Path(os.environ['GITHUB_OUTPUT']).open('a') as output:
-              for key in ('entry_count', 'document_path'):
+              for key in ('entry_count', 'document_path', 'decision'):
                   output.write(f"{key}={result[key]}\n")
           PY
-
-      - name: Upload isolated import artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: knowledge-import-${{ inputs.job_id }}
-          path: |
-            /tmp/nradio-import/artifact/knowledge-base
-            /tmp/nradio-import/result.json
-          if-no-files-found: error
-          retention-days: 1
-
-      - name: Report preparation failure
-        if: failure()
-        run: |
-          curl --silent --show-error \
-            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
-            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data '{"status":"failed","progress":100,"message":"资料解析或结构化失败，请检查 GitHub Actions 日志。","error":"knowledge prepare job failed"}' || true
-
-  publish:
-    needs: prepare
-    runs-on: ubuntu-latest
-    concurrency:
-      group: knowledge-main-publish
-      queue: max
-    env:
-      JOB_ID: ${{ inputs.job_id }}
-      FILE_NAME: ${{ inputs.file_name }}
-      BASE_URL: ${{ inputs.base_url }}
-      IMPORT_SERVICE_TOKEN: ${{ secrets.KNOWLEDGE_IMPORT_SERVICE_TOKEN }}
-    steps:
-      - name: Checkout latest main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Configure knowledge commit identity
-        run: |
-          git config user.name "NRadio Knowledge Bot"
-          git config user.email "knowledge-bot@users.noreply.github.com"
-          git fetch origin main
-          git switch -C main origin/main
-
-      - name: Download prepared artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: knowledge-import-${{ inputs.job_id }}
-          path: /tmp/nradio-publish
-
-      - name: Apply isolated knowledge result
-        run: |
-          python scripts/apply_knowledge_import.py \
-            --artifact-root /tmp/nradio-publish/artifact \
-            --output-root "$GITHUB_WORKSPACE" \
-            --result /tmp/nradio-publish/result.json
 
       - name: Synchronize generated knowledge
         run: npm --prefix Web run sync
@@ -159,20 +112,30 @@ jobs:
       - name: Validate generated knowledge
         run: npm --prefix Web run check
 
-      - name: Publish directly to main
+      - name: Mark task as publishing
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
+            -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"status":"publishing","progress":85,"message":"验证通过，正在发布到正式知识库。"}'
+
+      - name: Publish validated knowledge
         run: |
           git add knowledge-base Web/frontend/public/data/knowledge.json Web/backend/functions/_data/knowledge.js
-          git commit -m "knowledge: import $FILE_NAME ($JOB_ID)"
+          git commit -m "knowledge: review $FILE_NAME ($JOB_ID)"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
 
-      - name: Report successful publication
+      - name: Report completion
         run: |
-          python - <<'PY' > /tmp/nradio-publish/callback.json
+          python - <<'PY' > /tmp/nradio-import/callback.json
           import json, os
           print(json.dumps({
               'status': 'completed',
               'progress': 100,
-              'message': '知识已经自动发布到 main，Cloudflare 与 AstrBot 将按配置同步。',
+              'message': '内容已经验证并自动发布到正式知识库。',
               'document_path': os.environ['DOCUMENT_PATH'],
               'entry_count': int(os.environ['ENTRY_COUNT']),
           }, ensure_ascii=False))
@@ -181,16 +144,16 @@ jobs:
             -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
             -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
             -H "Content-Type: application/json" \
-            --data-binary @/tmp/nradio-publish/callback.json
+            --data-binary @/tmp/nradio-import/callback.json
         env:
-          DOCUMENT_PATH: ${{ needs.prepare.outputs.document_path }}
-          ENTRY_COUNT: ${{ needs.prepare.outputs.entry_count }}
+          DOCUMENT_PATH: ${{ steps.import.outputs.document_path }}
+          ENTRY_COUNT: ${{ steps.import.outputs.entry_count }}
 
-      - name: Report publication failure
+      - name: Report failure
         if: failure()
         run: |
           curl --silent --show-error \
             -X POST "$BASE_URL/api/knowledge/import/$JOB_ID/callback" \
             -H "Authorization: Bearer $IMPORT_SERVICE_TOKEN" \
             -H "Content-Type: application/json" \
-            --data '{"status":"failed","progress":100,"message":"知识写入 main 失败，请检查 GitHub Actions 日志。","error":"knowledge publish job failed"}' || true
+            --data '{"status":"failed","progress":100,"message":"导入任务失败，请检查 GitHub Actions 日志。","error":"knowledge-import workflow failed"}' || true

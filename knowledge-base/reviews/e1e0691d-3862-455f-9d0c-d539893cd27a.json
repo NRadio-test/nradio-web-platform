@@ -1,0 +1,18 @@
+{
+  "job_id": "e1e0691d-3862-455f-9d0c-d539893cd27a",
+  "file_name": "01-5G-CPE-详细硬件参数.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "acc90fa962f0e2d6092c22ee12a6efb581cf9b1735388bff0ef1cd9fbef1214a",
+  "decision": "accept",
+  "review_notes": [
+    "所有型号参数均已按资料原文拆分，未合并不同型号。",
+    "C2000-500 的 Wi-Fi 规格存在目录与产品页不一致，已按原文保留说明。",
+    "C5800-650 官网未完整列出蜂窝频段，已按原文注明需以实机模组铭牌确认。",
+    "NBCPE-668GL 官网参数长图频段字段显示不完整，已按原文注明需以实机模组铭牌确认。",
+    "理论速率已标注为官方理论最高值，非实际网速承诺。"
+  ],
+  "entry_count": 15,
+  "document_path": "knowledge-base/documents/uploads/e1e0691d-3862-455f-9d0c-d539893cd27a.md",
+  "source_path": "knowledge-base/sources/uploads/2026-08/e1e0691d-3862-455f-9d0c-d539893cd27a-01-5G-CPE-详细硬件参数.md",
+  "extracted_characters": 8809
+}

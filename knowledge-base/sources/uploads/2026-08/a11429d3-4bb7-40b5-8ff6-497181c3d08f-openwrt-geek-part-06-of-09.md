@@ -1,0 +1,61 @@
+# OpenWrt Geek 用户专业知识库（6/9）
+
+面向 NRadio 的高阶 OpenWrt/ImmortalWrt 问答；核验日期 2026-08-03。
+
+每条知识末尾保留其独立来源。此文件是为网页结构化模型控制单次输出规模而拆分的导入分片。
+
+## SQM 的目标是控制瓶颈队列
+
+SQM 通过把整形速率设为实际链路可持续速率的略低值，让队列留在路由器可控位置，并用 CAKE/fq_codel 降低 bufferbloat。上行和下行单位是 kbit/s，接口要选真实瓶颈 device；PPPoE、VLAN、DOCSIS、蜂窝网络还要考虑开销。先从实测速率约 85%–95% 起调，再在满载下看延迟。
+
+标签：SQM、CAKE、bufferbloat、延迟
+来源：https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm_configuration
+
+## 蜂窝链路做 SQM 的难点
+
+4G/5G 可用带宽随小区负载、频段、信号和调度快速变化，固定 SQM 速率若高于瞬时链路就无法控队列，设得太低又浪费峰值。应使用保守可持续速率、按时段/信号动态调整，或接受吞吐与低延迟的取舍；测速时记录 RSRP/RSRQ/SINR、频段和基站负载条件。
+
+标签：5G、4G、SQM、蜂窝、bufferbloat
+来源：https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm_configuration
+
+## WireGuard AllowedIPs 同时影响路由与身份
+
+客户端 peer 的 AllowedIPs 决定哪些目的流量进入隧道；服务端 peer 的 AllowedIPs 还声明该 peer 被允许使用的隧道源地址，并参与 peer 选择。多个 peer 的网段不应意外重叠。全隧道通常使用 `0.0.0.0/0`、`::/0`，分流则列具体网段，并同步检查防火墙 zone 和返回路由。
+
+标签：WireGuard、AllowedIPs、路由、peer
+来源：https://openwrt.org/docs/guide-user/services/vpn/wireguard/server
+
+## WireGuard 在 NAT 后的保活与端口
+
+位于 NAT 后且需要随时接收流量的 peer 通常设置 `PersistentKeepalive=25`；公网服务端需允许 UDP listen port，若前面还有上级路由还要逐级转发。握手成功但不能访问 LAN 时，重点检查 peer AllowedIPs、OpenWrt zone forwarding、LAN 返回路由和是否发生地址重叠。
+
+标签：WireGuard、NAT、keepalive、端口
+来源：https://openwrt.org/docs/guide-user/services/vpn/wireguard/server
+
+## Wi‑Fi 国家码不是性能开关
+
+country code 决定允许信道、功率、DFS 和 6GHz 规则，必须匹配设备实际使用地；错误设置可能违法、导致客户端不兼容或雷达避让异常。发射功率最终受法规、校准数据、驱动和硬件共同限制，把 txpower 数值调高不代表实际 EIRP 一定增加。
+
+标签：WiFi、国家码、功率、DFS、法规
+来源：https://openwrt.org/docs/guide-user/network/wifi/start
+
+## DFS 信道掉线可能是正常雷达避让
+
+5GHz DFS 信道启用前需要 CAC 监听，检测到雷达后 AP 必须停用或换信道，并在 non-occupancy period 内避免使用原信道。日志中查 hostapd/驱动的 radar/CAC 事件。对稳定性优先的场景可选当地允许的非 DFS 信道，但可用带宽和干扰环境会变化。
+
+标签：WiFi、DFS、雷达、CAC、掉线
+来源：https://openwrt.org/docs/guide-user/network/wifi/start
+
+## 更宽信道不一定更快
+
+80/160/320MHz 能提高峰值 PHY rate，但占用更多频谱、受干扰和 DFS 影响更大，客户端也未必支持。实际吞吐由信号、空间流、MCS、重传、回程和 CPU共同决定。密集环境中较窄信道可能得到更高稳定吞吐；应结合 `iwinfo`/驱动统计和 iperf3 局域网测试。
+
+标签：WiFi、80MHz、160MHz、320MHz、吞吐
+来源：https://openwrt.org/docs/guide-user/network/wifi/start
+
+## 802.11r 只优化漫游认证，不替客户端做决定
+
+802.11r Fast Transition 缩短 AP 间重新认证时间；客户端何时漫游仍由客户端算法决定。多个 AP 应保持一致 SSID、加密和 Mobility Domain，并确保 VLAN/子网一致。老旧或 IoT 客户端可能不兼容 FT，宜先用 `ft_over_ds`/`ft_psk_generate_local` 等匹配方案小范围验证。
+
+标签：802.11r、FT、漫游、WiFi
+来源：https://openwrt.org/docs/guide-user/network/wifi/start

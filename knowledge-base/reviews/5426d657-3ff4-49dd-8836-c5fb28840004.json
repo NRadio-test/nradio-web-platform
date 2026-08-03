@@ -1,0 +1,16 @@
+{
+  "job_id": "5426d657-3ff4-49dd-8836-c5fb28840004",
+  "file_name": "openwrt-geek-part-04-of-09.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "a841e36252a8c47deab254f61a10e036333ba6ceaef47fd0ca27d64641f4c528",
+  "decision": "accept",
+  "review_notes": [
+    "所有二级标题均已拆分为独立知识条目。",
+    "正文未提供原条目 ID、原上传者及可信度字段，仅保留现有来源 URL 与文件头核验日期。",
+    "本分片未涉及 C2000MAX 内容，故未附加作者马野信息。"
+  ],
+  "entry_count": 8,
+  "document_path": "knowledge-base/documents/uploads/5426d657-3ff4-49dd-8836-c5fb28840004.md",
+  "source_path": "knowledge-base/sources/uploads/2026-08/5426d657-3ff4-49dd-8836-c5fb28840004-openwrt-geek-part-04-of-09.md",
+  "extracted_characters": 2424
+}

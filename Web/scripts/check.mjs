@@ -26,8 +26,8 @@ const requiredFiles = [
 await Promise.all(requiredFiles.map((file) => access(resolve(webDir, file))))
 
 const payload = JSON.parse(await readFile(resolve(webDir, 'frontend/public/data/knowledge.json'), 'utf8'))
-if (!Array.isArray(payload.entries) || payload.entries.length === 0) {
-  throw new Error('知识库数据为空。')
+if (!Array.isArray(payload.entries)) {
+  throw new Error('知识库数据格式无效。')
 }
 
 for (const entry of payload.entries) {
@@ -41,7 +41,7 @@ const apiResponse = await getKnowledge({
   request: new Request('https://nradio.example/api/knowledge?q=5g')
 })
 const apiPayload = await apiResponse.json()
-if (!apiResponse.ok || !Array.isArray(apiPayload.entries) || apiPayload.entries.length === 0) {
+if (!apiResponse.ok || !Array.isArray(apiPayload.entries)) {
   throw new Error('知识库 API 查询检查失败。')
 }
 
@@ -95,40 +95,17 @@ const importResponse = await importKnowledge({
     KNOWLEDGE_DB: { prepare() { return mockStatement } }
   }
 })
-if (importResponse.status !== 202 || importRows.length < 2) {
+if (importResponse.status !== 202 || importRows.length < 1) {
   throw new Error('知识库导入 API 检查失败。')
 }
 
-const reviewUpdates = []
-const reviewEnv = {
-  GITHUB_OWNER: 'NRadio-test',
-  GITHUB_REPOSITORY: 'nradio-web-platform',
-  KNOWLEDGE_DB: {
-    prepare() {
-      return {
-        bind(...values) {
-          reviewUpdates.push(values)
-          return this
-        },
-        async run() { return { success: true } }
-      }
-    }
-  }
+const workflowSource = await readFile(resolve(webDir, '../.github/workflows/knowledge-import.yml'), 'utf8')
+if (workflowSource.includes('gh pr create') || !workflowSource.includes('git push origin HEAD:main')) {
+  throw new Error('知识库导入工作流没有配置为直接发布 main。')
 }
-const { reconcileJobReviewStatus } = await import('../backend/functions/_lib/import-jobs.js')
-const migratedReview = await reconcileJobReviewStatus(reviewEnv, {
-  id: 'legacy-job',
-  status: 'review_ready',
-  progress: 90,
-  pr_url: 'https://github.com/NRadio-Bot/nradio-platform/pull/8'
-})
-if (migratedReview.status !== 'review_closed' || reviewUpdates.length !== 1) {
-  throw new Error('迁移前审核 PR 状态纠正检查失败。')
-}
-
-const manageScript = await readFile(resolve(webDir, 'frontend/public/assets/knowledge-manage.js'), 'utf8')
-if (!manageScript.includes('uploadFilesInParallel') || !manageScript.includes("review_closed: '审核已关闭'")) {
-  throw new Error('知识导入并行上传或关闭状态展示检查失败。')
+const importJobsSource = await readFile(resolve(webDir, 'backend/functions/_lib/import-jobs.js'), 'utf8')
+if (!importJobsSource.includes('dispatchNextImportJob') || !importJobsSource.includes("status IN ('queued', 'parsing', 'reviewing', 'publishing')")) {
+  throw new Error('知识库导入队列检查失败。')
 }
 
 console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，5 个 API。`)

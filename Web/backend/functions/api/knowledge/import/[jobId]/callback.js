@@ -1,11 +1,12 @@
 import {
+  dispatchNextImportJob,
   getJob,
   requireImportBindings,
   requireServiceToken,
   updateJob
 } from '../../../../_lib/import-jobs.js'
 
-const allowedStatuses = new Set(['queued', 'parsing', 'reviewing', 'review_ready', 'pr_created', 'completed', 'failed'])
+const allowedStatuses = new Set(['queued', 'parsing', 'reviewing', 'publishing', 'completed', 'failed'])
 
 export async function onRequestPost(context) {
   try {
@@ -28,6 +29,9 @@ export async function onRequestPost(context) {
       entry_count: body.entry_count === undefined ? undefined : Number(body.entry_count),
       error: body.error ? String(body.error).slice(0, 4000) : null
     })
+    if (body.status === 'completed' || body.status === 'failed') {
+      await dispatchNextImportJob(context.env)
+    }
     return Response.json({ ok: true }, { headers: { 'Cache-Control': 'no-store' } })
   } catch (error) {
     return Response.json({ ok: false, error: error.message }, { status: 401 })
