@@ -1,8 +1,8 @@
-# 鲲鹏无限 NRadio 知识库
+# 马野 C2000MAX 专项知识库（1/3）
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 7 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+基于马野提供的刷机教程与 C2000MAX 镜像只读分析。网页上传时原始来源请填写“马野提供的 C2000MAX 刷机包”。
 
-使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
+每条知识末尾保留其独立来源。此文件是为网页结构化模型控制单次输出规模而拆分的导入分片。
 
 ## 马野 C2000MAX 刷机包的内容与作者
 
@@ -11,22 +11,12 @@
 标签：C2000MAX、马野、刷机包、来源
 来源：local-source://C2000MAX-MaYe-package
 
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、马野、刷机包、来源
-
 ## C2000MAX 刷 TF 卡的完整顺序
 
 马野说明的顺序是：先在 C2000MAX 官方系统中把 SD 卡启动优先级保存；用 Rufus 等镜像写入工具把 `nradio_c2000-max-SD_0305.img` 整盘写入 TF 卡；在 Windows DiskGenius 中把镜像之后的未分配空间新建并格式化为 ext4；把卡插回 C2000MAX 后上电；等待 5700 模组自动重启一次且 MAX 主机也重启一次；登录 192.168.7.1 后进入“系统→备份/升级”执行重置，并等待重置和再次重启完成。
 
 标签：C2000MAX、刷机、TF卡、Rufus、DiskGenius、步骤
 来源：local-source://C2000MAX-MaYe-package
-
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、刷机、TF卡、Rufus、DiskGenius、步骤
 
 ## C2000MAX 必须先保存 SD 启动优先级
 
@@ -35,22 +25,12 @@
 标签：C2000MAX、SD启动、官方系统、启动项
 来源：local-source://C2000MAX-MaYe-package
 
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、SD启动、官方系统、启动项
-
 ## Rufus 写入的是整盘镜像而不是复制文件
 
 Rufus 中要选中正确的 TF 卡设备，再选择以 `mwrt`/本包镜像结尾的 `.img` 文件并开始写入。写盘会覆盖目标卡的 GPT 和分区，不能把 img 当普通文件复制进现有分区。操作前按容量和设备名再次确认目标卡，防止误覆盖电脑磁盘。
 
 标签：C2000MAX、Rufus、img、整盘写入、数据清除
 来源：local-source://C2000MAX-MaYe-package
-
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、Rufus、img、整盘写入、数据清除
 
 ## C2000MAX 镜像的 GPT 分区布局
 
@@ -59,11 +39,6 @@ Rufus 中要选中正确的 TF 卡设备，再选择以 `mwrt`/本包镜像结�
 标签：C2000MAX、GPT、bl2、u-boot、factory、fip、kernel、rootfs
 来源：local-source://C2000MAX-MaYe-package
 
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、GPT、bl2、u-boot、factory、fip、kernel、rootfs
-
 ## C2000MAX rootfs 的格式和构建时间
 
 rootfs 分区开头是 SquashFS 4.0，小端、XZ 压缩、262144 字节块，文件系统创建时间为 2026-03-03 09:17:40（时间来自镜像元数据）。根文件系统约 36.65MB、3512 个 inode；镜像 SHA-256 为 `f20a5011856d163233dd3b3fc4f1c30a59b544841ff09a09ffc7fff5fc208efd`。这些信息可用于确认用户是否拿到同一版镜像。
@@ -71,19 +46,9 @@ rootfs 分区开头是 SquashFS 4.0，小端、XZ 压缩、262144 字节块，�
 标签：C2000MAX、SquashFS、SHA256、固件版本
 来源：local-source://C2000MAX-MaYe-package
 
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、SquashFS、SHA256、固件版本
-
 ## C2000MAX 固件的真实发行版身份
 
 镜像不是 OpenWrt 官方固件，而是 `xshark by ImmortalWrt 24.10-SNAPSHOT r33422+3-bf62ca2211`，target 为 `mediatek/filogic`，架构 `aarch64_cortex-a53`，内核 Linux 6.6.94。它带 `no-all override` taint，并含第三方/定制组件。回答软件安装与升级问题时必须按 ImmortalWrt 24.10 snapshot 和本镜像 ABI 处理，不能套用 OpenWrt 25.12 的 apk 命令。
 
 标签：C2000MAX、ImmortalWrt、24.10、Linux6.6.94、mediatek、filogic
 来源：local-source://C2000MAX-MaYe-package
-
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/278219b3-bb14-43db-a73c-a1c6c82dfd1c-c2000max-maye-part-01-of-03.md
-- 上传者：FallaxAura
-- 核对日期：2026-08-03
-- 标签：C2000MAX、ImmortalWrt、24.10、Linux6.6.94、mediatek、filogic
