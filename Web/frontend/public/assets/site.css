@@ -291,7 +291,7 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
 .task-topline, .task-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .task-topline strong { max-width: 68%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .78rem; }
 .task-topline span { padding: 5px 8px; border-radius: 999px; color: #70dcff; background: rgba(64, 184, 235, .1); font-size: .62rem; }
-.task-failed .task-topline span, .task-dispatch_failed .task-topline span, .task-review_closed .task-topline span { color: #ff9c8e; background: rgba(255, 103, 83, .1); }
+.task-failed .task-topline span, .task-dispatch_failed .task-topline span { color: #ff9c8e; background: rgba(255, 103, 83, .1); }
 .task-card p { min-height: 34px; margin: 11px 0; color: #728ba7; font-size: .69rem; line-height: 1.55; }
 .task-progress { height: 4px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.06); }
 .task-progress i { height: 100%; display: block; border-radius: inherit; background: linear-gradient(90deg, #3a86ff, #57e2ff); transition: width 300ms ease; }

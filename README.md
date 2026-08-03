@@ -9,7 +9,7 @@
 - `Web/backend/`：Cloudflare Pages Functions API 与服务端知识数据。
 - `scripts/knowledge_import.py`：解析上传文件并调用独立审核模型生成结构化知识。
 - `assets/`：鹏仔 OC 原始素材；线上当前使用最新版 `pengzai-qq-avatar-v8.png`。
-- `.github/workflows/`：代码 PR 校验，以及知识上传的并行结构化和自动发布。
+- `.github/workflows/`：PR 与分支的数据、页面和接口校验。
 
 ## 协作方式
 
@@ -22,7 +22,7 @@ npm --prefix Web run sync
 npm --prefix Web run check
 ```
 
-在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 并行提取和整理；为了防止多个任务互相覆盖，只有最后写入仓库的步骤会短暂排队。校验通过的知识直接提交到 `main`，不再创建知识审核 PR。程序代码仍固定通过 `codex/code-review` 分支发起 PR，由成员审批后合并。
+在线导入入口为 `/knowledge/manage/`。上传文件会先进入私有暂存区，再由 GitHub Actions 串行更新固定的 `knowledge/review` 审核分支；同一批次的上传共用一个 Draft PR，人工审核合并后才会更新正式知识库。
 
 部署方式、自定义域名和 Secrets 配置见 [Web/README.md](Web/README.md)。
 

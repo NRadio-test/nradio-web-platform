@@ -1,5 +1,4 @@
 import importlib.util
-import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,26 +10,14 @@ knowledge_import = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader
 SPEC.loader.exec_module(knowledge_import)
 
-APPLY_MODULE_PATH = Path(__file__).with_name("apply_knowledge_import.py")
-APPLY_SPEC = importlib.util.spec_from_file_location("apply_knowledge_import", APPLY_MODULE_PATH)
-apply_knowledge_import = importlib.util.module_from_spec(APPLY_SPEC)
-assert APPLY_SPEC.loader
-APPLY_SPEC.loader.exec_module(apply_knowledge_import)
-
 
 class KnowledgeImportTests(unittest.TestCase):
-    def test_workflow_serializes_only_the_publish_job(self):
+    def test_workflow_configures_git_identity_before_merging_review_branch(self):
         workflow_path = MODULE_PATH.parents[1] / ".github" / "workflows" / "knowledge-import.yml"
         workflow = workflow_path.read_text(encoding="utf-8")
         identity_position = workflow.index('git config user.name "NRadio Knowledge Bot"')
-        switch_position = workflow.index("git switch -C main origin/main")
-        self.assertLess(identity_position, switch_position)
-        self.assertNotIn("\nconcurrency:\n", workflow)
-        self.assertIn("  publish:\n", workflow)
-        self.assertIn("      group: knowledge-main-publish", workflow)
-        self.assertIn("      queue: max", workflow)
-        self.assertIn("git push origin HEAD:main", workflow)
-        self.assertNotIn("gh pr create", workflow)
+        merge_position = workflow.index("git merge --no-edit origin/main")
+        self.assertLess(identity_position, merge_position)
 
     def test_structure_prompt_treats_member_uploads_as_collectable(self):
         self.assertIn("确认可以写入知识库", knowledge_import.STRUCTURE_PROMPT)
@@ -117,40 +104,6 @@ class KnowledgeImportTests(unittest.TestCase):
             ])
         self.assertEqual(result["decision"], "accept")
         self.assertEqual(result["entry_count"], 1)
-
-    def test_apply_import_merges_unique_entries_and_managed_files(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            artifact = root / "artifact"
-            output = root / "output"
-            source_path = Path("knowledge-base/sources/uploads/2026-08/job-资料.txt")
-            document_path = Path("knowledge-base/documents/uploads/job.md")
-            review_path = Path("knowledge-base/reviews/job.json")
-            for path, content in (
-                (source_path, "原文"),
-                (document_path, "# 草稿"),
-                (review_path, '{"job_id":"job"}'),
-            ):
-                target = artifact / path
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_text(content, encoding="utf-8")
-            result = {
-                "job_id": "job",
-                "source_path": source_path.as_posix(),
-                "document_path": document_path.as_posix(),
-                "entries": [{"id": "new-entry", "title": "新增知识"}],
-            }
-            result_path = artifact / "result.json"
-            result_path.write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
-            existing = output / "knowledge-base/import/knowledge.jsonl"
-            existing.parent.mkdir(parents=True, exist_ok=True)
-            existing.write_text('{"id":"old-entry","title":"已有知识"}\n', encoding="utf-8")
-
-            apply_knowledge_import.apply_import(artifact, output, result_path)
-
-            merged = apply_knowledge_import.load_jsonl(existing)
-            self.assertEqual([entry["id"] for entry in merged], ["old-entry", "new-entry"])
-            self.assertEqual((output / document_path).read_text(encoding="utf-8"), "# 草稿")
 
 
 if __name__ == "__main__":
