@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 208 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 214 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2074,3 +2074,57 @@ AM5 5G AI 鼠标是 NRadio 推出的一款集成 5G 数据、Wi-Fi 热点、AI �
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：AM5、5G AI 鼠标、Wi-Fi 6、AX600、华为巴龙、MT5716-CN、鼠标、5G CPE、热点、USB-C
+
+## NRadio A8-510 RedCap 5G 家用/企业路由器
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：RedCap 5G 家用/企业路由器。5G 平台：海思 RedCap 方案。内存与存储：128MB 内存，128MB 闪存。Wi-Fi：Wi-Fi 6 AX600。频段：5G NR N1/N3/N5/N8/N28/N41/N78；LTE B1/B3/B5/B8/B34/B38/B39/B40/B41。理论速率：RedCap 5G 下行 226Mbps、上行 120Mbps；LTE 下行 200Mbps、上行 100Mbps。注意：以上为理论速率，非实际速度保证，实际速度与运营商、频段和环境有关。SIM：1 个 Nano-SIM。网口：1 个千兆 WAN + 3 个千兆 LAN。供电：DC 12V/1A。尺寸：官方图标注宽度约 103mm、高度约 203mm。环境：工作 0–40℃，存储 -40–70℃。官方来源：https://www.nradiowifi.com/article/207.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、A8-510、5G路由器、Wi-Fi 6、AX600、家用路由器、企业路由器、海思方案
+
+## NRadio DD-510 便携式 RedCap 5G 终端
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：便携式 RedCap 5G 终端。5G 平台：海思 RedCap 方案。内存与存储：128MB 内存，128MB 闪存。Wi-Fi：Wi-Fi 6 AX600。频段：5G NR N1/N3/N5/N8/N28/N41/N78；LTE B1/B3/B5/B8/B34/B38/B39/B40/B41。理论速率：RedCap 5G 下行 226Mbps、上行 120Mbps；LTE 下行 200Mbps、上行 100Mbps。注意：以上为理论速率，非实际速度保证，实际速度与运营商、频段和环境有关。SIM：1 个外置 Nano-SIM。接口：1 个千兆 WAN/LAN，1 个 USB-C，复位键，5G 指示灯。供电：USB-C 5V/1A。尺寸与重量：56×56×17mm，约 42g。环境：工作 0–40℃，存储 -40–70℃。官方来源：https://www.nradiowifi.com/article/229.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、DD-510、5G终端、便携式、Wi-Fi 6、AX600、随身Wi-Fi、海思方案
+
+## NRadio CC-500 Pro 5G 智能口袋路由器 Pro 版
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：CC 系列 5G 智能口袋路由器 Pro 版。电池：3300mAh。Wi-Fi：Wi-Fi 6。频段：5G NR N1/N3/N5/N8/N28A/N41/N78；LTE B1/B3/B5/B8/B34/B38/B39/B40/B41。理论速率：5G 下行 226Mbps、上行 120Mbps；LTE-FDD 下行 200Mbps、上行 100Mbps；LTE-TDD 下行 150Mbps、上行 20Mbps。注意：以上为理论速率，非实际速度保证，实际速度与运营商、频段和环境有关。尺寸：81.6×81.6×37mm。内存、闪存、客户端上限、接口数：官网当前参数表未公开。版本边界：CC-500 Pro 和 CC-500 的官方当前参数表基本相同，Pro 的硬件差异未在表中明确列出，需按实机批次确认。官方来源：https://www.nradiowifi.com/article/237.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、CC-500 Pro、CC500Pro、5G路由器、口袋路由器、Wi-Fi 6、智能路由器
+
+## NRadio CC-500 5G 智能口袋路由器
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：CC 系列 5G 智能口袋路由器。电池：3300mAh。Wi-Fi：Wi-Fi 6。频段：5G NR N1/N3/N5/N8/N28A/N41/N78；LTE B1/B3/B5/B8/B34/B38/B39/B40/B41。理论速率：5G 下行 226Mbps、上行 120Mbps；LTE-FDD 下行 200Mbps、上行 100Mbps；LTE-TDD 下行 150Mbps、上行 20Mbps。注意：以上为理论速率，非实际速度保证，实际速度与运营商、频段和环境有关。尺寸：81.6×81.6×37mm。内存、闪存、客户端上限、接口数：官网当前参数表未公开。官方来源：https://www.nradiowifi.com/article/199.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、CC-500、CC500、5G路由器、口袋路由器、Wi-Fi 6、智能路由器
+
+## NRadio TK-500 5G RedCap 随身 Wi-Fi + 大容量充电宝
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：5G RedCap 随身 Wi-Fi + 大容量充电宝。电池：10000mAh，3.8V/38Wh 钴聚合物电芯；额定容量 6800mAh。Wi-Fi：Wi-Fi 6 2.4GHz，802.11b/g/n/ax，最多 16 个客户端。频段：5G NR N1/N3/N5/N8/N28/N41/N78；LTE B1/B3/B5/B8/B34/B38/B39/B40/B41。官方表中的蜂窝速率：下行 150Mbps，上行 50Mbps。注意：以上为官方蜂窝速率，非实际速度保证，实际速度与运营商、频段和环境有关。充电输入：5V/2A，支持 Type-C/Lightning 输入。输出：Type-C 最高 22.5W；Type-C + Lightning 同时输出时总输出 5V/3A。尺寸与重量：75×158.5×18.8mm，约 258g。内存与闪存：官网当前参数表未公开。官方来源：https://www.nradiowifi.com/article/238.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、TK-500、TK500、随身Wi-Fi、充电宝、10000mAh、Wi-Fi 6
+
+## NRadio TT-500 5G RedCap 双频随身 Wi-Fi + 快充充电宝
+
+知识分类：产品中心 / RedCap 5G / 硬件参数；核对日期：2026-08-03；分类来源：https://www.nradiowifi.com/chanpin/qiyezuwang/。产品定位：5G RedCap 双频随身 Wi-Fi + 快充充电宝。电池：10000mAh，3.8V/38Wh 钴聚合物电芯；额定容量 6800mAh。内存与存储：128MB 内存，128MB 闪存。Wi-Fi：Wi-Fi 6 双频 2.4GHz/5GHz，802.11a/b/g/n/ac/ax，最多 16 个客户端。理论速率：5G 下行 226Mbps、上行 120Mbps；4G 下行 200Mbps、上行 100Mbps。注意：以上为理论速率，非实际速度保证，实际速度与运营商、频段和环境有关。频段：官网当前参数表的可读区域未列出完整频段，不直接套用其他 RedCap 型号。输入：Type-C 支持 5V/3A、9V/2A、12V/1.5A，最高 18W；Lightning 最高 5V/2A（10W）。多口输出：Type-C + Type-C + Lightning 同时输出时总输出 5V/3A。尺寸与重量：160×75×20mm，约 259g。官方来源：https://www.nradiowifi.com/article/200.html。
+
+- 来源：https://www.nradiowifi.com/chanpin/
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：NRadio、RedCap、TT-500、TT500、随身Wi-Fi、充电宝、双频、10000mAh、Wi-Fi 6
