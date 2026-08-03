@@ -43,6 +43,92 @@ export const updateJob = async (env, jobId, fields) => {
     .run()
 }
 
+const workflowConfig = (env) => ({
+  token: String(env.GITHUB_ACTIONS_TOKEN || ''),
+  owner: String(env.GITHUB_OWNER || 'NRadio-test'),
+  repository: String(env.GITHUB_REPOSITORY || 'nradio-web-platform'),
+  workflow: String(env.GITHUB_IMPORT_WORKFLOW || 'knowledge-import.yml'),
+  ref: String(env.GITHUB_IMPORT_REF || 'main'),
+  baseUrl: String(env.PUBLIC_BASE_URL || 'https://nradio.fallaxaura.dpdns.org').replace(/\/$/, '')
+})
+
+export const triggerImportWorkflow = async (env, job) => {
+  const config = workflowConfig(env)
+  if (!config.token) return false
+  const response = await fetch(
+    `https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repository)}/actions/workflows/${encodeURIComponent(config.workflow)}/dispatches`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${config.token}`,
+        'Content-Type': 'application/json',
+        'User-Agent': 'NRadio-Knowledge-Importer',
+        'X-GitHub-Api-Version': '2022-11-28'
+      },
+      body: JSON.stringify({
+        ref: config.ref,
+        inputs: {
+          job_id: job.id,
+          file_name: job.filename,
+          base_url: config.baseUrl
+        }
+      })
+    }
+  )
+  if (!response.ok) {
+    const detail = await response.text()
+    throw new Error(`GitHub 导入工作流触发失败：${response.status} ${detail.slice(0, 300)}`)
+  }
+  return true
+}
+
+export const dispatchNextImportJob = async (env) => {
+  if (!workflowConfig(env).token) return null
+
+  const now = new Date()
+  const queuedCutoff = new Date(now.getTime() - 10 * 60 * 1000).toISOString()
+  const runningCutoff = new Date(now.getTime() - 45 * 60 * 1000).toISOString()
+  await env.KNOWLEDGE_DB.prepare(`
+    UPDATE knowledge_import_jobs
+    SET status = 'stored', progress = 5,
+        message = '任务等待超时，已自动重新排队。', error = NULL, updated_at = ?
+    WHERE (status = 'queued' AND updated_at < ?)
+       OR (status IN ('parsing', 'reviewing', 'publishing') AND updated_at < ?)
+  `).bind(now.toISOString(), queuedCutoff, runningCutoff).run()
+
+  const job = await env.KNOWLEDGE_DB.prepare(`
+    UPDATE knowledge_import_jobs
+    SET status = 'queued', progress = 10,
+        message = '审核与结构化任务已进入队列。', error = NULL, updated_at = ?
+    WHERE id = (
+      SELECT id FROM knowledge_import_jobs
+      WHERE status = 'stored'
+      ORDER BY created_at ASC
+      LIMIT 1
+    )
+    AND NOT EXISTS (
+      SELECT 1 FROM knowledge_import_jobs
+      WHERE status IN ('queued', 'parsing', 'reviewing', 'publishing')
+    )
+    RETURNING id, filename
+  `).bind(now.toISOString()).first()
+
+  if (!job) return null
+  try {
+    await triggerImportWorkflow(env, job)
+    return job
+  } catch (error) {
+    await updateJob(env, job.id, {
+      status: 'dispatch_failed',
+      progress: 5,
+      message: '文件已保存，但审核任务未能启动。',
+      error: error.message
+    })
+    return { ...job, status: 'dispatch_failed', error: error.message }
+  }
+}
+
 export const publicJob = (job) => ({
   id: job.id,
   filename: job.filename,

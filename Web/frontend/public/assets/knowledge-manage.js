@@ -6,6 +6,7 @@ const statusLabels = {
   queued: '等待处理',
   parsing: '正在解析',
   reviewing: '结构化处理中',
+  publishing: '正在发布',
   review_ready: '等待审核',
   pr_created: '等待 PR 审核',
   completed: '已完成',
@@ -186,7 +187,7 @@ form.addEventListener('submit', async (event) => {
   if (!files.length) return
   submitButton.disabled = true
   formMessage.className = 'form-message'
-  formMessage.textContent = `正在上传 ${files.length} 个文件……`
+  formMessage.textContent = `正在上传 ${files.length} 个文件；后台会按顺序自动处理……`
   let successCount = 0
   const errors = []
   for (const file of files) {
@@ -201,7 +202,7 @@ form.addEventListener('submit', async (event) => {
   formMessage.className = errors.length ? 'form-message form-error' : 'form-message form-success'
   formMessage.textContent = errors.length
     ? `成功 ${successCount} 个；${errors.join('；')}`
-    : `${successCount} 个审核任务已建立。`
+    : `${successCount} 个导入任务已建立，后台会逐个处理并自动发布。`
   if (successCount) {
     fileInput.value = ''
     renderSelectedFiles()
