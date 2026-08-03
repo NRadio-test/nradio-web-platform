@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 92 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 99 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -852,3 +852,66 @@ irqbalance/packet steering 尝试把网络中断和软中断分散到多核，�
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：进阶、irqbalance、PacketSteering、HNAT、WED、性能
+
+## VLAN + 多 AP + 多 SSID 的进阶架构
+
+主路由负责每个 VLAN 的网关、DHCP 和 firewall，交换机/AP 上联使用 tagged trunk，各 SSID 映射到对应 VLAN，管理 VLAN 单独限制。DSA bridge-vlan 中明确每个接入口的 PVID/untagged 和 trunk 的 tagged；部署前保留一个本地 untagged 管理口，逐 VLAN 验证 DHCP、DNS、隔离和漫游。来源：https://openwrt.org/docs/guide-user/network/wifi/roaming
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、VLAN、多AP、多SSID、Trunk、DSA
+
+## VRRP/keepalived 双路由高可用的限制
+
+两台 OpenWrt 可用 keepalived/VRRP 漂移 LAN 虚拟网关，但状态防火墙、NAT、DHCP、IPv6 PD 和连接跟踪默认不会完整同步，主备切换仍可能中断会话。先解决配置同步、WAN 独立性和 split-brain，再考虑 conntrackd；家庭环境常用双机冷备和可恢复配置更简单。来源：https://openwrt.org/docs/guide-user/services/start
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、VRRP、keepalived、高可用、双路由
+
+## FRR/Babel/OLSR 等动态路由的使用场景
+
+多路由、多站点或 mesh 可使用 FRR 的 OSPF/BGP、Babel 或 OLSR 自动交换前缀；单路由家庭网络通常不需要。动态路由必须限制邻居、认证和可发布前缀，避免把默认路由或管理网误传播。和 mwan3/PBR 同时使用时要规划 table、metric 和策略优先级。来源：https://github.com/openwrt/routing
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、FRR、BGP、OSPF、Babel、OLSR、动态路由
+
+## collectd、vnStat、Prometheus/Telegraf 监控
+
+轻量长期流量可用 vnStat，设备和接口时序指标可用 collectd/rrdtool 或 Telegraf 输出到外部数据库。路由器内部闪存不适合高频写时序数据，应写 tmpfs 后批量上传或直接远端存储；监控接口不要暴露 WAN，并限制标签基数和采样频率。来源：https://openwrt.org/docs/guide-user/services/start
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、监控、collectd、vnStat、Telegraf、Prometheus
+
+## 自定义热插拔与 procd 服务
+
+设备事件脚本放在 `/etc/hotplug.d/<subsystem>/`，长期进程应写 procd init 脚本，声明 command、respawn、file/netdev/interface trigger，而不是堆进 `rc.local`。脚本必须幂等、记录日志并对缺失设备超时；热插拔环境变量和 PATH 有限，先在日志中打印必要上下文。来源：https://github.com/openwrt/openwrt
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、hotplug、procd、init、脚本、自动化
+
+## Image Builder 预装插件比在线安装更可靠
+
+小闪存、snapshot、批量设备或依赖 kmod 的插件，应在 Image Builder/源码构建时集成，使内核模块、依赖和 SquashFS 同批生成。保存 package list、feeds revision、FILES、首次启动脚本和 SHA-256。不要把含密码/订阅/私钥的配置直接烘进公开镜像。来源：https://openwrt.org/downloads
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：进阶、ImageBuilder、插件、kmod、批量、固件
+
+## 社区脚本和一键包的审查清单
+
+执行前下载到本地阅读，检查是否修改 distfeeds、关闭签名/TLS、使用 curl|sh、写 bootloader/factory、添加 cron/开机自启、上传遥测、保存明文凭据或执行 `rm/dd`。记录哈希和来源 commit，在测试机/备份后运行。无法审查的闭源 EXE 和网盘固件只能视为高风险第三方材料。来源：https://www.right.com.cn/
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c5e0b06e-6dd7-430f-b04d-2c0b0d96eec0-openwrt-ecosystem-part-05-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：社区、一键脚本、安全、审查、固件
