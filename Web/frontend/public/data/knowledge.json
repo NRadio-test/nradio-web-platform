@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 175,
+    "entry_count": 183,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -2984,6 +2984,138 @@
         "内核ABI",
         "snapshot",
         "软件源"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-01",
+      "title": "不要混用不同发行版的软件源",
+      "text": "OpenWrt、ImmortalWrt 和其他第三方分支可能采用不同补丁、包签名、C 库选项与内核 ABI。修改 distfeeds 只改变下载地址，不会使软件包兼容。镜像显示哪个 DISTRIB_ID/target/arch，就应使用该构建对应的签名仓库；第三方镜像的维护者应提供可复现的 feeds 和哈希。（核验日期：2026-08-03；来源：https://github.com/immortalwrt/immortalwrt）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "软件源",
+        "ImmortalWrt",
+        "OpenWrt",
+        "兼容"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-02",
+      "title": "Image Builder 适合批量和小闪存定制",
+      "text": "Image Builder 使用预编译包生成定制镜像，可预装驱动、LuCI 和首次启动配置，比刷机后逐包安装更节省 SquashFS 空间，也适合批量一致部署。它不是完整源码编译环境，必须选择正确 target/subtarget 和版本；构建前保存 package list、FILES 覆盖内容和生成镜像的 SHA-256。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/additional-software/imagebuilder）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "ImageBuilder",
+        "定制固件",
+        "批量"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-03",
+      "title": "LuCI 与 SSH 的最低安全基线",
+      "text": "首次启动立即设置唯一强密码或 SSH key；Dropbear 仅绑定可信 LAN/VPN，禁止从 WAN 直接开放管理口。LuCI 使用 HTTPS，必要时把 HTTP 重定向到 HTTPS，并限制管理 VLAN。不要把 ttyd、ubus RPC、SFTP、调试 Web 服务暴露到不可信网络；远程管理首选 WireGuard。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/security/openwrt_security）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "安全",
+        "LuCI",
+        "SSH",
+        "Dropbear",
+        "HTTPS"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-04",
+      "title": "时间错误会伪装成网络或证书故障",
+      "text": "设备无 RTC 或首次启动尚未联网时，系统时间可能错误，造成 HTTPS 证书、软件包签名、DNS over TLS、VPN 证书和日志时间异常。先用 `date`、`logread -e ntp`、`ubus call system board` 检查时间与时区，再判断 TLS 服务本身。自定义加密 DNS 时要给 NTP 留出不依赖该 DNS 的引导路径。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/base-system/system_configuration）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NTP",
+        "时间",
+        "TLS",
+        "证书",
+        "软件包"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-05",
+      "title": "抓包要选对层和双侧对照",
+      "text": "先通过 ubus 确定 LAN bridge、WAN L2 device 和协议 l3_device。用 `tcpdump -ni br-lan host <客户端>` 看进入路由器的包，再在 WAN/l3_device 看是否出去；加 `-e` 可观察 VLAN tag，`-s0 -w /tmp/capture.pcap` 保留完整包。路由器 `/tmp` 在内存中，长时间抓包要限制大小或写到外置盘。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/base-system/basic）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "tcpdump",
+        "抓包",
+        "br-lan",
+        "WAN",
+        "VLAN"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-06",
+      "title": "连接跟踪问题的识别",
+      "text": "NAT 和状态防火墙依赖 conntrack。大量短连接、P2P 或攻击可能耗尽表，表现为新连接失败而已有连接仍通。检查 `cat /proc/sys/net/netfilter/nf_conntrack_count` 与 `nf_conntrack_max`、日志中的 table full，并找连接来源。提高上限会增加内存占用，根治应限制异常客户端、优化超时或减少无意义连接。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/firewall/firewall_configuration）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "conntrack",
+        "NAT",
+        "table",
+        "full",
+        "内存"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-07",
+      "title": "内存不足与闪存不足要分开",
+      "text": "`free -h`/`/proc/meminfo` 反映 RAM，`df -h` 反映文件系统，`df -i` 反映 inode；三者耗尽症状不同。Linux 会用空闲 RAM 做缓存，低 free 不等于 OOM，应看 available、swap、进程 RSS 和内核 OOM 日志。路由器上盲目 drop_caches 不是长期优化。（核验日期：2026-08-03；来源：https://openwrt.org/docs/guide-user/base-system/system_configuration）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "内存",
+        "OOM",
+        "闪存",
+        "df",
+        "free"
+      ]
+    },
+    {
+      "id": "upload-20260803-63bdd6dcdb-08",
+      "title": "No space left on device 的排查",
+      "text": "先确定报错来自 `/overlay`、`/tmp` 还是 inode。SquashFS 中的预装包不可通过 opkg 真正释放只读空间，删除只生成 whiteout；后装包和日志才占 overlay。清理前用 `du -x -h /overlay/upper` 定位，保留配置备份；若固件本身太大，应使用 Image Builder 重做精简镜像或配置 extroot。（核验日期：2026-08-03；来源：https://openwrt.org/docs/techref/flash.layout）",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/c1a862b0-7b28-4036-a4d3-07f4398772a6-openwrt-geek-part-08-of-09.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "空间不足",
+        "overlay",
+        "tmp",
+        "inode"
       ]
     }
   ]
