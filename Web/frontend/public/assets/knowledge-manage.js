@@ -1,6 +1,6 @@
 import './site.js?v=20260730-2'
 
-const terminalStatuses = new Set(['review_ready', 'pr_created', 'completed', 'failed', 'dispatch_failed'])
+const terminalStatuses = new Set(['review_ready', 'pr_created', 'completed', 'failed', 'dispatch_failed', 'cancelled'])
 const statusLabels = {
   stored: '已保存',
   queued: '等待处理',
@@ -11,7 +11,8 @@ const statusLabels = {
   pr_created: '等待 PR 审核',
   completed: '已完成',
   failed: '处理失败',
-  dispatch_failed: '启动失败'
+  dispatch_failed: '启动失败',
+  cancelled: '已作废'
 }
 
 const form = document.querySelector('#knowledge-import-form')
