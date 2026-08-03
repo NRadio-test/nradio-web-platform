@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 214,
+    "entry_count": 217,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3746,6 +3746,73 @@ export const knowledgePayload = {
         "双频",
         "10000mAh",
         "Wi-Fi 6"
+      ]
+    },
+    {
+      "id": "upload-20260803-78c72a56c2-01",
+      "title": "CC-100GL 全球漫游口袋 Wi-Fi 硬件参数",
+      "text": "NRadio CC-100GL 为全球漫游口袋 Wi-Fi，定位“GL”全球漫游型号，实际能否在特定国家/地区/运营商入网仍受频段、认证、SIM 套餐和当地政策影响，不能仅凭“全球版”字样保证。资料核对日期：2026-08-03。硬件参数：蜂窝等级 LTE Cat4；Wi-Fi 为 Wi-Fi 4（客户端上限官网未公开）；电池 3300mAh。LTE-FDD 频段：B1/B2/B3/B4/B5/B7/B8/B9/B12/B13/B17/B18/B19/B20/B25/B26/B28A/B66。LTE-TDD 频段：B34/B38/B39/B40/B41。WCDMA：B1。GSM/GPRS/EDGE 官方表列出 B1/B2/B4/B5/B8，频段命名以官方原表为准。理论速率：FDD 下行 150Mbps、上行 50Mbps；TDD 下行 130Mbps、上行 35Mbps（理论值，非实际速度保证）。尺寸：81.6×81.6×37mm。内存、闪存、客户端上限和充电参数：官网当前参数表未公开。官方来源：https://www.nradiowifi.com/article/239.html",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "CC-100GL",
+        "全球漫游",
+        "口袋Wi-Fi",
+        "LTE Cat4",
+        "Wi-Fi 4",
+        "3300mAh",
+        "Cellular频段",
+        "理论速率"
+      ]
+    },
+    {
+      "id": "upload-20260803-78c72a56c2-02",
+      "title": "TK-100GL 全球漫游随身 Wi-Fi + 快充充电宝硬件参数",
+      "text": "NRadio TK-100GL 为全球漫游随身 Wi-Fi + 快充充电宝一体机，定位“GL”全球漫游型号，实际入网受频段、认证、SIM 套餐和当地政策影响，不能仅凭“全球版”字样保证。资料核对日期：2026-08-03。硬件参数：电池 10000mAh，3.8V/38Wh，额定容量 6800mAh；内存与存储：官方参数表标注 2GB 内存、512MB 闪存，数值相对少见，如用于采购决策建议再以实机确认；Wi-Fi：Wi-Fi 4 2.4GHz，最多 8 个客户端。LTE-FDD 频段：B1/B2/B3/B4/B5/B7/B8/B9/B12/B13/B17/B18/B19/B20/B25/B26/B28A/B66。LTE-TDD 频段：B34/B38/B39/B40/B41。WCDMA：B1。GSM/GPRS/EDGE 按官方表为 B1/B2/B4/B5/B8。理论速率：FDD 下行 150Mbps、上行 50Mbps；TDD 下行 130Mbps、上行 35Mbps（理论值，非实际速度保证）。尺寸与重量：160×75×20mm，约 259g。输入/输出：具体 Type-C、Lightning 和多口快充组合以当批机身丝印为准，官方展示为充电宝与随身 Wi-Fi 一体机。官方来源：https://www.nradiowifi.com/article/241.html",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "TK-100GL",
+        "全球漫游",
+        "随身Wi-Fi",
+        "充电宝",
+        "快充",
+        "10000mAh",
+        "LTE Cat4",
+        "Wi-Fi 4",
+        "2GB内存",
+        "512MB闪存"
+      ]
+    },
+    {
+      "id": "upload-20260803-78c72a56c2-03",
+      "title": "TT-100GL 全球漫游随身 Wi-Fi + 快充充电宝硬件参数",
+      "text": "NRadio TT-100GL 为全球漫游随身 Wi-Fi + 快充充电宝一体机，定位“GL”全球漫游型号，实际入网受频段、认证、SIM 套餐和当地政策影响，不能仅凭“全球版”字样保证。资料核对日期：2026-08-03。硬件参数：电池 10000mAh，3.8V/38Wh，额定容量 6800mAh；内存与存储：官方参数表标注 2GB 内存、512MB 闪存，采购时建议再以实机铭牌确认；Wi-Fi：Wi-Fi 4 2.4GHz，最多 8 个客户端。LTE-FDD 频段：B1/B2/B3/B4/B5/B7/B8/B9/B12/B13/B17/B18/B19/B20/B25/B26/B28A/B66。LTE-TDD 频段：B34/B38/B39/B40/B41。WCDMA：B1。GSM/GPRS/EDGE 按官方表为 B1/B2/B4/B5/B8。理论速率：FDD 下行 150Mbps、上行 50Mbps；TDD 下行 130Mbps、上行 35Mbps（理论值，非实际速度保证）。尺寸与重量：160×75×20mm，约 259g。输入/输出：官方展示为 Type-C、Lightning 与多口快充组合，具体功率应按机身标注确认。官方来源：https://www.nradiowifi.com/article/240.html",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "NRadio",
+        "TT-100GL",
+        "全球漫游",
+        "随身Wi-Fi",
+        "充电宝",
+        "快充",
+        "10000mAh",
+        "LTE Cat4",
+        "Wi-Fi 4",
+        "2GB内存",
+        "512MB闪存"
       ]
     }
   ]
