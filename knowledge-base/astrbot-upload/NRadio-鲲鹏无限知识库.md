@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 57 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 64 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -630,3 +630,66 @@ member 的 metric 决定优先级、weight 决定同 metric 新连接分配比�
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：插件、PBR、域名、nftset、DoH、CDN
+
+## usteer 与 DAWN 只能选择一个
+
+usteer 与 DAWN 不能同时启用。两者都根据 802.11k/v 信息和信号/负载向客户端提出漫游建议，同时启用会产生相互矛盾的 steering。OpenWrt 24.10 常需完整 wpad 才支持 k/r/v。部署时应先统一 SSID、加密、VLAN 和 802.11r，再用默认或温和阈值部署 steering；客户端最终仍可忽略建议。来源：https://openwrt.org/docs/guide-user/network/wifi/roaming 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、usteer、DAWN、80211k、80211v、漫游
+
+## usteer 的诊断接口
+
+usteer 的诊断接口：使用 `ubus call usteer local_info`、`remote_hosts`、`remote_info`、`get_clients` 查看本地/远端 AP、负载、噪声和客户端能力。若 remote_hosts 为空，检查各 AP 的 network 配置、二层/三层可达性和防火墙；若有邻居但不漫游，检查客户端是否支持 BSS Transition、信号差阈值与目标 AP 是否确实更好。来源：https://openwrt.org/docs/guide-user/network/wifi/usteer 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、usteer、ubus、漫游、诊断
+
+## WireGuard、Tailscale、ZeroTier 的选择
+
+WireGuard、Tailscale、ZeroTier 的选择：WireGuard 自建最轻量，拓扑和密钥完全可控，但需自己处理公网入口、路由与密钥；Tailscale 基于 WireGuard，控制面和 NAT 穿透更易用，可做 subnet router/exit node；ZeroTier 提供虚拟二层/三层网络和集中授权。无论哪种，加入虚拟网后都要单独设计 firewall zone、路由宣告和管理权限。来源：https://openwrt.org/docs/guide-user/services/vpn/tailscale/start 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、WireGuard、Tailscale、ZeroTier、VPN
+
+## Tailscale subnet router/exit node 的进阶检查
+
+Tailscale subnet router/exit node 的进阶检查：OpenWrt 宣告 LAN 网段后，需要在控制面批准 route，并允许 tailscale zone 到 LAN forwarding；使用 exit node 还要处理默认路由、DNS 和 MTU。若只有路由器自身能通而 LAN 客户端不通，检查 forwarding、NAT 和 LAN 客户端默认网关。不要把管理网段无差别暴露给 tailnet 全体成员。来源：https://openwrt.org/docs/guide-user/services/vpn/tailscale/start 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、Tailscale、SubnetRouter、ExitNode
+
+## ZeroTier 版本升级后的 UCI schema 差异
+
+ZeroTier 版本升级后的 UCI schema 差异：ZeroTier 1.14.1 前后 OpenWrt UCI 示例结构发生变化，旧教程的 `list join` 与新 `config network` 写法不能机械混用。以当前包自带 `/etc/config/zerotier` 和官方文档为准，升级前保存 network ID、identity 和授权状态；虚拟接口要加入单独 firewall zone。来源：https://openwrt.org/docs/guide-user/services/vpn/zerotier 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、ZeroTier、UCI、网络
+
+## OpenClash 的定位与兼容风险
+
+OpenClash 的定位与兼容风险：OpenClash 是基于 Mihomo/Clash 的第三方 OpenWrt 客户端，功能丰富，依赖 dnsmasq-full、TUN/TProxy、iptables/nft 兼容组件和自身核心。它不属于 OpenWrt 官方 feed；安装必须按项目 release 匹配 fw4、CPU 架构与内核模块。升级前导出配置，不能与其他透明代理同时接管 DNS、默认路由和 fwmark。来源：https://github.com/vernesong/OpenClash 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、OpenClash、Mihomo、TProxy、第三方
+
+## PassWall 的定位与依赖管理
+
+PassWall 的定位与依赖管理：PassWall 是第三方代理管理插件，主仓库和 packages feed 分开，协议核心与 LuCI 版本需要成套。安装前确认所用 OpenWrt/ImmortalWrt 分支、架构、iptables/nftables 路径和核心来源；遇到依赖缺失应按项目 feed 编译/安装，不能从不同固件仓库拼包。与 OpenClash/HomeProxy/PBR 并用极易冲突。来源：https://github.com/Openwrt-Passwall/openwrt-passwall 核验日期：2026-08-03
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/98a8f713-9a54-4508-acee-89483d0eb02f-openwrt-ecosystem-part-03-of-05.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-03
+- 标签：OpenWrt、插件、PassWall、代理、第三方、feed
