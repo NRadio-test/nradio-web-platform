@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 217,
+    "entry_count": 219,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3812,6 +3812,51 @@
         "Wi-Fi 4",
         "2GB内存",
         "512MB闪存"
+      ]
+    },
+    {
+      "id": "upload-20260803-1762b43f22-01",
+      "title": "N6700 AX6000 Wi-Fi 6 四频缓存路由器硬件参数",
+      "text": "N6700 是 NRadio 官网“其他”分类中的 AX6000 Wi-Fi 6 四频缓存路由器。CPU 为 MediaTek MT7981B 双核 1.3GHz；内存与存储为 1GB DDR4、8GB eMMC，另保留 mSATA 扩展接口。Wi-Fi 规格：Wi-Fi 6，产品目录标称 AX6000 和四频，官网当前可读参数区域未完整列出各频段单独速率，不根据总速率反推。网口：1 个 2.5G WAN/PoE 口 + 1 个千兆 LAN 口。按键与指示：复位键和设备指示灯。天线：4 根内置 2.4GHz 天线 + 6 根内置 5GHz 天线。供电：802.3at PoE 或 DC 12V。防护：官方标注 2kV 浪涌/防雷能力。安装方式：壁挂、吸顶、三脚架或抱杆。尺寸与重量：220×220×35mm，约 992g。工作环境：工作 0–40℃、10%–90%RH；存储 -40–70℃、5%–95%RH。官方来源：N6700 产品页 https://www.nradiowifi.com/article/55.html 。",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "N6700",
+        "AX6000",
+        "Wi-Fi 6",
+        "四频",
+        "缓存路由器",
+        "MT7981B",
+        "2.5G PoE",
+        "mSATA",
+        "高密度 Wi-Fi",
+        "NRadio 其他产品"
+      ]
+    },
+    {
+      "id": "upload-20260803-1762b43f22-02",
+      "title": "N8 AX1800 Wi-Fi 6 家用路由器硬件参数",
+      "text": "N8 是 NRadio 历史官方产品，AX1800 Wi-Fi 6 家用路由器。目录状态：仍有官方产品和配置说明页，但不在 2026-08-03 官网当前四个产品分类页中，因此标记为历史产品，不代表官方仍在售。Wi-Fi 标准：IEEE 802.11a/b/g/n/ac/ax。Wi-Fi 速率：2.4GHz 573Mbps，5GHz 1201Mbps，双频合计标称 1774Mbps（理论速率，非实际速度保证）。无线规格：2×2 MIMO、2 空间流，官方标注最多 256 个客户端。国内频率范围：2.412–2.483GHz；5.15–5.35GHz 和 5.72–5.84GHz。网口：4 个千兆 WAN/LAN 自适应网口。天线：4 根内置全向高增益天线。供电与功耗：DC 12V/1.5A；最大功耗 18W，待机约 7.3W。尺寸：100×100×200mm。环境：工作 0–40℃、10%–90%RH；存储 -40–70℃、5%–90%RH。无线管理能力：官方页面列出频道、功率、客户端数、带宽限制，定时开关射频，负载均衡，Open/WPA2，终端隔离，防粘滞终端，高密优化和云管理。官方来源：N8 产品页 https://www.nradiowifi.com/article/158.html 、N8 配置说明书列表 https://www.nradiowifi.com/fuwu/wendang/ 。",
+      "source_url": "https://www.nradiowifi.com/chanpin/",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "N8",
+        "AX1800",
+        "Wi-Fi 6",
+        "家用路由器",
+        "573Mbps",
+        "1201Mbps",
+        "1774Mbps",
+        "2×2 MIMO",
+        "千兆网口",
+        "历史产品",
+        "NRadio"
       ]
     }
   ]
