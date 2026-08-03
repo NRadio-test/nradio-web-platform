@@ -1,0 +1,14 @@
+{
+  "job_id": "59bd5e52-f08e-46c0-80fa-56b929806393",
+  "file_name": "openwrt-geek-part-09-of-09.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "368365a3acf7ad7b6717f658b8bc6735342f1df20dbe3b97803409b74d6f2921",
+  "decision": "accept",
+  "review_notes": [
+    "共7个二级标题，拆分为7条独立知识条目；保留原始来源URL、标签与核验日期。"
+  ],
+  "entry_count": 7,
+  "document_path": "knowledge-base/documents/uploads/59bd5e52-f08e-46c0-80fa-56b929806393.md",
+  "source_path": "knowledge-base/sources/uploads/2026-08/59bd5e52-f08e-46c0-80fa-56b929806393-openwrt-geek-part-09-of-09.md",
+  "extracted_characters": 2107
+}
