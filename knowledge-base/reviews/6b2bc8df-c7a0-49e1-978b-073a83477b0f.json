@@ -1,0 +1,15 @@
+{
+  "job_id": "6b2bc8df-c7a0-49e1-978b-073a83477b0f",
+  "file_name": "openwrt-ecosystem-part-01-of-05.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "358cf6d45d9393a026de55532e73d5284fcf17e2d945e705425bced623f0f611",
+  "decision": "accept",
+  "review_notes": [
+    "文件核验日期为 2026-08-03，已按二级标题拆分为 7 个独立条目，保留各节来源 URL 与标签。",
+    "本分片未包含 C2000MAX 专项资料。"
+  ],
+  "entry_count": 7,
+  "document_path": "knowledge-base/documents/uploads/6b2bc8df-c7a0-49e1-978b-073a83477b0f.md",
+  "source_path": "knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+  "extracted_characters": 2028
+}

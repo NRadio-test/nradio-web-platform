@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-03T00:00:00.000Z",
     "verified_at": "2026-08-03",
-    "entry_count": 64,
+    "entry_count": 71,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -1100,6 +1100,126 @@ export const knowledgePayload = {
         "Rufus",
         "DiskGenius",
         "完整性"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-01",
+      "title": "OpenWrt 官方支持渠道如何选择",
+      "text": "设备安装与用户配置优先查 OpenWrt Wiki、Table of Hardware/设备页和官方论坛；可复现的软件缺陷提交到对应 GitHub 仓库，开发讨论和补丁走邮件列表。提问时提供设备完整型号/版本、发行版、`ubus call system board`、复现步骤、期望与实际结果、日志和已做测试，删除密码/私钥但不要删除关键错误上下文。来源：https://openwrt.org/support",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "社区",
+        "OpenWrt官方论坛",
+        "GitHub",
+        "支持",
+        "提问"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-02",
+      "title": "OpenWrt GitHub 仓库的职责划分",
+      "text": "`openwrt/openwrt` 负责基础系统、target、内核与构建；`openwrt/packages` 负责大量用户软件；`openwrt/luci` 负责 Web 界面；`openwrt/routing` 负责 mwan3、路由协议等。插件页面坏不一定是 LuCI 核心问题，kmod 不加载也不该报给插件作者。先找到包 Makefile 中的 PKG_SOURCE 和 maintainer，再去正确仓库。来源：https://github.com/openwrt/openwrt",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "社区",
+        "GitHub",
+        "openwrt",
+        "packages",
+        "luci",
+        "routing"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-03",
+      "title": "官方 Forum 与 Reddit 的证据等级",
+      "text": "OpenWrt Forum 是官方社区，常有维护者参与，但帖子仍可能过时或针对特定 snapshot；`r/openwrt` 是非官方 subreddit，适合发现思路和用户体验，开发者不会保证看到。任何复制命令都要核对发布日期、版本、target 和后续回复，最终以设备页、当前源码和本机日志验证。来源：https://www.reddit.com/r/openwrt/",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "社区",
+        "OpenWrtForum",
+        "Reddit",
+        "证据"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-04",
+      "title": "恩山无线论坛适合查什么",
+      "text": "恩山无线论坛对中国市场路由器拆机、TTL 点位、Breed/U-Boot、运营商光猫、国产 SoC 和第三方固件经验非常丰富，适合发现设备线索。但附件、网盘固件和一键工具的源码、版本、哈希与安全性常不透明；应先找原作者主题、交叉验证硬件版本，备份 bootloader/factory/calibration，再决定是否使用。来源：https://www.right.com.cn/",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "社区",
+        "恩山",
+        "right",
+        "第三方固件",
+        "刷机"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-05",
+      "title": "ImmortalWrt 社区与 OpenWrt 上游的关系",
+      "text": "ImmortalWrt 是面向中国用户的 OpenWrt 分支，增加设备、包、本地化和部分不易上游的优化。问题若只在 ImmortalWrt 或其 MTK/代理组件出现，应查 ImmortalWrt GitHub Discussions/Issues、Matrix/Telegram 支持渠道；上游 OpenWrt 文档仍适用于大量基础机制，但不能假设固件、kmod、feed 或 sysupgrade 与上游互换。来源：https://github.com/immortalwrt/immortalwrt",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "社区",
+        "ImmortalWrt",
+        "OpenWrt",
+        "分支",
+        "支持"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-06",
+      "title": "选择插件前的六项兼容检查",
+      "text": "安装前确认发行版与版本、CPU 架构、包管理器 opkg/apk、firewall3/4、内核 ABI、维护者支持分支；再核对依赖、可写空间、RAM 和是否与现有 DNS/PBR/代理冲突。优先官方 feed，其次项目作者签名 release，最后才是论坛附件。保存插件版本、来源 URL、配置目录和回滚命令。来源：https://openwrt.org/docs/guide-user/additional-software/managing_packages",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "插件",
+        "兼容性",
+        "opkg",
+        "apk",
+        "fw4",
+        "kmod"
+      ]
+    },
+    {
+      "id": "upload-20260803-358cf6d45d-07",
+      "title": "luci-app-* 与后台服务的关系",
+      "text": "多数 `luci-app-foo` 只是配置界面，真正功能来自 `foo`、内核模块或脚本；有些包还需 `luci-i18n-foo-zh-cn`。只装 UI 会出现 RPC/文件不存在，只装后台则不会出现菜单。必须从同一分支/仓库成套安装，升级时避免 LuCI 前端比 UCI schema 或 rpcd 后端更新得更快。来源：https://github.com/openwrt/luci",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6b2bc8df-c7a0-49e1-978b-073a83477b0f-openwrt-ecosystem-part-01-of-05.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-03",
+      "confidence": "high",
+      "tags": [
+        "插件",
+        "LuCI",
+        "luci-app",
+        "后台",
+        "rpcd"
       ]
     }
   ]
