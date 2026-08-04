@@ -48,6 +48,18 @@ if (!apiResponse.ok || !Array.isArray(apiPayload.entries)) {
   throw new Error('知识库 API 查询检查失败。')
 }
 
+const summaryResponse = await getKnowledge({
+  request: new Request('https://nradio.example/api/knowledge?summary=1')
+})
+const summaryPayload = await summaryResponse.json()
+if (
+  !summaryResponse.ok ||
+  summaryPayload.meta?.entry_count !== payload.entries.length ||
+  'entries' in summaryPayload
+) {
+  throw new Error('知识库 API 轻量统计检查失败。')
+}
+
 const { onRequestGet: getHealth } = await import('../backend/functions/api/health.js')
 const healthResponse = await getHealth()
 if (!healthResponse.ok) throw new Error('健康检查 API 返回异常。')
