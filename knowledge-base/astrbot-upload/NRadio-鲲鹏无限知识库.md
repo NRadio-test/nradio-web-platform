@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 244 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 251 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2398,3 +2398,66 @@ C8-798即C2000 Ultra。资料记载，十周年活动期间有一批C2000 Ultra�
 - 上传者：FallaxAura
 - 核对日期：2026-08-07
 - 标签：C2000 Max、金属散热壳、客服口径、咨询
+
+## C2000 Max 与 C2000 Ultra 型号对应关系
+
+C8-788 即 C2000 Max；C8-798 即 C2000 Ultra。该对应关系来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、C2000 Ultra、C8-788、C8-798、型号对应
+
+## C2000 Max 与 C2000 Ultra 内存差异
+
+C2000 Max 内存为 512 MB；C2000 Ultra 内存为 1 GB。该信息来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、C2000 Ultra、内存、512MB、1GB
+
+## C2000 Max 与 C2000 Ultra 外壳差异
+
+C2000 Max 采用塑胶外壳；C2000 Ultra 采用金属外壳。该信息来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、C2000 Ultra、外壳、塑胶、金属
+
+## C2000 Ultra 的 TF 卡与 AI 用途
+
+资料说明 C2000 Ultra 会额外配有一张 TF 卡，可用于体验或运行相关 AI 功能。具体 TF 卡容量、AI 功能范围和使用方式，资料中没有给出。该信息来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Ultra、TF卡、AI功能、配件
+
+## C2000 Ultra 随机流量卡说明
+
+资料说明 C2000 Ultra 内置一张青锋卡，并可能额外赠送一张卡。“可能赠送”不等于固定标配，实际卡片数量、类型和活动资格应以购买批次、商品页面及发货清单为准。该信息来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Ultra、随机流量卡、青锋卡、赠品
+
+## C2000 Max 与 C2000 Ultra 的 Wi-Fi 规格差异
+
+C2000 Max 资料写明为 AX3000 Wi-Fi；C2000 Ultra 原始资料写作“5040 的 Wi-Fi”。该表述没有给出完整标准名称，应原样说明，不能自行扩展为未经资料确认的芯片、频段、协议或理论速率，具体规格以正式商品参数为准。该信息来自截至 2026-08-07 提供的文本资料。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、C2000 Ultra、Wi-Fi、AX3000、5040
+
+## C2000 Max 与 C2000 Ultra 硬件差异回答边界
+
+以上信息来自截至 2026-08-07 提供的文本资料。产品仍可能处于内测、预售或规格调整阶段，最终硬件配置、赠品和功能应以正式商品详情、发货清单及最新公告为准。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/de310c4c-5fda-4344-ae69-8e1b3d18f05a-C2000-Max与C2000-Ultra硬件差异.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、C2000 Ultra、回答边界、资料截止日期
