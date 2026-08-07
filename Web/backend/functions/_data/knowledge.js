@@ -3414,7 +3414,7 @@ export const knowledgePayload = {
     {
       "id": "upload-20260803-acc90fa962-06",
       "title": "C5800-688",
-      "text": "C5800-688 是 NRadio 的一款企业级 AX3000 Wi-Fi 6 多 SIM 5G CPE。核对日期：2026-08-03。定位：企业级 AX3000 Wi-Fi 6 多 SIM 5G CPE。CPU：MediaTek MT7981B 双核 1.3GHz；5G 平台为海思巴龙。内存与存储：1GB DDR4，8GB eMMC。Wi-Fi：AX3000，2.4GHz 574Mbps + 5GHz 2402Mbps。频段与速率：同官方巴龙版参数，5G NR N1/N3/N5/N8/N28/N41/N78/N79；LTE-FDD B1/B3/B5/B8；LTE-TDD B34/B38/B39/B40/B41；WCDMA B1/B8；5G 4Gbps/1.5Gbps，LTE 900Mbps/200Mbps。SIM：2 个内置 5G SIM + 4 个外置标准 SIM 卡槽。网口：1 个千兆 WAN + 2 个千兆 LAN + 1 个 2.5G PoE NBCPE 口。天线：2 根可折叠双频 Wi-Fi 天线、2 根可折叠 5G NR 天线、2 根 SMA 可拆 5G NR 天线。指示灯：系统、5G、4G、WAN/Wi-Fi 以及 3 级信号强度灯。供电：DC 12V/2A。尺寸与重量：230×148×28mm，约 1.26kg。环境：工作 0–40℃、10%–90%RH 无凝结；存储 -40–70℃、5%–90%RH 无凝结。注意：以上速率为官方参数表中的理论最高值，不是实际网速承诺；不同地区、批次和套餐的模组、频段、SIM 形态可能不同，实机信息优先。官方来源：https://www.nradiowifi.com/article/231.html。",
+      "text": "C5800-688 是 NRadio 的一款企业级 AX3000 Wi-Fi 6 多 SIM 5G CPE。核对日期：2026-08-03。定位：企业级 AX3000 Wi-Fi 6 多 SIM 5G CPE。CPU：MediaTek MT7981B 双核 1.3GHz；5G 平台为海思巴龙（新版资料明确标注蜂窝模组为 MT5700M-CN，适用区域为中国大陆）。内存与存储：1GB DDR4，8GB eMMC。Wi-Fi：AX3000，2.4GHz 574Mbps + 5GHz 2402Mbps。频段与速率：同官方巴龙版参数，5G NR N1/N3/N5/N8/N28/N41/N78/N79；LTE-FDD B1/B3/B5/B8；LTE-TDD B34/B38/B39/B40/B41；WCDMA B1/B8；5G 4Gbps/1.5Gbps，LTE 900Mbps/200Mbps。SIM：4 个外置 4FF Nano-SIM 卡槽，支持自动或手动切卡。新版产品资料没有确认存在 2 个内置 SIM；内置 SIM 情况应以具体批次、套餐和实机为准。网口： 3 个 10/100/1000Mbps LAN 网口和1 个 10/100/1000/2500Mbps WAN/LAN 网口（只是POE供电），共 4 个网口。但资料未提供 PoE 协议、电压或功率参数。天线：2 根可折叠双频 Wi-Fi 天线、2 根可折叠 5G NR 天线、2 根 SMA 可拆 5G NR 天线。指示灯：3 级蜂窝信号强度灯，以及 SYS、5G、4G、WiFi、INT 状态灯。供电：DC 12V/2A。尺寸与重量：230×148×28mm，约 1.26kg。环境：工作温度 0–40℃，存储温度 -40–70℃，工作湿度 5%–95%。新版资料没有单独注明存储湿度或“无凝结”条件。；存储 -40–70℃、5%–90%RH 无凝结。注意：以上速率为官方参数表中的理论最高值，不是实际网速承诺；不同地区、批次和套餐的模组、频段、SIM 形态可能不同，实机信息优先。官方来源：https://www.nradiowifi.com/article/231.html。",
       "source_url": "https://www.nradiowifi.com/chanpin/",
       "source_type": "user_upload",
       "uploaded_by": "FallaxAura",
@@ -3432,7 +3432,10 @@ export const knowledgePayload = {
         "2.5G PoE",
         "NBCPE",
         "SMA天线"
-      ]
+      ],
+      "last_edited_by": "FallaxAura",
+      "last_edited_at": "2026-08-07T08:01:26+00:00",
+      "revision": 2
     },
     {
       "id": "upload-20260803-acc90fa962-07",
