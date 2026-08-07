@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-07T00:00:00.000Z",
     "verified_at": "2026-08-07",
-    "entry_count": 231,
+    "entry_count": 241,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -4060,6 +4060,165 @@
         "信息来源",
         "整理日期",
         "2026-08-07"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-01",
+      "title": "张导小店会员等级概览",
+      "text": "张导小店会员分为黄金会员、赤金会员、紫金会员、虚空会员、神域会员和至尊股东会员。赤金、紫金、虚空会员主要依据抖音粉丝团实际等级升级；达到对应条件后，还需要按照张导小店要求提交相关证明。神域会员和至尊股东会员没有固定升级门槛，由张导根据成员的特殊贡献审核并颁发。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "会员等级",
+        "规则概览"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-02",
+      "title": "黄金会员升级条件",
+      "text": "注册张导小店即可成为黄金会员，没有等级门槛。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "黄金会员",
+        "升级条件"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-03",
+      "title": "赤金会员升级条件",
+      "text": "抖音粉丝团达到5级，可申请升级为赤金会员。需按照张导小店要求提交相关证明。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "赤金会员",
+        "抖音粉丝团",
+        "升级条件"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-04",
+      "title": "紫金会员升级条件",
+      "text": "抖音粉丝团达到10级，可申请升级为紫金会员。需按照张导小店要求提交相关证明。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "紫金会员",
+        "抖音粉丝团",
+        "升级条件"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-05",
+      "title": "虚空会员升级条件",
+      "text": "满足以下任一条件，可申请升级为虚空会员：单个抖音粉丝团等级达到11级；或两个账号的抖音粉丝团等级达到“10+6”。双号升级时，应提交两个账号的粉丝团等级证明。需按照张导小店要求提交相关证明。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "虚空会员",
+        "抖音粉丝团",
+        "升级条件",
+        "双号"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-06",
+      "title": "神域会员颁发规则",
+      "text": "神域会员授予对张导小店作出特殊贡献的鹏友，由张导审核并颁发，不设固定升级条件。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "神域会员",
+        "特殊贡献",
+        "颁发规则"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-07",
+      "title": "至尊股东会员颁发规则",
+      "text": "至尊股东会员授予对张导小店作出重大特殊贡献的成员，由张导审核并颁发，不设固定升级条件。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "至尊股东会员",
+        "重大特殊贡献",
+        "颁发规则"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-08",
+      "title": "张导小店会员审核与证明要求",
+      "text": "赤金、紫金、虚空会员均以抖音粉丝团实际等级作为升级依据。达到对应等级后，需要按照张导小店要求提交相关证明。双号升级时，应提交两个账号的粉丝团等级证明。会员等级规则如有调整，张导小店将另行发布公告。本规则最终解释权归张导小店所有。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "会员审核",
+        "证明要求",
+        "抖音粉丝团"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-09",
+      "title": "张导小店会员升级客服回答口径",
+      "text": "用户询问如何升级会员时，应说明对应等级条件，并提醒达到条件后仍需按照张导小店要求提交证明。对于神域会员和至尊股东会员，应说明其根据特殊贡献或重大特殊贡献由张导审核颁发，没有固定申请门槛。会员规则发生调整时，以张导小店另行发布的最新公告为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "客服",
+        "会员升级",
+        "回答口径"
+      ]
+    },
+    {
+      "id": "upload-20260807-bf6d132211-10",
+      "title": "张导小店会员等级规则信息来源",
+      "text": "信息来源为用户提供的《张导小店会员等级升级规则公示》图片，整理日期为2026-08-07。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "张导小店",
+        "会员等级",
+        "信息来源",
+        "整理日期"
       ]
     }
   ]

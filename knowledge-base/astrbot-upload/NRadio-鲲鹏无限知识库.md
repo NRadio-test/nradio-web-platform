@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 231 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 241 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2281,3 +2281,93 @@ C8-798即C2000 Ultra。资料记载，十周年活动期间有一批C2000 Ultra�
 - 上传者：FallaxAura
 - 核对日期：2026-08-07
 - 标签：信息来源、整理日期、2026-08-07
+
+## 张导小店会员等级概览
+
+张导小店会员分为黄金会员、赤金会员、紫金会员、虚空会员、神域会员和至尊股东会员。赤金、紫金、虚空会员主要依据抖音粉丝团实际等级升级；达到对应条件后，还需要按照张导小店要求提交相关证明。神域会员和至尊股东会员没有固定升级门槛，由张导根据成员的特殊贡献审核并颁发。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、会员等级、规则概览
+
+## 黄金会员升级条件
+
+注册张导小店即可成为黄金会员，没有等级门槛。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、黄金会员、升级条件
+
+## 赤金会员升级条件
+
+抖音粉丝团达到5级，可申请升级为赤金会员。需按照张导小店要求提交相关证明。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、赤金会员、抖音粉丝团、升级条件
+
+## 紫金会员升级条件
+
+抖音粉丝团达到10级，可申请升级为紫金会员。需按照张导小店要求提交相关证明。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、紫金会员、抖音粉丝团、升级条件
+
+## 虚空会员升级条件
+
+满足以下任一条件，可申请升级为虚空会员：单个抖音粉丝团等级达到11级；或两个账号的抖音粉丝团等级达到“10+6”。双号升级时，应提交两个账号的粉丝团等级证明。需按照张导小店要求提交相关证明。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、虚空会员、抖音粉丝团、升级条件、双号
+
+## 神域会员颁发规则
+
+神域会员授予对张导小店作出特殊贡献的鹏友，由张导审核并颁发，不设固定升级条件。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、神域会员、特殊贡献、颁发规则
+
+## 至尊股东会员颁发规则
+
+至尊股东会员授予对张导小店作出重大特殊贡献的成员，由张导审核并颁发，不设固定升级条件。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、至尊股东会员、重大特殊贡献、颁发规则
+
+## 张导小店会员审核与证明要求
+
+赤金、紫金、虚空会员均以抖音粉丝团实际等级作为升级依据。达到对应等级后，需要按照张导小店要求提交相关证明。双号升级时，应提交两个账号的粉丝团等级证明。会员等级规则如有调整，张导小店将另行发布公告。本规则最终解释权归张导小店所有。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、会员审核、证明要求、抖音粉丝团
+
+## 张导小店会员升级客服回答口径
+
+用户询问如何升级会员时，应说明对应等级条件，并提醒达到条件后仍需按照张导小店要求提交证明。对于神域会员和至尊股东会员，应说明其根据特殊贡献或重大特殊贡献由张导审核颁发，没有固定申请门槛。会员规则发生调整时，以张导小店另行发布的最新公告为准。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、客服、会员升级、回答口径
+
+## 张导小店会员等级规则信息来源
+
+信息来源为用户提供的《张导小店会员等级升级规则公示》图片，整理日期为2026-08-07。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/fb9248bf-4a78-418f-b7ee-6aa759b23c2f-张导小店会员等级升级规则.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：张导小店、会员等级、信息来源、整理日期
