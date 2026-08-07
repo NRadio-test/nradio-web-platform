@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 223 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 227 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2209,3 +2209,39 @@ C2000 Max的金属壳（金属散热壳）预计在8月份推出。已在微信�
 - 上传者：FallaxAura
 - 核对日期：2026-08-03
 - 标签：天火卡、活动结束、流量卡
+
+## C8-788 对应 C2000 Max
+
+C8-788 对应 C2000 Max。用户使用 C8-788、788、C2000 Max 等名称询问时，应将其识别为同一款产品。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C8-788、788、C2000 Max、型号别名、产品识别
+
+## C8-798 对应 C2000 Ultra
+
+C8-798 对应 C2000 Ultra。用户使用 C8-798、798、C2000 Ultra、Ultra 或 U 等名称询问时，应结合上下文识别为 C2000 Ultra。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C8-798、798、C2000 Ultra、Ultra、U、型号别名、产品识别
+
+## C2000 Ultra 发布状态
+
+C2000 Ultra 目前尚未正式推出，预计在 8 月进行内测，第一批内测的人员目前为部分虚空会员和紫金会员。该状态为截至整理日期 2026-08-07 的资料信息。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Ultra、发布状态、内测、虚空会员、紫金会员、2026-08-07
+
+## C2000 Ultra 动态信息提醒
+
+C2000 Ultra 的内测时间、正式发售时间、库存和预售状态均属于动态信息。客服回答时应说明这是截至资料整理日期的状态，并引导用户以微信“鲲鹏小店”小程序当前页面或最新公告为准，不能把预计时间表述为已经确定的承诺。整理日期为 2026-08-07。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Ultra、动态信息、客服话术、鲲鹏小店、公告、时间边界

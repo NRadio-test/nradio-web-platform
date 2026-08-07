@@ -1,9 +1,9 @@
 {
   "meta": {
     "name": "NRadio 鲲鹏无限知识库",
-    "generated_at": "2026-08-03T00:00:00.000Z",
-    "verified_at": "2026-08-03",
-    "entry_count": 223,
+    "generated_at": "2026-08-07T00:00:00.000Z",
+    "verified_at": "2026-08-07",
+    "entry_count": 227,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3921,6 +3921,78 @@
         "天火卡",
         "活动结束",
         "流量卡"
+      ]
+    },
+    {
+      "id": "upload-20260807-9f2a50961c-01",
+      "title": "C8-788 对应 C2000 Max",
+      "text": "C8-788 对应 C2000 Max。用户使用 C8-788、788、C2000 Max 等名称询问时，应将其识别为同一款产品。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C8-788",
+        "788",
+        "C2000 Max",
+        "型号别名",
+        "产品识别"
+      ]
+    },
+    {
+      "id": "upload-20260807-9f2a50961c-02",
+      "title": "C8-798 对应 C2000 Ultra",
+      "text": "C8-798 对应 C2000 Ultra。用户使用 C8-798、798、C2000 Ultra、Ultra 或 U 等名称询问时，应结合上下文识别为 C2000 Ultra。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C8-798",
+        "798",
+        "C2000 Ultra",
+        "Ultra",
+        "U",
+        "型号别名",
+        "产品识别"
+      ]
+    },
+    {
+      "id": "upload-20260807-9f2a50961c-03",
+      "title": "C2000 Ultra 发布状态",
+      "text": "C2000 Ultra 目前尚未正式推出，预计在 8 月进行内测，第一批内测的人员目前为部分虚空会员和紫金会员。该状态为截至整理日期 2026-08-07 的资料信息。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Ultra",
+        "发布状态",
+        "内测",
+        "虚空会员",
+        "紫金会员",
+        "2026-08-07"
+      ]
+    },
+    {
+      "id": "upload-20260807-9f2a50961c-04",
+      "title": "C2000 Ultra 动态信息提醒",
+      "text": "C2000 Ultra 的内测时间、正式发售时间、库存和预售状态均属于动态信息。客服回答时应说明这是截至资料整理日期的状态，并引导用户以微信“鲲鹏小店”小程序当前页面或最新公告为准，不能把预计时间表述为已经确定的承诺。整理日期为 2026-08-07。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/a1712a9f-0a00-411b-be7c-0f220a4876ea-产品型号别名与发布状态.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Ultra",
+        "动态信息",
+        "客服话术",
+        "鲲鹏小店",
+        "公告",
+        "时间边界"
       ]
     }
   ]
