@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 227 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 231 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2245,3 +2245,39 @@ C2000 Ultra 的内测时间、正式发售时间、库存和预售状态均属�
 - 上传者：FallaxAura
 - 核对日期：2026-08-07
 - 标签：C2000 Ultra、动态信息、客服话术、鲲鹏小店、公告、时间边界
+
+## 天火卡活动已结束
+
+截至2026-08-07提供的资料，天火卡相关活动已经结束。客服不应继续承诺天火卡活动资格、套餐、赠送或办理入口。资料表示后续可能会有其他优质流量卡，但未提供卡片名称、套餐、上线时间或参与条件。用户询问后续活动时，应建议关注微信小程序或最新公告，不能提前承诺具体产品和时间。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：天火卡、活动结束、流量卡、客服口径、2026-08-07
+
+## C2000 Ultra（C8-798）历史活动价格
+
+C8-798即C2000 Ultra。资料记载，十周年活动期间有一批C2000 Ultra的价格为1598元，该价格只适用于当时那一批；后续链接价格均为1980元。1598元属于特定批次的历史活动价格，不能作为当前售价或未来活动承诺。1980元也是资料整理时记录的后续链接价格。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Ultra、C8-798、历史价格、十周年活动、1598元、1980元
+
+## 客服回答口径：C2000 Ultra价格与天火卡
+
+用户询问为什么有人以1598元购买C2000 Ultra时，应说明这是十周年特定批次的历史活动价格。不应承诺当前仍可按1598元购买。用户询问当前售价时，应引导查看微信“鲲鹏小店”小程序当前链接，避免引用过期价格。用户询问天火卡时，应明确相关活动已经结束，并建议关注后续流量卡公告。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：客服口径、C2000 Ultra、天火卡、鲲鹏小店、价格引导
+
+## 信息来源与整理日期
+
+本资料来源于用户提供的原始TXT，整理日期为2026-08-07。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：信息来源、整理日期、2026-08-07

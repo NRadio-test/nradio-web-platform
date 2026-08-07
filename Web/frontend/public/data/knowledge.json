@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-07T00:00:00.000Z",
     "verified_at": "2026-08-07",
-    "entry_count": 227,
+    "entry_count": 231,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -3993,6 +3993,73 @@
         "鲲鹏小店",
         "公告",
         "时间边界"
+      ]
+    },
+    {
+      "id": "upload-20260807-1e455bbe09-01",
+      "title": "天火卡活动已结束",
+      "text": "截至2026-08-07提供的资料，天火卡相关活动已经结束。客服不应继续承诺天火卡活动资格、套餐、赠送或办理入口。资料表示后续可能会有其他优质流量卡，但未提供卡片名称、套餐、上线时间或参与条件。用户询问后续活动时，应建议关注微信小程序或最新公告，不能提前承诺具体产品和时间。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "活动结束",
+        "流量卡",
+        "客服口径",
+        "2026-08-07"
+      ]
+    },
+    {
+      "id": "upload-20260807-1e455bbe09-02",
+      "title": "C2000 Ultra（C8-798）历史活动价格",
+      "text": "C8-798即C2000 Ultra。资料记载，十周年活动期间有一批C2000 Ultra的价格为1598元，该价格只适用于当时那一批；后续链接价格均为1980元。1598元属于特定批次的历史活动价格，不能作为当前售价或未来活动承诺。1980元也是资料整理时记录的后续链接价格。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Ultra",
+        "C8-798",
+        "历史价格",
+        "十周年活动",
+        "1598元",
+        "1980元"
+      ]
+    },
+    {
+      "id": "upload-20260807-1e455bbe09-03",
+      "title": "客服回答口径：C2000 Ultra价格与天火卡",
+      "text": "用户询问为什么有人以1598元购买C2000 Ultra时，应说明这是十周年特定批次的历史活动价格。不应承诺当前仍可按1598元购买。用户询问当前售价时，应引导查看微信“鲲鹏小店”小程序当前链接，避免引用过期价格。用户询问天火卡时，应明确相关活动已经结束，并建议关注后续流量卡公告。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "客服口径",
+        "C2000 Ultra",
+        "天火卡",
+        "鲲鹏小店",
+        "价格引导"
+      ]
+    },
+    {
+      "id": "upload-20260807-1e455bbe09-04",
+      "title": "信息来源与整理日期",
+      "text": "本资料来源于用户提供的原始TXT，整理日期为2026-08-07。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/e12762b7-4600-4c90-8c84-748f64eeae66-活动流量卡与C2000-Ultra历史价格.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "信息来源",
+        "整理日期",
+        "2026-08-07"
       ]
     }
   ]
