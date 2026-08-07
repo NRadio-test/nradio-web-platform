@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 241 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 244 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2371,3 +2371,30 @@ C8-798即C2000 Ultra。资料记载，十周年活动期间有一批C2000 Ultra�
 - 上传者：FallaxAura
 - 核对日期：2026-08-07
 - 标签：张导小店、会员等级、信息来源、整理日期
+
+## C2000 Max金属散热壳预计推出时间
+
+根据截至2026-08-07提供的资料，C2000 Max金属散热壳预计在8月推出。该推出时间属于计划信息，可能调整，应以微信小程序和最新通知为准。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、金属散热壳、配件、推出时间
+
+## 已购买用户领取金属散热壳的等待通知说明
+
+已经通过微信小程序“张导的店”购买相关商品的鹏友，请耐心等待小助理通知。资料没有说明通知的具体时间、发放方式、是否免费或所有订单是否均符合条件，因此客服不能自行承诺领取资格、到货日期或费用。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、金属散热壳、领取、张导的店、小助理通知
+
+## 客服回答金属散热壳相关问题的口径
+
+用户询问金属散热壳何时推出或如何领取时，客服可以说明资料中的预计时间和等待通知要求，同时提醒最终安排以小助理通知、微信小程序页面或张导小店最新公告为准。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md
+- 上传者：FallaxAura
+- 核对日期：2026-08-07
+- 标签：C2000 Max、金属散热壳、客服口径、咨询

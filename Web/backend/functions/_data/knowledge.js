@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-07T00:00:00.000Z",
     "verified_at": "2026-08-07",
-    "entry_count": 241,
+    "entry_count": 244,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -4220,6 +4220,55 @@ export const knowledgePayload = {
         "会员等级",
         "信息来源",
         "整理日期"
+      ]
+    },
+    {
+      "id": "upload-20260807-532bbda957-01",
+      "title": "C2000 Max金属散热壳预计推出时间",
+      "text": "根据截至2026-08-07提供的资料，C2000 Max金属散热壳预计在8月推出。该推出时间属于计划信息，可能调整，应以微信小程序和最新通知为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Max",
+        "金属散热壳",
+        "配件",
+        "推出时间"
+      ]
+    },
+    {
+      "id": "upload-20260807-532bbda957-02",
+      "title": "已购买用户领取金属散热壳的等待通知说明",
+      "text": "已经通过微信小程序“张导的店”购买相关商品的鹏友，请耐心等待小助理通知。资料没有说明通知的具体时间、发放方式、是否免费或所有订单是否均符合条件，因此客服不能自行承诺领取资格、到货日期或费用。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Max",
+        "金属散热壳",
+        "领取",
+        "张导的店",
+        "小助理通知"
+      ]
+    },
+    {
+      "id": "upload-20260807-532bbda957-03",
+      "title": "客服回答金属散热壳相关问题的口径",
+      "text": "用户询问金属散热壳何时推出或如何领取时，客服可以说明资料中的预计时间和等待通知要求，同时提醒最终安排以小助理通知、微信小程序页面或张导小店最新公告为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/03fca37c-4052-44b2-8fef-36bae0c4df1c-C2000-Max金属散热壳说明.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-07",
+      "confidence": "high",
+      "tags": [
+        "C2000 Max",
+        "金属散热壳",
+        "客服口径",
+        "咨询"
       ]
     }
   ]
