@@ -1,9 +1,9 @@
 {
   "meta": {
     "name": "NRadio 鲲鹏无限知识库",
-    "generated_at": "2026-08-07T00:00:00.000Z",
-    "verified_at": "2026-08-07",
-    "entry_count": 260,
+    "generated_at": "2026-08-11T00:00:00.000Z",
+    "verified_at": "2026-08-11",
+    "entry_count": 267,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -4571,6 +4571,125 @@
         "400-6800-186",
         "support@nradiowifi.com",
         "深圳市鲲鹏无限科技有限公司"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-01",
+      "title": "天火卡每月流量组成",
+      "text": "天火卡每月总流量为1500GB，由三部分组成：70GB通用流量（月初默认到账）、30GB定向流量（月初默认到账，只能用于运营商规定的应用或业务范围，具体适用范围应在中国移动APP中查看）、1400GB通用流量（月初陆续叠加到账）。月初首先看到的100GB是70GB通用流量加30GB定向流量，不是100GB通用流量。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "流量组成",
+        "通用流量",
+        "定向流量",
+        "1500GB"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-02",
+      "title": "天火卡月初流量到账延迟原因",
+      "text": "中国移动系统每月1日至3日通常处于结算期，天火卡1400GB叠加通用流量可能延迟下发，并不一定在每月1日一次性全部显示。用户应打开中国移动APP，完成人脸识别登录后，在首页查看已经到账的流量。每月1日至3日可适当刷新并再次确认，看到叠加流量完整到账后再恢复正常的大流量使用。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "到账延迟",
+        "结算期",
+        "中国移动APP",
+        "流量查询"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-03",
+      "title": "天火卡月初使用最重要注意事项",
+      "text": "在1400GB叠加流量尚未到账前，不要提前用完默认到账的70GB通用流量。根据业务规则，如果70GB通用流量在叠加流量到账前已经用完，系统将无法继续下发当月剩余的1400GB通用流量，而且当月不会补发。虽然月初页面可能显示共100GB，但其中包含30GB定向流量。普通上网主要消耗通用流量，因此判断是否即将用完时应重点查看通用流量余额，不能只看总流量数字。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "使用注意事项",
+        "通用流量",
+        "叠加流量",
+        "流量耗尽"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-04",
+      "title": "天火卡提前用完70GB通用流量的后果",
+      "text": "如果在叠加流量到账前已经用完70GB通用流量，资料说明当月1400GB叠加流量将不再下发。只要号码没有欠费，次月会恢复正常，并在次月1日至3日重新进入流量下发流程。这种情况下应先检查中国移动APP中的通用流量余额、叠加包状态和实时费用。如果页面信息与资料不同，应立即停止大流量使用并联系运营商或售后核实，避免继续产生套外费用。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "70GB通用流量",
+        "叠加流量停发",
+        "次月恢复",
+        "套外费用"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-05",
+      "title": "天火卡超出套餐后的收费规则",
+      "text": "天火卡超出套餐的流量按5元/GB收取，不足1GB的部分按1GB向上取整。当月产生的超额费用需要结清，否则次月网络服务可能无法恢复。每月总使用量达到1500GB后，继续使用仍可能产生超额费用。若1400GB叠加流量尚未下发，提前用完月初可用流量也可能进入套外计费。因此，套餐标称1500GB不代表任何时候都能先使用1500GB，也不代表达到上限后会自动免费停机。超额费用以中国移动实际计费记录和账单为准。发现费用异常时，应保留流量页面、叠加包状态和账单截图，并联系运营商客服核查。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "套外收费",
+        "5元/GB",
+        "超额费用",
+        "计费规则"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-06",
+      "title": "天火卡流量全部到账的确认方法",
+      "text": "打开中国移动APP，使用该号码登录并完成人脸识别，在首页或流量详情页面查看套餐组成。应分别确认默认的70GB通用流量、30GB定向流量和后续叠加的1400GB通用流量，而不是只根据首页显示的一个总数判断。建议每月1日至3日减少大流量下载、测速、视频缓存、系统更新和热点共享，等叠加流量完整显示后再正常使用。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "流量到账确认",
+        "中国移动APP",
+        "人脸识别",
+        "月末月初"
+      ]
+    },
+    {
+      "id": "upload-20260811-fdd4394185-07",
+      "title": "天火卡流量规则简要结论",
+      "text": "天火卡标称每月1500GB，其中1400GB通用流量需要在月初陆续叠加。每月1日至3日应先查询到账情况，在叠加完成前不要耗尽70GB通用流量。套外流量可能按5元/GB计费，不足1GB按1GB计算；具体流量和费用始终以中国移动APP、账单和客服确认结果为准。整理日期：2026-08-11。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/3e33a74d-bef6-4393-a1e7-b02c481a374b-天火卡流量使用细则-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "流量规则",
+        "结论",
+        "1500GB",
+        "计费"
       ]
     }
   ]
