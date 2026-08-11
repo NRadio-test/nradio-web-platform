@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-08-11T00:00:00.000Z",
     "verified_at": "2026-08-11",
-    "entry_count": 267,
+    "entry_count": 277,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -4691,6 +4691,176 @@ export const knowledgePayload = {
         "结论",
         "1500GB",
         "计费"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-01",
+      "title": "天火卡注销前需要做什么",
+      "text": "申请注销天火卡前，应先登录中国移动 APP 查询号码状态、欠费月份、待缴金额和是否存在滞纳金。欠费未结清时无法正常办理销户，申请可能被驳回。因此，提交销户申请前应按照运营商最终账单结清应付费用。不要只根据欠费月份自行计算金额，实际需要补缴多少、是否存在滞纳金以及能否直接销户，均应以运营商出账和销户审核页面为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "注销",
+        "欠费",
+        "中国移动",
+        "销户前准备"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-02",
+      "title": "上月欠费导致停卡如何处理",
+      "text": "如果天火卡因上月欠费而停卡，想继续使用时，需要先补齐上月欠费，然后再购买或恢复相应套餐。如果不再使用并准备销户，也应先查询并结清运营商要求支付的欠费，再提交销户申请。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "欠费",
+        "停卡",
+        "恢复套餐",
+        "销户"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-03",
+      "title": "欠费数月但未超过六个月的处理参考",
+      "text": "提供的业务材料称，天火卡欠费数月但未超过六个月时，一般需要补缴最近三个月的费用，之后可申请销户或继续购买套餐使用。但该材料同时强调销户前必须结清欠费，因此不能把“补缴最近三个月”理解成适用于所有号码的固定最终金额。正确做法是先在中国移动 APP 或通过客服查询销户应缴总额，按照运营商实际账单缴费后再办理。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "medium_high",
+      "tags": [
+        "天火卡",
+        "欠费",
+        "六个月",
+        "补缴",
+        "销户"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-04",
+      "title": "欠费超过六个月如何处理",
+      "text": "提供的业务材料称，天火卡欠费超过六个月时，除相应欠费外还可能产生滞纳金，常见参考范围为1至10元。滞纳金不是固定金额，是否产生以及具体数额以运营商出账为准。材料中的“补缴1个月费用”不能替代运营商最终结算要求，申请销户前仍应确认全部待缴项目，并按照实际账单结清欠费及滞纳金。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "medium_high",
+      "tags": [
+        "天火卡",
+        "欠费",
+        "六个月以上",
+        "滞纳金",
+        "销户"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-05",
+      "title": "长期不处理欠费有什么影响",
+      "text": "天火卡长期欠费可能导致号码持续停机，并影响用户在该运营商处办理后续业务。原材料使用了“运营商黑户”和“影响个人信用”的表述，但具体影响范围应以运营商规则及相关法律政策为准，不宜直接理解为必然进入金融征信系统。如果已经长期欠费，应尽快通过中国移动 APP 或运营商客服查询号码状态和处理办法，不建议继续拖延。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "medium_high",
+      "tags": [
+        "天火卡",
+        "欠费",
+        "停机",
+        "个人信用",
+        "运营商黑户"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-06",
+      "title": "天火卡注销渠道一：中国移动APP",
+      "text": "天火卡可以通过中国移动 APP 注销。登录与天火卡对应的账号，在 APP 内搜索“销户”或“号码注销”，根据页面提示进行身份验证并提交线上销户申请。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "注销",
+        "中国移动APP",
+        "线上销户",
+        "渠道"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-07",
+      "title": "天火卡注销渠道二：移动预销户登记页面",
+      "text": "天火卡还可以通过移动预销户登记页面提交注销申请，网址为 https://oss.cmtibet.com/activity/2025/ytkconcal/index.html 。打开页面后按照提示填写资料并提交申请。该网址属于具体业务页面，可能因运营商调整而失效；如果无法打开，应改用中国移动 APP 或联系运营商客服确认当前入口。提交身份证明、号码信息或验证码前，应确认域名和页面确属运营商业务页面，不要向陌生个人发送这些资料。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "medium_high",
+      "tags": [
+        "天火卡",
+        "注销",
+        "预销户",
+        "网址",
+        "线上申请"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-08",
+      "title": "提交天火卡销户后多久完成",
+      "text": "天火卡提交销户后的参考处理时间为7至15个工作日。该时间只是一般参考，不是完成时限承诺，实际进度可能受到欠费结算、身份审核、号码状态、节假日和运营商处理流程影响。提交后应保存申请记录或截图，并留意中国移动 APP、短信或办理页面的审核结果。如果超过参考时间仍未完成，可凭申请记录联系运营商客服查询。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "medium_high",
+      "tags": [
+        "天火卡",
+        "注销",
+        "办理时效",
+        "7至15个工作日",
+        "审核结果"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-09",
+      "title": "天火卡注销失败的常见原因",
+      "text": "天火卡注销失败的常见原因包括：欠费或滞纳金未结清、身份验证失败、提交资料不完整、号码状态不符合线上销户条件，以及所使用的销户入口已经调整。遇到失败时，应先查看页面提示，再到中国移动 APP 核对账单和实名信息，必要时联系运营商客服处理。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "注销失败",
+        "原因",
+        "欠费",
+        "身份验证"
+      ]
+    },
+    {
+      "id": "upload-20260811-2f836b32a5-10",
+      "title": "天火卡注销规则简要结论",
+      "text": "天火卡注销前应先查询并结清运营商账单中的欠费和滞纳金，再通过中国移动 APP 或有效的预销户登记页面提交申请。通常可参考7至15个工作日的处理时间，但实际结果以运营商审核为准。对于欠费月份和应缴金额存在疑问时，不要自行估算，直接以运营商出账结果为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/dda9e11b-c0aa-41d8-80e7-7ed40a38caef-天火卡注销须知-知识库版-2026-08-11.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-08-11",
+      "confidence": "high",
+      "tags": [
+        "天火卡",
+        "注销",
+        "规则",
+        "欠费",
+        "结论"
       ]
     }
   ]
