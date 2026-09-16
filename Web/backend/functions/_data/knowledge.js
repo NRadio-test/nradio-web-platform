@@ -2,9 +2,9 @@
 export const knowledgePayload = {
   "meta": {
     "name": "NRadio 鲲鹏无限知识库",
-    "generated_at": "2026-08-11T00:00:00.000Z",
-    "verified_at": "2026-08-11",
-    "entry_count": 277,
+    "generated_at": "2026-09-16T00:00:00.000Z",
+    "verified_at": "2026-09-16",
+    "entry_count": 281,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -4861,6 +4861,78 @@ export const knowledgePayload = {
         "规则",
         "欠费",
         "结论"
+      ]
+    },
+    {
+      "id": "upload-20260916-c39654c99f-01",
+      "title": "C2000 Max、C2000 Ultra 外置 5G 天线馈线长度建议",
+      "text": "整理日期：2026-09-16。来源：`9.8小号(1).srt`，`00:45:01–00:48:31`；直播日期未核验，文件名标示 9.8。对于 C2000 Max 或 C2000 Ultra 接外置 5G 天线、同轴馈线的安装方案，不建议只看天线标称增益就给设备接很长的同轴延长线。馈线越长，射频损耗通常越大，可能抵消天线带来的增益。购买或安装前应同时核对天线频段与增益、馈线型号、长度、对应频段的损耗，以及两端接头是否匹配。具体接头和频段须另核对。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/6d578e3f-1d7c-4bff-b623-e50498cfff50-张导直播-5G天线馈线衰减-9.8-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Max",
+        "C2000 Ultra",
+        "外置5G天线",
+        "同轴馈线",
+        "馈线损耗",
+        "安装建议"
+      ]
+    },
+    {
+      "id": "upload-20260916-c39654c99f-02",
+      "title": "如何比较外置 5G 天线短馈线与长馈线方案",
+      "text": "整理日期：2026-09-16。来源：`9.8小号(1).srt`，`00:45:01–00:48:31`；直播日期未核验，文件名标示 9.8。比较外置天线方案时，应先用原配天线记录位置、频段、信号指标和实际网速，再比较短馈线外置天线与较长馈线方案。把天线放到窗边可能改善其接收到的无线环境，但这部分改善也可能被馈线损耗抵消，必须以现场测量判断；不能把直播里举的“每米损耗”数字套用到所有线材和频段。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/6d578e3f-1d7c-4bff-b623-e50498cfff50-张导直播-5G天线馈线衰减-9.8-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "外置5G天线",
+        "短馈线",
+        "长馈线",
+        "现场测量",
+        "信号指标",
+        "网速测试"
+      ]
+    },
+    {
+      "id": "upload-20260916-c39654c99f-03",
+      "title": "远距离接收可评估室外 CPE 方案",
+      "text": "整理日期：2026-09-16。来源：`9.8小号(1).srt`，`00:45:01–00:48:31`；直播日期未核验，文件名标示 9.8。如果需要把接收位置移到室外或远处，可评估适合该场景的室外 CPE：让射频天线靠近蜂窝模组，再通过有线网络回传。但室外安装、供电、防水和 PoE 规格必须按对应设备的正式参数实施，不能把普通室内 CPE 直接当室外设备使用。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/6d578e3f-1d7c-4bff-b623-e50498cfff50-张导直播-5G天线馈线衰减-9.8-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium",
+      "tags": [
+        "室外CPE",
+        "蜂窝模组",
+        "有线回传",
+        "PoE",
+        "防水",
+        "室外安装"
+      ]
+    },
+    {
+      "id": "upload-20260916-c39654c99f-04",
+      "title": "C2000 Max、C2000 Ultra 馈线长度结论的来源与限制",
+      "text": "整理日期：2026-09-16。来源：`9.8小号(1).srt`，`00:45:01–00:48:31`；Cisco 天线安装说明链接：https://www.cisco.com/c/en/us/td/docs/wireless/antenna/installation/guide/ant2588p3m-n.pdf；直播日期未核验，文件名标示 9.8。直播强调避免三米、五米馈线造成的损耗；Cisco 的天线说明也指出同轴线越长、损耗越高，并建议尽量缩短。这里没有对任何特定 NRadio 天线或馈线做实测，不保证“短线一定更快”，也不将主播的绝对说法改写为全部场景的结论。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/6d578e3f-1d7c-4bff-b623-e50498cfff50-张导直播-5G天线馈线衰减-9.8-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "馈线损耗",
+        "三米馈线",
+        "五米馈线",
+        "Cisco天线说明",
+        "来源限制",
+        "NRadio"
       ]
     }
   ]
