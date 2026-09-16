@@ -1,0 +1,15 @@
+{
+  "job_id": "b448faa8-e6d7-4810-bc21-879784a37a90",
+  "file_name": "张导直播-C2000Ultra散热建议-9.9-知识库版.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "70ffa8db60304a5c47870f14c39ed9a723d4ac952c5791a13953e13caeae7438",
+  "decision": "accept",
+  "review_notes": [
+    "原文为主播口述散热经验，未回听原录音、未看到实测画面，直播日期未核验（仅文件名标示 9.9），相关限制已在条目正文中保留。",
+    "SRT 中出现的降温幅度与所谓“正常温度”未被独立验证，正文已标注不可作为保修或安全阈值。"
+  ],
+  "entry_count": 3,
+  "document_path": "knowledge-base/documents/uploads/b448faa8-e6d7-4810-bc21-879784a37a90.md",
+  "source_path": "knowledge-base/sources/uploads/2026-09/b448faa8-e6d7-4810-bc21-879784a37a90-张导直播-C2000Ultra散热建议-9.9-知识库版.md",
+  "extracted_characters": 729
+}

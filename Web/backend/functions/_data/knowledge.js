@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
-    "entry_count": 297,
+    "entry_count": 300,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -5236,6 +5236,57 @@ export const knowledgePayload = {
         "磁片脱落",
         "后盖照片",
         "购买渠道"
+      ]
+    },
+    {
+      "id": "upload-20260916-70ffa8db60-01",
+      "title": "C2000 Ultra 铝合金机身发热是否需要额外风扇的结论",
+      "text": "针对铝合金机身的 C2000 Ultra，直播（来源：9.9 1 严选(1).srt 00:18:35–00:22:31、00:27:01–00:28:31；9.9 2 张导(1).srt 00:46:00–00:48:31，直播日期未核验，两份文件名均标示 9.9）说明：铝合金机身摸起来发热不等于内部已故障，机壳会把芯片和蜂窝模组的热量向外传导。是否需要额外风扇应结合运行环境、设备状态和网络表现判断：在通风、空调环境下主播也提到可能不必加风扇；在持续高负载或闷热环境中，可以考虑经过适配的送风散热方案。该结论为实操建议，不代表 C2000 Ultra 全部批次必须配风扇，也不保证任何风扇能降低固定温度。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/b448faa8-e6d7-4810-bc21-879784a37a90-张导直播-C2000Ultra散热建议-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Ultra",
+        "散热",
+        "铝合金机身",
+        "风扇",
+        "直播结论"
+      ]
+    },
+    {
+      "id": "upload-20260916-70ffa8db60-02",
+      "title": "C2000 Ultra 判断是否需要散热处理的方法",
+      "text": "针对铝合金机身的 C2000 Ultra，直播给出的判断方法：先确认设备摆放处通风、散热口没有遮挡，再观察是否出现频繁重启、性能明显下降、网络异常或系统温度告警。不要仅凭手摸到“烫”就判断设备必须降到某个固定温度。若异常只在加装散热附件后出现，应移除附件并记录前后状态，再联系售后。若设备已有官方温度范围或故障告警，应以该批次的正式说明为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/b448faa8-e6d7-4810-bc21-879784a37a90-张导直播-C2000Ultra散热建议-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Ultra",
+        "散热判断",
+        "频繁重启",
+        "温度告警",
+        "售后"
+      ]
+    },
+    {
+      "id": "upload-20260916-70ffa8db60-03",
+      "title": "C2000 Ultra 散热附件风险：普通送风风扇与半导体制冷",
+      "text": "直播（9.9 张导等，直播日期未核验）将普通送风风扇和半导体制冷附件区分开来，并提醒半导体制冷在特定环境下可能存在冷凝风险。SRT 中出现的降温幅度、所谓“正常温度”并非独立验证的设备规格，不能作为保修或安全阈值。选择附件时应核对实际机型、安装位置、供电以及是否会产生冷凝，适用范围为铝合金机身的 C2000 Ultra，具体批次和散热附件须核对。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/b448faa8-e6d7-4810-bc21-879784a37a90-张导直播-C2000Ultra散热建议-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Ultra",
+        "散热附件",
+        "半导体制冷",
+        "冷凝风险",
+        "送风风扇"
       ]
     }
   ]
