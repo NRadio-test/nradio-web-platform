@@ -1,0 +1,15 @@
+{
+  "job_id": "7a71b085-d766-422b-bc97-b18126d96315",
+  "file_name": "张导直播-C2000UltraTF卡扩展-9.2-知识库版.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "07078b92bd0701e4bfba0db35579bc25288c947b8dd2bac8ec103372f6c8bf26",
+  "decision": "accept",
+  "review_notes": [
+    "资料为直播转写口述，直播日期未核验，且未验证正式零售版；已在条目中保留来源、时间码、日期边界和批次限制。",
+    "未回听原录音，TF 卡容量、文件系统兼容性和正式产品标配情况未验证；实际使用需结合设备批次核对。"
+  ],
+  "entry_count": 3,
+  "document_path": "knowledge-base/documents/uploads/7a71b085-d766-422b-bc97-b18126d96315.md",
+  "source_path": "knowledge-base/sources/uploads/2026-09/7a71b085-d766-422b-bc97-b18126d96315-张导直播-C2000UltraTF卡扩展-9.2-知识库版.md",
+  "extracted_characters": 551
+}

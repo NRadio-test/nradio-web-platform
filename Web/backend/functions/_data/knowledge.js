@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
-    "entry_count": 300,
+    "entry_count": 303,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -5287,6 +5287,67 @@ export const knowledgePayload = {
         "半导体制冷",
         "冷凝风险",
         "送风风扇"
+      ]
+    },
+    {
+      "id": "upload-20260916-07078b92bd-01",
+      "title": "C2000 Ultra 的 TF 卡用途与样机卡槽位置",
+      "text": "两份转写稿都提到，C2000 Ultra 使用 TF 卡提供扩展存储。9.2 张导直播口述指出，样机后盖内有 TF 卡槽，用户可以使用自己的 TF 卡。9.9 直播提到当时准备配一张 8 GB TF 卡，用于扩展、第三方软件或插件。上述内容来自直播期间的样机与赠配说明，不能自动推断每一批正式产品都标配同容量卡，也不能推断任意容量和文件系统都兼容。适用范围为 C2000 Ultra；实际 TF 卡容量和支持范围以设备批次为准。来源：9.2张导直播(1).srt 03:40:00–03:41:34；9.9 1 严选(1).srt 00:27:01–00:28:02。整理日期：2026-09-16；直播日期未核验。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/7a71b085-d766-422b-bc97-b18126d96315-张导直播-C2000UltraTF卡扩展-9.2-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Ultra",
+        "TF卡",
+        "扩展存储",
+        "8GB",
+        "第三方软件",
+        "插件",
+        "样机",
+        "卡槽"
+      ]
+    },
+    {
+      "id": "upload-20260916-07078b92bd-02",
+      "title": "C2000 Ultra 更换 TF 卡前需要确认和避免的事项",
+      "text": "对于 C2000 Ultra，如果原 TF 卡承载系统扩展或插件数据，直接换成空白卡可能使相关功能不可用。更换前应核对实际产品说明、卡的用途、受支持容量和格式，并备份原卡或配置；不要格式化或覆盖原卡。直播没有给出完整的拆盖、迁移和恢复步骤，因此不应按未经验证的步骤操作。适用范围：C2000 Ultra；实际 TF 卡容量和支持范围以设备批次为准。来源：9.2张导直播(1).srt 03:40:00–03:41:34；9.9 1 严选(1).srt 00:27:01–00:28:02；整理日期：2026-09-16；直播日期未核验。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/7a71b085-d766-422b-bc97-b18126d96315-张导直播-C2000UltraTF卡扩展-9.2-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "C2000 Ultra",
+        "TF卡",
+        "更换",
+        "备份",
+        "格式化",
+        "插件数据",
+        "拆盖",
+        "迁移"
+      ]
+    },
+    {
+      "id": "upload-20260916-07078b92bd-03",
+      "title": "C2000 Ultra TF 卡直播信息来源与可信度边界",
+      "text": "关于 C2000 Ultra TF 卡扩展的信息，整理日期为 2026-09-16；来源为 9.2张导直播(1).srt 的 03:40:00–03:41:34 和 9.9 1 严选(1).srt 的 00:27:01–00:28:02。直播日期未核验，文件名分别标示 9.2 和 9.9。内容性质为研发样机的主播口述；未回听原录音，也未验证正式零售版。因此，这些信息不能自动推断每一批正式产品都标配同容量 TF 卡，也不能推断任意容量和文件系统都兼容；实际容量和支持范围以设备批次为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/7a71b085-d766-422b-bc97-b18126d96315-张导直播-C2000UltraTF卡扩展-9.2-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium",
+      "tags": [
+        "C2000 Ultra",
+        "TF卡",
+        "直播",
+        "来源",
+        "未核验",
+        "研发样机",
+        "批次",
+        "9.2",
+        "9.9"
       ]
     }
   ]
