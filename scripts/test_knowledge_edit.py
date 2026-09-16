@@ -56,6 +56,50 @@ class KnowledgeEditTests(unittest.TestCase):
             self.assertEqual(audit["before"]["title"], "旧标题")
             self.assertEqual(audit["after"]["title"], "新标题")
 
+    def test_delete_removes_only_target_and_records_full_audit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            jsonl = root / "knowledge-base" / "import" / "knowledge.jsonl"
+            jsonl.parent.mkdir(parents=True)
+            first = {"id": "item-1", "title": "要删除的条目", "revision": 2, "uploaded_by": "原上传者"}
+            second = {"id": "item-2", "title": "保留的条目"}
+            jsonl.write_text(
+                "".join(json.dumps(entry, ensure_ascii=False) + "\n" for entry in (first, second)),
+                encoding="utf-8",
+            )
+
+            result = knowledge_edit.apply_change(root, {
+                "action": "delete", "info_id": "item-1", "editor": "编辑者", "expected_revision": 2,
+            }, now="2026-09-16T08:00:00+00:00")
+
+            self.assertEqual(result["action"], "delete")
+            self.assertEqual([json.loads(line) for line in jsonl.read_text(encoding="utf-8").splitlines()], [second])
+            audit = json.loads((root / result["audit_path"]).read_text(encoding="utf-8"))
+            self.assertEqual(audit["before"], first)
+            self.assertIsNone(audit["after"])
+            self.assertEqual(audit["deleted_by"], "编辑者")
+
+    def test_delete_rejects_stale_revision_and_last_entry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            jsonl = root / "knowledge-base" / "import" / "knowledge.jsonl"
+            jsonl.parent.mkdir(parents=True)
+            first = {"id": "item-1", "revision": 3}
+            second = {"id": "item-2"}
+            original = "".join(json.dumps(entry) + "\n" for entry in (first, second))
+            jsonl.write_text(original, encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "版本已经变化"):
+                knowledge_edit.apply_delete(root, {
+                    "info_id": "item-1", "editor": "编辑者", "expected_revision": 2,
+                })
+            self.assertEqual(jsonl.read_text(encoding="utf-8"), original)
+
+            jsonl.write_text(json.dumps(first) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "最后一条"):
+                knowledge_edit.apply_delete(root, {
+                    "info_id": "item-1", "editor": "编辑者", "expected_revision": 3,
+                })
+
     def test_decode_payload_accepts_base64url_without_padding(self):
         raw = json.dumps({"info_id": "item-1"}, ensure_ascii=False).encode()
         encoded = base64.urlsafe_b64encode(raw).decode().rstrip("=")

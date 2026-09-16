@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#06162e" />
     <title>编辑知识 · NRadio-Bot</title>
     <link rel="icon" href="/assets/pengzai-v9.png" />
-    <link rel="stylesheet" href="/assets/site.css?v=20260803-3" />
-    <script type="module" src="/assets/knowledge-edit.js?v=20260803-1"></script>
+    <link rel="stylesheet" href="/assets/site.css?v=20260916-1" />
+    <script type="module" src="/assets/knowledge-edit.js?v=20260916-1"></script>
   </head>
   <body class="knowledge-page manage-page">
     <header class="site-header shell compact-header">
@@ -42,7 +42,7 @@
           <div>
             <p class="eyebrow"><span></span> VERSIONED EDIT</p>
             <h1>修改已发布的<br /><em>知识条目。</em></h1>
-            <p>InfoID、原始上传者和核验日期保持不变；正文、标题、来源、分类和标签可以修订。提交后由 GitHub Actions 验证并直接更新正式知识库。</p>
+            <p>InfoID、原始上传者和核验日期保持不变；正文、标题、来源、分类和标签可以修订。修改或删除提交后，由 GitHub Actions 验证并更新正式知识库；操作会留在 GitHub 历史中。</p>
           </div>
           <div class="edit-identity">
             <span>当前编辑者</span><strong id="session-user-name">—</strong>
@@ -106,7 +106,10 @@
             <input id="edit-confirm" type="checkbox" required />
             <span>我确认修改后的内容准确，并理解提交会生成可追溯的 GitHub 编辑记录。</span>
           </label>
-          <button class="button button-primary submit-import" id="submit-edit" type="submit">提交知识修改 <span>→</span></button>
+          <div class="edit-actions">
+            <button class="button button-primary submit-import" id="submit-edit" type="submit">提交知识修改 <span>→</span></button>
+            <button class="button button-danger" id="delete-entry" type="button">删除知识条目 <span>×</span></button>
+          </div>
           <p class="form-message" id="edit-message" role="status" aria-live="polite"></p>
         </form>
       </section>

@@ -8,7 +8,9 @@ const workspace = document.querySelector('#edit-workspace')
 const editForm = document.querySelector('#knowledge-edit-form')
 const editMessage = document.querySelector('#edit-message')
 const submitButton = document.querySelector('#submit-edit')
+const deleteButton = document.querySelector('#delete-entry')
 const infoId = new URLSearchParams(location.search).get('id') || ''
+let currentEntry = null
 
 const readJson = async (response) => response.json().catch(() => ({}))
 
@@ -19,6 +21,7 @@ const showLogin = (message = '') => {
 }
 
 const fillEntry = (entry) => {
+  currentEntry = entry
   document.querySelector('#edit-info-id').textContent = entry.id
   document.querySelector('#edit-uploader').textContent = entry.uploaded_by || '未知'
   document.querySelector('#edit-revision').textContent = String(entry.revision || 1)
@@ -69,36 +72,71 @@ loginForm.addEventListener('submit', async (event) => {
 
 editForm.addEventListener('submit', async (event) => {
   event.preventDefault()
+  if (!currentEntry) return
   submitButton.disabled = true
+  deleteButton.disabled = true
   editMessage.className = 'form-message'
   editMessage.textContent = '正在提交经过身份标记的编辑任务……'
   const tags = document.querySelector('#edit-tags').value
     .split(/[、,，;；\n]+/)
     .map((tag) => tag.trim())
     .filter(Boolean)
-  const response = await fetch(`/api/knowledge/edit/${encodeURIComponent(infoId)}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      title: document.querySelector('#edit-title').value,
-      text: document.querySelector('#edit-text').value,
-      source_url: document.querySelector('#edit-source-url').value,
-      source_type: document.querySelector('#edit-source-type').value,
-      confidence: document.querySelector('#edit-confidence').value,
-      tags
+  try {
+    const response = await fetch(`/api/knowledge/edit/${encodeURIComponent(infoId)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        title: document.querySelector('#edit-title').value,
+        text: document.querySelector('#edit-text').value,
+        source_url: document.querySelector('#edit-source-url').value,
+        source_type: document.querySelector('#edit-source-type').value,
+        confidence: document.querySelector('#edit-confidence').value,
+        tags
+      })
     })
-  })
-  const payload = await readJson(response)
-  submitButton.disabled = false
-  if (response.status === 401) return showLogin('会话已过期，请重新输入身份口令。')
-  if (!response.ok || !payload.ok) {
+    const payload = await readJson(response)
+    if (response.status === 401) return showLogin('会话已过期，请重新输入身份口令。')
+    if (!response.ok || !payload.ok) throw new Error(payload.error || `提交返回 ${response.status}`)
+    editMessage.className = 'form-message form-success'
+    editMessage.textContent = payload.message
+    document.querySelector('#edit-confirm').checked = false
+  } catch (error) {
     editMessage.className = 'form-message form-error'
-    editMessage.textContent = payload.error || `提交返回 ${response.status}`
-    return
+    editMessage.textContent = error.message || '修改提交失败。'
+  } finally {
+    submitButton.disabled = false
+    deleteButton.disabled = false
   }
-  editMessage.className = 'form-message form-success'
-  editMessage.textContent = payload.message
-  document.querySelector('#edit-confirm').checked = false
+})
+
+deleteButton.addEventListener('click', async () => {
+  if (!currentEntry || !infoId) return
+  if (!window.confirm(`确定删除“${currentEntry.title}”？\nInfoID：${infoId}\n\n删除后该条知识将从正式知识库和检索结果中移除；GitHub 历史和删除记录仍可追溯。`)) return
+  submitButton.disabled = true
+  deleteButton.disabled = true
+  editMessage.className = 'form-message'
+  editMessage.textContent = '正在提交删除任务……'
+  try {
+    const response = await fetch(`/api/knowledge/edit/${encodeURIComponent(infoId)}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ confirmation: infoId, expected_revision: Number(currentEntry.revision || 1) })
+    })
+    const payload = await readJson(response)
+    if (response.status === 401) return showLogin('会话已过期，请重新输入身份口令。')
+    if (!response.ok || !payload.ok) throw new Error(payload.error || `删除提交返回 ${response.status}`)
+    editMessage.className = 'form-message form-success'
+    editMessage.textContent = payload.message
+    currentEntry = null
+  } catch (error) {
+    editMessage.className = 'form-message form-error'
+    editMessage.textContent = error.message || '删除提交失败。'
+  } finally {
+    if (currentEntry) {
+      submitButton.disabled = false
+      deleteButton.disabled = false
+    }
+  }
 })
 
 document.querySelector('#session-logout').addEventListener('click', async () => {

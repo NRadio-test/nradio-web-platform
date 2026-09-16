@@ -1,6 +1,6 @@
 # NRadio 知识库网站
 
-这个目录包含 `nradio.fallaxaura.dpdns.org` 的前端与 Cloudflare Pages Functions 后端。`frontend/` 保存可见页面和静态资源，`backend/` 保存 API；首页使用最新版鹏仔 OC，知识库页面位于 `/knowledge`，受控导入页面位于 `/knowledge/manage`，已发布条目的编辑页面位于 `/knowledge/manage/edit/?id=<InfoID>`。
+这个目录包含 `nradio.fallaxaura.dpdns.org` 的前端与 Cloudflare Pages Functions 后端。`frontend/` 保存可见页面和静态资源，`backend/` 保存 API；站点首页使用最新版鹏仔 OC，知识库页面位于 `/knowledge/`，全屏知识星图位于 `/knowledge/galaxy/`，受控导入页面位于 `/knowledge/manage/`，已发布条目的编辑页面位于 `/knowledge/manage/edit/?id=<InfoID>`。
 
 ## 本地预览
 
@@ -13,6 +13,8 @@ npm run dev
 ```
 
 打开 `http://localhost:4173`。静态预览会自动从 `/data/knowledge.json` 读取；部署到 Cloudflare Pages 后优先使用 `/api/knowledge`。
+
+知识首页右侧的光球是全屏星图入口。全屏页用 Canvas 2D 展示可拖拽、缩放、搜索和按标签筛选的网站知识块；`?id=<InfoID>` 可直接打开对应详情。光点与公开网站知识块一一对应，不代表 AstrBot 导入后的内部向量分块。Canvas 不可用时仍可从结果列表打开完整详情。
 
 ## Cloudflare 部署
 
@@ -60,6 +62,6 @@ GitHub Actions Variables：
 
 ## 内容来源
 
-网页数据由 `../knowledge-base/import/knowledge.jsonl` 生成。不要直接编辑 `frontend/public/data/knowledge.json` 或 `backend/functions/_data/knowledge.js`，否则下次同步会覆盖更改。
+网页数据由 `../knowledge-base/import/knowledge.jsonl` 生成。`npm run sync` 会为每个唯一 InfoID 生成稳定的 `galaxy: { x, y, z }` 坐标及 `galaxy_version`、`data_version` 元数据，并把相同版本输出到静态 JSON 与 Functions。坐标使用标签、来源链接及 InfoID；只在选中知识块时显示同来源链接或至少共享两个标签的有限关联线。不要直接编辑 `frontend/public/data/knowledge.json` 或 `backend/functions/_data/knowledge.js`，否则下次同步会覆盖更改。
 
 网页与 AstrBot 管理页面的“编辑”入口都指向受六位口令保护的网页编辑器。可修改标题、正文、标签、来源和可信度，InfoID、原始上传者与原核验日期不会被覆盖。`knowledge-edit.yml` 验证内容后直接更新 `main`，并把每次变更追加到 `knowledge-base/edits/<InfoID>.jsonl`；AstrBot 端只需要 GitHub Contents Read 权限。

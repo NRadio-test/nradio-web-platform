@@ -1,10 +1,10 @@
-name: Edit published knowledge
+name: Change published knowledge
 
 on:
   workflow_dispatch:
     inputs:
       payload:
-        description: Base64URL encoded validated edit request
+        description: Base64URL encoded validated edit or deletion request
         required: true
         type: string
 
@@ -30,7 +30,7 @@ jobs:
           git config user.name "NRadio Knowledge Editor"
           git config user.email "knowledge-editor@users.noreply.github.com"
 
-      - name: Apply validated edit
+      - name: Apply validated knowledge change
         id: edit
         env:
           EDIT_PAYLOAD: ${{ inputs.payload }}
@@ -44,7 +44,7 @@ jobs:
           from pathlib import Path
           result = json.loads(Path('/tmp/nradio-knowledge-edit.json').read_text())
           with Path(os.environ['GITHUB_OUTPUT']).open('a') as output:
-              for key in ('info_id', 'editor', 'revision', 'audit_path'):
+              for key in ('action', 'info_id', 'editor', 'revision', 'audit_path'):
                   output.write(f"{key}={result[key]}\n")
           PY
 
@@ -54,8 +54,9 @@ jobs:
       - name: Validate generated knowledge
         run: npm --prefix Web run check
 
-      - name: Commit edit
+      - name: Commit knowledge change
         env:
+          ACTION: ${{ steps.edit.outputs.action }}
           INFO_ID: ${{ steps.edit.outputs.info_id }}
           EDITOR: ${{ steps.edit.outputs.editor }}
         run: |
@@ -69,7 +70,7 @@ jobs:
             echo "No knowledge changes to publish."
             exit 0
           fi
-          git commit -m "knowledge: edit $INFO_ID by $EDITOR"
+          git commit -m "knowledge: $ACTION $INFO_ID by $EDITOR"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main

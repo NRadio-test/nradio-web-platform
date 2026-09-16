@@ -1,17 +1,25 @@
 import { access, readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { dataVersion, galaxyPosition, GALAXY_VERSION, validateKnowledgeEntries } from './galaxy-coordinates.mjs'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const webDir = resolve(scriptDir, '..')
 const requiredFiles = [
   'frontend/public/index.html',
   'frontend/public/knowledge/index.html',
+  'frontend/public/knowledge/galaxy/index.html',
   'frontend/public/knowledge/manage/index.html',
   'frontend/public/knowledge/manage/edit/index.html',
   'frontend/public/assets/site.css',
+  'frontend/public/assets/galaxy.css',
   'frontend/public/assets/site.js',
   'frontend/public/assets/knowledge.js',
+  'frontend/public/assets/galaxy-data.js',
+  'frontend/public/assets/galaxy-scene.js',
+  'frontend/public/assets/galaxy-page.js',
+  'frontend/public/assets/galaxy-transition.js',
+  'frontend/public/assets/galaxy-transition.css',
   'frontend/public/assets/knowledge-manage.js',
   'frontend/public/assets/knowledge-edit.js',
   'frontend/public/assets/nradio-logo.png',
@@ -28,9 +36,51 @@ const requiredFiles = [
 
 await Promise.all(requiredFiles.map((file) => access(resolve(webDir, file))))
 
+const editPageSource = await readFile(resolve(webDir, 'frontend/public/knowledge/manage/edit/index.html'), 'utf8')
+const editStyleSource = await readFile(resolve(webDir, 'frontend/public/assets/site.css'), 'utf8')
+if (
+  !editPageSource.includes('class="edit-actions"') ||
+  !editPageSource.includes('id="submit-edit" type="submit"') ||
+  !editPageSource.includes('id="delete-entry" type="button"') ||
+  !editStyleSource.includes('grid-template-columns: repeat(2, minmax(0, 1fr))')
+) {
+  throw new Error('编辑页底部的等宽修改/删除按钮检查失败。')
+}
+
 const payload = JSON.parse(await readFile(resolve(webDir, 'frontend/public/data/knowledge.json'), 'utf8'))
 if (!Array.isArray(payload.entries)) {
   throw new Error('知识库数据格式无效。')
+}
+
+const sourceEntries = (await readFile(resolve(webDir, '..', 'knowledge-base/import/knowledge.jsonl'), 'utf8'))
+  .split(/\r?\n/).filter((line) => line.trim()).map((line) => JSON.parse(line))
+validateKnowledgeEntries(sourceEntries)
+const sourceIds = sourceEntries.map((entry) => entry.id)
+const outputIds = payload.entries.map((entry) => entry.id)
+if (
+  payload.meta?.entry_count !== sourceEntries.length ||
+  payload.meta?.galaxy_version !== GALAXY_VERSION ||
+  payload.meta?.data_version !== dataVersion(sourceEntries) ||
+  JSON.stringify(sourceIds) !== JSON.stringify(outputIds)
+) {
+  throw new Error('知识同步数据版本或 InfoID 与源 JSONL 不一致，请先运行 npm run sync。')
+}
+
+for (const [index, entry] of payload.entries.entries()) {
+  const { galaxy: _galaxy, ...sourceFields } = entry
+  if (
+    JSON.stringify(sourceFields) !== JSON.stringify(sourceEntries[index]) ||
+    JSON.stringify(entry.galaxy) !== JSON.stringify(galaxyPosition(sourceEntries[index]))
+  ) {
+    throw new Error(`InfoID ${entry.id} 的字段或星图坐标与源 JSONL 不一致。`)
+  }
+}
+
+const firstSource = sourceEntries[0]
+for (const invalid of [[firstSource, firstSource], [{ ...firstSource, id: '' }], [{ ...firstSource, text: '' }]]) {
+  let rejected = false
+  try { validateKnowledgeEntries(invalid) } catch { rejected = true }
+  if (!rejected) throw new Error('知识同步未拒绝重复 InfoID 或缺失条目。')
 }
 
 for (const entry of payload.entries) {
@@ -40,6 +90,16 @@ for (const entry of payload.entries) {
 }
 
 const { onRequestGet: getKnowledge } = await import('../backend/functions/api/knowledge.js')
+const fullApiResponse = await getKnowledge({ request: new Request('https://nradio.example/api/knowledge') })
+const fullApiPayload = await fullApiResponse.json()
+if (
+  !fullApiResponse.ok ||
+  fullApiPayload.meta?.data_version !== payload.meta.data_version ||
+  fullApiPayload.meta?.galaxy_version !== payload.meta.galaxy_version ||
+  JSON.stringify(fullApiPayload.entries) !== JSON.stringify(payload.entries)
+) {
+  throw new Error('知识库 API 与静态回退数据的版本或条目不一致。')
+}
 const apiResponse = await getKnowledge({
   request: new Request('https://nradio.example/api/knowledge?q=5g')
 })
@@ -90,14 +150,19 @@ if (!loginResponse.ok || !sessionResponse.ok || sessionPayload.user?.name !== 'F
 }
 
 const firstEntry = payload.entries[0]
-const { onRequestGet: getEditableKnowledge, onRequestPost: editKnowledge } = await import('../backend/functions/api/knowledge/edit/[infoId].js')
+const { onRequestGet: getEditableKnowledge, onRequestPost: editKnowledge, onRequestDelete: deleteKnowledge } = await import('../backend/functions/api/knowledge/edit/[infoId].js')
 const editGetResponse = await getEditableKnowledge({
   request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, { headers: { Cookie: sessionCookie } }),
   env: sessionEnv,
   params: { infoId: firstEntry.id }
 })
 const originalFetch = globalThis.fetch
-globalThis.fetch = async () => new Response(null, { status: 204 })
+const dispatchedChanges = []
+globalThis.fetch = async (_url, options) => {
+  const dispatch = JSON.parse(options.body)
+  dispatchedChanges.push(JSON.parse(Buffer.from(dispatch.inputs.payload, 'base64url').toString('utf8')))
+  return new Response(null, { status: 204 })
+}
 const editPostResponse = await editKnowledge({
   request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, {
     method: 'POST',
@@ -114,9 +179,41 @@ const editPostResponse = await editKnowledge({
   env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
   params: { infoId: firstEntry.id }
 })
+const editDeleteResponse = await deleteKnowledge({
+  request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', Cookie: sessionCookie },
+    body: JSON.stringify({ confirmation: firstEntry.id, expected_revision: Number(firstEntry.revision || 1) })
+  }),
+  env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
+  params: { infoId: firstEntry.id }
+})
+const rejectedDeleteResponse = await deleteKnowledge({
+  request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', Cookie: sessionCookie },
+    body: JSON.stringify({ confirmation: 'wrong-id', expected_revision: Number(firstEntry.revision || 1) })
+  }),
+  env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
+  params: { infoId: firstEntry.id }
+})
+const staleDeleteResponse = await deleteKnowledge({
+  request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', Cookie: sessionCookie },
+    body: JSON.stringify({ confirmation: firstEntry.id, expected_revision: Number(firstEntry.revision || 1) + 1 })
+  }),
+  env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
+  params: { infoId: firstEntry.id }
+})
 globalThis.fetch = originalFetch
-if (!editGetResponse.ok || editPostResponse.status !== 202) {
-  throw new Error('知识条目编辑 API 检查失败。')
+if (
+  !editGetResponse.ok || editPostResponse.status !== 202 || editDeleteResponse.status !== 202 ||
+  rejectedDeleteResponse.status !== 400 || staleDeleteResponse.status !== 400 || dispatchedChanges.length !== 2 ||
+  dispatchedChanges[0].action !== 'edit' || dispatchedChanges[1].action !== 'delete' ||
+  dispatchedChanges[1].info_id !== firstEntry.id
+) {
+  throw new Error('知识条目编辑或删除 API 检查失败。')
 }
 
 const importRows = []
@@ -157,4 +254,4 @@ if (!importJobsSource.includes('dispatchNextImportJob') || !importJobsSource.inc
   throw new Error('知识库导入队列检查失败。')
 }
 
-console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，7 个 API。`)
+console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，8 个 API。`)

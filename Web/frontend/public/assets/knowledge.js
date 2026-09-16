@@ -1,9 +1,17 @@
 import './site.js?v=20260730-2'
+import { loadGalaxyKnowledge, confidenceLabels, sourceLabels } from './galaxy-data.js?v=20260916-1'
+import { installGalaxyDeparture } from './galaxy-transition.js?v=20260916-2'
+
+const previewAnchor = document.querySelector('#galaxy-preview')
+const previewCanvas = document.querySelector('#galaxy-preview-canvas')
+let previewScene = null
+installGalaxyDeparture(previewAnchor, previewCanvas, () => previewScene && { yaw: previewScene.yaw, pitch: previewScene.pitch })
 
 const state = {
   entries: [],
   query: '',
-  tag: '全部'
+  tag: '全部',
+  source: 'api'
 }
 
 const grid = document.querySelector('#knowledge-grid')
@@ -13,45 +21,11 @@ const resultSummary = document.querySelector('#result-summary')
 const emptyState = document.querySelector('#empty-state')
 const clearFilters = document.querySelector('#clear-filters')
 
-const confidenceLabels = {
-  high: '高可信',
-  medium_high: '中高可信',
-  medium: '中等可信',
-  low_medium: '需谨慎引用'
-}
-
-const sourceLabels = {
-  official_web: '官方网站',
-  official_help: '官方帮助中心',
-  douyin_profile: '抖音主页',
-  douyin_video: '抖音公开视频',
-  user_upload: '成员上传资料',
-  official_documentation_summary: '官方文档整理',
-  error_resolution_guide: '报错解决指南',
-  community_and_plugin_guide: '社区与插件指南',
-  local_package_analysis: '本地安装包分析'
-}
-
 const createElement = (tag, className, text) => {
   const node = document.createElement(tag)
   if (className) node.className = className
   if (text !== undefined) node.textContent = text
   return node
-}
-
-const loadKnowledge = async () => {
-  const candidates = ['/api/knowledge', '/data/knowledge.json']
-  let lastError
-  for (const url of candidates) {
-    try {
-      const response = await fetch(url, { headers: { Accept: 'application/json' } })
-      if (!response.ok) throw new Error(`${url} 返回 ${response.status}`)
-      return await response.json()
-    } catch (error) {
-      lastError = error
-    }
-  }
-  throw lastError
 }
 
 const renderFilters = () => {
@@ -125,7 +99,7 @@ const renderEntries = () => {
   grid.replaceChildren(...matches.map(createCard))
   emptyState.hidden = matches.length !== 0
   grid.hidden = matches.length === 0
-  resultSummary.textContent = `显示 ${matches.length} / ${state.entries.length} 条知识`
+  resultSummary.textContent = `显示 ${matches.length} / ${state.entries.length} 个网站知识块${state.source === 'static' ? ' · 本站静态数据' : ''}`
   clearFilters.hidden = !state.query && state.tag === '全部'
 }
 
@@ -153,14 +127,28 @@ document.addEventListener('keydown', (event) => {
 })
 
 try {
-  const payload = await loadKnowledge()
-  state.entries = payload.entries || []
-  document.querySelector('#entry-count').textContent = String(state.entries.length)
-  document.querySelector('#source-count').textContent = String(new Set(state.entries.map((entry) => entry.source_type)).size)
+  const payload = await loadGalaxyKnowledge()
+  state.entries = payload.entries
+  state.source = payload.source
   document.querySelector('#verified-date').textContent = payload.meta?.verified_at || '待核对'
   if (payload.meta?.notice) document.querySelector('#knowledge-notice').textContent = payload.meta.notice
   renderFilters()
   renderEntries()
+  const previewStatus = document.querySelector('#galaxy-preview-status')
+  if (previewCanvas) {
+    try {
+      const { GalaxyScene } = await import('./galaxy-scene.js?v=20260916-5')
+      const preview = new GalaxyScene(previewCanvas, { preview: true })
+      preview.setEntries(state.entries, payload.meta?.data_version)
+      preview.draw()
+      previewScene = preview
+      previewCanvas.dataset.galaxyReady = 'true'
+      previewStatus.textContent = payload.warnings.length ? '数据需核对' : `${state.entries.length} 个知识块`
+    } catch (error) {
+      previewStatus.textContent = '星图预览不可用 · 仍可进入全屏页面'
+    }
+  }
+  if (payload.warnings.length) resultSummary.textContent += ` · ${payload.warnings.join('；')}`
 } catch (error) {
   resultSummary.textContent = '知识库暂时无法加载，请稍后刷新。'
   emptyState.hidden = false

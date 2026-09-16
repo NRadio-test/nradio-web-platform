@@ -59,6 +59,7 @@ def validate_payload(payload: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("至少需要一个检索标签。")
 
     return {
+        "action": "edit",
         "info_id": info_id,
         "editor": editor,
         "title": title,
@@ -68,6 +69,19 @@ def validate_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "confidence": confidence,
         "tags": tags,
     }
+
+
+def validate_delete_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    info_id = clean_text(payload.get("info_id"), 160)
+    editor = clean_text(payload.get("editor"), 120)
+    expected_revision = payload.get("expected_revision")
+    if not re.fullmatch(r"[\w.-]{1,160}", info_id, flags=re.UNICODE):
+        raise ValueError("InfoID 格式无效。")
+    if not editor:
+        raise ValueError("缺少删除者身份。")
+    if type(expected_revision) is not int or expected_revision < 1:
+        raise ValueError("缺少有效的条目版本。")
+    return {"action": "delete", "info_id": info_id, "editor": editor, "expected_revision": expected_revision}
 
 
 def read_entries(path: Path) -> list[dict[str, Any]]:
@@ -136,6 +150,7 @@ def apply_edit(output_root: Path, payload: dict[str, Any], now: str | None = Non
         handle.write(json.dumps(audit_record, ensure_ascii=False, separators=(",", ":")) + "\n")
 
     return {
+        "action": "edit",
         "info_id": request["info_id"],
         "editor": request["editor"],
         "revision": revision,
@@ -144,12 +159,71 @@ def apply_edit(output_root: Path, payload: dict[str, Any], now: str | None = Non
     }
 
 
+def apply_delete(output_root: Path, payload: dict[str, Any], now: str | None = None) -> dict[str, Any]:
+    request = validate_delete_payload(payload)
+    jsonl_path = output_root / "knowledge-base" / "import" / "knowledge.jsonl"
+    entries = read_entries(jsonl_path)
+    matches = [index for index, entry in enumerate(entries) if str(entry.get("id", "")) == request["info_id"]]
+    if len(matches) != 1:
+        raise ValueError("目标知识条目不存在或 InfoID 不唯一。")
+    if len(entries) == 1:
+        raise ValueError("不能删除知识库中的最后一条知识。")
+
+    index = matches[0]
+    before = dict(entries[index])
+    try:
+        current_revision = max(1, int(before.get("revision", 1)))
+    except (TypeError, ValueError):
+        current_revision = 1
+    if current_revision != request["expected_revision"]:
+        raise ValueError("条目版本已经变化，删除任务已停止；请刷新页面后重新确认。")
+
+    deleted_at = now or dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    del entries[index]
+    jsonl_path.write_text(
+        "".join(json.dumps(entry, ensure_ascii=False, separators=(",", ":")) + "\n" for entry in entries),
+        encoding="utf-8",
+    )
+
+    audit_dir = output_root / "knowledge-base" / "edits"
+    audit_dir.mkdir(parents=True, exist_ok=True)
+    audit_path = audit_dir / f"{request['info_id']}.jsonl"
+    audit_record = {
+        "action": "delete",
+        "info_id": request["info_id"],
+        "revision": current_revision,
+        "deleted_by": request["editor"],
+        "deleted_at": deleted_at,
+        "before": before,
+        "after": None,
+    }
+    with audit_path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(audit_record, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+    return {
+        "action": "delete",
+        "info_id": request["info_id"],
+        "editor": request["editor"],
+        "revision": current_revision,
+        "audit_path": audit_path.relative_to(output_root).as_posix(),
+    }
+
+
+def apply_change(output_root: Path, payload: dict[str, Any], now: str | None = None) -> dict[str, Any]:
+    action = payload.get("action", "edit")
+    if action == "edit":
+        return apply_edit(output_root, payload, now=now)
+    if action == "delete":
+        return apply_delete(output_root, payload, now=now)
+    raise ValueError("不支持的知识变更操作。")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--payload", required=True)
     parser.add_argument("--output-root", required=True)
     args = parser.parse_args()
-    result = apply_edit(Path(args.output_root).resolve(), decode_payload(args.payload))
+    result = apply_change(Path(args.output_root).resolve(), decode_payload(args.payload))
     print(json.dumps(result, ensure_ascii=False))
     return 0
 

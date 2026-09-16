@@ -1,0 +1,54 @@
+.galaxy-transition-veil {
+  position: fixed;
+  z-index: 9998;
+  inset: 0;
+  background: #0b1219;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.galaxy-transition-orb {
+  overflow: hidden;
+  border-radius: 50%;
+  background: #0b1219 url('/assets/nasa-m101-observatory.jpg') center / cover no-repeat;
+  -webkit-mask-image: radial-gradient(circle, #000 0 78%, rgba(0, 0, 0, .75) 88%, transparent 100%);
+  mask-image: radial-gradient(circle, #000 0 78%, rgba(0, 0, 0, .75) 88%, transparent 100%);
+  box-shadow: 0 0 42px rgba(255, 239, 211, .11), 0 0 126px rgba(16, 28, 39, .54);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.galaxy-transition-orb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .28;
+}
+
+.galaxy-transition-departure {
+  position: fixed;
+  z-index: 9999;
+  transform-origin: center;
+}
+
+.galaxy-transition-arrival {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #0b1219;
+  pointer-events: none;
+}
+
+.galaxy-transition-arrival-orb {
+  width: 92vmin;
+  height: 92vmin;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-transition-veil,
+  .galaxy-transition-departure,
+  .galaxy-transition-arrival { display: none; }
+}

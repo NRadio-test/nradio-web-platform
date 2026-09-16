@@ -26,7 +26,17 @@ const validateBody = (body, infoId, editor) => {
   if (!sourceUrl) throw new Error('来源 URL 或来源说明不能为空。')
   if (!confidenceValues.has(confidence)) throw new Error('请选择有效的可信度。')
   if (!tags.length) throw new Error('至少需要一个检索标签。')
-  return { info_id: infoId, editor, title, text, source_url: sourceUrl, source_type: sourceType, confidence, tags }
+  return { action: 'edit', info_id: infoId, editor, title, text, source_url: sourceUrl, source_type: sourceType, confidence, tags }
+}
+
+const validateDeleteBody = (body, entry, editor) => {
+  if (!body || body.confirmation !== entry.id) throw new Error('请确认要删除的 InfoID。')
+  const expectedRevision = Number(body.expected_revision)
+  const currentRevision = Number(entry.revision || 1)
+  if (!Number.isInteger(expectedRevision) || expectedRevision !== currentRevision) {
+    throw new Error('条目版本已经变化，请刷新页面后重新确认删除。')
+  }
+  return { action: 'delete', info_id: entry.id, editor, expected_revision: expectedRevision }
 }
 
 const dispatchEdit = async (env, payload) => {
@@ -75,6 +85,24 @@ export async function onRequestPost(context) {
       ok: true,
       message: '编辑任务已经提交。GitHub 验证通过后会自动更新正式知识库。',
       edit: { info_id: entry.id, editor: identity.name }
+    }, { status: 202, headers: { 'Cache-Control': 'no-store' } })
+  } catch (error) {
+    const status = String(error.message || '').includes('口令') || String(error.message || '').includes('会话') ? 401 : 400
+    return unauthorizedResponse(error, status)
+  }
+}
+
+export async function onRequestDelete(context) {
+  try {
+    const identity = await authorizeKnowledgeEditor(context)
+    const entry = findEntry(context.params.infoId)
+    if (!entry) return Response.json({ ok: false, error: '没有找到这条知识。' }, { status: 404 })
+    const payload = validateDeleteBody(await context.request.json(), entry, identity.name)
+    await dispatchEdit(context.env, payload)
+    return Response.json({
+      ok: true,
+      message: '删除任务已经提交。GitHub 验证通过后，该条知识会从正式知识库移除；历史与删除记录仍可追溯。',
+      deletion: { info_id: entry.id, editor: identity.name }
     }, { status: 202, headers: { 'Cache-Control': 'no-store' } })
   } catch (error) {
     const status = String(error.message || '').includes('口令') || String(error.message || '').includes('会话') ? 401 : 400
