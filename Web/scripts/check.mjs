@@ -1,17 +1,25 @@
 import { access, readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { dataVersion, galaxyPosition, GALAXY_VERSION, validateKnowledgeEntries } from './galaxy-coordinates.mjs'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const webDir = resolve(scriptDir, '..')
 const requiredFiles = [
   'frontend/public/index.html',
   'frontend/public/knowledge/index.html',
+  'frontend/public/knowledge/galaxy/index.html',
   'frontend/public/knowledge/manage/index.html',
   'frontend/public/knowledge/manage/edit/index.html',
   'frontend/public/assets/site.css',
+  'frontend/public/assets/galaxy.css',
   'frontend/public/assets/site.js',
   'frontend/public/assets/knowledge.js',
+  'frontend/public/assets/galaxy-data.js',
+  'frontend/public/assets/galaxy-scene.js',
+  'frontend/public/assets/galaxy-page.js',
+  'frontend/public/assets/galaxy-transition.js',
+  'frontend/public/assets/galaxy-transition.css',
   'frontend/public/assets/knowledge-manage.js',
   'frontend/public/assets/knowledge-edit.js',
   'frontend/public/assets/nradio-logo.png',
@@ -23,7 +31,8 @@ const requiredFiles = [
   'backend/functions/api/knowledge/import/[jobId]/metadata.js',
   'backend/functions/api/knowledge/session.js',
   'backend/functions/api/knowledge/edit/[infoId].js',
-  'migrations/0001_knowledge_import_jobs.sql'
+  'migrations/0001_knowledge_import_jobs.sql',
+  'scripts/galaxy-coordinates.mjs'
 ]
 
 await Promise.all(requiredFiles.map((file) => access(resolve(webDir, file))))
@@ -33,13 +42,59 @@ if (!Array.isArray(payload.entries)) {
   throw new Error('知识库数据格式无效。')
 }
 
+const sourceEntries = (await readFile(resolve(webDir, '..', 'knowledge-base/import/knowledge.jsonl'), 'utf8'))
+  .split(/\r?\n/)
+  .filter((line) => line.trim())
+  .map((line) => JSON.parse(line))
+validateKnowledgeEntries(sourceEntries)
+const sourceIds = sourceEntries.map((entry) => entry.id)
+const outputIds = payload.entries.map((entry) => entry.id)
+if (
+  payload.meta?.entry_count !== sourceEntries.length ||
+  payload.meta?.galaxy_version !== GALAXY_VERSION ||
+  payload.meta?.data_version !== dataVersion(sourceEntries) ||
+  JSON.stringify(sourceIds) !== JSON.stringify(outputIds)
+) {
+  throw new Error('知识同步数据版本或 InfoID 与源 JSONL 不一致，请先运行 npm run sync。')
+}
+
+for (const [index, entry] of payload.entries.entries()) {
+  const { galaxy: _galaxy, ...sourceFields } = entry
+  if (
+    JSON.stringify(sourceFields) !== JSON.stringify(sourceEntries[index]) ||
+    JSON.stringify(entry.galaxy) !== JSON.stringify(galaxyPosition(sourceEntries[index]))
+  ) {
+    throw new Error(`InfoID ${entry.id} 的字段或星图坐标与源 JSONL 不一致。`)
+  }
+}
+
+const firstSource = sourceEntries[0]
+for (const invalid of [[firstSource, firstSource], [{ ...firstSource, id: '' }], [{ ...firstSource, text: '' }]]) {
+  let rejected = false
+  try { validateKnowledgeEntries(invalid) } catch { rejected = true }
+  if (!rejected) throw new Error('知识同步未拒绝重复 InfoID 或缺失条目。')
+}
+
 for (const entry of payload.entries) {
   for (const field of ['id', 'title', 'text', 'source_url', 'source_type', 'uploaded_by', 'verified_at', 'confidence', 'tags']) {
     if (!(field in entry)) throw new Error(`${entry.id || '未知条目'} 缺少字段 ${field}`)
   }
+  if (!entry.galaxy || !['x', 'y', 'z'].every((axis) => Number.isFinite(entry.galaxy[axis]))) {
+    throw new Error(`${entry.id || '未知条目'} 缺少有效星图坐标`)
+  }
 }
 
 const { onRequestGet: getKnowledge } = await import('../backend/functions/api/knowledge.js')
+const fullApiResponse = await getKnowledge({ request: new Request('https://nradio.example/api/knowledge') })
+const fullApiPayload = await fullApiResponse.json()
+if (
+  !fullApiResponse.ok ||
+  fullApiPayload.meta?.data_version !== payload.meta.data_version ||
+  fullApiPayload.meta?.galaxy_version !== payload.meta.galaxy_version ||
+  JSON.stringify(fullApiPayload.entries) !== JSON.stringify(payload.entries)
+) {
+  throw new Error('知识库 API 与静态回退数据的版本或条目不一致。')
+}
 const apiResponse = await getKnowledge({
   request: new Request('https://nradio.example/api/knowledge?q=5g')
 })

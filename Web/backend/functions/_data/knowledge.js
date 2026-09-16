@@ -5,6 +5,8 @@ export const knowledgePayload = {
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
     "entry_count": 303,
+    "data_version": "0f6422a3bdaa8004e67fb25a5d15556f4a38a70b28730870db76c0b94d80e430",
+    "galaxy_version": 1,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -22,7 +24,12 @@ export const knowledgePayload = {
         "马野",
         "刷机包",
         "来源"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.177918,
+        "y": 0.562087,
+        "z": 0.395635
+      }
     },
     {
       "id": "upload-20260803-9949756e88-02",
@@ -40,7 +47,12 @@ export const knowledgePayload = {
         "Rufus",
         "DiskGenius",
         "步骤"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.32163,
+        "y": 0.85368,
+        "z": 0.140936
+      }
     },
     {
       "id": "upload-20260803-9949756e88-03",
@@ -56,7 +68,12 @@ export const knowledgePayload = {
         "SD启动",
         "官方系统",
         "启动项"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.462747,
+        "y": 0.468767,
+        "z": 0.111443
+      }
     },
     {
       "id": "upload-20260803-9949756e88-04",
@@ -73,7 +90,12 @@ export const knowledgePayload = {
         "img",
         "整盘写入",
         "数据清除"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.610505,
+        "y": 0.316134,
+        "z": 0.243855
+      }
     },
     {
       "id": "upload-20260803-9949756e88-05",
@@ -93,7 +115,12 @@ export const knowledgePayload = {
         "fip",
         "kernel",
         "rootfs"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.492287,
+        "y": 0.2487,
+        "z": -0.040536
+      }
     },
     {
       "id": "upload-20260803-9949756e88-06",
@@ -109,7 +136,12 @@ export const knowledgePayload = {
         "SquashFS",
         "SHA256",
         "固件版本"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.709857,
+        "y": 0.30777,
+        "z": -0.071759
+      }
     },
     {
       "id": "upload-20260803-9949756e88-07",
@@ -127,7 +159,12 @@ export const knowledgePayload = {
         "Linux6.6.94",
         "mediatek",
         "filogic"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.414451,
+        "y": 0.537813,
+        "z": -0.183381
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-01",
@@ -144,7 +181,12 @@ export const knowledgePayload = {
         "FIT",
         "PARTLABEL",
         "rootfs"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.505061,
+        "y": 0.266807,
+        "z": 0.105059
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-02",
@@ -161,7 +203,12 @@ export const knowledgePayload = {
         "admin",
         "默认密码",
         "安全"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.444777,
+        "y": 0.49724,
+        "z": 0.068439
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-03",
@@ -178,7 +225,12 @@ export const knowledgePayload = {
         "自动重启",
         "5700",
         "首次启动"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.883784,
+        "y": 0.227025,
+        "z": 0.198039
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-04",
@@ -194,7 +246,12 @@ export const knowledgePayload = {
         "重置",
         "overlay",
         "首次启动"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.495261,
+        "y": 0.369946,
+        "z": 0.107004
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-05",
@@ -211,7 +268,12 @@ export const knowledgePayload = {
         "LuCI",
         "sysupgrade",
         "重刷TF"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.094856,
+        "y": 0.573847,
+        "z": 0.159203
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-06",
@@ -229,7 +291,12 @@ export const knowledgePayload = {
         "anon_mount",
         "extroot",
         "overlay"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.113151,
+        "y": 0.898699,
+        "z": 0.350436
+      }
     },
     {
       "id": "upload-20260803-f7dbd2ee59-07",
@@ -248,7 +315,12 @@ export const knowledgePayload = {
         "F2FS",
         "NTFS",
         "btrfs"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.371571,
+        "y": 0.631916,
+        "z": -0.059103
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-01",
@@ -266,7 +338,12 @@ export const knowledgePayload = {
         "LAN",
         "网络",
         "拨号"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.338984,
+        "y": 0.502117,
+        "z": 0.122848
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-02",
@@ -284,7 +361,12 @@ export const knowledgePayload = {
         "HNAT",
         "WED",
         "TurboACC"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.078675,
+        "y": 0.576089,
+        "z": 0.330265
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-03",
@@ -302,7 +384,12 @@ export const knowledgePayload = {
         "EHT160",
         "无线",
         "配置"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.455977,
+        "y": 0.323481,
+        "z": 0.211094
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-04",
@@ -322,7 +409,12 @@ export const knowledgePayload = {
         "MHI",
         "HomeProxy",
         "sing-box"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.069451,
+        "y": 0.739941,
+        "z": 0.096448
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-05",
@@ -340,7 +432,12 @@ export const knowledgePayload = {
         "uhttpd",
         "默认服务",
         "安全"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.423657,
+        "y": 0.636455,
+        "z": 0.02817
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-06",
@@ -358,7 +455,12 @@ export const knowledgePayload = {
         "snapshot",
         "kmod",
         "ABI"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.25895,
+        "y": 0.70904,
+        "z": 0.41482
+      }
     },
     {
       "id": "upload-20260803-7682e618b4-07",
@@ -375,7 +477,12 @@ export const knowledgePayload = {
         "Rufus",
         "DiskGenius",
         "完整性"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.427893,
+        "y": 0.404499,
+        "z": 0.378974
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-01",
@@ -391,7 +498,12 @@ export const knowledgePayload = {
         "品牌",
         "NRadio",
         "鲲鹏无限"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.791937,
+        "y": 0.154916,
+        "z": 0.022715
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-02",
@@ -407,7 +519,12 @@ export const knowledgePayload = {
         "张利鹏",
         "团队",
         "公司介绍"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.526321,
+        "y": 0.430328,
+        "z": 0.49149
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-03",
@@ -423,7 +540,12 @@ export const knowledgePayload = {
         "无线宽带",
         "5G CPE",
         "免拉线"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.491496,
+        "y": 0.513957,
+        "z": -0.298867
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-04",
@@ -438,7 +560,12 @@ export const knowledgePayload = {
         "产品中心",
         "产品分类",
         "选型"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.513679,
+        "y": 0.718835,
+        "z": 0.072643
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-05",
@@ -455,7 +582,12 @@ export const knowledgePayload = {
         "C8-618",
         "C8-668GL",
         "C8-688"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.300082,
+        "y": -0.681424,
+        "z": 0.629219
+      }
     },
     {
       "id": "upload-20260803-6fcd6169a1-06",
@@ -472,7 +604,12 @@ export const knowledgePayload = {
         "C2000",
         "C5800",
         "企业网络"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.78582,
+        "y": -0.244684,
+        "z": 0.050645
+      }
     },
     {
       "id": "upload-20260803-d72682beae-01",
@@ -491,7 +628,12 @@ export const knowledgePayload = {
         "户外CPE",
         "型号区别",
         "官网产品"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.046084,
+        "y": -0.803576,
+        "z": 0.358167
+      }
     },
     {
       "id": "upload-20260803-d72682beae-02",
@@ -512,7 +654,12 @@ export const knowledgePayload = {
         "TT-500",
         "TK-500",
         "官网产品"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.378668,
+        "y": -0.405118,
+        "z": 0.002329
+      }
     },
     {
       "id": "upload-20260803-d72682beae-03",
@@ -532,7 +679,12 @@ export const knowledgePayload = {
         "AX6000",
         "Wi-Fi 6",
         "官网产品"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.348029,
+        "y": -0.693619,
+        "z": -0.061632
+      }
     },
     {
       "id": "upload-20260803-d72682beae-04",
@@ -550,7 +702,12 @@ export const knowledgePayload = {
         "购买渠道",
         "抖音号70326957594",
         "IP属地广东"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.117884,
+        "y": -0.203537,
+        "z": -0.671337
+      }
     },
     {
       "id": "upload-20260803-d72682beae-05",
@@ -568,7 +725,12 @@ export const knowledgePayload = {
         "kpzd",
         "CEO",
         "5G免拉线"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.758764,
+        "y": -0.367575,
+        "z": -0.289662
+      }
     },
     {
       "id": "upload-20260803-d72682beae-06",
@@ -592,7 +754,12 @@ export const knowledgePayload = {
         "展会直播",
         "人群密集",
         "租房"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.226451,
+        "y": -0.498206,
+        "z": 0.174976
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-01",
@@ -608,7 +775,12 @@ export const knowledgePayload = {
         "开放刷机",
         "开源",
         "社区共创"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.563883,
+        "y": 0.29413,
+        "z": -0.330864
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-02",
@@ -624,7 +796,12 @@ export const knowledgePayload = {
         "5G CPE",
         "原理",
         "无线宽带"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.244177,
+        "y": 0.810151,
+        "z": -0.028788
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-03",
@@ -640,7 +817,12 @@ export const knowledgePayload = {
         "选型",
         "需求收集",
         "导购"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.156557,
+        "y": 0.535943,
+        "z": -0.731551
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-04",
@@ -658,7 +840,12 @@ export const knowledgePayload = {
         "房车",
         "直播",
         "企业网络"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.527078,
+        "y": 0.53334,
+        "z": -0.429907
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-05",
@@ -675,7 +862,12 @@ export const knowledgePayload = {
         "信号",
         "速度差异",
         "排障"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.115338,
+        "y": 0.197099,
+        "z": -0.922846
+      }
     },
     {
       "id": "upload-20260803-51091c0fcc-06",
@@ -691,7 +883,12 @@ export const knowledgePayload = {
         "免拉线",
         "有线宽带",
         "稳定性"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.3801,
+        "y": 0.647099,
+        "z": -0.130867
+      }
     },
     {
       "id": "upload-20260803-d2917b27a0-01",
@@ -707,7 +904,12 @@ export const knowledgePayload = {
         "全球漫游",
         "165个国家",
         "旅行网络"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.056621,
+        "y": 0.469455,
+        "z": -0.775628
+      }
     },
     {
       "id": "upload-20260803-d2917b27a0-02",
@@ -724,7 +926,12 @@ export const knowledgePayload = {
         "库存",
         "活动",
         "发货"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.248302,
+        "y": 0.244233,
+        "z": -0.463287
+      }
     },
     {
       "id": "upload-20260803-d2917b27a0-03",
@@ -741,7 +948,12 @@ export const knowledgePayload = {
         "实验室数据",
         "型号",
         "适用条件"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.474033,
+        "y": -0.400302,
+        "z": 0.03558
+      }
     },
     {
       "id": "upload-20260803-d2917b27a0-04",
@@ -758,7 +970,12 @@ export const knowledgePayload = {
         "联系方式",
         "临时",
         "2026-07-29"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.936094,
+        "y": 0.173097,
+        "z": 0.168696
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-01",
@@ -775,7 +992,12 @@ export const knowledgePayload = {
         "GitHub",
         "支持",
         "提问"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.323338,
+        "y": 0.392909,
+        "z": -0.65115
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-02",
@@ -793,7 +1015,12 @@ export const knowledgePayload = {
         "packages",
         "luci",
         "routing"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.420784,
+        "y": 0.443621,
+        "z": -0.602117
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-03",
@@ -809,7 +1036,12 @@ export const knowledgePayload = {
         "OpenWrtForum",
         "Reddit",
         "证据"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.211961,
+        "y": 0.234669,
+        "z": -0.519709
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-04",
@@ -826,7 +1058,12 @@ export const knowledgePayload = {
         "right",
         "第三方固件",
         "刷机"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.336342,
+        "y": -0.346065,
+        "z": -0.696331
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-05",
@@ -843,7 +1080,12 @@ export const knowledgePayload = {
         "OpenWrt",
         "分支",
         "支持"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.360001,
+        "y": 0.435217,
+        "z": -0.564297
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-06",
@@ -861,7 +1103,12 @@ export const knowledgePayload = {
         "apk",
         "fw4",
         "kmod"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.143002,
+        "y": 0.253849,
+        "z": -0.592469
+      }
     },
     {
       "id": "upload-20260803-358cf6d45d-07",
@@ -878,7 +1125,12 @@ export const knowledgePayload = {
         "luci-app",
         "后台",
         "rpcd"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.273651,
+        "y": 0.120077,
+        "z": -0.480174
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-01",
@@ -894,7 +1146,12 @@ export const knowledgePayload = {
         "adblock",
         "AdGuardHome",
         "DNS过滤"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.180111,
+        "y": 0.437923,
+        "z": -0.779615
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-02",
@@ -912,7 +1169,12 @@ export const knowledgePayload = {
         "dnsmasq",
         "DoH",
         "DNS"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.306044,
+        "y": 0.498898,
+        "z": -0.568617
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-03",
@@ -929,7 +1191,12 @@ export const knowledgePayload = {
         "公网IP",
         "CGNAT",
         "IPv6"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.339195,
+        "y": 0.307822,
+        "z": -0.470267
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-04",
@@ -946,7 +1213,12 @@ export const knowledgePayload = {
         "nftables",
         "防火墙",
         "黑名单"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.202065,
+        "y": 0.52089,
+        "z": -0.716805
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-05",
@@ -963,7 +1235,12 @@ export const knowledgePayload = {
         "CAKE",
         "DiffServ",
         "Bufferbloat"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.165523,
+        "y": 0.360735,
+        "z": -0.734913
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-06",
@@ -980,7 +1257,12 @@ export const knowledgePayload = {
         "多WAN",
         "策略",
         "负载均衡"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.012988,
+        "y": 0.470842,
+        "z": -0.36712
+      }
     },
     {
       "id": "upload-20260803-05e89ba771-07",
@@ -998,7 +1280,12 @@ export const knowledgePayload = {
         "nftset",
         "DoH",
         "CDN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.034677,
+        "y": 0.61673,
+        "z": -0.600099
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-01",
@@ -1017,7 +1304,12 @@ export const knowledgePayload = {
         "80211k",
         "80211v",
         "漫游"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.825989,
+        "y": 0.135606,
+        "z": 0.506212
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-02",
@@ -1035,7 +1327,12 @@ export const knowledgePayload = {
         "ubus",
         "漫游",
         "诊断"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.495725,
+        "y": 0.287423,
+        "z": 0.767564
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-03",
@@ -1053,7 +1350,12 @@ export const knowledgePayload = {
         "Tailscale",
         "ZeroTier",
         "VPN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.369218,
+        "y": 0.319598,
+        "z": 0.327824
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-04",
@@ -1070,7 +1372,12 @@ export const knowledgePayload = {
         "Tailscale",
         "SubnetRouter",
         "ExitNode"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.285799,
+        "y": 0.355131,
+        "z": 0.77177
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-05",
@@ -1087,7 +1394,12 @@ export const knowledgePayload = {
         "ZeroTier",
         "UCI",
         "网络"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.238366,
+        "y": 0.458716,
+        "z": 0.831001
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-06",
@@ -1105,7 +1417,12 @@ export const knowledgePayload = {
         "Mihomo",
         "TProxy",
         "第三方"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.019278,
+        "y": 0.041875,
+        "z": 0.598458
+      }
     },
     {
       "id": "upload-20260803-8e61fc7e9d-07",
@@ -1123,7 +1440,12 @@ export const knowledgePayload = {
         "代理",
         "第三方",
         "feed"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.315386,
+        "y": 0.13487,
+        "z": 0.49462
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-01",
@@ -1140,7 +1462,12 @@ export const knowledgePayload = {
         "sing-box",
         "版本",
         "配置"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.335153,
+        "y": 0.60492,
+        "z": -0.391525
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-02",
@@ -1158,7 +1485,12 @@ export const knowledgePayload = {
         "DNS",
         "TProxy",
         "fwmark"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.332761,
+        "y": 0.488494,
+        "z": -0.544788
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-03",
@@ -1175,7 +1507,12 @@ export const knowledgePayload = {
         "ksmbd",
         "NAS",
         "SMB"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.639214,
+        "y": 0.022482,
+        "z": -0.533108
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-04",
@@ -1192,7 +1529,12 @@ export const knowledgePayload = {
         "Podman",
         "容器",
         "存储"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.496744,
+        "y": 0.167364,
+        "z": -0.361236
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-05",
@@ -1210,7 +1552,12 @@ export const knowledgePayload = {
         "P2P",
         "下载",
         "conntrack"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.151481,
+        "y": 0.148735,
+        "z": -0.799444
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-06",
@@ -1227,7 +1574,12 @@ export const knowledgePayload = {
         "miniupnpd",
         "端口映射",
         "安全"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.321659,
+        "y": 0.487311,
+        "z": -0.594304
+      }
     },
     {
       "id": "upload-20260803-9cfe347d5f-07",
@@ -1245,7 +1597,12 @@ export const knowledgePayload = {
         "HNAT",
         "WED",
         "性能"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.24994,
+        "y": -0.73698,
+        "z": 0.14541
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-01",
@@ -1264,7 +1621,12 @@ export const knowledgePayload = {
         "Trunk",
         "DSA",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.804688,
+        "y": -0.339676,
+        "z": 0.242606
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-02",
@@ -1282,7 +1644,12 @@ export const knowledgePayload = {
         "高可用",
         "双路由",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.501734,
+        "y": -0.318082,
+        "z": 0.164355
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-03",
@@ -1302,7 +1669,12 @@ export const knowledgePayload = {
         "OLSR",
         "动态路由",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.870047,
+        "y": -0.313938,
+        "z": 0.089896
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-04",
@@ -1321,7 +1693,12 @@ export const knowledgePayload = {
         "Telegraf",
         "Prometheus",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.785931,
+        "y": -0.375827,
+        "z": 0.137454
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-05",
@@ -1340,7 +1717,12 @@ export const knowledgePayload = {
         "脚本",
         "自动化",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.233976,
+        "y": -0.591471,
+        "z": -0.176777
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-06",
@@ -1359,7 +1741,12 @@ export const knowledgePayload = {
         "批量",
         "固件",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.627468,
+        "y": -0.09544,
+        "z": 0.307274
+      }
     },
     {
       "id": "upload-20260803-2c572fbf2c-07",
@@ -1377,7 +1764,12 @@ export const knowledgePayload = {
         "审查",
         "固件",
         "OpenWrt"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.246338,
+        "y": 0.16073,
+        "z": -0.602718
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-01",
@@ -1394,7 +1786,12 @@ export const knowledgePayload = {
         "InvalidImage",
         "sysupgrade",
         "固件"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.459764,
+        "y": 0.306144,
+        "z": -0.418821
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-02",
@@ -1411,7 +1808,12 @@ export const knowledgePayload = {
         "DSA",
         "配置迁移",
         "sysupgrade"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.554301,
+        "y": 0.16365,
+        "z": -0.340984
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-03",
@@ -1428,7 +1830,12 @@ export const knowledgePayload = {
         "UnsupportedFormat",
         "固件",
         "上传"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.644073,
+        "y": 0.182558,
+        "z": -0.300491
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-04",
@@ -1445,7 +1852,12 @@ export const knowledgePayload = {
         "空间不足",
         "sysupgrade",
         "RAM"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.12657,
+        "y": 0.523953,
+        "z": -0.779941
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-05",
@@ -1462,7 +1874,12 @@ export const knowledgePayload = {
         "FailedToKill",
         "processes",
         "I/O"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.337245,
+        "y": 0.608699,
+        "z": -0.092145
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-06",
@@ -1479,7 +1896,12 @@ export const knowledgePayload = {
         "KernelNotCompatible",
         "依赖",
         "ABI"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.772028,
+        "y": 0.181002,
+        "z": -0.036546
+      }
     },
     {
       "id": "upload-20260803-1dae6cba1c-07",
@@ -1496,7 +1918,12 @@ export const knowledgePayload = {
         "opkg",
         "apk",
         "软件包"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.048439,
+        "y": 0.461785,
+        "z": -0.438443
+      }
     },
     {
       "id": "upload-20260803-516b935e06-01",
@@ -1512,7 +1939,12 @@ export const knowledgePayload = {
         "SignatureCheckFailed",
         "软件源",
         "签名"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.11022,
+        "y": 0.431837,
+        "z": -0.760581
+      }
     },
     {
       "id": "upload-20260803-516b935e06-02",
@@ -1530,7 +1962,12 @@ export const knowledgePayload = {
         "网络",
         "DNS",
         "TLS"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.228516,
+        "y": 0.611571,
+        "z": -0.213981
+      }
     },
     {
       "id": "upload-20260803-516b935e06-03",
@@ -1547,7 +1984,12 @@ export const knowledgePayload = {
         "Certificate",
         "时间",
         "NTP"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.046002,
+        "y": 0.732681,
+        "z": -0.457715
+      }
     },
     {
       "id": "upload-20260803-516b935e06-04",
@@ -1563,7 +2005,12 @@ export const knowledgePayload = {
         "ReadOnlyFilesystem",
         "overlay",
         "mount_root"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.151931,
+        "y": -0.120034,
+        "z": -0.771738
+      }
     },
     {
       "id": "upload-20260803-516b935e06-05",
@@ -1580,7 +2027,12 @@ export const knowledgePayload = {
         "overlay",
         "UBI",
         "首次启动"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.153658,
+        "y": 0.515656,
+        "z": -0.263133
+      }
     },
     {
       "id": "upload-20260803-516b935e06-06",
@@ -1596,7 +2048,12 @@ export const knowledgePayload = {
         "extroot",
         "UUIDMismatch",
         "block-mount"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.129609,
+        "y": 0.661907,
+        "z": -0.381592
+      }
     },
     {
       "id": "upload-20260803-516b935e06-07",
@@ -1613,7 +2070,12 @@ export const knowledgePayload = {
         "BadSuperblock",
         "mount",
         "存储"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.521365,
+        "y": 0.52264,
+        "z": -0.354229
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-01",
@@ -1629,7 +2091,12 @@ export const knowledgePayload = {
         "TargetBusy",
         "umount",
         "存储"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.176711,
+        "y": 0.395786,
+        "z": -0.511371
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-02",
@@ -1647,7 +2114,12 @@ export const knowledgePayload = {
         "reset",
         "存储",
         "电源"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.130783,
+        "y": 0.874452,
+        "z": -0.238148
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-03",
@@ -1664,7 +2136,12 @@ export const knowledgePayload = {
         "ConnectionFailed",
         "procd",
         "LuCI"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.077707,
+        "y": 0.354583,
+        "z": -0.701993
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-04",
@@ -1681,7 +2158,12 @@ export const knowledgePayload = {
         "ubus",
         "LuCI",
         "插件"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.015948,
+        "y": 0.431248,
+        "z": -0.470722
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-05",
@@ -1698,7 +2180,12 @@ export const knowledgePayload = {
         "502",
         "LuCI",
         "uhttpd"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.541037,
+        "y": 0.558498,
+        "z": -0.383482
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-06",
@@ -1715,7 +2202,12 @@ export const knowledgePayload = {
         "EntryNotFound",
         "配置",
         "脚本"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.213412,
+        "y": 0.821004,
+        "z": 0.139913
+      }
     },
     {
       "id": "upload-20260803-d9a1444ed4-07",
@@ -1733,7 +2225,12 @@ export const knowledgePayload = {
         "QMI",
         "MBIM",
         "5G"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.466998,
+        "y": 0.52951,
+        "z": -0.455961
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-01",
@@ -1750,7 +2247,12 @@ export const knowledgePayload = {
         "NoDevice",
         "5G模组",
         "驱动"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.319864,
+        "y": 0.572983,
+        "z": -0.654272
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-02",
@@ -1767,7 +2269,12 @@ export const knowledgePayload = {
         "PIN",
         "RegistrationDenied",
         "5G"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.449861,
+        "y": 0.445537,
+        "z": -0.489088
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-03",
@@ -1784,7 +2291,12 @@ export const knowledgePayload = {
         "ConnectedNoInternet",
         "QMI",
         "APN"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.265988,
+        "y": 0.585404,
+        "z": -0.543932
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-04",
@@ -1801,7 +2313,12 @@ export const knowledgePayload = {
         "PADOTimeout",
         "VLAN",
         "光猫"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.266737,
+        "y": 0.54162,
+        "z": -0.230496
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-05",
@@ -1817,7 +2334,12 @@ export const knowledgePayload = {
         "PPPoE",
         "AuthenticationFailed",
         "PAP"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.166205,
+        "y": 0.346883,
+        "z": -0.829982
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-06",
@@ -1833,7 +2355,12 @@ export const knowledgePayload = {
         "NetworkUnreachable",
         "NoRoute",
         "路由"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.505234,
+        "y": 0.547992,
+        "z": -0.607705
+      }
     },
     {
       "id": "upload-20260803-0e7ae3911a-07",
@@ -1850,7 +2377,12 @@ export const knowledgePayload = {
         "BadAddress",
         "NameResolution",
         "53端口"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.057727,
+        "y": 0.244529,
+        "z": -0.587537
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-01",
@@ -1867,7 +2399,12 @@ export const knowledgePayload = {
         "Port53",
         "AddressInUse",
         "DNS"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.247314,
+        "y": 0.324319,
+        "z": -0.638932
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-02",
@@ -1883,7 +2420,12 @@ export const knowledgePayload = {
         "WirelessDisabled",
         "NoPhy",
         "hostapd"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.455167,
+        "y": -0.054921,
+        "z": -0.519942
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-03",
@@ -1900,7 +2442,12 @@ export const knowledgePayload = {
         "Channel",
         "WiFi",
         "DFS"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.640074,
+        "y": 0.566937,
+        "z": -0.150677
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-04",
@@ -1917,7 +2464,12 @@ export const knowledgePayload = {
         "CAC",
         "RadarDetected",
         "WiFi"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.799106,
+        "y": 0.21684,
+        "z": -0.083241
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-05",
@@ -1934,7 +2486,12 @@ export const knowledgePayload = {
         "wpad",
         "80211k",
         "80211v"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.600838,
+        "y": -0.335347,
+        "z": -0.605876
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-06",
@@ -1951,7 +2508,12 @@ export const knowledgePayload = {
         "nft",
         "SyntaxError",
         "fw4"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.567106,
+        "y": 0.279117,
+        "z": 0.122108
+      }
     },
     {
       "id": "upload-20260803-e1e386e275-07",
@@ -1968,7 +2530,12 @@ export const knowledgePayload = {
         "Offline",
         "Tracking",
         "多WAN"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.309797,
+        "y": 0.563118,
+        "z": -0.446228
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-01",
@@ -1985,7 +2552,12 @@ export const knowledgePayload = {
         "ServiceFailed",
         "dnsmasq-full",
         "fwmark"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.092681,
+        "y": 0.713459,
+        "z": -0.110208
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-02",
@@ -2002,7 +2574,12 @@ export const knowledgePayload = {
         "HandshakeNever",
         "UDP",
         "NAT"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.136081,
+        "y": 0.588496,
+        "z": -0.311697
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-03",
@@ -2018,7 +2595,12 @@ export const knowledgePayload = {
         "WireGuard",
         "HandshakeNoTraffic",
         "AllowedIPs"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.051444,
+        "y": 0.566789,
+        "z": -0.255574
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-04",
@@ -2035,7 +2617,12 @@ export const knowledgePayload = {
         "HomeProxy",
         "全网断网",
         "TProxy"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.369877,
+        "y": 0.410717,
+        "z": -0.107425
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-05",
@@ -2052,7 +2639,12 @@ export const knowledgePayload = {
         "Overlay2",
         "NoSpace",
         "容器"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.308953,
+        "y": 0.549508,
+        "z": -0.626174
+      }
     },
     {
       "id": "upload-20260803-fa308082fe-06",
@@ -2069,7 +2661,12 @@ export const knowledgePayload = {
         "ApplyRollback",
         "网络",
         "失联"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.351356,
+        "y": 0.447584,
+        "z": -0.052351
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-01",
@@ -2086,7 +2683,12 @@ export const knowledgePayload = {
         "发行版",
         "硬件",
         "诊断"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.055112,
+        "y": 0.42095,
+        "z": 0.708836
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-02",
@@ -2103,7 +2705,12 @@ export const knowledgePayload = {
         "apk",
         "opkg",
         "软件包"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.478776,
+        "y": -0.224901,
+        "z": 0.702487
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-03",
@@ -2119,7 +2726,12 @@ export const knowledgePayload = {
         "factory",
         "sysupgrade",
         "固件"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.046732,
+        "y": -0.177227,
+        "z": 0.864002
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-04",
@@ -2136,7 +2748,12 @@ export const knowledgePayload = {
         "校验",
         "固件",
         "安全"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.06216,
+        "y": 0.778598,
+        "z": -0.026924
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-05",
@@ -2152,7 +2769,12 @@ export const knowledgePayload = {
         "备份",
         "配置",
         "软件包"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.539508,
+        "y": 0.290261,
+        "z": 0.289804
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-06",
@@ -2169,7 +2791,12 @@ export const knowledgePayload = {
         "DSA",
         "fw4",
         "兼容"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.071203,
+        "y": 0.867855,
+        "z": 0.212208
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-07",
@@ -2185,7 +2812,12 @@ export const knowledgePayload = {
         "备份",
         "恢复",
         "owut"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.077,
+        "y": 0.10685,
+        "z": 0.77551
+      }
     },
     {
       "id": "upload-20260803-0d309c781d-08",
@@ -2201,7 +2833,12 @@ export const knowledgePayload = {
         "恢复",
         "出厂重置",
         "救砖"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.274137,
+        "y": -0.400203,
+        "z": 0.423133
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-01",
@@ -2218,7 +2855,12 @@ export const knowledgePayload = {
         "factoryreset",
         "OpenWrt",
         "恢复"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.027821,
+        "y": -0.354005,
+        "z": 0.564802
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-02",
@@ -2235,7 +2877,12 @@ export const knowledgePayload = {
         "rom",
         "overlay",
         "空间"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.199546,
+        "y": -0.903053,
+        "z": -0.223923
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-03",
@@ -2251,7 +2898,12 @@ export const knowledgePayload = {
         "commit",
         "配置",
         "服务"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.379667,
+        "y": 0.069859,
+        "z": 0.571022
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-04",
@@ -2267,7 +2919,12 @@ export const knowledgePayload = {
         "匿名section",
         "脚本",
         "风险"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.18328,
+        "y": 0.058448,
+        "z": 0.554748
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-05",
@@ -2283,7 +2940,12 @@ export const knowledgePayload = {
         "netifd",
         "运行态",
         "诊断"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.864724,
+        "y": -0.291207,
+        "z": 0.003572
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-06",
@@ -2299,7 +2961,12 @@ export const knowledgePayload = {
         "dmesg",
         "日志",
         "排障"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.429641,
+        "y": 0.125308,
+        "z": -0.492994
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-07",
@@ -2315,7 +2982,12 @@ export const knowledgePayload = {
         "device",
         "l3_device",
         "网络"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.510946,
+        "y": 0.216623,
+        "z": 0.684814
+      }
     },
     {
       "id": "upload-20260803-34e4995b97-08",
@@ -2331,7 +3003,12 @@ export const knowledgePayload = {
         "swconfig",
         "交换机",
         "VLAN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.91586,
+        "y": -0.071231,
+        "z": 0.134294
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-01",
@@ -2349,7 +3026,12 @@ export const knowledgePayload = {
         "untagged",
         "PVID",
         "trunk"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.58575,
+        "y": 0.20055,
+        "z": -0.256683
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-02",
@@ -2365,7 +3047,12 @@ export const knowledgePayload = {
         "bridge-vlan",
         "本机",
         "CPU端口"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.685202,
+        "y": -0.253563,
+        "z": 0.035586
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-03",
@@ -2381,7 +3068,12 @@ export const knowledgePayload = {
         "AP",
         "DHCP",
         "桥接"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.003763,
+        "y": 0.350194,
+        "z": -0.868268
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-04",
@@ -2397,7 +3089,12 @@ export const knowledgePayload = {
         "隔离",
         "防火墙",
         "VLAN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.288721,
+        "y": -0.142071,
+        "z": 0.872267
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-05",
@@ -2414,7 +3111,12 @@ export const knowledgePayload = {
         "ip",
         "rule",
         "诊断"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.580787,
+        "y": -0.474607,
+        "z": -0.041013
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-06",
@@ -2431,7 +3133,12 @@ export const knowledgePayload = {
         "分流",
         "VPN",
         "多WAN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.769052,
+        "y": 0.267999,
+        "z": 0.260148
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-07",
@@ -2447,7 +3154,12 @@ export const knowledgePayload = {
         "负载均衡",
         "单连接",
         "权重"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.532844,
+        "y": 0.179351,
+        "z": -0.10461
+      }
     },
     {
       "id": "upload-20260803-678c211dc3-08",
@@ -2462,7 +3174,12 @@ export const knowledgePayload = {
         "mwan3",
         "故障转移",
         "排障"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.725637,
+        "y": 0.177323,
+        "z": -0.282685
+      }
     },
     {
       "id": "upload-20260803-a841e36252-01",
@@ -2478,7 +3195,12 @@ export const knowledgePayload = {
         "MTU",
         "MSS",
         "HTTPS"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.064576,
+        "y": -0.793315,
+        "z": 0.126687
+      }
     },
     {
       "id": "upload-20260803-a841e36252-02",
@@ -2493,7 +3215,12 @@ export const knowledgePayload = {
         "双NAT",
         "CGNAT",
         "端口转发"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.505571,
+        "y": -0.242711,
+        "z": -0.040794
+      }
     },
     {
       "id": "upload-20260803-a841e36252-03",
@@ -2509,7 +3236,12 @@ export const knowledgePayload = {
         "管理页",
         "PPPoE",
         "alias"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.31136,
+        "y": -0.687387,
+        "z": 0.440024
+      }
     },
     {
       "id": "upload-20260803-a841e36252-04",
@@ -2525,7 +3257,12 @@ export const knowledgePayload = {
         "静态租约",
         "MAC",
         "DUID"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.162973,
+        "y": -0.063059,
+        "z": -0.52638
+      }
     },
     {
       "id": "upload-20260803-a841e36252-05",
@@ -2541,7 +3278,12 @@ export const knowledgePayload = {
         "白名单",
         "安全",
         "MAC"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.092012,
+        "y": -0.202288,
+        "z": -0.846545
+      }
     },
     {
       "id": "upload-20260803-a841e36252-06",
@@ -2557,7 +3299,12 @@ export const knowledgePayload = {
         "dnsmasq",
         "peerdns",
         "resolv.conf"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.269111,
+        "y": 0.260519,
+        "z": -0.501841
+      }
     },
     {
       "id": "upload-20260803-a841e36252-07",
@@ -2573,7 +3320,12 @@ export const knowledgePayload = {
         "rebind",
         "dnsmasq",
         "私网"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.187424,
+        "y": 0.491214,
+        "z": -0.291507
+      }
     },
     {
       "id": "upload-20260803-a841e36252-08",
@@ -2590,7 +3342,12 @@ export const knowledgePayload = {
         "1232",
         "MTU",
         "抓包"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.101347,
+        "y": 0.627118,
+        "z": -0.445264
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-01",
@@ -2607,7 +3364,12 @@ export const knowledgePayload = {
         "RA",
         "DHCPv6",
         "前缀委派"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.103793,
+        "y": 0.239326,
+        "z": 0.632116
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-02",
@@ -2625,7 +3387,12 @@ export const knowledgePayload = {
         "NDP",
         "proxy",
         "NAT66"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.225638,
+        "y": 0.092999,
+        "z": 0.581136
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-03",
@@ -2642,7 +3409,12 @@ export const knowledgePayload = {
         "RA",
         "ICMPv6",
         "路由"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.155447,
+        "y": -0.141208,
+        "z": 0.712232
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-04",
@@ -2658,7 +3430,12 @@ export const knowledgePayload = {
         "nftables",
         "fw4",
         "iptables"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.122374,
+        "y": -0.564987,
+        "z": 0.593553
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-05",
@@ -2675,7 +3452,12 @@ export const knowledgePayload = {
         "forward",
         "output",
         "zone"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.218017,
+        "y": 0.461426,
+        "z": 0.810844
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-06",
@@ -2691,7 +3473,12 @@ export const knowledgePayload = {
         "自定义规则",
         "fw4",
         "include"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.391488,
+        "y": -0.710218,
+        "z": -0.077396
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-07",
@@ -2707,7 +3494,12 @@ export const knowledgePayload = {
         "DNAT",
         "hairpin",
         "抓包"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.372656,
+        "y": -0.023913,
+        "z": -0.411122
+      }
     },
     {
       "id": "upload-20260803-79a0efdf50-08",
@@ -2724,7 +3516,12 @@ export const knowledgePayload = {
         "SQM",
         "CAKE",
         "硬件加速"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.412564,
+        "y": 0.641836,
+        "z": -0.545464
+      }
     },
     {
       "id": "upload-20260803-77402967e9-01",
@@ -2740,7 +3537,12 @@ export const knowledgePayload = {
         "CAKE",
         "bufferbloat",
         "延迟"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.004799,
+        "y": 0.582356,
+        "z": -0.764448
+      }
     },
     {
       "id": "upload-20260803-77402967e9-02",
@@ -2757,7 +3559,12 @@ export const knowledgePayload = {
         "SQM",
         "蜂窝",
         "bufferbloat"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.805821,
+        "y": 0.282598,
+        "z": -0.355525
+      }
     },
     {
       "id": "upload-20260803-77402967e9-03",
@@ -2773,7 +3580,12 @@ export const knowledgePayload = {
         "AllowedIPs",
         "路由",
         "peer"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.445835,
+        "y": -0.190633,
+        "z": -0.375396
+      }
     },
     {
       "id": "upload-20260803-77402967e9-04",
@@ -2789,7 +3601,12 @@ export const knowledgePayload = {
         "NAT",
         "keepalive",
         "端口"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.25687,
+        "y": 0.159503,
+        "z": -0.87863
+      }
     },
     {
       "id": "upload-20260803-77402967e9-05",
@@ -2806,7 +3623,12 @@ export const knowledgePayload = {
         "功率",
         "DFS",
         "法规"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.646785,
+        "y": 0.584846,
+        "z": 0.054058
+      }
     },
     {
       "id": "upload-20260803-77402967e9-06",
@@ -2823,7 +3645,12 @@ export const knowledgePayload = {
         "雷达",
         "CAC",
         "掉线"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.620187,
+        "y": 0.005334,
+        "z": -0.149644
+      }
     },
     {
       "id": "upload-20260803-77402967e9-07",
@@ -2840,7 +3667,12 @@ export const knowledgePayload = {
         "160MHz",
         "320MHz",
         "吞吐"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.532366,
+        "y": 0.27091,
+        "z": -0.29727
+      }
     },
     {
       "id": "upload-20260803-77402967e9-08",
@@ -2856,7 +3688,12 @@ export const knowledgePayload = {
         "FT",
         "漫游",
         "WiFi"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.522132,
+        "y": 0.158529,
+        "z": -0.449574
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-01",
@@ -2872,7 +3709,12 @@ export const knowledgePayload = {
         "Mesh",
         "802.11r",
         "回程"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.297968,
+        "y": 0.065445,
+        "z": -0.516061
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-02",
@@ -2888,7 +3730,12 @@ export const knowledgePayload = {
         "WiFi",
         "2.4GHz",
         "干扰"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.756987,
+        "y": 0.579944,
+        "z": -0.173972
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-03",
@@ -2904,7 +3751,12 @@ export const knowledgePayload = {
         "挂载",
         "overlay",
         "扩容"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.290821,
+        "y": -0.794252,
+        "z": 0.181881
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-04",
@@ -2920,7 +3772,12 @@ export const knowledgePayload = {
         "UUID",
         "lsblk",
         "存储"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.407018,
+        "y": 0.083734,
+        "z": -0.565261
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-05",
@@ -2936,7 +3793,12 @@ export const knowledgePayload = {
         "fstab",
         "ext4",
         "block-mount"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.019193,
+        "y": -0.742811,
+        "z": 0.365137
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-06",
@@ -2952,7 +3814,12 @@ export const knowledgePayload = {
         "失效",
         "回退",
         "数据恢复"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.673854,
+        "y": -0.511106,
+        "z": 0.234231
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-07",
@@ -2969,7 +3836,12 @@ export const knowledgePayload = {
         "btrfs",
         "TF卡",
         "文件系统"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.791969,
+        "y": 0.274024,
+        "z": 0.441416
+      }
     },
     {
       "id": "upload-20260803-6ab7966f9f-08",
@@ -2985,7 +3857,12 @@ export const knowledgePayload = {
         "内核ABI",
         "snapshot",
         "软件源"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.695996,
+        "y": -0.330933,
+        "z": -0.43865
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-01",
@@ -3001,7 +3878,12 @@ export const knowledgePayload = {
         "ImmortalWrt",
         "OpenWrt",
         "兼容"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.071263,
+        "y": 0.315807,
+        "z": -0.891663
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-02",
@@ -3016,7 +3898,12 @@ export const knowledgePayload = {
         "ImageBuilder",
         "定制固件",
         "批量"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.16011,
+        "y": 0.51839,
+        "z": -0.169096
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-03",
@@ -3033,7 +3920,12 @@ export const knowledgePayload = {
         "SSH",
         "Dropbear",
         "HTTPS"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.135719,
+        "y": -0.19916,
+        "z": -0.905656
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-04",
@@ -3050,7 +3942,12 @@ export const knowledgePayload = {
         "TLS",
         "证书",
         "软件包"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.4356,
+        "y": 0.44597,
+        "z": -0.08328
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-05",
@@ -3067,7 +3964,12 @@ export const knowledgePayload = {
         "br-lan",
         "WAN",
         "VLAN"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.221959,
+        "y": -0.946033,
+        "z": 0.053876
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-06",
@@ -3084,7 +3986,12 @@ export const knowledgePayload = {
         "table",
         "full",
         "内存"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.77336,
+        "y": 0.409616,
+        "z": 0.05035
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-07",
@@ -3101,7 +4008,12 @@ export const knowledgePayload = {
         "闪存",
         "df",
         "free"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.533241,
+        "y": 0.538744,
+        "z": -0.02912
+      }
     },
     {
       "id": "upload-20260803-63bdd6dcdb-08",
@@ -3117,7 +4029,12 @@ export const knowledgePayload = {
         "overlay",
         "tmp",
         "inode"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.89439,
+        "y": 0.187613,
+        "z": 0.02361
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-01",
@@ -3133,7 +4050,12 @@ export const knowledgePayload = {
         "ethtool",
         "2.5G",
         "协商"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.615702,
+        "y": -0.739763,
+        "z": 0.178603
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-02",
@@ -3151,7 +4073,12 @@ export const knowledgePayload = {
         "ECM",
         "NCM",
         "RNDIS"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.3425,
+        "y": -0.691186,
+        "z": 0.441557
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-03",
@@ -3168,7 +4095,12 @@ export const knowledgePayload = {
         "cdc-wdm",
         "wwan",
         "APN"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.03646,
+        "y": -0.862855,
+        "z": 0.3934
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-04",
@@ -3184,7 +4116,12 @@ export const knowledgePayload = {
         "ttyUSB",
         "5G模组",
         "诊断"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.192025,
+        "y": 0.333477,
+        "z": 0.479732
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-05",
@@ -3200,7 +4137,12 @@ export const knowledgePayload = {
         "qmodem",
         "quectel-CM",
         "冲突"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.139341,
+        "y": -0.745321,
+        "z": 0.440818
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-06",
@@ -3217,7 +4159,12 @@ export const knowledgePayload = {
         "多WAN",
         "会话",
         "CGNAT"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.476568,
+        "y": 0.42423,
+        "z": -0.160017
+      }
     },
     {
       "id": "upload-20260803-368365a3ac-07",
@@ -3234,7 +4181,12 @@ export const knowledgePayload = {
         "救砖",
         "3.3V",
         "factory"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.144221,
+        "y": 0.557424,
+        "z": -0.610245
+      }
     },
     {
       "id": "upload-20260803-4ef3288135-01",
@@ -3258,7 +4210,12 @@ export const knowledgePayload = {
         "C8-788",
         "C2000 MAX",
         "AM5"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.225191,
+        "y": 0.305889,
+        "z": -0.5433
+      }
     },
     {
       "id": "upload-20260803-4ef3288135-02",
@@ -3279,7 +4236,12 @@ export const knowledgePayload = {
         "C2000-500",
         "AX900",
         "AX1500"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.616784,
+        "y": 0.032976,
+        "z": -0.102762
+      }
     },
     {
       "id": "upload-20260803-4ef3288135-03",
@@ -3296,7 +4258,12 @@ export const knowledgePayload = {
         "参数文件",
         "文档导航",
         "详细硬件参数"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.582641,
+        "y": 0.179646,
+        "z": -0.581258
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-01",
@@ -3320,7 +4287,12 @@ export const knowledgePayload = {
         "SUL",
         "2.5G网口",
         "USB-C PD"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.174498,
+        "y": -0.560579,
+        "z": -0.226198
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-02",
@@ -3343,7 +4315,12 @@ export const knowledgePayload = {
         "N79",
         "2.5G",
         "AC控制器"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.086043,
+        "y": -0.893299,
+        "z": -0.226446
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-03",
@@ -3365,7 +4342,12 @@ export const knowledgePayload = {
         "2.5G",
         "1GB DDR4",
         "8GB eMMC"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.562086,
+        "y": 0.306483,
+        "z": 0.324858
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-04",
@@ -3388,7 +4370,12 @@ export const knowledgePayload = {
         "SA",
         "NSA",
         "2.5G"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.322891,
+        "y": -0.916615,
+        "z": -0.087821
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-05",
@@ -3409,7 +4396,12 @@ export const knowledgePayload = {
         "紫光展锐 V510",
         "千兆",
         "双Nano-SIM"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.546343,
+        "y": 0.469716,
+        "z": -0.264553
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-06",
@@ -3435,7 +4427,12 @@ export const knowledgePayload = {
       ],
       "last_edited_by": "FallaxAura",
       "last_edited_at": "2026-08-07T08:01:26+00:00",
-      "revision": 2
+      "revision": 2,
+      "galaxy": {
+        "x": -0.765424,
+        "y": 0.531865,
+        "z": -0.1471
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-07",
@@ -3457,7 +4454,12 @@ export const knowledgePayload = {
         "MediaTek MT7981B",
         "2.5G PoE",
         "NBCPE"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.207474,
+        "y": 0.287766,
+        "z": -0.494201
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-08",
@@ -3478,7 +4480,12 @@ export const knowledgePayload = {
         "全球频段",
         "2.5G",
         "外置SIM"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.335096,
+        "y": -0.811202,
+        "z": 0.226362
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-09",
@@ -3498,7 +4505,12 @@ export const knowledgePayload = {
         "紫光展锐 V510",
         "USB-C",
         "Nano-SIM"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.60644,
+        "y": -0.557299,
+        "z": 0.484418
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-10",
@@ -3517,7 +4529,12 @@ export const knowledgePayload = {
         "紫光展锐 V510",
         "USB-C",
         "Nano-SIM"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.645805,
+        "y": -0.190807,
+        "z": 0.68904
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-11",
@@ -3539,7 +4556,12 @@ export const knowledgePayload = {
         "MT5700",
         "2.5G PoE",
         "NBCPE"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.576327,
+        "y": -0.139861,
+        "z": -0.654983
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-12",
@@ -3560,7 +4582,12 @@ export const knowledgePayload = {
         "紫光展锐 V510",
         "2.5G PoE",
         "NBCPE"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.014852,
+        "y": 0.654834,
+        "z": -0.220446
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-13",
@@ -3582,7 +4609,12 @@ export const knowledgePayload = {
         "高通",
         "2.5G PoE",
         "NBCPE"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.326725,
+        "y": -0.517584,
+        "z": -0.553008
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-14",
@@ -3604,7 +4636,12 @@ export const knowledgePayload = {
         "Wi-Fi 6",
         "双SIM",
         "APN"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.365512,
+        "y": -0.085308,
+        "z": -0.407248
+      }
     },
     {
       "id": "upload-20260803-acc90fa962-15",
@@ -3626,7 +4663,12 @@ export const knowledgePayload = {
         "5G CPE",
         "热点",
         "USB-C"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.1374,
+        "y": 0.100748,
+        "z": 0.788972
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-01",
@@ -3647,7 +4689,12 @@ export const knowledgePayload = {
         "家用路由器",
         "企业路由器",
         "海思方案"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.736108,
+        "y": 0.152497,
+        "z": -0.346825
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-02",
@@ -3668,7 +4715,12 @@ export const knowledgePayload = {
         "AX600",
         "随身Wi-Fi",
         "海思方案"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.327049,
+        "y": 0.334479,
+        "z": -0.759346
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-03",
@@ -3688,7 +4740,12 @@ export const knowledgePayload = {
         "口袋路由器",
         "Wi-Fi 6",
         "智能路由器"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.496291,
+        "y": 0.213043,
+        "z": -0.375642
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-04",
@@ -3708,7 +4765,12 @@ export const knowledgePayload = {
         "口袋路由器",
         "Wi-Fi 6",
         "智能路由器"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.603469,
+        "y": 0.102643,
+        "z": -0.538472
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-05",
@@ -3728,7 +4790,12 @@ export const knowledgePayload = {
         "充电宝",
         "10000mAh",
         "Wi-Fi 6"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.577542,
+        "y": -0.182485,
+        "z": -0.583927
+      }
     },
     {
       "id": "upload-20260803-ff395b4099-06",
@@ -3749,7 +4816,12 @@ export const knowledgePayload = {
         "双频",
         "10000mAh",
         "Wi-Fi 6"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.281891,
+        "y": 0.449246,
+        "z": -0.411038
+      }
     },
     {
       "id": "upload-20260803-78c72a56c2-01",
@@ -3770,7 +4842,12 @@ export const knowledgePayload = {
         "3300mAh",
         "Cellular频段",
         "理论速率"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.592865,
+        "y": -0.146943,
+        "z": -0.56192
+      }
     },
     {
       "id": "upload-20260803-78c72a56c2-02",
@@ -3793,7 +4870,12 @@ export const knowledgePayload = {
         "Wi-Fi 4",
         "2GB内存",
         "512MB闪存"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.656141,
+        "y": 0.35706,
+        "z": -0.373676
+      }
     },
     {
       "id": "upload-20260803-78c72a56c2-03",
@@ -3816,7 +4898,12 @@ export const knowledgePayload = {
         "Wi-Fi 4",
         "2GB内存",
         "512MB闪存"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.604434,
+        "y": 0.004105,
+        "z": -0.473802
+      }
     },
     {
       "id": "upload-20260803-1762b43f22-01",
@@ -3838,7 +4925,12 @@ export const knowledgePayload = {
         "mSATA",
         "高密度 Wi-Fi",
         "NRadio 其他产品"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.27628,
+        "y": 0.288927,
+        "z": -0.523894
+      }
     },
     {
       "id": "upload-20260803-1762b43f22-02",
@@ -3861,7 +4953,12 @@ export const knowledgePayload = {
         "千兆网口",
         "历史产品",
         "NRadio"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.429117,
+        "y": 0.409622,
+        "z": 0.056013
+      }
     },
     {
       "id": "upload-20260803-61cb4f85d8-01",
@@ -3876,7 +4973,12 @@ export const knowledgePayload = {
         "C8-788",
         "C2000 Max",
         "型号对应"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.12269,
+        "y": -0.743883,
+        "z": 0.289818
+      }
     },
     {
       "id": "upload-20260803-61cb4f85d8-02",
@@ -3893,7 +4995,12 @@ export const knowledgePayload = {
         "内测",
         "预售",
         "鲲鹏小店"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.583923,
+        "y": -0.335751,
+        "z": -0.327199
+      }
     },
     {
       "id": "upload-20260803-61cb4f85d8-03",
@@ -3910,7 +5017,12 @@ export const knowledgePayload = {
         "配件",
         "8月",
         "张导的店"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.228868,
+        "y": -0.685791,
+        "z": -0.226597
+      }
     },
     {
       "id": "upload-20260803-61cb4f85d8-04",
@@ -3925,7 +5037,12 @@ export const knowledgePayload = {
         "天火卡",
         "活动结束",
         "流量卡"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.652206,
+        "y": -0.355709,
+        "z": -0.281605
+      }
     },
     {
       "id": "upload-20260807-9f2a50961c-01",
@@ -3942,7 +5059,12 @@ export const knowledgePayload = {
         "C2000 Max",
         "型号别名",
         "产品识别"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.514807,
+        "y": -0.784042,
+        "z": 0.268752
+      }
     },
     {
       "id": "upload-20260807-9f2a50961c-02",
@@ -3961,7 +5083,12 @@ export const knowledgePayload = {
         "U",
         "型号别名",
         "产品识别"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.523426,
+        "y": -0.162964,
+        "z": -0.309643
+      }
     },
     {
       "id": "upload-20260807-9f2a50961c-03",
@@ -3979,7 +5106,12 @@ export const knowledgePayload = {
         "虚空会员",
         "紫金会员",
         "2026-08-07"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.25654,
+        "y": -0.225366,
+        "z": -0.787093
+      }
     },
     {
       "id": "upload-20260807-9f2a50961c-04",
@@ -3997,7 +5129,12 @@ export const knowledgePayload = {
         "鲲鹏小店",
         "公告",
         "时间边界"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.010314,
+        "y": 0.058227,
+        "z": -0.811752
+      }
     },
     {
       "id": "upload-20260807-1e455bbe09-01",
@@ -4014,7 +5151,12 @@ export const knowledgePayload = {
         "流量卡",
         "客服口径",
         "2026-08-07"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.532788,
+        "y": -0.280609,
+        "z": 0.070476
+      }
     },
     {
       "id": "upload-20260807-1e455bbe09-02",
@@ -4032,7 +5174,12 @@ export const knowledgePayload = {
         "十周年活动",
         "1598元",
         "1980元"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.451371,
+        "y": 0.346977,
+        "z": -0.07887
+      }
     },
     {
       "id": "upload-20260807-1e455bbe09-03",
@@ -4049,7 +5196,12 @@ export const knowledgePayload = {
         "天火卡",
         "鲲鹏小店",
         "价格引导"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.54362,
+        "y": -0.553884,
+        "z": -0.053101
+      }
     },
     {
       "id": "upload-20260807-1e455bbe09-04",
@@ -4064,7 +5216,12 @@ export const knowledgePayload = {
         "信息来源",
         "整理日期",
         "2026-08-07"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.359325,
+        "y": 0.382964,
+        "z": 0.540598
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-01",
@@ -4079,7 +5236,12 @@ export const knowledgePayload = {
         "张导小店",
         "会员等级",
         "规则概览"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.502036,
+        "y": 0.446117,
+        "z": -0.362304
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-02",
@@ -4094,7 +5256,12 @@ export const knowledgePayload = {
         "张导小店",
         "黄金会员",
         "升级条件"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.183968,
+        "y": 0.670259,
+        "z": 0.030663
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-03",
@@ -4110,7 +5277,12 @@ export const knowledgePayload = {
         "赤金会员",
         "抖音粉丝团",
         "升级条件"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.533076,
+        "y": 0.378999,
+        "z": -0.416477
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-04",
@@ -4126,7 +5298,12 @@ export const knowledgePayload = {
         "紫金会员",
         "抖音粉丝团",
         "升级条件"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.229445,
+        "y": 0.662499,
+        "z": -0.59257
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-05",
@@ -4143,7 +5320,12 @@ export const knowledgePayload = {
         "抖音粉丝团",
         "升级条件",
         "双号"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.383183,
+        "y": 0.405236,
+        "z": -0.25276
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-06",
@@ -4159,7 +5341,12 @@ export const knowledgePayload = {
         "神域会员",
         "特殊贡献",
         "颁发规则"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.392675,
+        "y": 0.834052,
+        "z": -0.124365
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-07",
@@ -4175,7 +5362,12 @@ export const knowledgePayload = {
         "至尊股东会员",
         "重大特殊贡献",
         "颁发规则"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.048339,
+        "y": 0.576352,
+        "z": -0.107823
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-08",
@@ -4191,7 +5383,12 @@ export const knowledgePayload = {
         "会员审核",
         "证明要求",
         "抖音粉丝团"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.375767,
+        "y": 0.563779,
+        "z": 0.188473
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-09",
@@ -4207,7 +5404,12 @@ export const knowledgePayload = {
         "客服",
         "会员升级",
         "回答口径"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.344665,
+        "y": 0.587816,
+        "z": -0.051905
+      }
     },
     {
       "id": "upload-20260807-bf6d132211-10",
@@ -4223,7 +5425,12 @@ export const knowledgePayload = {
         "会员等级",
         "信息来源",
         "整理日期"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.399651,
+        "y": 0.588203,
+        "z": 0.030364
+      }
     },
     {
       "id": "upload-20260807-532bbda957-01",
@@ -4239,7 +5446,12 @@ export const knowledgePayload = {
         "金属散热壳",
         "配件",
         "推出时间"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.404385,
+        "y": -0.546353,
+        "z": -0.491413
+      }
     },
     {
       "id": "upload-20260807-532bbda957-02",
@@ -4256,7 +5468,12 @@ export const knowledgePayload = {
         "领取",
         "张导的店",
         "小助理通知"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.427751,
+        "y": -0.343805,
+        "z": -0.442067
+      }
     },
     {
       "id": "upload-20260807-532bbda957-03",
@@ -4272,7 +5489,12 @@ export const knowledgePayload = {
         "金属散热壳",
         "客服口径",
         "咨询"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.522357,
+        "y": -0.529468,
+        "z": -0.200178
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-01",
@@ -4289,7 +5511,12 @@ export const knowledgePayload = {
         "C8-788",
         "C8-798",
         "型号对应"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.044135,
+        "y": -0.783415,
+        "z": -0.31303
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-02",
@@ -4306,7 +5533,12 @@ export const knowledgePayload = {
         "内存",
         "512MB",
         "1GB"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.230759,
+        "y": -0.622313,
+        "z": -0.260687
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-03",
@@ -4323,7 +5555,12 @@ export const knowledgePayload = {
         "外壳",
         "塑胶",
         "金属"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.069511,
+        "y": -0.605086,
+        "z": -0.129106
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-04",
@@ -4339,7 +5576,12 @@ export const knowledgePayload = {
         "TF卡",
         "AI功能",
         "配件"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.137177,
+        "y": -0.008128,
+        "z": -0.740564
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-05",
@@ -4355,7 +5597,12 @@ export const knowledgePayload = {
         "随机流量卡",
         "青锋卡",
         "赠品"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.213037,
+        "y": 0.200975,
+        "z": -0.60544
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-06",
@@ -4372,7 +5619,12 @@ export const knowledgePayload = {
         "Wi-Fi",
         "AX3000",
         "5040"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.148889,
+        "y": -0.781622,
+        "z": -0.497474
+      }
     },
     {
       "id": "upload-20260807-f6b7355f06-07",
@@ -4388,7 +5640,12 @@ export const knowledgePayload = {
         "C2000 Ultra",
         "回答边界",
         "资料截止日期"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.035043,
+        "y": -0.651057,
+        "z": -0.178635
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-01",
@@ -4410,7 +5667,12 @@ export const knowledgePayload = {
         "N79",
         "宽带备份",
         "宽带聚合"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.51894,
+        "y": 0.693662,
+        "z": -0.061896
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-02",
@@ -4431,7 +5693,12 @@ export const knowledgePayload = {
         "LTE",
         "WCDMA",
         "速率"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.282508,
+        "y": 0.628755,
+        "z": -0.477798
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-03",
@@ -4451,7 +5718,12 @@ export const knowledgePayload = {
         "终端容量",
         "双频合一",
         "无线功能"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.740341,
+        "y": 0.332132,
+        "z": -0.243873
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-04",
@@ -4472,7 +5744,12 @@ export const knowledgePayload = {
         "Reset",
         "天线",
         "状态灯"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.365716,
+        "y": 0.826108,
+        "z": -0.225984
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-05",
@@ -4492,7 +5769,12 @@ export const knowledgePayload = {
         "尺寸",
         "温度",
         "湿度"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.511579,
+        "y": 0.479572,
+        "z": -0.137216
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-06",
@@ -4514,7 +5796,12 @@ export const knowledgePayload = {
         "蜂窝管理",
         "APN",
         "系统管理"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.194014,
+        "y": 0.62414,
+        "z": -0.595262
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-07",
@@ -4534,7 +5821,12 @@ export const knowledgePayload = {
         "鲲鹏无限APP",
         "Android",
         "iOS"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.407691,
+        "y": 0.532244,
+        "z": 0.244965
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-08",
@@ -4553,7 +5845,12 @@ export const knowledgePayload = {
         "网口",
         "SIM",
         "湿度"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.667317,
+        "y": 0.600561,
+        "z": -0.000008
+      }
     },
     {
       "id": "upload-20260807-91ab9895a6-09",
@@ -4572,7 +5869,12 @@ export const knowledgePayload = {
         "400-6800-186",
         "support@nradiowifi.com",
         "深圳市鲲鹏无限科技有限公司"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.047212,
+        "y": 0.557581,
+        "z": 0.160036
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-01",
@@ -4589,7 +5891,12 @@ export const knowledgePayload = {
         "通用流量",
         "定向流量",
         "1500GB"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.076092,
+        "y": -0.718231,
+        "z": -0.243031
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-02",
@@ -4606,7 +5913,12 @@ export const knowledgePayload = {
         "结算期",
         "中国移动APP",
         "流量查询"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.303127,
+        "y": -0.441287,
+        "z": -0.570802
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-03",
@@ -4623,7 +5935,12 @@ export const knowledgePayload = {
         "通用流量",
         "叠加流量",
         "流量耗尽"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.443668,
+        "y": -0.745541,
+        "z": 0.248133
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-04",
@@ -4640,7 +5957,12 @@ export const knowledgePayload = {
         "叠加流量停发",
         "次月恢复",
         "套外费用"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.072948,
+        "y": -0.523108,
+        "z": -0.244022
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-05",
@@ -4657,7 +5979,12 @@ export const knowledgePayload = {
         "5元/GB",
         "超额费用",
         "计费规则"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.432124,
+        "y": -0.645281,
+        "z": -0.304231
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-06",
@@ -4674,7 +6001,12 @@ export const knowledgePayload = {
         "中国移动APP",
         "人脸识别",
         "月末月初"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.431696,
+        "y": -0.558193,
+        "z": -0.390154
+      }
     },
     {
       "id": "upload-20260811-fdd4394185-07",
@@ -4691,7 +6023,12 @@ export const knowledgePayload = {
         "结论",
         "1500GB",
         "计费"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.721061,
+        "y": -0.464048,
+        "z": 0.310618
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-01",
@@ -4708,7 +6045,12 @@ export const knowledgePayload = {
         "欠费",
         "中国移动",
         "销户前准备"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.620121,
+        "y": -0.478047,
+        "z": 0.020827
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-02",
@@ -4725,7 +6067,12 @@ export const knowledgePayload = {
         "停卡",
         "恢复套餐",
         "销户"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.629672,
+        "y": -0.444716,
+        "z": -0.17135
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-03",
@@ -4742,7 +6089,12 @@ export const knowledgePayload = {
         "六个月",
         "补缴",
         "销户"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.859752,
+        "y": -0.34308,
+        "z": -0.293497
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-04",
@@ -4759,7 +6111,12 @@ export const knowledgePayload = {
         "六个月以上",
         "滞纳金",
         "销户"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.53402,
+        "y": -0.29405,
+        "z": -0.156137
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-05",
@@ -4776,7 +6133,12 @@ export const knowledgePayload = {
         "停机",
         "个人信用",
         "运营商黑户"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.428585,
+        "y": -0.303823,
+        "z": -0.186205
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-06",
@@ -4793,7 +6155,12 @@ export const knowledgePayload = {
         "中国移动APP",
         "线上销户",
         "渠道"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.449893,
+        "y": -0.373951,
+        "z": -0.021143
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-07",
@@ -4810,7 +6177,12 @@ export const knowledgePayload = {
         "预销户",
         "网址",
         "线上申请"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.713476,
+        "y": -0.43777,
+        "z": -0.326585
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-08",
@@ -4827,7 +6199,12 @@ export const knowledgePayload = {
         "办理时效",
         "7至15个工作日",
         "审核结果"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.710481,
+        "y": -0.466244,
+        "z": -0.263709
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-09",
@@ -4844,7 +6221,12 @@ export const knowledgePayload = {
         "原因",
         "欠费",
         "身份验证"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.706706,
+        "y": -0.322221,
+        "z": -0.01155
+      }
     },
     {
       "id": "upload-20260811-2f836b32a5-10",
@@ -4861,7 +6243,12 @@ export const knowledgePayload = {
         "规则",
         "欠费",
         "结论"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.635592,
+        "y": -0.488142,
+        "z": -0.370362
+      }
     },
     {
       "id": "upload-20260916-c39654c99f-01",
@@ -4879,7 +6266,12 @@ export const knowledgePayload = {
         "同轴馈线",
         "馈线损耗",
         "安装建议"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.01354,
+        "y": -0.615199,
+        "z": -0.218738
+      }
     },
     {
       "id": "upload-20260916-c39654c99f-02",
@@ -4897,7 +6289,12 @@ export const knowledgePayload = {
         "现场测量",
         "信号指标",
         "网速测试"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.214768,
+        "y": -0.536273,
+        "z": -0.205529
+      }
     },
     {
       "id": "upload-20260916-c39654c99f-03",
@@ -4915,7 +6312,12 @@ export const knowledgePayload = {
         "PoE",
         "防水",
         "室外安装"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.572065,
+        "y": 0.432855,
+        "z": 0.015892
+      }
     },
     {
       "id": "upload-20260916-c39654c99f-04",
@@ -4933,7 +6335,12 @@ export const knowledgePayload = {
         "Cisco天线说明",
         "来源限制",
         "NRadio"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.606494,
+        "y": 0.134241,
+        "z": -0.377478
+      }
     },
     {
       "id": "upload-20260916-e34d91c8df-01",
@@ -4954,7 +6361,12 @@ export const knowledgePayload = {
         "AP",
         "中继",
         "直播建议"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.5599,
+        "y": 0.326906,
+        "z": -0.353459
+      }
     },
     {
       "id": "upload-20260916-e34d91c8df-02",
@@ -4974,7 +6386,12 @@ export const knowledgePayload = {
         "AP布线",
         "中继",
         "五层住宅"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.607383,
+        "y": -0.347526,
+        "z": -0.071227
+      }
     },
     {
       "id": "upload-20260916-e34d91c8df-03",
@@ -4993,7 +6410,12 @@ export const knowledgePayload = {
         "设备摆放",
         "Wi-Fi覆盖",
         "直播建议"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.756953,
+        "y": -0.373055,
+        "z": 0.022318
+      }
     },
     {
       "id": "upload-20260916-e34d91c8df-04",
@@ -5012,7 +6434,12 @@ export const knowledgePayload = {
         "测速",
         "五层住宅",
         "直播建议"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.622825,
+        "y": 0.336616,
+        "z": -0.070434
+      }
     },
     {
       "id": "upload-20260916-e34d91c8df-05",
@@ -5030,7 +6457,12 @@ export const knowledgePayload = {
         "未上市",
         "未确认",
         "直播建议"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.439823,
+        "y": 0.199181,
+        "z": -0.575779
+      }
     },
     {
       "id": "upload-20260916-648d6ba183-01",
@@ -5049,7 +6481,12 @@ export const knowledgePayload = {
         "连接详情页",
         "截图对比",
         "售后"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.734276,
+        "y": -0.477143,
+        "z": -0.008594
+      }
     },
     {
       "id": "upload-20260916-648d6ba183-02",
@@ -5069,7 +6506,12 @@ export const knowledgePayload = {
         "ICCID",
         "IMEI",
         "排查步骤"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.203532,
+        "y": -0.460787,
+        "z": 0.346524
+      }
     },
     {
       "id": "upload-20260916-648d6ba183-03",
@@ -5088,7 +6530,12 @@ export const knowledgePayload = {
         "信号强度",
         "基站负载",
         "运营商"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.0484,
+        "y": -0.607564,
+        "z": 0.225645
+      }
     },
     {
       "id": "upload-20260916-648d6ba183-04",
@@ -5105,7 +6552,12 @@ export const knowledgePayload = {
         "直播转写",
         "限制说明",
         "排查建议"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.531934,
+        "y": -0.21818,
+        "z": -0.087207
+      }
     },
     {
       "id": "upload-20260916-dbf62600b5-01",
@@ -5124,7 +6576,12 @@ export const knowledgePayload = {
         "提交入口",
         "小助理",
         "直播问答"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.47446,
+        "y": 0.554728,
+        "z": -0.636948
+      }
     },
     {
       "id": "upload-20260916-dbf62600b5-02",
@@ -5144,7 +6601,12 @@ export const knowledgePayload = {
         "报错信息",
         "问题描述",
         "直播问答"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.604236,
+        "y": 0.383708,
+        "z": -0.621692
+      }
     },
     {
       "id": "upload-20260916-dbf62600b5-03",
@@ -5165,7 +6627,12 @@ export const knowledgePayload = {
         "退款",
         "保修",
         "留言板"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.425268,
+        "y": -0.358518,
+        "z": 0.444402
+      }
     },
     {
       "id": "upload-20260916-dbf62600b5-04",
@@ -5184,7 +6651,12 @@ export const knowledgePayload = {
         "直播日期",
         "处理速度",
         "人员分工"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.202603,
+        "y": 0.480354,
+        "z": -0.242534
+      }
     },
     {
       "id": "upload-20260916-49c7ae7246-01",
@@ -5201,7 +6673,12 @@ export const knowledgePayload = {
         "磁片脱落",
         "售后处理",
         "铝合金后盖"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.191129,
+        "y": -0.62543,
+        "z": -0.286228
+      }
     },
     {
       "id": "upload-20260916-49c7ae7246-02",
@@ -5219,7 +6696,12 @@ export const knowledgePayload = {
         "凹槽喷漆",
         "召回计划",
         "售后政策"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.010125,
+        "y": -0.890525,
+        "z": -0.214684
+      }
     },
     {
       "id": "upload-20260916-49c7ae7246-03",
@@ -5236,7 +6718,12 @@ export const knowledgePayload = {
         "磁片脱落",
         "后盖照片",
         "购买渠道"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.088609,
+        "y": -0.721908,
+        "z": -0.412177
+      }
     },
     {
       "id": "upload-20260916-70ffa8db60-01",
@@ -5253,7 +6740,12 @@ export const knowledgePayload = {
         "铝合金机身",
         "风扇",
         "直播结论"
-      ]
+      ],
+      "galaxy": {
+        "x": 0.085031,
+        "y": 0.009592,
+        "z": -0.712848
+      }
     },
     {
       "id": "upload-20260916-70ffa8db60-02",
@@ -5270,7 +6762,12 @@ export const knowledgePayload = {
         "频繁重启",
         "温度告警",
         "售后"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.512561,
+        "y": 0.162329,
+        "z": -0.313892
+      }
     },
     {
       "id": "upload-20260916-70ffa8db60-03",
@@ -5287,7 +6784,12 @@ export const knowledgePayload = {
         "半导体制冷",
         "冷凝风险",
         "送风风扇"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.363249,
+        "y": 0.208867,
+        "z": -0.569531
+      }
     },
     {
       "id": "upload-20260916-07078b92bd-01",
@@ -5307,7 +6809,12 @@ export const knowledgePayload = {
         "插件",
         "样机",
         "卡槽"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.186651,
+        "y": 0.044582,
+        "z": -0.859156
+      }
     },
     {
       "id": "upload-20260916-07078b92bd-02",
@@ -5327,7 +6834,12 @@ export const knowledgePayload = {
         "插件数据",
         "拆盖",
         "迁移"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.082992,
+        "y": 0.325173,
+        "z": -0.462496
+      }
     },
     {
       "id": "upload-20260916-07078b92bd-03",
@@ -5348,7 +6860,12 @@ export const knowledgePayload = {
         "批次",
         "9.2",
         "9.9"
-      ]
+      ],
+      "galaxy": {
+        "x": -0.080924,
+        "y": 0.343642,
+        "z": -0.585472
+      }
     }
   ]
 }

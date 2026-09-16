@@ -1,0 +1,54 @@
+.galaxy-transition-veil {
+  position: fixed;
+  z-index: 9998;
+  inset: 0;
+  background: #020408;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.galaxy-transition-orb {
+  overflow: hidden;
+  border-radius: 50%;
+  background: #020408;
+  -webkit-mask-image: radial-gradient(circle, #000 0 75%, rgba(0, 0, 0, .82) 88%, transparent 100%);
+  mask-image: radial-gradient(circle, #000 0 75%, rgba(0, 0, 0, .82) 88%, transparent 100%);
+  box-shadow: 0 0 52px rgba(173, 191, 198, .08);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.galaxy-transition-orb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.galaxy-transition-departure {
+  position: fixed;
+  z-index: 9999;
+  transform-origin: center;
+}
+
+.galaxy-transition-arrival {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #020408;
+  pointer-events: none;
+}
+
+.galaxy-transition-arrival-orb {
+  width: 92vmin;
+  height: 92vmin;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-transition-veil,
+  .galaxy-transition-departure,
+  .galaxy-transition-arrival { display: none; }
+}

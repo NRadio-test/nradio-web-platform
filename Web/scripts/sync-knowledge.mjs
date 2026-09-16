@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { dataVersion, galaxyPosition, GALAXY_VERSION, validateKnowledgeEntries } from './galaxy-coordinates.mjs'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const webDir = resolve(scriptDir, '..')
@@ -10,7 +11,7 @@ const functionOutput = resolve(webDir, 'backend', 'functions', '_data', 'knowled
 const astrbotOutput = resolve(webDir, '..', 'knowledge-base', 'astrbot-upload', 'NRadio-鲲鹏无限知识库.md')
 
 const raw = await readFile(sourcePath, 'utf8')
-const entries = raw
+const sourceEntries = raw
   .split(/\r?\n/)
   .map((line) => line.trim())
   .filter(Boolean)
@@ -21,6 +22,12 @@ const entries = raw
       throw new Error(`knowledge.jsonl 第 ${index + 1} 行不是有效 JSON: ${error.message}`)
     }
   })
+
+validateKnowledgeEntries(sourceEntries)
+const entries = sourceEntries.map((entry) => ({
+  ...entry,
+  galaxy: galaxyPosition(entry)
+}))
 
 const verifiedAt = entries
   .map((entry) => entry.verified_at)
@@ -34,6 +41,8 @@ const payload = {
     generated_at: `${verifiedAt}T00:00:00.000Z`,
     verified_at: verifiedAt,
     entry_count: entries.length,
+    data_version: dataVersion(sourceEntries),
+    galaxy_version: GALAXY_VERSION,
     notice: '成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。'
   },
   entries

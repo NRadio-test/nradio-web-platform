@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="在鲲鹏知识星图中搜索、筛选并查看公开资料知识块的完整内容与来源。" />
+    <meta name="theme-color" content="#031022" />
+    <title>鲲鹏知识星图 · NRadio-Bot</title>
+    <link rel="icon" href="/assets/pengzai-v9.png" />
+    <link rel="stylesheet" href="/assets/site.css?v=20260916-10" />
+    <link rel="stylesheet" href="/assets/galaxy.css?v=20260916-10" />
+    <link rel="stylesheet" href="/assets/galaxy-transition.css?v=20260916-10" />
+    <script type="module" src="/assets/galaxy-page.js?v=20260916-10"></script>
+  </head>
+  <body class="galaxy-page">
+    <a class="galaxy-skip" href="#galaxy-search">跳至星图搜索</a>
+    <main id="galaxy-main" class="galaxy-app">
+      <div class="galaxy-stage">
+        <canvas id="galaxy-canvas" tabindex="0" aria-label="知识星图。拖拽转动，滚轮或加减键缩放，点击可见的知识光点查看详情。">您的浏览器不支持 Canvas；仍可通过搜索与标签查找知识块。</canvas>
+        <div id="galaxy-tooltip" class="galaxy-tooltip" role="tooltip" hidden></div>
+      </div>
+
+      <header class="galaxy-topbar">
+        <a class="galaxy-back" href="/knowledge/">← 返回知识库</a>
+        <div class="galaxy-heading">
+          <span>NRadio-Bot · Knowledge Search</span>
+          <h1>鲲鹏知识星图</h1>
+        </div>
+        <p id="galaxy-count" class="galaxy-count" aria-live="polite">— 个知识块</p>
+      </header>
+
+      <aside class="galaxy-explorer" aria-label="搜索与筛选知识块">
+        <label class="galaxy-search-label" for="galaxy-search">搜索知识块</label>
+        <div class="galaxy-search-shell">
+          <span aria-hidden="true">⌕</span>
+          <input id="galaxy-search" type="search" placeholder="InfoID、标题、正文或标签" autocomplete="off" aria-controls="galaxy-results" />
+        </div>
+        <div id="galaxy-results" class="galaxy-results" aria-label="匹配的知识块" aria-live="polite" hidden></div>
+        <div class="galaxy-filter-heading">
+          <span id="galaxy-tags-label">按标签筛选</span>
+          <button id="galaxy-clear" type="button" hidden>显示全部</button>
+        </div>
+        <div id="galaxy-tags" class="galaxy-tags" aria-labelledby="galaxy-tags-label"></div>
+        <p id="galaxy-status" class="galaxy-status" role="status" aria-live="polite">正在加载知识星图……</p>
+        <div id="galaxy-legend" class="galaxy-legend" aria-label="星图图例">
+          <p><span class="galaxy-legend-dot" aria-hidden="true"></span>可选亮星：一个 InfoID 对应一个网站知识块。</p>
+          <p><span class="galaxy-legend-grain" aria-hidden="true"></span>细碎星雾与少量星芒：不计入知识块，不可点击，也不表示知识关联。</p>
+          <p><span class="galaxy-legend-line" aria-hidden="true"></span>选中后才显示同来源或共享标签的关联线。</p>
+        </div>
+      </aside>
+
+      <div class="galaxy-view-controls" aria-label="星图视角控制">
+        <button id="galaxy-zoom-in" type="button" aria-label="放大星图">＋</button>
+        <button id="galaxy-zoom-out" type="button" aria-label="缩小星图">－</button>
+        <button id="galaxy-reset-view" type="button">重置视角</button>
+      </div>
+
+      <p class="galaxy-help galaxy-help-pointer">拖拽转动 · 滚轮按指针缩放 · 点击知识光点查看全文 · 按 Esc 关闭</p>
+      <p class="galaxy-help galaxy-help-touch">单指转动 · 双指缩放 · 轻点知识光点查看全文</p>
+
+      <aside id="galaxy-detail" class="galaxy-detail" aria-labelledby="galaxy-detail-heading" hidden>
+        <div class="galaxy-detail-topbar">
+          <h2 id="galaxy-detail-heading">知识块详情</h2>
+          <button id="galaxy-detail-close" class="galaxy-detail-close" type="button" aria-label="关闭知识块详情">关闭 ×</button>
+        </div>
+        <div id="galaxy-detail-content" class="galaxy-detail-content"></div>
+      </aside>
+    </main>
+  </body>
+</html>

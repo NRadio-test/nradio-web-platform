@@ -175,12 +175,38 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
 .knowledge-hero h1 { font-size: clamp(3rem, 4.4vw, 4.4rem); }
 .knowledge-hero h1 em { display: inline-block; white-space: nowrap; }
 .knowledge-hero > div > p:last-child { max-width: 650px; margin: 28px 0 0; color: var(--muted); line-height: 1.85; }
-.knowledge-hero-card { height: 285px; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: rgba(8, 30, 60, 0.75); box-shadow: var(--shadow); }
-.knowledge-hero-card img { grid-row: 1 / 3; width: 100%; height: 100%; object-fit: cover; }
-.knowledge-hero-card div { display: flex; flex-direction: column; align-items: center; justify-content: center; border-left: 1px solid var(--line); }
-.knowledge-hero-card div + div { border-top: 1px solid var(--line); }
-.knowledge-hero-card strong { font-size: 1.8rem; }
-.knowledge-hero-card span { margin-top: 5px; color: #7f96b1; font-size: 0.7rem; }
+.knowledge-galaxy-preview {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  height: 285px;
+  overflow: hidden;
+  border: 1px solid rgba(120, 167, 200, 0.25);
+  border-radius: 8px;
+  background: #010206;
+  box-shadow: 0 24px 58px rgba(0, 2, 8, 0.42);
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.knowledge-galaxy-preview::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  height: 48%;
+  background: linear-gradient(transparent, rgba(1, 4, 10, 0.76) 61%, rgba(1, 4, 10, 0.94));
+  pointer-events: none;
+}
+.knowledge-galaxy-preview canvas { position: absolute; z-index: 1; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
+.knowledge-galaxy-preview-copy { position: absolute; z-index: 3; left: 26px; bottom: 21px; display: grid; gap: 4px; color: #eaf3fa; }
+.knowledge-galaxy-preview-copy strong { font-size: 1.13rem; letter-spacing: -0.02em; }
+.knowledge-galaxy-preview-copy strong span { margin-left: 4px; color: #79def1; }
+.knowledge-galaxy-preview-copy small { color: #a1b5c9; font-size: 0.79rem; line-height: 1.5; }
+.knowledge-galaxy-preview-status { position: absolute; z-index: 3; top: 16px; right: 17px; max-width: calc(100% - 34px); padding: 6px 9px; border: 1px solid rgba(120, 167, 200, 0.24); border-radius: 4px; color: #eaf3fa; background: rgba(4, 11, 20, 0.88); font-size: 0.75rem; line-height: 1.45; text-align: right; }
+.knowledge-galaxy-preview:hover { transform: translateY(-3px); box-shadow: 0 29px 64px rgba(0, 2, 8, 0.55); }
+.knowledge-galaxy-preview:active { transform: scale(0.993); }
+.knowledge-galaxy-preview:focus-visible { outline: 3px solid #79def1; outline-offset: 4px; }
 
 .knowledge-toolbar { margin-top: 72px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(6, 25, 51, 0.72); }
 .search-box { min-height: 56px; display: flex; align-items: center; gap: 13px; padding: 0 16px; border: 1px solid rgba(112, 189, 255, 0.19); border-radius: 15px; background: rgba(1, 12, 29, 0.52); }
@@ -333,7 +359,7 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   .project-callout .button { justify-self: start; }
   .knowledge-hero { grid-template-columns: 1fr; }
   .knowledge-hero h1 { font-size: clamp(3rem, 9.5vw, 4.4rem); }
-  .knowledge-hero-card { max-width: 560px; }
+  .knowledge-galaxy-preview { max-width: 560px; }
   .manage-heading { grid-template-columns: 1fr; }
   .workflow-card { max-width: 560px; }
   .import-layout { grid-template-columns: 1fr; }
@@ -370,7 +396,10 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   .project-callout { margin-bottom: 70px; padding: 38px 24px; }
   .site-footer { padding-block: 28px; flex-direction: column; text-align: center; }
   .knowledge-main { padding-block: 52px 80px; }
-  .knowledge-hero-card { height: 240px; }
+  .knowledge-hero { gap: 24px; }
+  .knowledge-galaxy-preview { height: 240px; }
+  .knowledge-galaxy-preview-copy { left: 18px; bottom: 16px; }
+  .knowledge-galaxy-preview-status { top: 12px; right: 12px; }
   .knowledge-toolbar { margin-top: 48px; padding: 14px; }
   .search-box kbd { display: none; }
   .knowledge-grid { grid-template-columns: 1fr; }
