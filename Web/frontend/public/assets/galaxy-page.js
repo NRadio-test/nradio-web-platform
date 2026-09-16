@@ -1,6 +1,6 @@
 import { loadGalaxyKnowledge, matchesGalaxyEntry, confidenceLabels, sourceLabels } from './galaxy-data.js?v=20260916-1'
-import { GalaxyScene, getGalaxyRelations } from './galaxy-scene.js?v=20260916-5'
-import { prepareGalaxyArrival } from './galaxy-transition.js?v=20260916-2'
+import { GalaxyScene, getGalaxyRelations } from './galaxy-scene.js?v=20260916-9'
+import { prepareGalaxyArrival } from './galaxy-transition.js?v=20260916-9'
 
 const finishGalaxyArrival = prepareGalaxyArrival()
 
@@ -15,11 +15,6 @@ const tooltip = $('#galaxy-tooltip')
 const detail = $('#galaxy-detail')
 const detailContent = $('#galaxy-detail-content')
 const legend = $('#galaxy-legend')
-const galaxyApp = $('#galaxy-main')
-const plateSelect = $('#galaxy-plate-select')
-const photoCredit = $('#galaxy-photo-credit')
-const photoCreditSummary = $('#galaxy-photo-credit-summary')
-const photoCreditContent = $('#galaxy-photo-credit-content')
 
 const state = { entries: [], query: '', tag: '全部', selectedId: null, warnings: [], source: 'api' }
 const add = (parent, tag, className, text) => {
@@ -29,67 +24,6 @@ const add = (parent, tag, className, text) => {
   parent.append(node)
   return node
 }
-
-const photographicPlates = {
-  m101: {
-    title: 'M101 · NASA / ESA 等',
-    image: '/assets/nasa-m101-observatory.jpg',
-    credit: 'Hubble Image: NASA, ESA, K. Kuntz (JHU), F. Bresolin (University of Hawaii), J. Trauger (Jet Propulsion Lab), J. Mould (NOAO), Y.-H. Chu (University of Illinois, Urbana) and STScI; CFHT Image: Canada-France-Hawaii Telescope/J.-C. Cuillandre/Coelum; NOAO Image: G. Jacoby, B. Bohannan, M. Hanna/NOAO/AURA/NSF.',
-    note: '本站将 NASA 官方 JPEG 缩小至 2600px，并在页面中降低背景亮度；知识星点和标注是本站数据图层。',
-    url: 'https://science.nasa.gov/image-detail/m101/'
-  },
-  perseus: {
-    title: 'NGC 1333 · NASA / ESA / STScI',
-    image: '/assets/esa-perseus-ngc1333.jpg',
-    credit: 'NASA, ESA, STScI.',
-    note: '英仙座分子云中的 NGC 1333。本站使用 ESA/Hubble 官方出版 JPEG，并在页面中降低背景亮度；知识星点和标注是本站数据图层。',
-    url: 'https://esahubble.org/images/heic2304a/'
-  },
-  milkyway: {
-    title: '银河中心 · NASA / Hubble',
-    image: '/assets/nasa-milkyway-core.jpg',
-    credit: 'NASA / Hubble Space Telescope.',
-    note: 'NASA 官方档案中的红外银河中心星场；本站在页面中降低背景亮度，知识星点和标注是本站数据图层。',
-    url: 'https://science.nasa.gov/image-detail/hubbleimage1p1611a1r/'
-  }
-}
-let plateSwitchSerial = 0
-const renderPhotoCredit = (plate) => {
-  const info = photographicPlates[plate]
-  photoCredit.open = false
-  photoCreditSummary.textContent = `影像底片：${info.title}`
-  photoCreditContent.replaceChildren()
-  add(photoCreditContent, 'p', '', `图像署名：${info.credit}`)
-  add(photoCreditContent, 'p', '', info.note)
-  const source = add(photoCreditContent, 'a', '', '查看官方原始影像与完整档案 ↗')
-  source.href = info.url
-  source.target = '_blank'
-  source.rel = 'noopener noreferrer'
-}
-plateSelect.addEventListener('change', async () => {
-  const plate = plateSelect.value
-  const info = photographicPlates[plate]
-  if (!info) return
-  const serial = ++plateSwitchSerial
-  const layer = document.querySelector(`.galaxy-photo-layer[data-photo-plate="${plate}"]`)
-  if (!layer.classList.contains('is-loaded')) {
-    const image = new Image()
-    image.src = info.image
-    try { await image.decode() } catch { /* Keep the original plate if the image cannot be loaded. */ }
-    if (serial !== plateSwitchSerial) return
-    if (!image.complete || !image.naturalWidth) {
-      plateSelect.value = galaxyApp.dataset.plate
-      return
-    }
-    layer.classList.add('is-loaded')
-  }
-  if (serial !== plateSwitchSerial) return
-  requestAnimationFrame(() => {
-    if (serial !== plateSwitchSerial) return
-    galaxyApp.dataset.plate = plate
-    renderPhotoCredit(plate)
-  })
-})
 
 const updateTooltip = (entry) => {
   tooltip.hidden = !entry
@@ -191,7 +125,10 @@ const setLegend = (selected) => {
   legend.replaceChildren()
   const point = add(legend, 'p', '')
   add(point, 'span', 'galaxy-legend-dot').setAttribute('aria-hidden', 'true')
-  point.append('细小星点代表网站知识块；影像与装饰星尘不可点击。')
+  point.append('可选亮星：一个 InfoID 对应一个网站知识块。')
+  const grain = add(legend, 'p', '')
+  add(grain, 'span', 'galaxy-legend-grain').setAttribute('aria-hidden', 'true')
+  grain.append('细碎星雾与少量星芒：不计入知识块，不可点击，也不表示知识关联。')
   const line = add(legend, 'p', '')
   add(line, 'span', 'galaxy-legend-line').setAttribute('aria-hidden', 'true')
   line.append(selected

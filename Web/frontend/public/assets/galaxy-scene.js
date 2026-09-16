@@ -22,48 +22,98 @@ const seedFrom = (text) => {
   return seed >>> 0
 }
 
-// Astronomy photographs are mostly near-neutral starlight, with a sparse mix
-// of warmer and colder sources. Keep the colour variation low enough that the
-// actual data points read as stars rather than uniformly coloured LEDs.
-const DUST_RGB = [[235, 234, 229], [190, 211, 232], [244, 202, 166], [197, 150, 157]]
+// A small family of nearly neutral star colours keeps the cloud photographic
+// without suggesting that decorative grains are extra knowledge blocks.
+const DUST_RGB = [[231, 234, 233], [178, 202, 227], [240, 209, 171], [203, 165, 165]]
 const DUST_FILLS = DUST_RGB.map(([r, g, b]) =>
   Array.from({ length: 17 }, (_, index) => `rgba(${r}, ${g}, ${b}, ${index / 16})`))
 
-const buildDust = (version) => {
-  const random = seededRandom(seedFrom(version || 'nradio-galaxy'))
-  return Array.from({ length: 3600 }, () => {
+const buildWarmGlowSprite = () => {
+  const canvas = document.createElement('canvas')
+  canvas.width = 32
+  canvas.height = 32
+  const ctx = canvas.getContext('2d', { alpha: true })
+  const glow = ctx.createRadialGradient(16, 16, 0, 16, 16, 16)
+  glow.addColorStop(0, 'rgba(255, 245, 222, .92)')
+  glow.addColorStop(.09, 'rgba(247, 222, 185, .62)')
+  glow.addColorStop(.32, 'rgba(230, 194, 155, .17)')
+  glow.addColorStop(.7, 'rgba(196, 174, 154, .035)')
+  glow.addColorStop(1, 'rgba(196, 174, 154, 0)')
+  ctx.fillStyle = glow
+  ctx.fillRect(0, 0, 32, 32)
+  return canvas
+}
+
+const buildDust = (entries = []) => {
+  const random = seededRandom(seedFrom('nradio-point-cloud-v2'))
+  const count = entries.length
+  // Dense now, but never O(knowledge-count x fixed decoration) as the site grows.
+  const freeCount = Math.min(11200, 5200 + count * 18)
+  const satellitesPerEntry = count ? clamp(Math.floor(8200 / count) - 1, 0, 14) : 0
+  const dust = Array.from({ length: freeCount }, () => {
     const family = random()
-    const layer = family < .41 ? 0 : family < .83 ? 1 : 2
+    const layer = family < .55 ? 0 : family < .80 ? 1 : 2
     const theta = random() * TAU
     const shell = layer === 0
-      ? .035 + Math.pow(random(), 2.15) * .71
-      : layer === 1 ? .23 + random() * .82 : .57 + random() * .47
+      ? .035 + Math.pow(random(), .96) * .74
+      : layer === 1 ? .12 + random() * .94 : .29 + random() * .77
     let x, y, z
     if (layer === 1) {
-      x = shell * Math.cos(theta)
-      z = shell * Math.sin(theta)
-      // A thin tilted dust disk crosses the dense core; it is never pickable.
-      y = clamp(-.25 * x + .13 * z + (random() - .5) * .17, -1, 1)
+      // Soft spiral concentrations and dark gaps arise from point placement,
+      // not painted filaments or lines that could be mistaken for relations.
+      const arm = Math.floor(random() * 4)
+      const spiral = arm * TAU / 4 + shell * 2.7 + (random() + random() - 1) * .9
+      x = shell * Math.cos(spiral) * .91
+      y = shell * Math.sin(spiral) * 1.08
+      z = clamp(-.16 * x + .07 * y + (random() + random() + random() - 1.5) * .27, -1.08, 1.08)
     } else {
       const vertical = random() * 2 - 1
       const plane = Math.sqrt(1 - vertical * vertical)
-      x = shell * plane * Math.cos(theta)
-      y = shell * vertical
-      z = shell * plane * Math.sin(theta)
+      x = shell * plane * Math.cos(theta) * (layer === 0 ? 1.02 : .94)
+      y = shell * vertical * (layer === 0 ? 1.18 : 1.08)
+      z = shell * plane * Math.sin(theta) * (layer === 0 ? .88 : .94)
     }
     const toneRoll = random()
+    const tone = layer === 0
+      ? toneRoll < .045 ? 3 : toneRoll < .43 ? 2 : toneRoll < .58 ? 1 : 0
+      : toneRoll < .025 ? 3 : toneRoll < .15 ? 2 : toneRoll < .40 ? 1 : 0
+    const exposureRoll = random()
+    const glint = layer === 0
+      ? exposureRoll < (tone === 2 ? .25 : .09)
+      : exposureRoll < (layer === 1 ? .085 : .035)
+    const bloom = layer === 0 && glint && random() < .62
     return {
-      x, y, z, layer,
-      tone: toneRoll < .025 ? 3 : toneRoll < .105 ? 2 : toneRoll < .285 ? 1 : 0,
-      sparkle: random() < .008,
-      size: .22 + random() * .64
+      x, y, z, layer, tone, glint, bloom,
+      twinkle: glint && random() < .06,
+      spikeAngle: theta + toneRoll * TAU,
+      size: .48 + random() * .56,
+      opacity: layer === 1 ? .40 + random() * .6 : .68 + random() * .32
     }
   })
+
+  for (const entry of entries) {
+    const local = seededRandom(seedFrom(`grain:${entry.id}`))
+    for (let index = 0; index < satellitesPerEntry; index += 1) {
+      const span = .042 + local() * .13
+      const skew = .40 + local() * .8
+      const x = clamp(entry.galaxy.x + (local() + local() - 1) * span * skew, -1.13, 1.13)
+      const y = clamp(entry.galaxy.y + (local() + local() - 1) * span, -1.13, 1.13)
+      const z = clamp(entry.galaxy.z + (local() + local() - 1) * span * (2 - skew), -1.13, 1.13)
+      const toneRoll = local()
+      dust.push({
+        x, y, z, layer: 3, anchorId: entry.id,
+        tone: toneRoll < .04 ? 3 : toneRoll < .17 ? 2 : toneRoll < .42 ? 1 : 0,
+        glint: local() < .025, twinkle: false,
+        size: .4 + local() * .42, opacity: .53 + local() * .4
+      })
+    }
+  }
+  return dust
 }
 
 const buildFarStars = (version) => {
   const random = seededRandom(seedFrom(`far-field:${version || 'nradio-galaxy'}`))
-  return Array.from({ length: 1650 }, () => {
+  return Array.from({ length: 1850 }, () => {
     const x = random()
     const inMilkyWay = random() < .56
     const y = inMilkyWay
@@ -73,9 +123,9 @@ const buildFarStars = (version) => {
     return {
       x, y,
       tone: toneRoll < .02 ? 3 : toneRoll < .11 ? 2 : toneRoll < .28 ? 1 : 0,
-      alpha: .11 + random() * (inMilkyWay ? .33 : .24),
-      size: .34 + random() * .69,
-      sparkle: random() < .008
+      alpha: .10 + random() * (inMilkyWay ? .31 : .22),
+      size: .29 + random() * .62,
+      sparkle: random() < .005
     }
   })
 }
@@ -110,11 +160,14 @@ export class GalaxyScene {
   constructor(canvas, { preview = false, onPick = () => {}, onHover = () => {} } = {}) {
     this.canvas = canvas
     this.ctx = canvas.getContext('2d', { alpha: true })
+    this.warmGlowSprite = buildWarmGlowSprite()
+    this.exposureCanvas = document.createElement('canvas')
+    this.exposureCtx = this.exposureCanvas.getContext('2d', { alpha: true })
     this.preview = preview
     this.onPick = onPick
     this.onHover = onHover
     this.entries = []
-    this.dust = buildDust('nradio-galaxy')
+    this.dust = buildDust()
     this.farStars = buildFarStars('nradio-galaxy')
     this.farFieldCanvas = null
     this.projected = []
@@ -166,7 +219,7 @@ export class GalaxyScene {
         diffraction: signature % 47 === 0
       }]
     }))
-    this.dust = buildDust(version)
+    this.dust = buildDust(entries)
     this.farStars = buildFarStars(version)
     this.renderFarField()
     this.requestDraw()
@@ -186,9 +239,13 @@ export class GalaxyScene {
     const rect = this.canvas.getBoundingClientRect()
     this.width = Math.max(1, rect.width)
     this.height = Math.max(1, rect.height)
+    this.projectRadius = Math.min(this.width, this.height) *
+      (this.preview ? .39 : this.width <= 700 ? .58 : .42)
     const pixelRatio = Math.min(devicePixelRatio || 1, this.preview ? 2 : 1.75)
     this.canvas.width = Math.round(this.width * pixelRatio)
     this.canvas.height = Math.round(this.height * pixelRatio)
+    this.exposureCanvas.width = Math.max(1, Math.ceil(this.width / 4))
+    this.exposureCanvas.height = Math.max(1, Math.ceil(this.height / 4))
     this.pixelRatio = pixelRatio
     this.renderFarField()
     this.requestDraw()
@@ -279,7 +336,7 @@ export class GalaxyScene {
   project(point) {
     const rotated = this.rotatePoint(point)
     const focus = 3.35 / (this.distance - rotated.z * .66)
-    const radius = Math.min(this.width, this.height) * (this.preview ? .39 : .42)
+    const radius = this.projectRadius
     return {
       x: this.width / 2 + this.offset.x + rotated.x * radius * focus,
       y: this.height / 2 + this.offset.y + rotated.y * radius * focus,
@@ -295,87 +352,153 @@ export class GalaxyScene {
     ctx.clearRect(0, 0, this.width, this.height)
     if (this.farFieldCanvas) ctx.drawImage(this.farFieldCanvas, 0, 0, this.width, this.height)
     const cx = this.width / 2 + this.offset.x, cy = this.height / 2 + this.offset.y
-    const radius = Math.min(this.width, this.height) * (this.preview ? .42 : .46)
-    const atmosphere = ctx.createRadialGradient(cx - radius * .08, cy + radius * .03, radius * .02, cx, cy, radius * 1.25)
-    atmosphere.addColorStop(0, 'rgba(246, 231, 212, .14)')
-    atmosphere.addColorStop(.13, 'rgba(230, 218, 208, .095)')
-    atmosphere.addColorStop(.38, 'rgba(147, 169, 193, .065)')
-    atmosphere.addColorStop(.73, 'rgba(106, 133, 164, .018)')
-    atmosphere.addColorStop(1, 'rgba(106, 133, 164, 0)')
+    const radius = this.projectRadius * 1.1
+    const atmosphere = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * .52)
+    atmosphere.addColorStop(0, 'rgba(231, 210, 174, .045)')
+    atmosphere.addColorStop(.32, 'rgba(213, 194, 170, .015)')
+    atmosphere.addColorStop(1, 'rgba(54, 82, 115, 0)')
     ctx.fillStyle = atmosphere
-    ctx.fillRect(cx - radius * 1.25, cy - radius * 1.25, radius * 2.5, radius * 2.5)
+    ctx.fillRect(cx - radius * .52, cy - radius * .52, radius * 1.04, radius * 1.04)
 
-    // More particles on desktop, but tiny micro-stars use fillRect rather than a path.
-    const dustStride = this.preview ? 3 : Math.min(this.width, this.height) < 720 ? 2 : 1
+    // Both classes are depth-sorted. Dust can obscure a rear knowledge star,
+    // but never enters this.projected and therefore cannot take a click.
+    const dustStride = this.preview ? 2 : Math.min(this.width, this.height) < 720 ? 2 : 1
+    const projectedDust = []
     for (let index = 0; index < this.dust.length; index += dustStride) {
       const particle = this.dust[index]
       const point = this.project(particle)
-      const depth = clamp((point.z + 1) / 2, 0, 1)
-      const layerWeight = particle.layer === 0 ? 1.12 : particle.layer === 1 ? .76 : .56
-      const alpha = (.085 + depth * .43) * layerWeight * (this.preview ? .88 : 1)
-      const minSize = particle.layer === 0 ? (this.preview ? .42 : .51) : .3
-      const size = Math.min(1.55, Math.max(minSize, particle.size * point.focus * (.52 + depth * .58) * (this.preview ? .73 : 1)))
-      if (particle.sparkle && depth > .48 && !this.preview) {
-        ctx.beginPath()
-        ctx.arc(point.x, point.y, size * 2.2, 0, TAU)
-        ctx.fillStyle = DUST_FILLS[particle.tone][clamp(Math.round(alpha * 2), 1, 3)]
-        ctx.fill()
-      }
-      ctx.fillStyle = DUST_FILLS[particle.tone][clamp(Math.round(alpha * 16), 1, 16)]
-      ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+      if (point.x < -2 || point.x > this.width + 2 || point.y < -2 || point.y > this.height + 2) continue
+      projectedDust.push({ particle, ...point })
     }
-
+    projectedDust.sort((a, b) => a.z - b.z)
+    this.drawLongExposure(ctx, projectedDust)
     this.projected = this.entries.map((entry) => ({ entry, ...this.project(entry.galaxy) }))
       .sort((a, b) => a.z - b.z)
     if (this.selectedId) this.drawConnections(ctx)
-    for (const point of this.projected) {
+    let grainIndex = 0, entryIndex = 0
+    while (grainIndex < projectedDust.length || entryIndex < this.projected.length) {
+      if (entryIndex === this.projected.length ||
+          (grainIndex < projectedDust.length && projectedDust[grainIndex].z <= this.projected[entryIndex].z)) {
+        this.drawDustPoint(ctx, projectedDust[grainIndex++])
+      } else {
+        this.drawKnowledgePoint(ctx, this.projected[entryIndex++])
+      }
+    }
+  }
+
+  drawLongExposure(ctx, projectedDust) {
+    const exposure = this.exposureCtx
+    if (!exposure) return
+    const scaleX = this.exposureCanvas.width / this.width
+    const scaleY = this.exposureCanvas.height / this.height
+    exposure.setTransform(1, 0, 0, 1, 0, 0)
+    exposure.clearRect(0, 0, this.exposureCanvas.width, this.exposureCanvas.height)
+    exposure.globalCompositeOperation = 'lighter'
+    exposure.fillStyle = 'rgba(234, 211, 181, .032)'
+    for (const point of projectedDust) {
+      if (point.particle.layer !== 0) continue
+      const size = point.particle.tone === 2 ? 1.05 : .72
+      exposure.fillRect(point.x * scaleX - size / 2, point.y * scaleY - size / 2, size, size)
+    }
+    exposure.fillStyle = 'rgba(255, 232, 194, .072)'
+    for (const point of projectedDust) {
+      if (point.particle.layer !== 0 || !point.particle.glint || point.z < -.12) continue
+      exposure.fillRect(point.x * scaleX - .65, point.y * scaleY - .65, 1.3, 1.3)
+    }
+    exposure.globalCompositeOperation = 'source-over'
+
+    ctx.save()
+    ctx.globalCompositeOperation = 'screen'
+    ctx.globalAlpha = this.preview ? .48 : .72
+    ctx.filter = `blur(${this.preview ? 2.5 : 3.5}px)`
+    ctx.drawImage(this.exposureCanvas, 0, 0, this.width, this.height)
+    ctx.restore()
+  }
+
+  drawDustPoint(ctx, point) {
+    const particle = point.particle
+    const depth = clamp((point.z + 1.1) / 2.2, 0, 1)
+    const weight = particle.layer === 0 ? 1.10 : particle.layer === 1 ? .92 : particle.layer === 2 ? .74 : .79
+    let alpha = (.26 + depth * .63) * weight * particle.opacity * (this.preview ? .94 : 1)
+    if (particle.glint) alpha = Math.min(.98, alpha * 1.22 + .19)
+    if (particle.anchorId && this.matchIds && !this.matchIds.has(particle.anchorId)) alpha *= .22
+    const size = clamp(
+      particle.size * point.focus * (.68 + depth * .52) * (particle.glint ? 1.25 : 1) * (this.preview ? .86 : 1),
+      .53, particle.glint ? 1.75 : 1.42
+    )
+    if (particle.bloom && depth > .42) {
+      const bloomSize = (10.5 + depth * 5.2) * point.focus * (this.preview ? .82 : 1)
+      ctx.globalAlpha = (.17 + depth * .17) * (this.preview ? .72 : 1)
+      ctx.drawImage(this.warmGlowSprite, point.x - bloomSize / 2, point.y - bloomSize / 2, bloomSize, bloomSize)
+      ctx.globalAlpha = 1
+    }
+    ctx.fillStyle = DUST_FILLS[particle.tone][clamp(Math.round(alpha * 16), 1, 16)]
+    ctx.fillRect(point.x - size / 2, point.y - size / 2, size, size)
+    if (particle.glint && depth > .38) {
+      const pin = clamp(size * .52, .56, .82)
+      const pinAlpha = particle.layer === 0 ? .72 : .52
+      ctx.fillStyle = particle.tone === 1
+        ? `rgba(224, 239, 255, ${pinAlpha})`
+        : `rgba(255, 246, 228, ${pinAlpha})`
+      ctx.fillRect(point.x - pin / 2, point.y - pin / 2, pin, pin)
+    }
+    if (particle.twinkle && depth > .57 && !this.preview) {
+      const [r, g, b] = DUST_RGB[particle.tone]
+      const reach = 10 + depth * 10
+      const shortReach = reach * .44
+      const cos = Math.cos(particle.spikeAngle)
+      const sin = Math.sin(particle.spikeAngle)
+      ctx.beginPath()
+      ctx.moveTo(point.x - cos * reach, point.y - sin * reach)
+      ctx.lineTo(point.x + cos * reach, point.y + sin * reach)
+      ctx.moveTo(point.x + sin * shortReach, point.y - cos * shortReach)
+      ctx.lineTo(point.x - sin * shortReach, point.y + cos * shortReach)
+      ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha * (.09 + depth * .11)})`
+      ctx.lineWidth = .45
+      ctx.stroke()
+    }
+  }
+
+  drawKnowledgePoint(ctx, point) {
       const selected = point.entry.id === this.selectedId
       const hovered = point.entry.id === this.hoveredId
       const matched = !this.matchIds || this.matchIds.has(point.entry.id)
       const front = point.z > .025
       const depth = clamp((point.z + .85) / 1.7, 0, 1)
-      const alpha = (front ? .72 + depth * .26 : .055 + depth * .17) * (matched ? 1 : .12)
-      // The optical core is deliberately smaller than its invisible hit target.
-      // A separate legacy radius preserves pointer accuracy after this redraw.
+      const alpha = (front ? .75 + depth * .24 : .05 + depth * .17) * (matched ? 1 : .10)
+      // The bright visible core stays minute; the larger invisible hit area
+      // preserves accurate pointer selection after zoom or rotation.
       const hitSize = clamp((front ? 2.35 : 1.1) * point.focus + depth * 1.45, 1, this.preview ? 5.5 : 8)
-      const size = clamp((front ? 1.18 : .64) * point.focus + depth * .52, .48, this.preview ? 3.25 : 4.1)
+      const size = clamp((front ? 1.13 : .56) * point.focus + depth * .47, .44, this.preview ? 1.55 : 3.1)
       const style = this.pointStyles.get(point.entry.id)
       const [r, g, b] = style.color
       const featured = front && matched && (selected || hovered || style.bloom)
       if (featured) {
-        const bloomRadius = size * (selected || hovered ? 6.8 : 4.3)
+        const bloomRadius = size * (selected || hovered ? 6.3 : 3.6)
         const bloom = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, bloomRadius)
-        const strength = selected || hovered ? .34 : .19
+        const strength = selected || hovered ? .31 : .105
         bloom.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${strength})`)
-        bloom.addColorStop(.22, `rgba(${r}, ${g}, ${b}, ${strength * .39})`)
+        bloom.addColorStop(.18, `rgba(${r}, ${g}, ${b}, ${strength * .32})`)
         bloom.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`)
         ctx.fillStyle = bloom
         ctx.fillRect(point.x - bloomRadius, point.y - bloomRadius, bloomRadius * 2, bloomRadius * 2)
       }
-      // A narrow dark optical edge separates website data from stars already
-      // present in the photograph, without turning every node into a glowing LED.
-      if (front && matched && !this.preview) {
-        ctx.beginPath()
-        ctx.arc(point.x, point.y, size + .9, 0, TAU)
-        ctx.fillStyle = 'rgba(7, 12, 18, .57)'
-        ctx.fill()
-      }
       ctx.beginPath()
-      ctx.arc(point.x, point.y, selected ? size * 1.23 : hovered ? size * 1.12 : size, 0, TAU)
+      ctx.arc(point.x, point.y, selected ? size * 1.28 : hovered ? size * 1.13 : size, 0, TAU)
       ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${selected || hovered ? 1 : alpha})`
       ctx.fill()
-      if (front && matched && size > 1.45) {
-        ctx.fillStyle = `rgba(251, 248, 242, ${selected || hovered ? .85 : alpha * .63})`
-        ctx.fillRect(point.x - .36, point.y - .36, .72, .72)
+      if (front && matched && size > 1.35) {
+        ctx.fillStyle = `rgba(255, 251, 242, ${selected || hovered ? .94 : alpha * .75})`
+        ctx.fillRect(point.x - .31, point.y - .31, .62, .62)
       }
       if (front && matched && style.diffraction && !this.preview && !selected && !hovered) {
         ctx.beginPath()
-        ctx.moveTo(point.x - size * 2.4, point.y)
-        ctx.lineTo(point.x + size * 2.4, point.y)
-        ctx.moveTo(point.x, point.y - size * 2.4)
-        ctx.lineTo(point.x, point.y + size * 2.4)
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, .2)`
-        ctx.lineWidth = .55
+        ctx.moveTo(point.x - size * 2.1, point.y)
+        ctx.lineTo(point.x + size * 2.1, point.y)
+        ctx.moveTo(point.x, point.y - size * 2.1)
+        ctx.lineTo(point.x, point.y + size * 2.1)
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, .17)`
+        ctx.lineWidth = .5
         ctx.stroke()
       }
       if (selected || hovered) {
@@ -395,8 +518,9 @@ export class GalaxyScene {
         ctx.stroke()
       }
       point.hitRadius = clamp(hitSize * 2.3, 7, 16)
-      point.hittable = front && matched && !this.preview
-    }
+      point.hittable = front && matched && !this.preview &&
+        point.x >= size && point.x <= this.width - size &&
+        point.y >= size && point.y <= this.height - size
   }
 
   drawConnections(ctx) {

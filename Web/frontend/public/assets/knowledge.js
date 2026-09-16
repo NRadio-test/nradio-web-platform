@@ -1,6 +1,6 @@
 import './site.js?v=20260730-2'
 import { loadGalaxyKnowledge, confidenceLabels, sourceLabels } from './galaxy-data.js?v=20260916-1'
-import { installGalaxyDeparture } from './galaxy-transition.js?v=20260916-2'
+import { installGalaxyDeparture } from './galaxy-transition.js?v=20260916-9'
 
 const previewAnchor = document.querySelector('#galaxy-preview')
 const previewCanvas = document.querySelector('#galaxy-preview-canvas')
@@ -137,7 +137,7 @@ try {
   const previewStatus = document.querySelector('#galaxy-preview-status')
   if (previewCanvas) {
     try {
-      const { GalaxyScene } = await import('./galaxy-scene.js?v=20260916-5')
+      const { GalaxyScene } = await import('./galaxy-scene.js?v=20260916-9')
       const preview = new GalaxyScene(previewCanvas, { preview: true })
       preview.setEntries(state.entries, payload.meta?.data_version)
       preview.draw()

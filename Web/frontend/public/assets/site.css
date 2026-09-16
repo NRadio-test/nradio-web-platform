@@ -182,16 +182,10 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   width: 100%;
   height: 285px;
   overflow: hidden;
-  border: 1px solid rgba(243, 239, 231, 0.26);
+  border: 1px solid rgba(120, 167, 200, 0.25);
   border-radius: 8px;
-  background-color: #0b1219;
-  background-image:
-    linear-gradient(90deg, rgba(7, 10, 13, 0.32), rgba(7, 10, 13, 0.3)),
-    url('/assets/nasa-m101-observatory.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-shadow: 0 24px 58px rgba(3, 5, 8, 0.42);
+  background: #010206;
+  box-shadow: 0 24px 58px rgba(0, 2, 8, 0.42);
   cursor: pointer;
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
@@ -201,21 +195,19 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   z-index: 2;
   inset: auto 0 0;
   height: 48%;
-  background: linear-gradient(transparent, rgba(7, 10, 13, 0.78) 61%, rgba(7, 10, 13, 0.94));
+  background: linear-gradient(transparent, rgba(1, 4, 10, 0.76) 61%, rgba(1, 4, 10, 0.94));
   pointer-events: none;
 }
 .knowledge-galaxy-preview canvas { position: absolute; z-index: 1; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
-.knowledge-galaxy-preview-copy { position: absolute; z-index: 3; left: 26px; bottom: 21px; display: grid; gap: 4px; color: #f3efe7; }
+.knowledge-galaxy-preview-copy { position: absolute; z-index: 3; left: 26px; bottom: 21px; display: grid; gap: 4px; color: #eaf3fa; }
 .knowledge-galaxy-preview-copy strong { font-size: 1.13rem; letter-spacing: -0.02em; }
-.knowledge-galaxy-preview-copy strong span { margin-left: 4px; color: #d9b880; }
-.knowledge-galaxy-preview-copy small { color: #d0c8bb; font-size: 0.79rem; line-height: 1.5; }
-.knowledge-galaxy-preview-status,
-.knowledge-galaxy-preview-photo-credit { position: absolute; z-index: 3; top: 16px; max-width: calc(100% - 34px); padding: 6px 9px; border: 1px solid rgba(243, 239, 231, 0.22); border-radius: 4px; color: #f3efe7; background: rgba(11, 15, 19, 0.85); font-size: 0.75rem; line-height: 1.45; }
+.knowledge-galaxy-preview-copy strong span { margin-left: 4px; color: #79def1; }
+.knowledge-galaxy-preview-copy small { color: #a1b5c9; font-size: 0.79rem; line-height: 1.5; }
+.knowledge-galaxy-preview-status { position: absolute; z-index: 3; top: 16px; max-width: calc(100% - 34px); padding: 6px 9px; border: 1px solid rgba(120, 167, 200, 0.24); border-radius: 4px; color: #eaf3fa; background: rgba(4, 11, 20, 0.88); font-size: 0.75rem; line-height: 1.45; }
 .knowledge-galaxy-preview-status { right: 17px; text-align: right; }
-.knowledge-galaxy-preview-photo-credit { left: 17px; color: #d0c8bb; font-size: 0.68rem; }
-.knowledge-galaxy-preview:hover { transform: translateY(-3px); box-shadow: 0 29px 64px rgba(3, 5, 8, 0.5); }
+.knowledge-galaxy-preview:hover { transform: translateY(-3px); box-shadow: 0 29px 64px rgba(0, 2, 8, 0.55); }
 .knowledge-galaxy-preview:active { transform: scale(0.993); }
-.knowledge-galaxy-preview:focus-visible { outline: 3px solid #d9b880; outline-offset: 4px; }
+.knowledge-galaxy-preview:focus-visible { outline: 3px solid #79def1; outline-offset: 4px; }
 
 .knowledge-toolbar { margin-top: 72px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(6, 25, 51, 0.72); }
 .search-box { min-height: 56px; display: flex; align-items: center; gap: 13px; padding: 0 16px; border: 1px solid rgba(112, 189, 255, 0.19); border-radius: 15px; background: rgba(1, 12, 29, 0.52); }
@@ -417,7 +409,6 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   .knowledge-galaxy-preview { height: 240px; }
   .knowledge-galaxy-preview-copy { left: 18px; bottom: 16px; }
   .knowledge-galaxy-preview-status { top: 12px; right: 12px; }
-  .knowledge-galaxy-preview-photo-credit { top: 12px; left: 12px; }
   .knowledge-toolbar { margin-top: 48px; padding: 14px; }
   .search-box kbd { display: none; }
   .knowledge-grid { grid-template-columns: 1fr; }

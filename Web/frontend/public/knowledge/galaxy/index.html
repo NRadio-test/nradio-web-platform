@@ -7,18 +7,15 @@
     <meta name="theme-color" content="#031022" />
     <title>鲲鹏知识星图 · NRadio-Bot</title>
     <link rel="icon" href="/assets/pengzai-v9.png" />
-    <link rel="stylesheet" href="/assets/site.css?v=20260916-4" />
-    <link rel="stylesheet" href="/assets/galaxy.css?v=20260916-4" />
-    <link rel="stylesheet" href="/assets/galaxy-transition.css?v=20260916-4" />
-    <script type="module" src="/assets/galaxy-page.js?v=20260916-5"></script>
+    <link rel="stylesheet" href="/assets/site.css?v=20260916-6" />
+    <link rel="stylesheet" href="/assets/galaxy.css?v=20260916-6" />
+    <link rel="stylesheet" href="/assets/galaxy-transition.css?v=20260916-6" />
+    <script type="module" src="/assets/galaxy-page.js?v=20260916-9"></script>
   </head>
   <body class="galaxy-page">
     <a class="galaxy-skip" href="#galaxy-search">跳至星图搜索</a>
-    <main id="galaxy-main" class="galaxy-app" data-plate="m101">
+    <main id="galaxy-main" class="galaxy-app">
       <div class="galaxy-stage">
-        <div class="galaxy-photo-layer is-loaded" data-photo-plate="m101" aria-hidden="true"></div>
-        <div class="galaxy-photo-layer" data-photo-plate="perseus" aria-hidden="true"></div>
-        <div class="galaxy-photo-layer" data-photo-plate="milkyway" aria-hidden="true"></div>
         <canvas id="galaxy-canvas" tabindex="0" aria-label="知识星图。拖拽转动，滚轮或加减键缩放，点击可见的知识光点查看详情。">您的浏览器不支持 Canvas；仍可通过搜索与标签查找知识块。</canvas>
         <div id="galaxy-tooltip" class="galaxy-tooltip" role="tooltip" hidden></div>
       </div>
@@ -44,30 +41,13 @@
           <button id="galaxy-clear" type="button" hidden>显示全部</button>
         </div>
         <div id="galaxy-tags" class="galaxy-tags" aria-labelledby="galaxy-tags-label"></div>
-        <label class="galaxy-plate-control" for="galaxy-plate-select">
-          <span>观测底片</span>
-          <select id="galaxy-plate-select" aria-describedby="galaxy-plate-help">
-            <option value="m101">M101 · 旋臂与暗尘</option>
-            <option value="perseus">NGC 1333 · 英仙座尘云</option>
-            <option value="milkyway">银河中心 · 密集星场</option>
-          </select>
-        </label>
-        <p id="galaxy-plate-help" class="galaxy-plate-help">底片是真实天文影像；可点击的知识块由独立图层表示。</p>
         <p id="galaxy-status" class="galaxy-status" role="status" aria-live="polite">正在加载知识星图……</p>
         <div id="galaxy-legend" class="galaxy-legend" aria-label="星图图例">
-          <p><span class="galaxy-legend-dot" aria-hidden="true"></span>细小星点是可查看的知识块；影像和背景星尘不可点击。</p>
-          <p><span class="galaxy-legend-line" aria-hidden="true"></span>选中后，连线表示共享标签或同来源。</p>
+          <p><span class="galaxy-legend-dot" aria-hidden="true"></span>可选亮星：一个 InfoID 对应一个网站知识块。</p>
+          <p><span class="galaxy-legend-grain" aria-hidden="true"></span>细碎星雾与少量星芒：不计入知识块，不可点击，也不表示知识关联。</p>
+          <p><span class="galaxy-legend-line" aria-hidden="true"></span>选中后才显示同来源或共享标签的关联线。</p>
         </div>
       </aside>
-
-      <details class="galaxy-photo-credit" id="galaxy-photo-credit">
-        <summary id="galaxy-photo-credit-summary">影像底片：M101 · NASA / ESA 等</summary>
-        <div id="galaxy-photo-credit-content">
-          <p>图像：Hubble Image: NASA, ESA, K. Kuntz (JHU), F. Bresolin (University of Hawaii), J. Trauger (Jet Propulsion Lab), J. Mould (NOAO), Y.-H. Chu (University of Illinois, Urbana) and STScI; CFHT Image: Canada-France-Hawaii Telescope/J.-C. Cuillandre/Coelum; NOAO Image: G. Jacoby, B. Bohannan, M. Hanna/NOAO/AURA/NSF。</p>
-          <p>本站仅缩小了官方 JPEG 的尺寸并调整背景亮度；知识光点和标注是本站数据层，不属于原始影像。</p>
-          <a href="https://science.nasa.gov/image-detail/m101/" target="_blank" rel="noopener noreferrer">查看 NASA 原始影像与署名 ↗</a>
-        </div>
-      </details>
 
       <div class="galaxy-view-controls" aria-label="星图视角控制">
         <button id="galaxy-zoom-in" type="button" aria-label="放大星图">＋</button>
