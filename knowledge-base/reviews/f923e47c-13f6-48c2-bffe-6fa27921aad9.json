@@ -1,0 +1,15 @@
+{
+  "job_id": "f923e47c-13f6-48c2-bffe-6fa27921aad9",
+  "file_name": "张导直播-直播留言板反馈问题-9.9-知识库版.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "dbf62600b5c4739178ed9281ce7211062f171a9c098fa7e372252608fa983b8b",
+  "decision": "accept",
+  "review_notes": [
+    "直播日期未核验（仅文件名标示 9.9），已在条目正文中保留该时间边界，未补写具体日期。",
+    "内容为流程性说明，无矛盾信息；入口网址、人员分工与处理速度的时效性风险已在条目中标注。"
+  ],
+  "entry_count": 4,
+  "document_path": "knowledge-base/documents/uploads/f923e47c-13f6-48c2-bffe-6fa27921aad9.md",
+  "source_path": "knowledge-base/sources/uploads/2026-09/f923e47c-13f6-48c2-bffe-6fa27921aad9-张导直播-直播留言板反馈问题-9.9-知识库版.md",
+  "extracted_characters": 544
+}

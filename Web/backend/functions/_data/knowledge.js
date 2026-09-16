@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
-    "entry_count": 290,
+    "entry_count": 294,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -5105,6 +5105,85 @@ export const knowledgePayload = {
         "直播转写",
         "限制说明",
         "排查建议"
+      ]
+    },
+    {
+      "id": "upload-20260916-dbf62600b5-01",
+      "title": "NRadio 直播产品问题提交入口：小助理留言板 msg.zdwifi.com",
+      "text": "截至整理日期 2026-09-16，张导直播中给出的产品问题提交方式为：使用小助理发出的留言板入口，网址 msg.zdwifi.com（直播口述，来源 9.9 2 张导(1).srt，00:35:46–00:38:21、01:18:00–01:19:30；直播日期未核验，文件名标示 9.9）。团队表示会借助工具整理留言板中的问题；助理能解答的先由助理解答，复杂问题再由张导在后续直播或录制内容中回应。直播未提供固定网址以外的其他入口，也未给出答复时限，更没有“每条一定回答”的保证。适用于 NRadio 产品使用反馈和直播问答场景。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/f923e47c-13f6-48c2-bffe-6fa27921aad9-张导直播-直播留言板反馈问题-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "high",
+      "tags": [
+        "留言板",
+        "msg.zdwifi.com",
+        "张导直播",
+        "问题反馈",
+        "提交入口",
+        "小助理",
+        "直播问答"
+      ]
+    },
+    {
+      "id": "upload-20260916-dbf62600b5-02",
+      "title": "NRadio 留言板提问怎么写才容易被处理（型号、版本、症状、报错、时间、已尝试步骤）",
+      "text": "按张导直播（整理日期 2026-09-16，文件名标示 9.9）中说明的留言板流程，写问题时应写明：设备完整型号、固件或 App 版本、具体症状、报错原文、发生时间、已尝试步骤，以及希望得到的明确答复。一次留言只集中描述一个问题，避免只写“不能用”“求解决”这类没有上下文的内容，以便团队借助工具整理并由助理或张导回应。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/f923e47c-13f6-48c2-bffe-6fa27921aad9-张导直播-直播留言板反馈问题-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "high",
+      "tags": [
+        "留言板",
+        "提问规范",
+        "设备型号",
+        "固件版本",
+        "App版本",
+        "报错信息",
+        "问题描述",
+        "直播问答"
+      ]
+    },
+    {
+      "id": "upload-20260916-dbf62600b5-03",
+      "title": "投稿留言板的隐私与售后边界：不要在公开弹幕贴手机号、订单号、串号、验证码",
+      "text": "张导直播（整理日期 2026-09-16，文件名标示 9.9）中提示：涉及订单和个人资料时，不要在公开弹幕中贴出手机号、订单号、设备串号或验证码，应改走当前官方售后渠道；若问题已影响设备正常使用，或涉及退款、保修，应优先按当前订单页与官方售后渠道处理，而不是只依赖直播留言板。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/f923e47c-13f6-48c2-bffe-6fa27921aad9-张导直播-直播留言板反馈问题-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "high",
+      "tags": [
+        "隐私",
+        "订单号",
+        "手机号",
+        "设备串号",
+        "验证码",
+        "官方售后渠道",
+        "退款",
+        "保修",
+        "留言板"
+      ]
+    },
+    {
+      "id": "upload-20260916-dbf62600b5-04",
+      "title": "直播留言板流程的时效说明：入口、人员分工与处理速度可能变化",
+      "text": "关于 NRadio 直播留言板（msg.zdwifi.com）的使用说明，来源于 9.9 2 张导(1).srt（00:35:46–00:38:21、01:18:00–01:19:30）的主播口述，整理日期为 2026-09-16，直播日期未核验（仅文件名标示 9.9），且未回听原录音。直播时说明该留言板工具已投入使用，但当前入口、人员分工与处理速度可能发生变化；如需确认最新情况，应以当前官方渠道信息为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/f923e47c-13f6-48c2-bffe-6fa27921aad9-张导直播-直播留言板反馈问题-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "留言板",
+        "时效说明",
+        "msg.zdwifi.com",
+        "来源标注",
+        "直播日期",
+        "处理速度",
+        "人员分工"
       ]
     }
   ]
