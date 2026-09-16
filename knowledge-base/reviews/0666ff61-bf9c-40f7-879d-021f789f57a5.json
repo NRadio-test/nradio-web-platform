@@ -1,0 +1,15 @@
+{
+  "job_id": "0666ff61-bf9c-40f7-879d-021f789f57a5",
+  "file_name": "张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "648d6ba1835225cce444144857c6298ec33b52e889873368ea341b893c014e87",
+  "decision": "accept",
+  "review_notes": [
+    "内容来源于直播转写稿（文件名标示 9.9，直播日期未核验，未回听原录音），条目已按原文保留这一限制说明。",
+    "App 名称在 SRT 中识别不清，条目中已明确不指定具体 App，页面名称以实际安装版本为准。"
+  ],
+  "entry_count": 4,
+  "document_path": "knowledge-base/documents/uploads/0666ff61-bf9c-40f7-879d-021f789f57a5.md",
+  "source_path": "knowledge-base/sources/uploads/2026-09/0666ff61-bf9c-40f7-879d-021f789f57a5-张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+  "extracted_characters": 763
+}

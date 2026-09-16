@@ -3,7 +3,7 @@
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
-    "entry_count": 286,
+    "entry_count": 290,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -5029,6 +5029,81 @@
         "未上市",
         "未确认",
         "直播建议"
+      ]
+    },
+    {
+      "id": "upload-20260916-648d6ba183-01",
+      "title": "5G CPE 白天正常、晚上网速变慢或偶尔无法上网的初步排查结论",
+      "text": "整理日期 2026-09-16，来源为直播转写稿 9.9 2 张导(1).srt 的 00:48:30–00:52:34。若 5G CPE 网络白天正常、晚上变慢或偶尔无法访问互联网，先不要直接认定是流量卡限速或设备故障。直播建议分别在白天正常时和晚上异常时，打开设备管理 App 的连接详情页各截一张图，比较两次连接的小区、频段和信号信息，再将图片与异常发生时间提交给当前售后渠道分析。转写稿对 App 名称识别不清，本条不指定具体 App。适用范围：具有设备连接详情页的 5G CPE 管理 App，实际页面名称以所用版本为准。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/0666ff61-bf9c-40f7-879d-021f789f57a5-张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "5G CPE",
+        "夜间网速变慢",
+        "无法上网",
+        "排查方法",
+        "连接详情页",
+        "截图对比",
+        "售后"
+      ]
+    },
+    {
+      "id": "upload-20260916-648d6ba183-02",
+      "title": "夜间网速异常时收集排查信息的操作步骤",
+      "text": "针对晚上网速变慢或偶尔无法上网的 5G CPE：1）白天正常上网时，进入所用设备的“详情”页，保存截图，并记下大致时间；2）晚上问题出现时，不要先重启设备，再次打开同一“详情”页，保存截图，并记下时间、现象和是否只有部分设备受影响；3）提交两张截图、设备完整型号、流量卡类型及问题发生地点。若截图含手机号、卡号、ICCID、IMEI 或其他个人标识，应先遮盖不需要展示的部分。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/0666ff61-bf9c-40f7-879d-021f789f57a5-张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "5G CPE",
+        "信息收集",
+        "截图",
+        "设备型号",
+        "流量卡",
+        "ICCID",
+        "IMEI",
+        "排查步骤"
+      ]
+    },
+    {
+      "id": "upload-20260916-648d6ba183-03",
+      "title": "如何理解白天与夜间两张连接详情截图的结果",
+      "text": "两张连接详情页截图可以帮助判断设备是否切换了频段或小区，以及信号条件是否改变。主播认为夜间基站负载或运营商网络变化是可能的排查方向，但仅凭“晚上变慢”不能确定根因；详情页数据、实际测速和运营商核查结果需要一起看。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/0666ff61-bf9c-40f7-879d-021f789f57a5-张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "5G CPE",
+        "截图分析",
+        "频段切换",
+        "小区切换",
+        "信号强度",
+        "基站负载",
+        "运营商"
+      ]
+    },
+    {
+      "id": "upload-20260916-648d6ba183-04",
+      "title": "夜间网速变慢排查建议的来源与限制说明",
+      "text": "整理日期 2026-09-16，整理自 9.9 2 张导(1).srt 的 00:48:30–00:52:34，直播日期未核验（文件名标示 9.9），内容性质为主播口述的排查建议，未回听原录音。App 名称在转写稿中识别不清，页面名称和版本也可能更新，当前界面以实际安装版本为准。本条建议不保证所有夜间掉线都由基站引起，也不将主播对流量卡的口述解释当作运营商的正式限速政策。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/0666ff61-bf9c-40f7-879d-021f789f57a5-张导直播-夜间网速变慢截图排查-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium_high",
+      "tags": [
+        "5G CPE",
+        "来源说明",
+        "直播转写",
+        "限制说明",
+        "排查建议"
       ]
     }
   ]
