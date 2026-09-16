@@ -1,6 +1,6 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 281 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 286 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
@@ -2731,3 +2731,48 @@ C5800-688 运行 NROS。有线和网络功能包括 DHCP、网络连通性检测
 - 上传者：FallaxAura
 - 核对日期：2026-09-16
 - 标签：馈线损耗、三米馈线、五米馈线、Cisco天线说明、来源限制、NRadio
+
+## 五楼 NRadio 5G CPE 覆盖一楼 Wi-Fi 不稳的直接结论与建议
+
+整理日期 2026-09-16，来源直播片段 00:55:01–00:56:58（文件名标示 9.9，直播日期未核验）。直播结论：不建议指望一台放在五楼的 NRadio 5G CPE 稳定覆盖到一楼；即使偶尔能连上，也不代表一楼信号质量和实际体验可靠。建议通过额外的 Wi-Fi AP、中继或其他多点覆盖方案改善跨楼层连接，而不是只调高单机信号强度。适用范围：多层住宅中使用 NRadio 5G CPE 的 Wi-Fi 覆盖。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md
+- 上传者：FallaxAura
+- 核对日期：2026-09-16
+- 标签：NRadio、5G CPE、Wi-Fi覆盖、五层住宅、多层住宅、跨楼层、AP、中继、直播建议
+
+## 五楼 5G CPE 跨楼层覆盖的排查与布置方法
+
+直播建议的排查步骤：分别在五楼、楼梯间、中间楼层和一楼测实际信号及应用体验，找出衰减位置。若已有网络布线，优先在需要覆盖的楼层布置 AP；没有布线时，可在仍能稳定接收到主设备信号的中间位置测试中继。直播举了“三楼作为中间点”的例子，但具体安装楼层应以现场楼板、墙体、干扰和测试结果决定。整理日期 2026-09-16，来源直播片段 00:55:01–00:56:58。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md
+- 上传者：FallaxAura
+- 核对日期：2026-09-16
+- 标签：5G CPE、Wi-Fi覆盖、跨楼层、信号衰减、排查、AP布线、中继、五层住宅
+
+## 更换金属壳后 Wi-Fi 覆盖变弱的判断说明
+
+直播中有观众提到更换金属壳后覆盖变弱。主播没有确认金属壳一定是唯一原因，也提到原先塑胶壳的摆放方向可能不同。因此应先比较设备位置、天线方向和现场环境，不能仅凭前后两次感受就给外壳材料下结论。整理日期 2026-09-16，来源直播片段 00:55:01–00:56:58。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md
+- 上传者：FallaxAura
+- 核对日期：2026-09-16
+- 标签：5G CPE、金属壳、信号变弱、天线方向、设备摆放、Wi-Fi覆盖、直播建议
+
+## 跨楼层 Wi-Fi 覆盖的成功标准：看实际体验而非信号图标
+
+直播指出，判断一楼 Wi-Fi 是否可用，应以一楼稳定连接、延迟和实际业务体验为准，不只看 Wi-Fi 图标是否显示满格。整理日期 2026-09-16，来源直播片段 00:55:01–00:56:58。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md
+- 上传者：FallaxAura
+- 核对日期：2026-09-16
+- 标签：Wi-Fi覆盖、信号强度、延迟、实际体验、测速、五层住宅、直播建议
+
+## 关于直播提到的规划中专用中继器的信息状态
+
+直播提到规划中的专用中继器，但未给出已上市、可购买或适用于全部型号的确认信息；本条不推荐以其预计上市时间作为解决方案。整理日期 2026-09-16，来源直播片段 00:55:01–00:56:58，直播日期未核验。
+
+- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md
+- 上传者：FallaxAura
+- 核对日期：2026-09-16
+- 标签：NRadio、专用中继器、规划中、未上市、未确认、直播建议

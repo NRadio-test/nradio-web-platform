@@ -1,0 +1,15 @@
+{
+  "job_id": "a4509efb-8bdb-4888-aad0-bd0812786c91",
+  "file_name": "张导直播-五层住宅WiFi覆盖-9.9-知识库版.md",
+  "uploaded_by": "FallaxAura",
+  "sha256": "e34d91c8df38ba0835376b747ea7dff6565e72f3a0823025fc564ec2401b9484",
+  "decision": "accept",
+  "review_notes": [
+    "直播日期未核验（文件名标示 9.9），内容为主播实操建议且未回听原录音，如需精确引用原话建议核对原始 SRT 录音。",
+    "涉及规划中专用中继器的内容为直播未确认信息，已在条目中保留其不确定性，不作为上市或适配依据。"
+  ],
+  "entry_count": 5,
+  "document_path": "knowledge-base/documents/uploads/a4509efb-8bdb-4888-aad0-bd0812786c91.md",
+  "source_path": "knowledge-base/sources/uploads/2026-09/a4509efb-8bdb-4888-aad0-bd0812786c91-张导直播-五层住宅WiFi覆盖-9.9-知识库版.md",
+  "extracted_characters": 646
+}
