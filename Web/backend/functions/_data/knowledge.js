@@ -4,7 +4,7 @@ export const knowledgePayload = {
     "name": "NRadio 鲲鹏无限知识库",
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
-    "entry_count": 294,
+    "entry_count": 297,
     "notice": "成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。"
   },
   "entries": [
@@ -5184,6 +5184,58 @@ export const knowledgePayload = {
         "直播日期",
         "处理速度",
         "人员分工"
+      ]
+    },
+    {
+      "id": "upload-20260916-49c7ae7246-01",
+      "title": "C2000 Max 铝合金磁吸后盖磁片反复脱落的处理建议",
+      "text": "针对带铝合金磁吸后盖的 C2000 Max，如果后盖内的磁片反复脱落，直播（来源：9.9 张导直播 01:08:00–01:09:27，文件名标示为 9.9，直播日期未核验；整理日期 2026-09-16）将其描述为已知的后盖制造问题，而不是用户正常使用造成的问题。建议保留脱落部位和后盖照片，联系购买渠道或 NRadio 售后确认该批次的处理方案；不要自行撬开其他磁片，也不要把胶水涂入设备内部。该结论仅适用于带铝合金磁吸后盖的 C2000 Max，不能推广到所有后盖批次。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/65862f23-bc72-4487-a2fa-eda7e3ac5854-张导直播-C2000Max磁吸后盖磁片脱落-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium",
+      "tags": [
+        "C2000 Max",
+        "磁吸后盖",
+        "磁片脱落",
+        "售后处理",
+        "铝合金后盖"
+      ]
+    },
+    {
+      "id": "upload-20260916-49c7ae7246-02",
+      "title": "C2000 Max 磁片脱落的原因与供应商改进方案（直播口述，未正式发布）",
+      "text": "直播中主播口述称，C2000 Max 铝合金磁吸后盖磁片脱落的原因，是供应商曾在固定磁片的凹槽内喷漆，导致胶的粘附力不足。改进方向是凹槽内不再喷漆，并对固定面进行表面处理。直播同时说明新版样品仍需送样及高温等测试，测试后才计划处理已有后盖的更换。因此“将来召回/换后盖”只是当时的计划，并不等于当前已发布的正式售后政策；具体是否更换、何时更换及适用批次以当前售后答复为准。来源：9.9 张导直播 01:08:00–01:09:27（整理日期 2026-09-16，直播日期未核验，未回听原录音）。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/65862f23-bc72-4487-a2fa-eda7e3ac5854-张导直播-C2000Max磁吸后盖磁片脱落-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium",
+      "tags": [
+        "C2000 Max",
+        "磁片脱落原因",
+        "供应商改进",
+        "凹槽喷漆",
+        "召回计划",
+        "售后政策"
+      ]
+    },
+    {
+      "id": "upload-20260916-49c7ae7246-03",
+      "title": "C2000 Max 磁吸后盖磁片脱落问题需向售后提交的信息",
+      "text": "就 C2000 Max 铝合金磁吸后盖磁片脱落问题联系购买渠道或 NRadio 售后时，需提供：设备型号、后盖照片、磁片脱落照片、购买渠道及大致购买时间。若有危险的外露金属件或后盖无法固定，应停止使用该后盖并向售后说明。是否更换、何时更换及适用批次，以当前售后答复为准。来源：9.9 张导直播 01:08:00–01:09:27（整理日期 2026-09-16，直播日期未核验）。",
+      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/65862f23-bc72-4487-a2fa-eda7e3ac5854-张导直播-C2000Max磁吸后盖磁片脱落-9.9-知识库版.md",
+      "source_type": "user_upload",
+      "uploaded_by": "FallaxAura",
+      "verified_at": "2026-09-16",
+      "confidence": "medium",
+      "tags": [
+        "C2000 Max",
+        "售后提交信息",
+        "磁片脱落",
+        "后盖照片",
+        "购买渠道"
       ]
     }
   ]
