@@ -341,6 +341,12 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
 .edit-identity strong { color: #bfeeff; }
 .edit-identity button { padding: 0; border: 0; color: #ffac9f; background: none; cursor: pointer; text-align: left; font-size: .7rem; }
 .edit-form { margin-top: 44px; }
+.edit-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+.edit-actions .button { width: 100%; cursor: pointer; }
+.edit-actions .button:disabled { cursor: not-allowed; opacity: .55; transform: none; box-shadow: none; }
+.edit-actions .button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.edit-actions .button-danger { color: #ffb6aa; border-color: rgba(255, 132, 112, .45); background: rgba(255, 105, 85, .09); }
+.edit-actions .button-danger:hover:not(:disabled) { border-color: #ff9a8a; background: rgba(255, 105, 85, .16); }
 .edit-form-meta { display: grid; grid-template-columns: 1.4fr 1fr .7fr; gap: 12px; margin-bottom: 24px; }
 .edit-form-meta div { min-width: 0; padding: 13px; display: grid; gap: 5px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02); }
 .edit-form-meta span { color: #6f87a3; font-size: .65rem; }
@@ -411,6 +417,7 @@ html.is-ready .reveal-delay { animation-delay: 120ms; }
   .import-form, .task-panel { padding: 21px; }
   .field-grid { grid-template-columns: 1fr; }
   .edit-form-meta { grid-template-columns: 1fr; }
+  .edit-actions { grid-template-columns: 1fr; }
   .card-footer { align-items: flex-start; flex-direction: column; }
 }
 

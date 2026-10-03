@@ -63,3 +63,5 @@ GitHub Actions Variables：
 网页数据由 `../knowledge-base/import/knowledge.jsonl` 生成。不要直接编辑 `frontend/public/data/knowledge.json` 或 `backend/functions/_data/knowledge.js`，否则下次同步会覆盖更改。
 
 网页与 AstrBot 管理页面的“编辑”入口都指向受六位口令保护的网页编辑器。可修改标题、正文、标签、来源和可信度，InfoID、原始上传者与原核验日期不会被覆盖。`knowledge-edit.yml` 验证内容后直接更新 `main`，并把每次变更追加到 `knowledge-base/edits/<InfoID>.jsonl`；AstrBot 端只需要 GitHub Contents Read 权限。
+
+编辑页底部的“删除这条知识”无需先提交表单；确认标题和 InfoID 后，通过当前身份提交删除任务。API 和工作流均检查版本号，拒绝删除已更新的条目或最后一条知识。删除前的完整内容、操作人和时间保留在同一审计文件中；任务提交不代表已删除，需等待 GitHub 验证和发布完成。

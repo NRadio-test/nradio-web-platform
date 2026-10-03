@@ -1,6 +1,8 @@
 import base64
 import importlib.util
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -14,6 +16,82 @@ SPEC.loader.exec_module(knowledge_edit)
 
 
 class KnowledgeEditTests(unittest.TestCase):
+    def write_delete_fixture(self, root, entries=None):
+        entries = entries if entries is not None else [
+            {"id": "item-1", "title": "目标知识", "text": "原始正文", "revision": 2, "uploaded_by": "原作者", "tags": ["产品"]},
+            {"id": "item-2", "title": "保留知识", "text": "其他内容", "revision": 1},
+        ]
+        path = root / "knowledge-base" / "import" / "knowledge.jsonl"
+        path.parent.mkdir(parents=True)
+        path.write_text("".join(json.dumps(entry, ensure_ascii=False) + "\n" for entry in entries), encoding="utf-8")
+        return path, entries
+
+    def test_delete_only_target_and_preserve_complete_audit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            jsonl, entries = self.write_delete_fixture(root)
+            result = knowledge_edit.apply_delete(root, {
+                "info_id": "item-1", "editor": "测试编辑者", "expected_revision": 2,
+            }, now="2026-10-03T08:00:00+00:00")
+            self.assertEqual(knowledge_edit.read_entries(jsonl), [entries[1]])
+            self.assertEqual(result["action"], "delete")
+            self.assertEqual(result["revision"], 3)
+            audit = json.loads((root / result["audit_path"]).read_text(encoding="utf-8"))
+            self.assertEqual(audit["before"], entries[0])
+            self.assertIsNone(audit["after"])
+            self.assertEqual(audit["action"], "delete")
+            self.assertEqual(audit["edited_by"], "测试编辑者")
+            self.assertEqual(audit["edited_at"], "2026-10-03T08:00:00+00:00")
+
+    def test_cli_delete_action_uses_workflow_payload(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            jsonl, entries = self.write_delete_fixture(root)
+            payload = {"action": "delete", "info_id": "item-1", "editor": "测试", "expected_revision": 2}
+            encoded = base64.urlsafe_b64encode(json.dumps(payload).encode()).decode().rstrip("=")
+            process = subprocess.run(
+                [sys.executable, str(MODULE_PATH), "--payload", encoded, "--output-root", str(root)],
+                capture_output=True, text=True, check=True,
+            )
+            self.assertEqual(json.loads(process.stdout)["action"], "delete")
+            self.assertEqual(knowledge_edit.read_entries(jsonl), [entries[1]])
+
+    def test_delete_rejects_stale_revision_without_writes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            jsonl, _ = self.write_delete_fixture(root)
+            original = jsonl.read_bytes()
+            with self.assertRaisesRegex(ValueError, "已经更新"):
+                knowledge_edit.apply_delete(root, {"info_id": "item-1", "editor": "测试", "expected_revision": 1})
+            self.assertEqual(jsonl.read_bytes(), original)
+            self.assertFalse((root / "knowledge-base" / "edits").exists())
+
+    def test_delete_rejects_last_missing_and_duplicate_targets_without_writes(self):
+        for entries, target, expected_error in [
+            ([{"id": "item-1"}], "item-1", "最后一条"),
+            ([{"id": "item-1"}, {"id": "item-2"}], "missing", "不存在"),
+            ([{"id": "item-1"}, {"id": "item-1"}], "item-1", "不唯一"),
+        ]:
+            with self.subTest(expected_error=expected_error), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                jsonl, _ = self.write_delete_fixture(root, entries)
+                original = jsonl.read_bytes()
+                with self.assertRaisesRegex(ValueError, expected_error):
+                    knowledge_edit.apply_delete(root, {"info_id": target, "editor": "测试", "expected_revision": 1})
+                self.assertEqual(jsonl.read_bytes(), original)
+                self.assertFalse((root / "knowledge-base" / "edits").exists())
+
+    def test_delete_rejects_invalid_identity_and_revision(self):
+        for changes in [
+            {"info_id": "../item"}, {"editor": ""}, {"expected_revision": None},
+            {"expected_revision": True}, {"expected_revision": 0}, {"expected_revision": "2"},
+        ]:
+            with self.subTest(changes=changes):
+                with self.assertRaises(ValueError):
+                    knowledge_edit.validate_delete_payload({
+                        "info_id": "item-1", "editor": "测试", "expected_revision": 2, **changes,
+                    })
+
     def test_edit_preserves_identity_and_records_audit_history(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

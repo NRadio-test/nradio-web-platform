@@ -70,6 +70,19 @@ def validate_payload(payload: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def validate_delete_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    info_id = clean_text(payload.get("info_id"), 160)
+    editor = clean_text(payload.get("editor"), 120)
+    revision = payload.get("expected_revision")
+    if not re.fullmatch(r"[\w.-]{1,160}", info_id, flags=re.UNICODE):
+        raise ValueError("InfoID 格式无效。")
+    if not editor:
+        raise ValueError("缺少编辑者身份。")
+    if type(revision) is not int or revision < 1:
+        raise ValueError("删除请求缺少有效版本号。")
+    return {"info_id": info_id, "editor": editor, "expected_revision": revision}
+
+
 def read_entries(path: Path) -> list[dict[str, Any]]:
     entries: list[dict[str, Any]] = []
     for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
@@ -136,10 +149,55 @@ def apply_edit(output_root: Path, payload: dict[str, Any], now: str | None = Non
         handle.write(json.dumps(audit_record, ensure_ascii=False, separators=(",", ":")) + "\n")
 
     return {
+        "action": "edit",
         "info_id": request["info_id"],
         "editor": request["editor"],
         "revision": revision,
         "changed_fields": changed_fields,
+        "audit_path": audit_path.relative_to(output_root).as_posix(),
+    }
+
+
+def apply_delete(output_root: Path, payload: dict[str, Any], now: str | None = None) -> dict[str, Any]:
+    request = validate_delete_payload(payload)
+    jsonl_path = output_root / "knowledge-base" / "import" / "knowledge.jsonl"
+    entries = read_entries(jsonl_path)
+    matches = [index for index, entry in enumerate(entries) if str(entry.get("id", "")) == request["info_id"]]
+    if len(matches) != 1:
+        raise ValueError("目标知识条目不存在或 InfoID 不唯一。")
+    before = entries[matches[0]]
+    if before.get("revision", 1) != request["expected_revision"]:
+        raise ValueError("知识条目已经更新，请刷新页面后重新确认删除。")
+    if len(entries) <= 1:
+        raise ValueError("不能删除知识库中的最后一条知识。")
+
+    edited_at = now or dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    revision = request["expected_revision"] + 1
+    audit_dir = output_root / "knowledge-base" / "edits"
+    audit_dir.mkdir(parents=True, exist_ok=True)
+    audit_path = audit_dir / f"{request['info_id']}.jsonl"
+    audit_record = {
+        "action": "delete",
+        "info_id": request["info_id"],
+        "revision": revision,
+        "edited_by": request["editor"],
+        "edited_at": edited_at,
+        "changed_fields": ["deleted"],
+        "before": before,
+        "after": None,
+    }
+    with audit_path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(audit_record, ensure_ascii=False, separators=(",", ":")) + "\n")
+    del entries[matches[0]]
+    jsonl_path.write_text(
+        "".join(json.dumps(entry, ensure_ascii=False, separators=(",", ":")) + "\n" for entry in entries),
+        encoding="utf-8",
+    )
+    return {
+        "action": "delete",
+        "info_id": request["info_id"],
+        "editor": request["editor"],
+        "revision": revision,
         "audit_path": audit_path.relative_to(output_root).as_posix(),
     }
 
@@ -149,7 +207,12 @@ def main() -> int:
     parser.add_argument("--payload", required=True)
     parser.add_argument("--output-root", required=True)
     args = parser.parse_args()
-    result = apply_edit(Path(args.output_root).resolve(), decode_payload(args.payload))
+    payload = decode_payload(args.payload)
+    action = payload.get("action", "edit")
+    if action not in {"edit", "delete"}:
+        raise ValueError("不支持的知识操作。")
+    operation = apply_delete if action == "delete" else apply_edit
+    result = operation(Path(args.output_root).resolve(), payload)
     print(json.dumps(result, ensure_ascii=False))
     return 0
 

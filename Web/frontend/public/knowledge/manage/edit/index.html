@@ -7,8 +7,8 @@
     <meta name="theme-color" content="#06162e" />
     <title>编辑知识 · NRadio-Bot</title>
     <link rel="icon" href="/assets/pengzai-v9.png" />
-    <link rel="stylesheet" href="/assets/site.css?v=20260803-3" />
-    <script type="module" src="/assets/knowledge-edit.js?v=20260803-1"></script>
+    <link rel="stylesheet" href="/assets/site.css?v=20261003-1" />
+    <script type="module" src="/assets/knowledge-edit.js?v=20261003-1"></script>
   </head>
   <body class="knowledge-page manage-page">
     <header class="site-header shell compact-header">
@@ -106,7 +106,10 @@
             <input id="edit-confirm" type="checkbox" required />
             <span>我确认修改后的内容准确，并理解提交会生成可追溯的 GitHub 编辑记录。</span>
           </label>
-          <button class="button button-primary submit-import" id="submit-edit" type="submit">提交知识修改 <span>→</span></button>
+          <div class="edit-actions">
+            <button class="button button-primary" id="submit-edit" type="submit">提交知识修改 <span>→</span></button>
+            <button class="button button-danger" id="delete-entry" type="button">删除这条知识</button>
+          </div>
           <p class="form-message" id="edit-message" role="status" aria-live="polite"></p>
         </form>
       </section>

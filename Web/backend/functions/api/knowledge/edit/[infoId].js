@@ -29,6 +29,18 @@ const validateBody = (body, infoId, editor) => {
   return { info_id: infoId, editor, title, text, source_url: sourceUrl, source_type: sourceType, confidence, tags }
 }
 
+const validateDeletion = (body, entry, editor) => {
+  if (body.confirmation !== entry.id) throw new Error('删除确认与当前 InfoID 不一致。')
+  if (!Number.isSafeInteger(body.expected_revision) || body.expected_revision < 1) {
+    throw new Error('删除请求缺少有效版本号，请刷新页面后重试。')
+  }
+  if (body.expected_revision !== (entry.revision || 1)) {
+    throw Object.assign(new Error('知识条目已经更新，请刷新页面后重新确认删除。'), { status: 409 })
+  }
+  if (knowledgePayload.entries.length <= 1) throw new Error('不能删除知识库中的最后一条知识。')
+  return { action: 'delete', info_id: entry.id, editor, expected_revision: body.expected_revision }
+}
+
 const dispatchEdit = async (env, payload) => {
   const token = String(env.GITHUB_ACTIONS_TOKEN || '')
   const owner = String(env.GITHUB_OWNER || 'NRadio-test')
@@ -78,6 +90,24 @@ export async function onRequestPost(context) {
     }, { status: 202, headers: { 'Cache-Control': 'no-store' } })
   } catch (error) {
     const status = String(error.message || '').includes('口令') || String(error.message || '').includes('会话') ? 401 : 400
+    return unauthorizedResponse(error, status)
+  }
+}
+
+export async function onRequestDelete(context) {
+  try {
+    const identity = await authorizeKnowledgeEditor(context)
+    const entry = findEntry(context.params.infoId)
+    if (!entry) return Response.json({ ok: false, error: '没有找到这条知识。' }, { status: 404 })
+    const payload = validateDeletion(await context.request.json(), entry, identity.name)
+    await dispatchEdit(context.env, payload)
+    return Response.json({
+      ok: true,
+      message: '删除任务已经提交。GitHub 验证通过后会从正式知识库移除这条知识，并保留删除前内容与审计记录。',
+      deletion: { info_id: entry.id, editor: identity.name }
+    }, { status: 202, headers: { 'Cache-Control': 'no-store' } })
+  } catch (error) {
+    const status = error.status || (String(error.message || '').includes('口令') || String(error.message || '').includes('会话') ? 401 : 400)
     return unauthorizedResponse(error, status)
   }
 }

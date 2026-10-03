@@ -145,7 +145,7 @@ if (!loginResponse.ok || !sessionResponse.ok || sessionPayload.user?.name !== 'F
 }
 
 const firstEntry = payload.entries[0]
-const { onRequestGet: getEditableKnowledge, onRequestPost: editKnowledge } = await import('../backend/functions/api/knowledge/edit/[infoId].js')
+const { onRequestGet: getEditableKnowledge, onRequestPost: editKnowledge, onRequestDelete: deleteKnowledge } = await import('../backend/functions/api/knowledge/edit/[infoId].js')
 const editGetResponse = await getEditableKnowledge({
   request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(firstEntry.id)}`, { headers: { Cookie: sessionCookie } }),
   env: sessionEnv,
@@ -172,6 +172,44 @@ const editPostResponse = await editKnowledge({
 globalThis.fetch = originalFetch
 if (!editGetResponse.ok || editPostResponse.status !== 202) {
   throw new Error('知识条目编辑 API 检查失败。')
+}
+
+const deleteDispatches = []
+globalThis.fetch = async (url, options) => {
+  deleteDispatches.push({ url, body: JSON.parse(options.body) })
+  return new Response(null, { status: 204 })
+}
+try {
+  const revision = firstEntry.revision || 1
+  const canDelete = payload.entries.length > 1
+  for (const { body, cookie = sessionCookie, id = firstEntry.id, status } of [
+    { body: { confirmation: firstEntry.id, expected_revision: revision }, status: canDelete ? 202 : 400 },
+    { body: { confirmation: 'wrong-id', expected_revision: revision }, status: 400 },
+    { body: { confirmation: firstEntry.id, expected_revision: revision + 1 }, status: 409 },
+    { body: { confirmation: firstEntry.id }, status: 400 },
+    { body: { confirmation: firstEntry.id, expected_revision: revision }, cookie: '', status: 401 },
+    { body: { confirmation: 'missing', expected_revision: revision }, id: 'missing', status: 404 },
+  ]) {
+    const response = await deleteKnowledge({
+      request: new Request(`https://nradio.example/api/knowledge/edit/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', Cookie: cookie },
+        body: JSON.stringify(body)
+      }),
+      env: { ...sessionEnv, GITHUB_ACTIONS_TOKEN: 'test-actions-token' },
+      params: { infoId: id }
+    })
+    if (response.status !== status) throw new Error(`删除 API 预期 ${status}，实际 ${response.status}。`)
+  }
+  if (deleteDispatches.length !== (canDelete ? 1 : 0)) throw new Error('删除 API 对无效请求启动了工作流。')
+  if (canDelete) {
+    const deletion = JSON.parse(Buffer.from(deleteDispatches[0].body.inputs.payload, 'base64url').toString())
+    if (deletion.action !== 'delete' || deletion.info_id !== firstEntry.id || deletion.editor !== 'FallaxAura' || deletion.expected_revision !== revision) {
+      throw new Error('删除工作流请求缺少目标、身份或版本校验。')
+    }
+  }
+} finally {
+  globalThis.fetch = originalFetch
 }
 
 const importRows = []
@@ -204,12 +242,16 @@ if (workflowSource.includes('gh pr create') || !workflowSource.includes('git pus
   throw new Error('知识库导入工作流没有配置为直接发布 main。')
 }
 const editWorkflowSource = await readFile(resolve(webDir, '../.github/workflows/knowledge-edit.yml'), 'utf8')
-if (!editWorkflowSource.includes('scripts/knowledge_edit.py') || !editWorkflowSource.includes('git push origin HEAD:main')) {
+if (!editWorkflowSource.includes('scripts/knowledge_edit.py') || !editWorkflowSource.includes('git push origin HEAD:main') || !editWorkflowSource.includes('steps.edit.outputs.action')) {
   throw new Error('知识条目编辑工作流没有配置为验证后发布 main。')
+}
+const editPageSource = await readFile(resolve(webDir, 'frontend/public/knowledge/manage/edit/index.html'), 'utf8')
+if (!editPageSource.includes('class="edit-actions"') || !editPageSource.includes('id="delete-entry" type="button"')) {
+  throw new Error('知识编辑页缺少独立于表单验证的删除按钮。')
 }
 const importJobsSource = await readFile(resolve(webDir, 'backend/functions/_lib/import-jobs.js'), 'utf8')
 if (!importJobsSource.includes('dispatchNextImportJob') || !importJobsSource.includes("status IN ('queued', 'parsing', 'reviewing', 'publishing')")) {
   throw new Error('知识库导入队列检查失败。')
 }
 
-console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，7 个 API。`)
+console.log(`检查通过：${payload.entries.length} 条知识，${requiredFiles.length} 个必要文件，8 个 API（含删除）。`)
