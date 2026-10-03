@@ -1,6 +1,6 @@
 {
   "name": "NRadio 鲲鹏无限知识库",
-  "version": "2026-07-30",
+  "version": "2026-10-03",
   "language": "zh-CN",
   "entry_file": "knowledge.jsonl",
   "format": "jsonl",
@@ -9,12 +9,19 @@
     "id": "稳定且唯一的 InfoID，用于网页检索、AstrBot 管理和单条删除",
     "title": "知识块标题",
     "text": "用于检索与回答的正文",
-    "source_url": "原始公开来源",
+    "source_url": "条目主要来源，可能为私有仓库中的原始上传资料",
     "uploaded_by": "提交原始资料的知识库成员用户名",
     "source_type": "official_web、official_help、douyin_profile、douyin_video 或 user_upload",
-    "verified_at": "本次核对日期",
+    "verified_at": "保留的原记录核对日期，不表示内容整理时进行了当前外部事实核验",
     "confidence": "high、medium_high、medium 或 low_medium",
-    "tags": "用于过滤或召回的标签数组"
+    "tags": "用于过滤或召回的统一标签数组，分类在首位",
+    "category": "六类主题之一；后续未整理上传可暂缺此字段",
+    "reviewed_at": "内容编辑审阅日期，区别于事实核对日期",
+    "review_status": "source_snapshot、current_check_required 或 source_conflict",
+    "source_ids": "本条合并覆盖的原 InfoID 数组",
+    "source_urls": "所有合并来源 URL，去重但不丢失来源",
+    "source_records": "逐来源的原 InfoID、URL、上传者、原核对日期及正文 SHA-256",
+    "revision": "本次编辑后的条目版本"
   },
-  "notes": "成员上传的资料默认允许收录；模型只负责结构化。动态信息保留原始日期和适用条件。"
+  "notes": "2026-10-03 完整审阅 303 条并重组为 79 条，逐条去留审计及可恢复快照在 ../curation/2026-10-03/。动态信息保留原始日期和适用条件；source_snapshot 表示依据已有资料整理，不是本次对现行外部事实的验证。后续上传仍遵循现有导入流程。"
 }

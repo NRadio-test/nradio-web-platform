@@ -33,10 +33,12 @@ const renderFilters = () => {
   state.entries.forEach((entry) => {
     entry.tags.forEach((tag) => counts.set(tag, (counts.get(tag) || 0) + 1))
   })
+  const categories = [...new Set(state.entries.map((entry) => entry.category).filter((category) => counts.has(category)))]
   const topTags = [...counts.entries()]
+    .filter(([tag]) => !categories.includes(tag))
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh-CN'))
-    .slice(0, 10)
-  const items = [['全部', state.entries.length], ...topTags]
+    .slice(0, Math.max(0, 10 - categories.length))
+  const items = [['全部', state.entries.length], ...categories.map((category) => [category, counts.get(category)]), ...topTags]
 
   filters.replaceChildren(...items.map(([tag, count]) => {
     const button = createElement('button', tag === state.tag ? 'filter-chip active' : 'filter-chip')

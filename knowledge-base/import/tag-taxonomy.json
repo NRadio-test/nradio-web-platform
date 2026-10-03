@@ -1,0 +1,661 @@
+{
+  "review_date": "2026-10-03",
+  "tag_order": "分类、完整型号/系统、主题、必要的动态或冲突标记；不把来源日期、报错全文、上传者或每个芯片字段都变成标签。",
+  "category_tags": [
+    "公司与渠道",
+    "产品与选型",
+    "使用与排障",
+    "刷机与固件",
+    "OpenWrt 技术",
+    "套餐与会员"
+  ],
+  "status_tags": {
+    "动态待复核": "动态信息，回答前核对",
+    "资料冲突": "资料冲突，确认机型或版本后回答"
+  },
+  "aliases": {
+    "788": "C2000 Max",
+    "798": "C2000 Ultra",
+    "C8-788": "C2000 Max",
+    "C2000MAX": "C2000 Max",
+    "C2000-MAX": "C2000 Max",
+    "C2000 MAX": "C2000 Max",
+    "C8-798": "C2000 Ultra",
+    "WiFi": "Wi-Fi",
+    "WIFI": "Wi-Fi",
+    "NBPCE": "NBCPE"
+  },
+  "cautions": [
+    "Model aliases do not authorize combining conflicting hardware parameters from different source versions."
+  ],
+  "tags": [
+    {
+      "tag": "5G CPE",
+      "entries": 21
+    },
+    {
+      "tag": "5G模组",
+      "entries": 1
+    },
+    {
+      "tag": "A8-510",
+      "entries": 1
+    },
+    {
+      "tag": "AI鼠标",
+      "entries": 1
+    },
+    {
+      "tag": "AK68-788",
+      "entries": 1
+    },
+    {
+      "tag": "AM5",
+      "entries": 1
+    },
+    {
+      "tag": "App",
+      "entries": 1
+    },
+    {
+      "tag": "C2000 Max",
+      "entries": 9
+    },
+    {
+      "tag": "C2000 Ultra",
+      "entries": 4
+    },
+    {
+      "tag": "C2000-500",
+      "entries": 1
+    },
+    {
+      "tag": "C2000-518",
+      "entries": 1
+    },
+    {
+      "tag": "C5800-650",
+      "entries": 1
+    },
+    {
+      "tag": "C5800-668GL",
+      "entries": 1
+    },
+    {
+      "tag": "C5800-688",
+      "entries": 3
+    },
+    {
+      "tag": "C8-618",
+      "entries": 1
+    },
+    {
+      "tag": "C8-660",
+      "entries": 1
+    },
+    {
+      "tag": "C8-668GL",
+      "entries": 1
+    },
+    {
+      "tag": "C8-688",
+      "entries": 1
+    },
+    {
+      "tag": "CC-100GL",
+      "entries": 1
+    },
+    {
+      "tag": "CC-500",
+      "entries": 1
+    },
+    {
+      "tag": "CC-500 Pro",
+      "entries": 1
+    },
+    {
+      "tag": "CGNAT",
+      "entries": 1
+    },
+    {
+      "tag": "DD-510",
+      "entries": 1
+    },
+    {
+      "tag": "DDNS",
+      "entries": 1
+    },
+    {
+      "tag": "DFS",
+      "entries": 1
+    },
+    {
+      "tag": "DHCP",
+      "entries": 1
+    },
+    {
+      "tag": "DNS",
+      "entries": 3
+    },
+    {
+      "tag": "IPv6",
+      "entries": 1
+    },
+    {
+      "tag": "ImmortalWrt",
+      "entries": 1
+    },
+    {
+      "tag": "LuCI",
+      "entries": 1
+    },
+    {
+      "tag": "MBIM",
+      "entries": 1
+    },
+    {
+      "tag": "MTU",
+      "entries": 1
+    },
+    {
+      "tag": "Mesh",
+      "entries": 1
+    },
+    {
+      "tag": "N6700",
+      "entries": 1
+    },
+    {
+      "tag": "N8",
+      "entries": 1
+    },
+    {
+      "tag": "NBCPE-650",
+      "entries": 1
+    },
+    {
+      "tag": "NBCPE-668GL",
+      "entries": 1
+    },
+    {
+      "tag": "NBCPE-688",
+      "entries": 1
+    },
+    {
+      "tag": "NROS",
+      "entries": 1
+    },
+    {
+      "tag": "NRadio",
+      "entries": 2
+    },
+    {
+      "tag": "OpenWrt",
+      "entries": 27
+    },
+    {
+      "tag": "OpenWrt 技术",
+      "entries": 24
+    },
+    {
+      "tag": "PBR",
+      "entries": 1
+    },
+    {
+      "tag": "PPPoE",
+      "entries": 1
+    },
+    {
+      "tag": "PoE",
+      "entries": 5
+    },
+    {
+      "tag": "QMI",
+      "entries": 1
+    },
+    {
+      "tag": "RPC",
+      "entries": 1
+    },
+    {
+      "tag": "RedCap",
+      "entries": 8
+    },
+    {
+      "tag": "SD镜像",
+      "entries": 2
+    },
+    {
+      "tag": "SQM",
+      "entries": 1
+    },
+    {
+      "tag": "TF卡",
+      "entries": 5
+    },
+    {
+      "tag": "TK-100GL",
+      "entries": 1
+    },
+    {
+      "tag": "TK-500",
+      "entries": 1
+    },
+    {
+      "tag": "TT-100GL",
+      "entries": 1
+    },
+    {
+      "tag": "TT-500",
+      "entries": 1
+    },
+    {
+      "tag": "UCI",
+      "entries": 1
+    },
+    {
+      "tag": "USB存储",
+      "entries": 1
+    },
+    {
+      "tag": "VLAN",
+      "entries": 1
+    },
+    {
+      "tag": "VPN",
+      "entries": 2
+    },
+    {
+      "tag": "Wi-Fi",
+      "entries": 2
+    },
+    {
+      "tag": "Wi-Fi 6",
+      "entries": 6
+    },
+    {
+      "tag": "Wi-Fi 7",
+      "entries": 1
+    },
+    {
+      "tag": "Wi-Fi覆盖",
+      "entries": 1
+    },
+    {
+      "tag": "WireGuard",
+      "entries": 1
+    },
+    {
+      "tag": "extroot",
+      "entries": 2
+    },
+    {
+      "tag": "mwan3",
+      "entries": 1
+    },
+    {
+      "tag": "overlay",
+      "entries": 1
+    },
+    {
+      "tag": "中继",
+      "entries": 1
+    },
+    {
+      "tag": "云管理",
+      "entries": 1
+    },
+    {
+      "tag": "产品与选型",
+      "entries": 32
+    },
+    {
+      "tag": "产品参数",
+      "entries": 1
+    },
+    {
+      "tag": "产品索引",
+      "entries": 1
+    },
+    {
+      "tag": "代理插件",
+      "entries": 1
+    },
+    {
+      "tag": "价格",
+      "entries": 1
+    },
+    {
+      "tag": "会员规则",
+      "entries": 1
+    },
+    {
+      "tag": "使用与排障",
+      "entries": 7
+    },
+    {
+      "tag": "使用场景",
+      "entries": 1
+    },
+    {
+      "tag": "便携Wi-Fi",
+      "entries": 8
+    },
+    {
+      "tag": "信号",
+      "entries": 2
+    },
+    {
+      "tag": "信道",
+      "entries": 1
+    },
+    {
+      "tag": "免拉线宽带",
+      "entries": 1
+    },
+    {
+      "tag": "全球漫游",
+      "entries": 7
+    },
+    {
+      "tag": "公司与渠道",
+      "entries": 3
+    },
+    {
+      "tag": "公司介绍",
+      "entries": 1
+    },
+    {
+      "tag": "内存",
+      "entries": 1
+    },
+    {
+      "tag": "内核ABI",
+      "entries": 1
+    },
+    {
+      "tag": "冷凝",
+      "entries": 1
+    },
+    {
+      "tag": "刷机与固件",
+      "entries": 8
+    },
+    {
+      "tag": "动态信息",
+      "entries": 5
+    },
+    {
+      "tag": "动态待复核",
+      "entries": 11
+    },
+    {
+      "tag": "历史产品",
+      "entries": 1
+    },
+    {
+      "tag": "固件升级",
+      "entries": 2
+    },
+    {
+      "tag": "型号辨识",
+      "entries": 1
+    },
+    {
+      "tag": "备份",
+      "entries": 5
+    },
+    {
+      "tag": "外置天线",
+      "entries": 1
+    },
+    {
+      "tag": "多AP",
+      "entries": 3
+    },
+    {
+      "tag": "多WAN",
+      "entries": 1
+    },
+    {
+      "tag": "多卡",
+      "entries": 3
+    },
+    {
+      "tag": "夜间网速变慢",
+      "entries": 1
+    },
+    {
+      "tag": "天火卡",
+      "entries": 4
+    },
+    {
+      "tag": "套外费用",
+      "entries": 1
+    },
+    {
+      "tag": "套餐与会员",
+      "entries": 5
+    },
+    {
+      "tag": "存储空间",
+      "entries": 1
+    },
+    {
+      "tag": "官方售后",
+      "entries": 4
+    },
+    {
+      "tag": "客户端管理",
+      "entries": 1
+    },
+    {
+      "tag": "室外CPE",
+      "entries": 5
+    },
+    {
+      "tag": "延迟",
+      "entries": 1
+    },
+    {
+      "tag": "开放刷机",
+      "entries": 1
+    },
+    {
+      "tag": "张导小店",
+      "entries": 3
+    },
+    {
+      "tag": "张导直播",
+      "entries": 1
+    },
+    {
+      "tag": "快充",
+      "entries": 4
+    },
+    {
+      "tag": "恢复出厂",
+      "entries": 1
+    },
+    {
+      "tag": "恢复模式",
+      "entries": 1
+    },
+    {
+      "tag": "截图",
+      "entries": 1
+    },
+    {
+      "tag": "扩展存储",
+      "entries": 4
+    },
+    {
+      "tag": "抖音",
+      "entries": 1
+    },
+    {
+      "tag": "散热",
+      "entries": 1
+    },
+    {
+      "tag": "日志",
+      "entries": 1
+    },
+    {
+      "tag": "样机",
+      "entries": 1
+    },
+    {
+      "tag": "欠费",
+      "entries": 1
+    },
+    {
+      "tag": "活动",
+      "entries": 1
+    },
+    {
+      "tag": "流量到账",
+      "entries": 1
+    },
+    {
+      "tag": "流量卸载",
+      "entries": 2
+    },
+    {
+      "tag": "测速",
+      "entries": 2
+    },
+    {
+      "tag": "漫游",
+      "entries": 1
+    },
+    {
+      "tag": "版本辨识",
+      "entries": 1
+    },
+    {
+      "tag": "理论速率",
+      "entries": 1
+    },
+    {
+      "tag": "留言板",
+      "entries": 1
+    },
+    {
+      "tag": "硬件差异",
+      "entries": 1
+    },
+    {
+      "tag": "磁吸后盖",
+      "entries": 1
+    },
+    {
+      "tag": "磁片脱落",
+      "entries": 1
+    },
+    {
+      "tag": "端口转发",
+      "entries": 1
+    },
+    {
+      "tag": "第三方固件",
+      "entries": 3
+    },
+    {
+      "tag": "管理安全",
+      "entries": 2
+    },
+    {
+      "tag": "终端容量",
+      "entries": 1
+    },
+    {
+      "tag": "网口",
+      "entries": 1
+    },
+    {
+      "tag": "网络排障",
+      "entries": 21
+    },
+    {
+      "tag": "设备摆放",
+      "entries": 1
+    },
+    {
+      "tag": "访客网络",
+      "entries": 1
+    },
+    {
+      "tag": "证书",
+      "entries": 1
+    },
+    {
+      "tag": "负载均衡",
+      "entries": 1
+    },
+    {
+      "tag": "购买渠道",
+      "entries": 1
+    },
+    {
+      "tag": "资料冲突",
+      "entries": 5
+    },
+    {
+      "tag": "路由",
+      "entries": 1
+    },
+    {
+      "tag": "软件安装",
+      "entries": 4
+    },
+    {
+      "tag": "软件源",
+      "entries": 1
+    },
+    {
+      "tag": "远程管理",
+      "entries": 1
+    },
+    {
+      "tag": "选型",
+      "entries": 1
+    },
+    {
+      "tag": "配置变更",
+      "entries": 2
+    },
+    {
+      "tag": "销户",
+      "entries": 1
+    },
+    {
+      "tag": "镜像校验",
+      "entries": 1
+    },
+    {
+      "tag": "问题反馈",
+      "entries": 1
+    },
+    {
+      "tag": "防火墙",
+      "entries": 1
+    },
+    {
+      "tag": "需求收集",
+      "entries": 1
+    },
+    {
+      "tag": "风扇",
+      "entries": 1
+    },
+    {
+      "tag": "馈线损耗",
+      "entries": 1
+    },
+    {
+      "tag": "马野",
+      "entries": 5
+    }
+  ]
+}

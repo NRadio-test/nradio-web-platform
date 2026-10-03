@@ -34,16 +34,20 @@ const verifiedAt = entries
   .filter(Boolean)
   .sort()
   .at(-1) || '2026-07-30'
+const reviewedAt = entries.map((entry) => entry.reviewed_at).filter(Boolean).sort().at(-1)
 
 const payload = {
   meta: {
     name: 'NRadio 鲲鹏无限知识库',
     generated_at: `${verifiedAt}T00:00:00.000Z`,
     verified_at: verifiedAt,
+    ...(reviewedAt ? { reviewed_at: reviewedAt } : {}),
     entry_count: entries.length,
     data_version: dataVersion(sourceEntries),
     galaxy_version: GALAXY_VERSION,
-    notice: '成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。'
+    notice: reviewedAt
+      ? `知识内容已于 ${reviewedAt} 整理；资料日期与审阅日期不同，动态信息和冲突参数请按条目核对。`
+      : '成员上传资料默认允许收录；动态内容按条目中的日期和适用条件理解。'
   },
   entries
 }
@@ -66,15 +70,29 @@ const astrbotLines = [
   '',
 ]
 
+const reviewStatusLabels = {
+  source_snapshot: '依据原资料整理，未声称当前外部重新核验',
+  current_check_required: '动态信息，回答前核对当前渠道或政策',
+  source_conflict: '资料参数冲突，确认批次或版本后回答'
+}
+let currentCategory = null
+
 for (const entry of entries) {
+  if (entry.category && entry.category !== currentCategory) {
+    currentCategory = entry.category
+    astrbotLines.push(`## ${currentCategory}`, '')
+  }
   astrbotLines.push(
-    `## ${entry.title}`,
+    `${entry.category ? '###' : '##'} ${entry.title}`,
     '',
     entry.text,
     '',
-    `- 来源：${entry.source_url}`,
+    `- InfoID：${entry.id}`,
+    ...[...new Set([entry.source_url, ...(entry.source_urls || [])])].map((url) => `- 来源：${url}`),
     `- 上传者：${entry.uploaded_by}`,
-    `- 核对日期：${entry.verified_at}`,
+    `- 原资料核对日期：${entry.verified_at}`,
+    ...(entry.reviewed_at ? [`- 内容审阅日期：${entry.reviewed_at}`] : []),
+    ...(entry.review_status ? [`- 审阅状态：${reviewStatusLabels[entry.review_status] || entry.review_status}`] : []),
     `- 标签：${entry.tags.join('、')}`,
     ''
   )
