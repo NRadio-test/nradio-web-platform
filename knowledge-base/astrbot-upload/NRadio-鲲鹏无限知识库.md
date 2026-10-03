@@ -1,27 +1,10 @@
 # 鲲鹏无限 NRadio 知识库
 
-本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 79 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
+本文件由 `knowledge-base/import/knowledge.jsonl` 自动生成，共 78 条知识。每条内容都保留来源、上传者、核对日期和检索标签，适合直接上传到 AstrBot 知识库。
 
 使用时应严格依据检索到的知识回答；资料没有提供的信息不要猜测。动态内容按条目中的日期、型号和适用条件理解。
 
 ## 公司与渠道
-
-### NRadio 鲲鹏无限：公司、业务与资料中的联系渠道
-
-资料记载，公司主体为深圳鲲鹏无限科技有限公司，英文品牌 NRadio；官方帮助中心介绍其创立于 2016 年，主营 4G/5G 无线宽带产品，覆盖便携旅行、家庭和企业接入。帮助中心介绍创始人为张利鹏，核心团队有通信品牌厂商背景。
-
-已有产品 PDF 标注官网 https://www.nradiowifi.com/、服务热线 400-6800-186、邮箱 support@nradiowifi.com；帮助中心为 https://help.nradiowifi.com/。这些是 2026-07 至 08 月收录资料中的信息，联系前应核对当前官网或订单页。退款、维修、保修和订单处理以实际购买渠道及当前售后流程为准。
-
-- InfoID：upload-20260803-6fcd6169a1-01
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md
-- 来源：https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6813c18e-146f-4fda-8c8e-e47ee672c192-C5800-688最新资料增量补充-2026-08-07.md
-- 来源：https://help.nradiowifi.com/
-- 来源：https://www.nradiowifi.com/article/231.html
-- 上传者：FallaxAura
-- 原资料核对日期：2026-08-03
-- 内容审阅日期：2026-10-03
-- 审阅状态：动态信息，回答前核对当前渠道或政策
-- 标签：公司与渠道、NRadio、公司介绍、官方售后、动态待复核
 
 ### 张导严选小店与鲲鹏张导：账号及购买渠道
 

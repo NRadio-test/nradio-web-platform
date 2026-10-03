@@ -5,82 +5,12 @@ export const knowledgePayload = {
     "generated_at": "2026-09-16T00:00:00.000Z",
     "verified_at": "2026-09-16",
     "reviewed_at": "2026-10-03",
-    "entry_count": 79,
-    "data_version": "e28dccc475e407d5132364a50463920514a7ac05e92599466e20b058bd727706",
+    "entry_count": 78,
+    "data_version": "02e94581a1b71fe2a3014b3c188f767ad93a79fa37b556c96293a8fadf2de151",
     "galaxy_version": 1,
     "notice": "知识内容已于 2026-10-03 整理；资料日期与审阅日期不同，动态信息和冲突参数请按条目核对。"
   },
   "entries": [
-    {
-      "id": "upload-20260803-6fcd6169a1-01",
-      "title": "NRadio 鲲鹏无限：公司、业务与资料中的联系渠道",
-      "text": "资料记载，公司主体为深圳鲲鹏无限科技有限公司，英文品牌 NRadio；官方帮助中心介绍其创立于 2016 年，主营 4G/5G 无线宽带产品，覆盖便携旅行、家庭和企业接入。帮助中心介绍创始人为张利鹏，核心团队有通信品牌厂商背景。\n\n已有产品 PDF 标注官网 https://www.nradiowifi.com/、服务热线 400-6800-186、邮箱 support@nradiowifi.com；帮助中心为 https://help.nradiowifi.com/。这些是 2026-07 至 08 月收录资料中的信息，联系前应核对当前官网或订单页。退款、维修、保修和订单处理以实际购买渠道及当前售后流程为准。",
-      "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md",
-      "source_type": "user_upload",
-      "uploaded_by": "FallaxAura",
-      "verified_at": "2026-08-03",
-      "confidence": "medium_high",
-      "tags": [
-        "公司与渠道",
-        "NRadio",
-        "公司介绍",
-        "官方售后",
-        "动态待复核"
-      ],
-      "category": "公司与渠道",
-      "review_status": "current_check_required",
-      "reviewed_at": "2026-10-03",
-      "source_ids": [
-        "upload-20260803-6fcd6169a1-01",
-        "upload-20260803-6fcd6169a1-02",
-        "upload-20260803-6fcd6169a1-03",
-        "upload-20260807-91ab9895a6-09"
-      ],
-      "source_urls": [
-        "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md",
-        "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6813c18e-146f-4fda-8c8e-e47ee672c192-C5800-688最新资料增量补充-2026-08-07.md",
-        "https://help.nradiowifi.com/",
-        "https://www.nradiowifi.com/article/231.html"
-      ],
-      "source_records": [
-        {
-          "id": "upload-20260803-6fcd6169a1-01",
-          "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md",
-          "uploaded_by": "FallaxAura",
-          "verified_at": "2026-08-03",
-          "text_sha256": "9a0c8bd8ea5bf7438823c5c8af5c958d3004303a6fabd5da809c6e745ef6ff7f"
-        },
-        {
-          "id": "upload-20260803-6fcd6169a1-02",
-          "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md",
-          "uploaded_by": "FallaxAura",
-          "verified_at": "2026-08-03",
-          "text_sha256": "ae1f6d4322ff3f4d41c6740347267d6b29c4dffc7c9ffded698e244921c79649"
-        },
-        {
-          "id": "upload-20260803-6fcd6169a1-03",
-          "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/d0b56767-711e-4de2-b934-1035c578a401-nradio-legacy-part-01-of-04.md",
-          "uploaded_by": "FallaxAura",
-          "verified_at": "2026-08-03",
-          "text_sha256": "a83502e9d49b28c5c75fa9f27dd44f616afa254c939ae3b4cdeab3c09934f670"
-        },
-        {
-          "id": "upload-20260807-91ab9895a6-09",
-          "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-08/6813c18e-146f-4fda-8c8e-e47ee672c192-C5800-688最新资料增量补充-2026-08-07.md",
-          "uploaded_by": "FallaxAura",
-          "verified_at": "2026-08-07",
-          "text_sha256": "58873a6e236bb7315966c2ff459e1159612a15e54b22a93ed0691c580306d921"
-        }
-      ],
-      "last_edited_by": "Codex",
-      "last_edited_at": "2026-10-03",
-      "revision": 2,
-      "galaxy": {
-        "x": -0.66845,
-        "y": 0.377072,
-        "z": -0.250342
-      }
-    },
     {
       "id": "upload-20260803-d72682beae-04",
       "title": "张导严选小店与鲲鹏张导：账号及购买渠道",
