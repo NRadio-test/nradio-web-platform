@@ -6,7 +6,7 @@ export const knowledgePayload = {
     "verified_at": "2026-09-16",
     "reviewed_at": "2026-10-03",
     "entry_count": 78,
-    "data_version": "e9af2ba98e84e16db8e316ddd5c41ac3db885fa72f879b6043363d10511fab4b",
+    "data_version": "dc2525e8ea1ec72149f0c18869877bb7325a2e13222aac2250608bc23b962384",
     "galaxy_version": 1,
     "notice": "知识内容已于 2026-10-03 整理；资料日期与审阅日期不同，动态信息和冲突参数请按条目核对。"
   },
@@ -1998,12 +1998,12 @@ export const knowledgePayload = {
     {
       "id": "upload-20260916-49c7ae7246-01",
       "title": "C2000 Max 磁吸后盖磁片脱落：取证与售后处理",
-      "text": "带铝合金磁吸后盖的 C2000 Max 若磁片反复脱落，保留后盖及脱落部位照片，向购买渠道/售后提供完整型号、购买渠道和大致时间，确认该批次处理方案。不要自行撬其他磁片或把胶涂入机内；后盖无法固定或有危险外露部件时停止使用该后盖。\n\n直播曾将其描述为制造问题，并提到供应商固定面处理和新版样品测试；这些口述不等于正式原因鉴定或已经实施的召回/免费更换政策。是否更换、时间和批次以当前售后答复为准。\n\n依据：2026-09-16 整理的 9.9 张导直播转写，01:08:00–01:09:27；直播日期未核验，未回听原录音，不推广至所有后盖。",
+      "text": "带铝合金磁吸后盖的 C2000 Max 若磁片反复脱落，保留后盖及脱落部位照片，向购买渠道/售后提供完整型号、购买渠道和订单号，确认该批次处理方案。不要自行撬其他磁片或把胶涂入机内；后盖无法固定或有危险外露部件时停止使用该后盖。\n\n直播曾将其描述为制造问题，目前官方提供售后服务，相关售后支持可以联系林林小助理。\n\n依据：2026-09-16 整理的 9.9 张导直播转写，01:08:00–01:09:27；直播日期未核验，未回听原录音，不推广至所有后盖。",
       "source_url": "https://github.com/NRadio-test/nradio-web-platform/blob/main/knowledge-base/sources/uploads/2026-09/65862f23-bc72-4487-a2fa-eda7e3ac5854-张导直播-C2000Max磁吸后盖磁片脱落-9.9-知识库版.md",
       "source_type": "user_upload",
       "uploaded_by": "FallaxAura",
       "verified_at": "2026-09-16",
-      "confidence": "medium",
+      "confidence": "medium_high",
       "tags": [
         "使用与排障",
         "C2000 Max",
@@ -2046,9 +2046,9 @@ export const knowledgePayload = {
           "text_sha256": "3d3a7524ce543257b1df01e2df44279fd5b4bd096780cd277742a4a49241cfd0"
         }
       ],
-      "last_edited_by": "Codex",
-      "last_edited_at": "2026-10-03",
-      "revision": 2,
+      "last_edited_by": "FallaxAura",
+      "last_edited_at": "2026-10-06T12:55:49+00:00",
+      "revision": 3,
       "galaxy": {
         "x": -0.440219,
         "y": -0.488027,
