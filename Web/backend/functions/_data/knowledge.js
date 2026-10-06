@@ -6,7 +6,7 @@ export const knowledgePayload = {
     "verified_at": "2026-09-16",
     "reviewed_at": "2026-10-03",
     "entry_count": 78,
-    "data_version": "02e94581a1b71fe2a3014b3c188f767ad93a79fa37b556c96293a8fadf2de151",
+    "data_version": "e9af2ba98e84e16db8e316ddd5c41ac3db885fa72f879b6043363d10511fab4b",
     "galaxy_version": 1,
     "notice": "知识内容已于 2026-10-03 整理；资料日期与审阅日期不同，动态信息和冲突参数请按条目核对。"
   },
@@ -1405,19 +1405,18 @@ export const knowledgePayload = {
     {
       "id": "upload-20260803-acc90fa962-01",
       "title": "C2000 Max（C8-788）：硬件参数与批次边界",
-      "text": "C8-788、788、C2000MAX、C2000-MAX、C2000 Max 均指 C2000 Max；该对应由用户在 2026-10-03 明确确认，客服按同一型号识别。\n\n2026-08-03 的 Mini CPE 资料记录：BE3600 Wi-Fi 7，2.4GHz 理论 688Mbps、5GHz 2882Mbps；海思巴龙 MT5700，支持 3CC、N79 和 SUL；Cortex-A53 双核 2GHz，512MB 内存、32MB 闪存，TF 支持范围记为 1GB–2TB。\n\n5G NR N1/N3/N5/N8/N28/N41/N78/N79；LTE-FDD B1/B3/B5/B8；LTE-TDD B34/B38/B39/B40/B41；WCDMA B1/B8。理论 5G 下行 4Gbps/上行 1.5Gbps，LTE 900Mbps/200Mbps。\n\n这份资料记录一个 2.5G WAN/LAN、两个外置 Nano-SIM，内置套餐/eSIM 需确认批次；五根内置 Wi-Fi 天线和四根 5G 天线。USB-C PD 5V/3A、9V/2.22A、12V/1.67A，120×120×22mm、约 220g；NROS 2.0/OpenWrt 后台切换和八层散热为资料功能描述。\n\n原库另一条 C8-788 来源写过不同的外形、网口、供电和存储，已作为同型号的矛盾历史资料留档，不能把两份参数相加或以此另建一款产品。具体购买批次和实机优先；上述是原资料快照，理论速率和实验室测试不保证实际体验。",
+      "text": "C8-788、788、C2000MAX、C2000-MAX、C2000 Max 均指 C2000 Max；该对应由用户在 2026-10-03 明确确认，客服按同一型号识别。\n\n相关硬件配置：BE3600 Wi-Fi 7，2.4GHz 理论 688Mbps、5GHz 2882Mbps；模块是海思巴龙 MT5700，支持 3CC、N79 和 SUL；Cortex-A53 双核 2GHz，512MB 内存、32MB 闪存，TF 支持范围记为 1GB–2TB。\n\n5G NR N1/N3/N5/N8/N28/N41/N78/N79；LTE-FDD B1/B3/B5/B8；LTE-TDD B34/B38/B39/B40/B41；WCDMA B1/B8。理论 5G 下行 4Gbps/上行 1.5Gbps，LTE 900Mbps/200Mbps。\n\n这份资料记录一个 2.5G WAN/LAN、两个外置 Nano-SIM，内置卡为青锋卡；五根内置 Wi-Fi 天线和四根 5G 天线。USB-C PD 5V/3A、9V/2.22A、12V/1.67A，120×120×22mm、约 220g；系统为NROS 2.2.12，同时支持OpenWrt以及MYOS、Mwrt",
       "source_url": "https://www.nradiowifi.com/article/265.html",
       "source_type": "user_upload",
       "uploaded_by": "FallaxAura",
       "verified_at": "2026-08-03",
-      "confidence": "medium",
+      "confidence": "medium_high",
       "tags": [
         "产品与选型",
         "C2000 Max",
-        "5G CPE",
-        "Wi-Fi 7",
-        "TF卡",
-        "资料冲突"
+        "C8-788",
+        "OpenWrt",
+        "OP"
       ],
       "category": "产品与选型",
       "review_status": "source_conflict",
@@ -1466,13 +1465,13 @@ export const knowledgePayload = {
           "text_sha256": "3f333f60a20aaaaf2b5898f5acc89e1cac74752239955fbc78f6677d2aff4e23"
         }
       ],
-      "last_edited_by": "Codex",
-      "last_edited_at": "2026-10-03",
-      "revision": 2,
+      "last_edited_by": "FallaxAura",
+      "last_edited_at": "2026-10-06T12:51:24+00:00",
+      "revision": 3,
       "galaxy": {
-        "x": 0.594525,
-        "y": -0.064169,
-        "z": -0.195669
+        "x": 0.625722,
+        "y": -0.015314,
+        "z": -0.064041
       }
     },
     {

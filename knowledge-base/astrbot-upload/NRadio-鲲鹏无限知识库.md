@@ -426,13 +426,11 @@ N8 是 NRadio 历史官方产品，AX1800 Wi-Fi 6 家用路由器。目录状态
 
 C8-788、788、C2000MAX、C2000-MAX、C2000 Max 均指 C2000 Max；该对应由用户在 2026-10-03 明确确认，客服按同一型号识别。
 
-2026-08-03 的 Mini CPE 资料记录：BE3600 Wi-Fi 7，2.4GHz 理论 688Mbps、5GHz 2882Mbps；海思巴龙 MT5700，支持 3CC、N79 和 SUL；Cortex-A53 双核 2GHz，512MB 内存、32MB 闪存，TF 支持范围记为 1GB–2TB。
+相关硬件配置：BE3600 Wi-Fi 7，2.4GHz 理论 688Mbps、5GHz 2882Mbps；模块是海思巴龙 MT5700，支持 3CC、N79 和 SUL；Cortex-A53 双核 2GHz，512MB 内存、32MB 闪存，TF 支持范围记为 1GB–2TB。
 
 5G NR N1/N3/N5/N8/N28/N41/N78/N79；LTE-FDD B1/B3/B5/B8；LTE-TDD B34/B38/B39/B40/B41；WCDMA B1/B8。理论 5G 下行 4Gbps/上行 1.5Gbps，LTE 900Mbps/200Mbps。
 
-这份资料记录一个 2.5G WAN/LAN、两个外置 Nano-SIM，内置套餐/eSIM 需确认批次；五根内置 Wi-Fi 天线和四根 5G 天线。USB-C PD 5V/3A、9V/2.22A、12V/1.67A，120×120×22mm、约 220g；NROS 2.0/OpenWrt 后台切换和八层散热为资料功能描述。
-
-原库另一条 C8-788 来源写过不同的外形、网口、供电和存储，已作为同型号的矛盾历史资料留档，不能把两份参数相加或以此另建一款产品。具体购买批次和实机优先；上述是原资料快照，理论速率和实验室测试不保证实际体验。
+这份资料记录一个 2.5G WAN/LAN、两个外置 Nano-SIM，内置卡为青锋卡；五根内置 Wi-Fi 天线和四根 5G 天线。USB-C PD 5V/3A、9V/2.22A、12V/1.67A，120×120×22mm、约 220g；系统为NROS 2.2.12，同时支持OpenWrt以及MYOS、Mwrt
 
 - InfoID：upload-20260803-acc90fa962-01
 - 来源：https://www.nradiowifi.com/article/265.html
@@ -445,7 +443,7 @@ C8-788、788、C2000MAX、C2000-MAX、C2000 Max 均指 C2000 Max；该对应由�
 - 原资料核对日期：2026-08-03
 - 内容审阅日期：2026-10-03
 - 审阅状态：资料参数冲突，确认批次或版本后回答
-- 标签：产品与选型、C2000 Max、5G CPE、Wi-Fi 7、TF卡、资料冲突
+- 标签：产品与选型、C2000 Max、C8-788、OpenWrt、OP
 
 ### C5800-688：硬件、接口和新版资料边界
 
